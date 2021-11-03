@@ -5,14 +5,15 @@ import {
   handleRound,
   handleSquare,
 } from '@components/shared';
-import {hs, vs} from '@responsive';
-import {COLORS, FONTS} from '@theme';
 import React from 'react';
-import {StyleSheet, Text as RNText} from 'react-native';
+import {Pressable as RNPrsesable, StyleSheet} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import Text from '../Text';
 import styles from './styles';
+import {hs, vs} from '@responsive';
+import {COLORS} from '@theme';
 
-const Text = ({
+const Pressable = ({
   //layout
   flex,
   flexGrow,
@@ -64,32 +65,25 @@ const Text = ({
   maxHeight,
   square,
   round,
+  //position
+  relative,
+  absolute,
+  top,
+  left,
+  right,
+  bottom,
   //color
   backgroundColor,
   borderColor,
   color,
   opacity,
-  //font
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  title,
-  large,
-  medium,
-  small,
-  tiny,
-  light,
-  bold,
-  heavy,
-  block,
-  //text style
-  center,
-  right,
-  fontFamily,
+  //shadow
+  shadow1,
+  shadow2,
+  shadow3,
 
-  numberOfLines,
+  labelProps,
+  onPress,
   style,
   children,
   ...rest
@@ -148,6 +142,13 @@ const Text = ({
     maxHeight && {maxHeight: vs(height)},
     round && handleRound(hs(round)),
     square && handleSquare(hs(square)),
+    //position
+    relative && {position: 'relative'},
+    absolute && {position: 'absolute'},
+    top && {top: hs(top)},
+    right && {right: hs(right)},
+    bottom && {bottom: hs(bottom)},
+    left && {left: hs(left)},
     //color
     backgroundColor && {
       backgroundColor: COLORS[backgroundColor] || backgroundColor,
@@ -157,34 +158,23 @@ const Text = ({
     },
     color && {color},
     opacity && {opacity},
-    //font
-    h1 && styles.h1,
-    h2 && styles.h2,
-    h3 && styles.h3,
-    h4 && styles.h4,
-    h5 && styles.h5,
-    title && {fontSize: hs(32)},
-    large && {fontSize: hs(18)},
-    medium && {fontSize: hs(15)},
-    small && {fontSize: hs(11)},
-    tiny && {fontSize: hs(10)},
-    light && {fontWeight: '200'},
-    bold && {fontWeight: '600'},
-    heavy && {fontWeight: '700'},
-    block && {fontWeight: '900'},
-    //text style
-    center && {textAlign: 'center'},
-    right && {textAlign: 'right'},
-    fontFamily && {fontFamily: FONTS[fontFamily] || FONTS.sanRegular},
+    //shadow
+    shadow1 && styles.shadow1,
+    shadow2 && styles.shadow2,
+    shadow3 && styles.shadow3,
 
     {...StyleSheet.flatten(style)},
   ];
 
   return (
-    <RNText {...rest} style={customStyles} numberOfLines={numberOfLines}>
-      {children}
-    </RNText>
+    <RNPrsesable {...rest} style={customStyles} onPress={onPress}>
+      {typeof children === 'string' ? (
+        <Text {...labelProps}>{children}</Text>
+      ) : (
+        children
+      )}
+    </RNPrsesable>
   );
 };
 
-export default Text;
+export default Pressable;
