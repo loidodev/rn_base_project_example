@@ -16,6 +16,8 @@ module.exports = {
           '@store': './src/store',
           '@theme': './src/theme',
           '@utils': './src/utils',
+
+          '@responsive': './src/utils/responsive',
         },
       },
     ],

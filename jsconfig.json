@@ -27,7 +27,9 @@
       "@theme": ["theme"],
       "@theme/*": ["theme/*"],
       "@utils": ["utils"],
-      "@utils/*": ["utils/*"]
+      "@utils/*": ["utils/*"],
+
+      "@responsive": ["utils/responsive"],
     },
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
