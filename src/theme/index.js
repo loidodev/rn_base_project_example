@@ -23,6 +23,9 @@ export const COLORS = {
   greenPrimary: '#2F9928',
 };
 
-export const FONTS = {};
+export const FONTS = {
+  sanBold: 'SanFranciscoDisplay-Bold',
+  sanRegular: 'SanFranciscoDisplay-Regular',
+};
 
 export const SIZES = {};

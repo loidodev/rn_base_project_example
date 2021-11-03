@@ -6,7 +6,7 @@ import {
   handleSquare,
 } from '@components/shared';
 import {hs, vs} from '@responsive';
-import {COLORS} from '@theme';
+import {COLORS, FONTS} from '@theme';
 import React from 'react';
 import {StyleSheet, Text as RNText} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
@@ -84,6 +84,7 @@ const Text = ({
   bold,
   heavy,
   block,
+  fontFamily,
   //text style
   center,
   right,
@@ -171,6 +172,7 @@ const Text = ({
     bold && {fontWeight: '600'},
     heavy && {fontWeight: '700'},
     block && {fontWeight: '900'},
+    fontFamily && {fontFamily: FONTS[fontFamily] || FONTS.sanRegular},
     //text style
     center && {textAlign: 'center'},
     right && {textAlign: 'right'},
