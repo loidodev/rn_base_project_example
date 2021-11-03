@@ -2,6 +2,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import router from '@router';
 import {bottom} from '@screens';
 import * as React from 'react';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const Tab = createBottomTabNavigator();
 
@@ -11,6 +12,12 @@ const BottomContainer = () => {
       <Tab.Screen
         name={router.HOME_SCREEN}
         component={bottom[router.HOME_SCREEN]}
+        options={{
+          tabBarLabel: 'Home',
+          tabBarIcon: ({color, size}) => (
+            <MaterialCommunityIcons name="home" color={color} size={size} />
+          ),
+        }}
       />
       <Tab.Screen
         name={router.SHOPPING_SCREEN}
