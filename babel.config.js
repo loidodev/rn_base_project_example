@@ -17,6 +17,7 @@ module.exports = {
           '@theme': './src/theme',
           '@utils': './src/utils',
 
+          '@router': './src/navigator/router',
           '@responsive': './src/utils/responsive',
         },
       },

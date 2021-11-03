@@ -29,6 +29,7 @@
       "@utils": ["utils"],
       "@utils/*": ["utils/*"],
 
+      "@router": ["navigator/router"],
       "@responsive": ["utils/responsive"],
     },
     "allowSyntheticDefaultImports": true,
