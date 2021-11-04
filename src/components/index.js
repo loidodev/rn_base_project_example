@@ -8,7 +8,7 @@ import Pressable from './base/Pressable';
 import Text from './base/Text';
 import TextInput from './base/TextInput';
 //import card
-
+import ItemProduct from './card/ItemProduct';
 //import form
 
 //import header
@@ -27,6 +27,7 @@ export {
   Text,
   TextInput,
   //card
+  ItemProduct,
   //form
   //header
   HeaderLogo,
