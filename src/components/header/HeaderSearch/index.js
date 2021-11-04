@@ -1,18 +1,27 @@
 import {Block, Text} from '@components';
 import {SIZES} from '@theme';
-import React, {useState} from 'react';
+import React from 'react';
+import Animated, {
+  useAnimatedStyle,
+  useSharedValue,
+  withTiming,
+} from 'react-native-reanimated';
 import IconGroup from '../IconGroup';
 
 const HeaderSearch = ({title}) => {
-  const [widthIcon, setWidthIcon] = useState(null);
+  const width = useSharedValue(0);
+
+  const spaceStyles = useAnimatedStyle(() => ({
+    width: width.value,
+  }));
 
   const _onLayout = ({nativeEvent}) => {
-    setWidthIcon(nativeEvent.layout.width);
+    width.value = withTiming(nativeEvent.layout.width);
   };
 
   return (
     <Block rowCenter space="between" padding={SIZES.medium}>
-      {widthIcon && <Block style={{width: widthIcon}} />}
+      <Animated.View style={spaceStyles} />
       <Text flex center medium bold color="primary" numberOfLines={2}>
         {title}
       </Text>
