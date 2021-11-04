@@ -87,6 +87,7 @@ const Text = ({
   //text style
   center,
   right,
+  fontSize,
   fontFamily,
 
   numberOfLines,
@@ -177,6 +178,7 @@ const Text = ({
     //text style
     center && {textAlign: 'center'},
     right && {textAlign: 'right'},
+    fontSize && {fontSize: hs(fontSize)},
     fontFamily && {fontFamily: FONTS[fontFamily] || FONTS.sanRegular},
 
     {...StyleSheet.flatten(style)},

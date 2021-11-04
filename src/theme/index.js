@@ -28,4 +28,11 @@ export const FONTS = {
   sanRegular: 'SanFranciscoDisplay-Regular',
 };
 
-export const SIZES = {};
+export const SIZES = {
+  xxxLarge: 80,
+  xxLarge: 60,
+  xLarge: 32,
+  large: 16,
+  medium: 12,
+  small: 8,
+};
