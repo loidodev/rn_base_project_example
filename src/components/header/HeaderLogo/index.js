@@ -6,7 +6,7 @@ import IconGroup from '../IconGroup';
 
 const HeaderLogo = () => {
   return (
-    <Block rowCenter space="between" padding={SIZES.medium}>
+    <Block rowCenter space="between" height={60} padding={SIZES.medium}>
       {/* left */}
       <Block rowCenter>
         <Image

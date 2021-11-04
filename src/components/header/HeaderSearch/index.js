@@ -21,7 +21,7 @@ const HeaderSearch = ({title, canGoBack, iconBackName = 'chevron-back'}) => {
   };
 
   return (
-    <Block rowCenter space="between" padding={SIZES.medium}>
+    <Block rowCenter space="between" height={60} padding={SIZES.medium}>
       <Animated.View style={spaceStyles}>
         {canGoBack && (
           <Pressable paddingHorizontal={SIZES.xSmall}>
