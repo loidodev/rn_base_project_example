@@ -20,6 +20,7 @@ const BottomContainer = () => {
           paddingHorizontal: hs(12),
           backgroundColor: COLORS.white,
           borderTopWidth: 0,
+          display: route.name === router.QR_CODE_SCREEN ? 'none' : 'flex',
         },
         tabBarButton: ({accessibilityState, onPress}) => {
           const focused = accessibilityState.selected;

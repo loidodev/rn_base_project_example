@@ -9,12 +9,14 @@ import {StatusBar} from 'react-native';
 import AuthContainer from './AuthContainer';
 import BottomContainer from './BottomContainer';
 import CommonContainer from './CommonContainer';
+import {navigationRef} from './navigationRef';
 
 const Stack = createNativeStackNavigator();
 
 const RootNavigator = () => {
   return (
     <NavigationContainer
+      ref={navigationRef}
       theme={{
         colors: {
           background: COLORS.white,
