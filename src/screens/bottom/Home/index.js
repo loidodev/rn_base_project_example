@@ -2,6 +2,7 @@ import {Block, HeaderLogo} from '@components';
 import React from 'react';
 import {ScrollView} from 'react-native';
 import BannerHome from './components/BannerHome';
+import CategoryGroup from './components/CategoryGroup';
 
 const DATA = [
   {
@@ -24,6 +25,7 @@ const Home = () => {
       <HeaderLogo />
       <ScrollView showsVerticalScrollIndicator={false}>
         <BannerHome data={DATA} />
+        <CategoryGroup />
       </ScrollView>
     </Block>
   );

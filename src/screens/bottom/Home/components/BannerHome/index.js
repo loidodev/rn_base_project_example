@@ -33,7 +33,7 @@ const BannerHome = ({data = []}) => {
   return (
     <Block>
       <SwiperFlatList
-        style={{margin: 12}}
+        style={{marginHorizontal: 12, marginTop: 12}}
         autoplay
         autoplayLoop
         showPagination

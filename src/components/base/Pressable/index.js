@@ -84,6 +84,7 @@ const Pressable = ({
 
   labelProps,
   onPress,
+  onLayout,
   style,
   children,
   ...rest
@@ -167,7 +168,11 @@ const Pressable = ({
   ];
 
   return (
-    <RNPrsesable {...rest} style={customStyles} onPress={onPress}>
+    <RNPrsesable
+      {...rest}
+      style={customStyles}
+      onPress={onPress}
+      onLayout={onLayout}>
       {typeof children === 'string' ? (
         <Text {...labelProps}>{children}</Text>
       ) : (
