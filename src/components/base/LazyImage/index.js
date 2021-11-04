@@ -1,5 +1,5 @@
 import React from 'react';
-import {Animated, Image, StyleSheet} from 'react-native';
+import {Image, StyleSheet, View} from 'react-native';
 import styles from './styles';
 import {hs, vs} from '@responsive';
 import {
@@ -11,6 +11,11 @@ import {
 } from '@components/shared';
 import {COLORS} from '@theme';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import Animated, {
+  useAnimatedStyle,
+  useSharedValue,
+  withTiming,
+} from 'react-native-reanimated';
 
 const LazyImage = ({
   //layout
@@ -167,27 +172,28 @@ const LazyImage = ({
     {...StyleSheet.flatten(style)},
   ];
 
-  const thumbnailAnimated = new Animated.Value(0);
-  const imageAnimated = new Animated.Value(0);
+  const rThumbnail = useSharedValue(0);
+  const rPicture = useSharedValue(0);
 
   const onThumbnailLoad = () => {
-    Animated.timing(thumbnailAnimated, {
-      toValue: 1,
-      useNativeDriver: true,
-    }).start();
+    rThumbnail.value = withTiming(1);
   };
 
   const onImageLoad = () => {
-    Animated.timing(imageAnimated, {
-      toValue: 1,
-      useNativeDriver: true,
-    }).start();
+    rPicture.value = withTiming(1);
   };
 
+  const thumbnailStyles = useAnimatedStyle(() => ({
+    opacity: rThumbnail.value,
+  }));
+
+  const pictureStyles = useAnimatedStyle(() => ({
+    opacity: rPicture.value,
+  }));
+
   return (
-    <Animated.View style={customStyles} {...rest}>
-      <Animated.View
-        style={[StyleSheet.absoluteFill, {opacity: thumbnailAnimated}]}>
+    <View style={customStyles} {...rest}>
+      <Animated.View style={[StyleSheet.absoluteFill, thumbnailStyles]}>
         <Image
           source={{uri: thumbnail}}
           style={styles.image}
@@ -196,7 +202,7 @@ const LazyImage = ({
           blurRadius={1}
         />
       </Animated.View>
-      <Animated.View style={[styles.image, {opacity: imageAnimated}]}>
+      <Animated.View style={[styles.image, pictureStyles]}>
         <Image
           source={{uri: source}}
           style={styles.image}
@@ -204,7 +210,7 @@ const LazyImage = ({
           onLoadEnd={onImageLoad}
         />
       </Animated.View>
-    </Animated.View>
+    </View>
   );
 };
 
