@@ -1,10 +1,10 @@
-import {Block, HeaderSearch} from '@components';
+import {Block, HeaderInput} from '@components';
 import React from 'react';
 
 const Profile = () => {
   return (
     <Block flex>
-      <HeaderSearch title="Thông tin khác" />
+      <HeaderInput />
     </Block>
   );
 };

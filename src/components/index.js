@@ -14,6 +14,7 @@ import TextInput from './base/TextInput';
 //import header
 import HeaderLogo from './header/HeaderLogo';
 import HeaderSearch from './header/HeaderSearch';
+import HeaderInput from './header/HeaderInput';
 
 export {
   //base
@@ -30,4 +31,5 @@ export {
   //header
   HeaderLogo,
   HeaderSearch,
+  HeaderInput,
 };
