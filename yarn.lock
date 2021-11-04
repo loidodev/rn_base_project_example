@@ -5437,6 +5437,11 @@ react-native-screens@^3.4.0, react-native-screens@^3.9.0:
     react-freeze "^1.0.0"
     warn-once "^0.1.0"
 
+react-native-swiper-flatlist@^3.0.15:
+  version "3.0.15"
+  resolved "https://registry.yarnpkg.com/react-native-swiper-flatlist/-/react-native-swiper-flatlist-3.0.15.tgz#2b8b9e78d023a16c27bb732956217ec8990f47f8"
+  integrity sha512-ajWTGChYE2KuJ/LsHShZG5KnM6ZfytMER3YqeDMqJLtFmxUqq9SFrfsvV7SBChbGtKg82rVx9lzfsAwp9q/qJw==
+
 react-native-vector-icons@^9.0.0:
   version "9.0.0"
   resolved "https://registry.yarnpkg.com/react-native-vector-icons/-/react-native-vector-icons-9.0.0.tgz#ab38ec6941f3f340d39846f1e8300e59863e2fb1"
