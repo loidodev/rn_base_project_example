@@ -1,4 +1,4 @@
-import {Block, Text} from '@components';
+import {Block, Icon, Pressable, Text} from '@components';
 import {SIZES} from '@theme';
 import React from 'react';
 import Animated, {
@@ -7,6 +7,7 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 import IconGroup from '../IconGroup';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const HeaderSearch = ({title}) => {
   const width = useSharedValue(0);
@@ -21,7 +22,11 @@ const HeaderSearch = ({title}) => {
 
   return (
     <Block rowCenter space="between" padding={SIZES.medium}>
-      <Animated.View style={spaceStyles} />
+      <Animated.View style={spaceStyles}>
+        <Pressable>
+          <Icon IconType={Ionicons} iconName="chevron-back" iconSize={24} />
+        </Pressable>
+      </Animated.View>
       <Text flex center medium bold color="primary" numberOfLines={2}>
         {title}
       </Text>
