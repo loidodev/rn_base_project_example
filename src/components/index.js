@@ -7,9 +7,13 @@ import ListWrapper from './base/ListWrapper';
 import Pressable from './base/Pressable';
 import Text from './base/Text';
 import TextInput from './base/TextInput';
-//import cards
+//import card
 
 //import form
+
+//import header
+import HeaderLogo from './header/HeaderLogo';
+import HeaderSearch from './header/HeaderSearch';
 
 export {
   //base
@@ -21,6 +25,9 @@ export {
   Pressable,
   Text,
   TextInput,
-  //cards
+  //card
   //form
+  //header
+  HeaderLogo,
+  HeaderSearch,
 };

@@ -35,4 +35,6 @@ export const SIZES = {
   large: 16,
   medium: 12,
   small: 8,
+  xSmall: 4,
+  xxSmall: 2,
 };

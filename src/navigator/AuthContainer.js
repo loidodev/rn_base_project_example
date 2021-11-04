@@ -1,5 +1,5 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {common} from '@screens';
+import {auth} from '@screens';
 import React from 'react';
 import router from './router';
 
@@ -10,11 +10,11 @@ const AuthContainer = () => {
     <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen
         name={router.SIGN_IN_SCREEN}
-        component={common[router.SIGN_IN_SCREEN]}
+        component={auth[router.SIGN_IN_SCREEN]}
       />
       <Stack.Screen
         name={router.SIGN_UP_SCREEN}
-        component={common[router.SIGN_UP_SCREEN]}
+        component={auth[router.SIGN_UP_SCREEN]}
       />
     </Stack.Navigator>
   );

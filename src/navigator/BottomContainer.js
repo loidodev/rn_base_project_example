@@ -5,6 +5,7 @@ import router from '@router';
 import {bottom} from '@screens';
 import * as React from 'react';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import {COLORS} from '@theme';
 
 const Tab = createBottomTabNavigator();
 
@@ -17,6 +18,8 @@ const BottomContainer = () => {
         tabBarStyle: {
           height: vs(60),
           paddingHorizontal: hs(12),
+          backgroundColor: COLORS.white,
+          borderTopWidth: 0,
         },
         tabBarButton: ({accessibilityState, onPress}) => {
           const focused = accessibilityState.selected;

@@ -23,8 +23,8 @@ const RootNavigator = () => {
       }}>
       <StatusBar barStyle="dark-content" backgroundColor={COLORS.white} />
       <Stack.Navigator
-        initialRouteName={router.COMMON_CONTAINER}
-        screenOptions={{headerShown: false}}>
+        screenOptions={{headerShown: false}}
+        initialRouteName={router.BOTTOM_CONTAINER}>
         <Stack.Screen name={router.AUTH_CONTAINER} component={AuthContainer} />
         <Stack.Screen
           name={router.BOTTOM_CONTAINER}
