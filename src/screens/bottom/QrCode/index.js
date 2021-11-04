@@ -1,11 +1,11 @@
+import {Block, HeaderSearch} from '@components';
 import React from 'react';
-import {View, Text} from 'react-native';
 
 const QrCode = () => {
   return (
-    <View>
-      <Text>QrCode</Text>
-    </View>
+    <Block flex>
+      <HeaderSearch title="Tích lũy điểm" canGoBack iconBackName="close" />
+    </Block>
   );
 };
 

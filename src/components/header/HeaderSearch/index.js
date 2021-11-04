@@ -9,7 +9,7 @@ import Animated, {
 import IconGroup from '../IconGroup';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-const HeaderSearch = ({title}) => {
+const HeaderSearch = ({title, canGoBack, iconBackName = 'chevron-back'}) => {
   const width = useSharedValue(0);
 
   const spaceStyles = useAnimatedStyle(() => ({
@@ -23,9 +23,11 @@ const HeaderSearch = ({title}) => {
   return (
     <Block rowCenter space="between" padding={SIZES.medium}>
       <Animated.View style={spaceStyles}>
-        <Pressable>
-          <Icon IconType={Ionicons} iconName="chevron-back" iconSize={24} />
-        </Pressable>
+        {canGoBack && (
+          <Pressable paddingHorizontal={SIZES.xSmall}>
+            <Icon IconType={Ionicons} iconName={iconBackName} iconSize={24} />
+          </Pressable>
+        )}
       </Animated.View>
       <Text flex center medium bold color="primary" numberOfLines={2}>
         {title}
