@@ -1,4 +1,5 @@
 export const COLORS = {
+  primary: '#008D36',
   text: '#242424',
   background: '#f5f5f5',
   orange: '#FE930F',
@@ -20,7 +21,6 @@ export const COLORS = {
   darkBlue: '#304FDF',
   lightRed: '#FA634D',
   lightBlue: '#3E79F7',
-  greenPrimary: '#2F9928',
 };
 
 export const FONTS = {
