@@ -4,10 +4,14 @@ import React from 'react';
 import {SIZES} from '@theme';
 import {width} from '@responsive';
 
-const ItemProduct = () => {
+const ItemProduct = ({style, contentStyle}) => {
   return (
-    <Pressable padding={SIZES.normal} style={{width: '50%'}}>
-      <Block overflow="hidden" radius={SIZES.small} backgroundColor="white">
+    <Pressable padding={SIZES.normal} style={{width: '50%', ...style}}>
+      <Block
+        overflow="hidden"
+        radius={SIZES.small}
+        backgroundColor="white"
+        style={contentStyle}>
         <LazyImage
           style={{
             width: '100%',
