@@ -8,6 +8,8 @@ import Shopping from './bottom/Shopping';
 import QrCode from './bottom/QrCode';
 import Voucher from './bottom/Voucher';
 import Profile from './bottom/Profile';
+//import common
+import GetStart from './common/GetStart';
 
 export const auth = {
   [router.SIGN_IN_SCREEN]: SignIn,
@@ -22,4 +24,6 @@ export const bottom = {
   [router.PROFILE_SCREEN]: Profile,
 };
 
-export const common = {};
+export const common = {
+  [router.GET_START_SCREEN]: GetStart,
+};
