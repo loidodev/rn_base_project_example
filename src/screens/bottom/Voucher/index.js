@@ -4,7 +4,7 @@ import React from 'react';
 const Voucher = () => {
   return (
     <Block flex>
-      <HeaderSearch />
+      <HeaderSearch title="Voucher của tôi" />
     </Block>
   );
 };

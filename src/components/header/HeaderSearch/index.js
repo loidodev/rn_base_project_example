@@ -1,10 +1,22 @@
 import {Block, Text} from '@components';
-import React from 'react';
+import {SIZES} from '@theme';
+import React, {useState} from 'react';
+import IconGroup from '../IconGroup';
 
-const HeaderSearch = () => {
+const HeaderSearch = ({title}) => {
+  const [widthIcon, setWidthIcon] = useState(null);
+
+  const _onLayout = ({nativeEvent}) => {
+    setWidthIcon(nativeEvent.layout.width);
+  };
+
   return (
-    <Block>
-      <Text>HeaderSearch</Text>
+    <Block rowCenter space="between" padding={SIZES.medium}>
+      {widthIcon && <Block style={{width: widthIcon}} />}
+      <Text flex center medium bold color="primary" numberOfLines={2}>
+        {title}
+      </Text>
+      <IconGroup onLayout={_onLayout} />
     </Block>
   );
 };

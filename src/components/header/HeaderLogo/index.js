@@ -1,9 +1,8 @@
-import {Block, Icon, Image, Pressable, Text} from '@components';
+import {Block, Image, Text} from '@components';
 import {IMAGES} from '@contant';
 import {SIZES} from '@theme';
 import React from 'react';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import IconGroup from '../IconGroup';
 
 const HeaderLogo = () => {
   return (
@@ -27,30 +26,7 @@ const HeaderLogo = () => {
         </Block>
       </Block>
       {/* right */}
-      <Block rowCenter>
-        <Pressable paddingHorizontal={SIZES.xSmall}>
-          <Icon
-            IconType={Ionicons}
-            iconName="search-circle-sharp"
-            iconSize={30}
-          />
-        </Pressable>
-        <Pressable paddingHorizontal={SIZES.xSmall}>
-          <Icon
-            IconType={MaterialCommunityIcons}
-            iconName="shopping-outline"
-            iconSize={24}
-          />
-        </Pressable>
-        <Pressable paddingHorizontal={SIZES.xSmall}>
-          <Icon
-            IconType={MaterialCommunityIcons}
-            iconName="dots-vertical"
-            iconColor="lightGray"
-            iconSize={28}
-          />
-        </Pressable>
-      </Block>
+      <IconGroup />
     </Block>
   );
 };
