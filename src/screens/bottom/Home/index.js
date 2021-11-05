@@ -1,11 +1,11 @@
 /* eslint-disable react-native/no-inline-styles */
 import {Block, HeaderLogo, LazyImage} from '@components';
+import {SIZES} from '@theme';
 import React from 'react';
 import {ScrollView} from 'react-native';
 import BannerHome from './components/BannerHome';
 import CategoryGroup from './components/CategoryGroup';
 import CategoryProduct from './components/CategoryProduct';
-import {SIZES} from '@theme';
 import HotProduct from './components/HotProduct';
 
 const DATA = [
