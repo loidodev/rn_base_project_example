@@ -10,14 +10,18 @@ const [shortDimension, longDimension] =
   width < height ? [width, height] : [height, width];
 
 /**
- * getSize.m(10) Responsive for padding - margin - fontSize.
- *
- * getSize.s(10) Responsive by width screen. (Image Size)
- *
- * getSize.v(10) Responsive by height screen.
- *
  * H => Horizontal
+ *
  * V => Vertical
+ *
+ * hScale responsive by width screen
+ *
+ * vScale responsive by height screen
+ *
+ * moderateHScale responsive by width screen with factor
+ *
+ * moderateVScale responsive by height screen with factor
+ *
  **/
 
 export const hScale = size => (shortDimension / DESIGN_WIDTH) * size;
