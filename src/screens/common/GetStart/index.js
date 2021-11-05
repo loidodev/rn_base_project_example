@@ -1,5 +1,5 @@
 import {Block, Image, Pressable, Text} from '@components';
-import {IMAGES} from '@contant';
+import {IMAGES} from 'constants';
 import {SIZES} from '@theme';
 import React from 'react';
 

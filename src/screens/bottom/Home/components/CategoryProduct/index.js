@@ -5,7 +5,7 @@ import {SIZES} from '@theme';
 import {ScrollView} from 'react-native';
 import {width} from '@responsive';
 import {hs} from '@responsive';
-import {IMAGES} from '@contant';
+import {IMAGES} from 'constants';
 
 const DATA = [1, 2, 3, 4, 5, 6];
 
