@@ -1,10 +1,14 @@
 import {Block, Image, Pressable, Text} from '@components';
-import {IMAGES} from 'constants';
+import {authRoot} from '@navigator/navigationRef';
+import router from '@router';
 import {SIZES} from '@theme';
+import {IMAGES} from 'constants';
 import React from 'react';
 
 const GetStart = () => {
-  const _onMoveCustomer = params => {};
+  const _onMoveCustomer = params => {
+    authRoot.navigate(router.SIGN_IN_SCREEN);
+  };
 
   const _onMoveDrugStore = params => {};
 

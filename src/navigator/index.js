@@ -1,5 +1,3 @@
-// In App.js in a new project
-
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import router from '@router';
@@ -11,7 +9,7 @@ import BottomContainer from './BottomContainer';
 import CommonContainer from './CommonContainer';
 import {navigationRef} from './navigationRef';
 
-const Stack = createNativeStackNavigator();
+const RootStack = createNativeStackNavigator();
 
 const RootNavigator = () => {
   return (
@@ -24,19 +22,22 @@ const RootNavigator = () => {
         },
       }}>
       <StatusBar barStyle="dark-content" backgroundColor={COLORS.white} />
-      <Stack.Navigator
+      <RootStack.Navigator
         screenOptions={{headerShown: false}}
         initialRouteName={router.BOTTOM_CONTAINER}>
-        <Stack.Screen name={router.AUTH_CONTAINER} component={AuthContainer} />
-        <Stack.Screen
+        <RootStack.Screen
+          name={router.AUTH_CONTAINER}
+          component={AuthContainer}
+        />
+        <RootStack.Screen
           name={router.BOTTOM_CONTAINER}
           component={BottomContainer}
         />
-        <Stack.Screen
+        <RootStack.Screen
           name={router.COMMON_CONTAINER}
           component={CommonContainer}
         />
-      </Stack.Navigator>
+      </RootStack.Navigator>
     </NavigationContainer>
   );
 };

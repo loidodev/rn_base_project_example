@@ -17,7 +17,7 @@ const OptionGroup = () => {
           alignCenter
           justifyCenter
           backgroundColor="smoke">
-          <Icon IconType={AntDesign} iconName="search" />
+          <Icon IconType={AntDesign} iconName="search1" />
         </Pressable>
         <Text
           center

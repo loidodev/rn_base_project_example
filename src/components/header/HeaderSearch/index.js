@@ -1,4 +1,5 @@
 import {Block, Icon, Pressable, Text} from '@components';
+import {root} from '@navigator/navigationRef';
 import {SIZES} from '@theme';
 import React from 'react';
 import Animated, {
@@ -7,9 +8,8 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated';
-import IconGroup from '../IconGroup';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import {goBack} from '@navigator/navigationRef';
+import IconGroup from '../IconGroup';
 
 const HeaderSearch = ({title, canGoBack, iconBackName = 'chevron-back'}) => {
   const width = useSharedValue(0);
@@ -25,7 +25,7 @@ const HeaderSearch = ({title, canGoBack, iconBackName = 'chevron-back'}) => {
   };
 
   const _onGoBack = () => {
-    goBack();
+    root.goBack();
   };
 
   return (
