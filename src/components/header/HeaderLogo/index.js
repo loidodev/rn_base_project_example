@@ -1,5 +1,5 @@
 import {Block, Image, Text} from '@components';
-import {IMAGES} from 'constants';
+import {IMAGES} from '@constants';
 import {SIZES} from '@theme';
 import React from 'react';
 import IconGroup from '../IconGroup';
