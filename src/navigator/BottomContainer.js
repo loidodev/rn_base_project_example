@@ -7,11 +7,11 @@ import * as React from 'react';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {COLORS} from '@theme';
 
-const Tab = createBottomTabNavigator();
+const TabStack = createBottomTabNavigator();
 
 const BottomContainer = () => {
   return (
-    <Tab.Navigator
+    <TabStack.Navigator
       screenOptions={({route}) => ({
         headerShown: false,
         tabBarShowLabel: false,
@@ -75,27 +75,27 @@ const BottomContainer = () => {
           }
         },
       })}>
-      <Tab.Screen
+      <TabStack.Screen
         name={router.HOME_SCREEN}
         component={bottom[router.HOME_SCREEN]}
       />
-      <Tab.Screen
+      <TabStack.Screen
         name={router.SHOPPING_SCREEN}
         component={bottom[router.SHOPPING_SCREEN]}
       />
-      <Tab.Screen
+      <TabStack.Screen
         name={router.QR_CODE_SCREEN}
         component={bottom[router.QR_CODE_SCREEN]}
       />
-      <Tab.Screen
+      <TabStack.Screen
         name={router.VOUCHER_SCREEN}
         component={bottom[router.VOUCHER_SCREEN]}
       />
-      <Tab.Screen
+      <TabStack.Screen
         name={router.PROFILE_SCREEN}
         component={bottom[router.PROFILE_SCREEN]}
       />
-    </Tab.Navigator>
+    </TabStack.Navigator>
   );
 };
 
