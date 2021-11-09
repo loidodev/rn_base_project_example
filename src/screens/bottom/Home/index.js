@@ -1,7 +1,8 @@
 /* eslint-disable react-native/no-inline-styles */
-import {Block, HeaderLogo, LazyImage, Virtualized} from '@components';
+import {Block, HeaderLogo, LazyImage} from '@components';
 import {SIZES} from '@theme';
 import React from 'react';
+import {ScrollView} from 'react-native';
 import BannerHome from './components/BannerHome';
 import CategoryGroup from './components/CategoryGroup';
 import CategoryProduct from './components/CategoryProduct';
@@ -26,7 +27,7 @@ const Home = () => {
   return (
     <Block flex>
       <HeaderLogo />
-      <Virtualized>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <BannerHome data={DATA} />
         <CategoryGroup />
         <CategoryProduct />
@@ -37,7 +38,7 @@ const Home = () => {
           />
         </Block>
         <HotProduct />
-      </Virtualized>
+      </ScrollView>
     </Block>
   );
 };

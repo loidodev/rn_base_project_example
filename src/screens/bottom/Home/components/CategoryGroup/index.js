@@ -1,5 +1,4 @@
 import {Block, GridList, Image, Pressable, Text} from '@components';
-import {hs} from '@responsive';
 import {SIZES} from '@theme';
 import React from 'react';
 import {GROUPS} from './data';
@@ -9,7 +8,7 @@ const CategoryGroup = () => {
     const {title, picture} = item;
 
     return (
-      <Pressable flex padding={SIZES.normal}>
+      <Pressable flex>
         <Block
           alignCenter
           justifyCenter
@@ -30,14 +29,7 @@ const CategoryGroup = () => {
     );
   };
 
-  return (
-    <GridList
-      numColumns={4}
-      data={GROUPS}
-      renderItem={_renderCategory}
-      contentContainerStyle={{padding: hs(SIZES.normal)}}
-    />
-  );
+  return <GridList numColumns={4} data={GROUPS} renderItem={_renderCategory} />;
 };
 
 export default CategoryGroup;

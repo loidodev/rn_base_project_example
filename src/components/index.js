@@ -9,7 +9,6 @@ import Pressable from './base/Pressable';
 import Text from './base/Text';
 import TextInput from './base/TextInput';
 import Rating from './base/Rating';
-import Virtualized from './base/Virtualized';
 //import card
 import ItemProduct from './card/ItemProduct';
 //import form
@@ -31,7 +30,6 @@ export {
   Text,
   TextInput,
   Rating,
-  Virtualized,
   //card
   ItemProduct,
   //form
