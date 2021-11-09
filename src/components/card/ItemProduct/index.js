@@ -8,7 +8,7 @@ import {Pressable} from 'react-native';
 import styles from './styles';
 import {ICONS} from '@constants';
 
-const URL = 'https://source.unsplash.com/random';
+const URL = 'https://source.unsplash.com/daily';
 
 const ItemProduct = ({item, style, contentStyle}) => {
   const {
