@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import {Block, HeaderLogo, LazyImage, Virtualized} from '@components';
+import {Block, HeaderLogo, LazyImage, ScrollView} from '@components';
 import {SIZES} from '@theme';
 import React from 'react';
 import BannerHome from './components/BannerHome';
@@ -26,7 +26,7 @@ const Home = () => {
   return (
     <Block flex>
       <HeaderLogo />
-      <Virtualized>
+      <ScrollView>
         <BannerHome data={DATA} />
         <CategoryGroup />
         <CategoryProduct />
@@ -37,7 +37,7 @@ const Home = () => {
           />
         </Block>
         <HotProduct />
-      </Virtualized>
+      </ScrollView>
     </Block>
   );
 };

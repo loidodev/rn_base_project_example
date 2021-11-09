@@ -1,40 +1,31 @@
-import React, {useMemo} from 'react';
-import {FlatList, View} from 'react-native';
+import {Block} from '@components';
+import React from 'react';
+import {SIZES} from './../../../theme/index';
 
-const GridList = ({
-  numColumns = 2,
-  data = [],
-  renderItem,
-  contentContainerStyle,
-}) => {
-  const newData = useMemo(() => {
-    let result = data;
+const GridList = ({numColumns = 2, data = [], renderItem}) => {
+  const widthPercent = `${100 / numColumns}%`;
 
-    const totalRows = Math.floor(result.length / numColumns);
-    let totalLastRow = result.length - totalRows * numColumns;
+  const _renderItem = (item, index) => {
+    return (
+      <Block
+        overflow="hidden"
+        key={`${index}`}
+        padding={SIZES.normal}
+        style={{width: widthPercent}}>
+        {renderItem({item, index})}
+      </Block>
+    );
+  };
 
-    while (totalLastRow !== 0 && totalLastRow !== numColumns) {
-      result.push({empty: true});
-      totalLastRow++;
-    }
-
-    return result;
-  }, [data, numColumns]);
-
-  return (
-    <View>
-      <FlatList
-        numColumns={numColumns}
-        data={newData}
-        keyExtractor={(_, index) => String(index)}
-        renderItem={renderItem}
-        contentContainerStyle={contentContainerStyle}
-        scrollEnabled={false}
-        showsVerticalScrollIndicator={false}
-        showsHorizontalScrollIndicator={false}
-      />
-    </View>
-  );
+  if (!data?.length) {
+    return null;
+  } else {
+    return (
+      <Block row wrap padding={SIZES.normal}>
+        {data.map(_renderItem)}
+      </Block>
+    );
+  }
 };
 
 export default GridList;

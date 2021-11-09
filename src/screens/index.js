@@ -10,6 +10,7 @@ import Voucher from './bottom/Voucher';
 import Profile from './bottom/Profile';
 //import common
 import GetStart from './common/GetStart';
+import SearchScreen from './common/SearchScreen';
 
 export const auth = {
   [router.SIGN_IN_SCREEN]: SignIn,
@@ -26,4 +27,5 @@ export const bottom = {
 
 export const common = {
   [router.GET_START_SCREEN]: GetStart,
+  [router.GET_SEARCH_SCREEN]: SearchScreen,
 };
