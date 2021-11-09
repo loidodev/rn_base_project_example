@@ -13,9 +13,7 @@ const IconGroup = ({onLayout, customSearch}) => {
 
   const _onMoveCart = params => {};
 
-  const _onMoveOption = params => {};
-
-  const _renderSearch = () => {
+  const _renderIconSearch = () => {
     return (
       <Pressable paddingHorizontal={SIZES.xSmall} onPress={_onMoveSearch}>
         <Image
@@ -31,8 +29,8 @@ const IconGroup = ({onLayout, customSearch}) => {
   return (
     <Block flex rowCenter justifyEnd onLayout={onLayout}>
       {customSearch
-        ? customSearch(_renderSearch, _onMoveSearch)
-        : _renderSearch()}
+        ? customSearch(_renderIconSearch, _onMoveSearch)
+        : _renderIconSearch()}
       <Pressable paddingHorizontal={SIZES.xSmall} onPress={_onMoveCart}>
         <Icon
           IconType={MaterialCommunityIcons}
@@ -40,14 +38,6 @@ const IconGroup = ({onLayout, customSearch}) => {
           iconSize={24}
         />
       </Pressable>
-      {/* <Pressable paddingHorizontal={SIZES.xSmall} onPress={_onMoveOption}>
-        <Icon
-          IconType={MaterialCommunityIcons}
-          iconName="dots-vertical"
-          iconColor="lightGray"
-          iconSize={28}
-        />
-      </Pressable> */}
     </Block>
   );
 };

@@ -1,50 +1,48 @@
-import {Block, HeaderInput, ItemProduct, Text} from '@components';
+import {Block, HeaderInput, ItemProduct, Text, Pressable} from '@components';
+import {hs} from '@responsive';
 import {SIZES} from '@theme';
-import {hs} from '@utils/responsive';
 import React, {useState} from 'react';
-import {FlatList, Pressable, ScrollView} from 'react-native';
+import {FlatList, ScrollView} from 'react-native';
 
-const DATA = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const DATA = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+
 const SearchScreen = () => {
-  const [link, setLink] = useState('');
-  
-  const _renderSearch = (item, index) => {
+  const [keyword, setKeyword] = useState('');
+
+  const _renderKeywordSearch = (_, index) => {
     return (
-      <Pressable key={`Search-${index}`} marginRight={hs(SIZES.normal)}>
+      <Pressable
+        key={`Search-${index}`}
+        marginLeft={index !== 0 ? SIZES.small : 0}>
         <Block radius={20} padding={7} backgroundColor="smoke">
-          <Text>thảo dược</Text>
+          <Text>Thảo dược</Text>
         </Block>
       </Pressable>
     );
   };
 
   return (
-    <Block flex backgroundColor="smoke">
-      <Block backgroundColor={'white'}>
-        <HeaderInput activate={true} link={link} setLink={setLink} />
+    <Block flex>
+      {/* header */}
+      <HeaderInput keyword={keyword} setKeyword={setKeyword} />
+      {/* list keyword */}
+      <Block marginVertical={SIZES.normal}>
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={{paddingHorizontal: hs(SIZES.medium)}}>
+          {DATA.map(_renderKeywordSearch)}
+        </ScrollView>
       </Block>
-
-      <Block flex marginTop={SIZES.small} backgroundColor={'white'}>
-        <Block>
-          <ScrollView
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            contentContainerStyle={{
-              paddingHorizontal: hs(SIZES.medium),
-              marginVertical: hs(SIZES.large),
-            }}>
-            {DATA.map(_renderSearch)}
-          </ScrollView>
-        </Block>
-        <FlatList
-          showsVerticalScrollIndicator={false}
-          data={DATA}
-          numColumns={2}
-          keyExtractor={(item, index) => String(index)}
-          renderItem={({item}) => <ItemProduct item={item} />}
-          //   ListEmptyComponent={_renderEmpty}
-        />
-      </Block>
+      {/* list product */}
+      <FlatList
+        data={DATA}
+        numColumns={2}
+        keyExtractor={(_, index) => String(index)}
+        renderItem={({item}) => <ItemProduct item={item} />}
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{padding: hs(SIZES.normal)}}
+      />
     </Block>
   );
 };
