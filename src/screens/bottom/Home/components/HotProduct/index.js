@@ -39,7 +39,7 @@ const HotProduct = () => {
             />
           </Pressable>
         </Block>
-        <Block row wrap >
+        <Block row wrap padding={SIZES.normal}>
           {DATA.map(_renderProduct)}
         </Block>
       </Block>
