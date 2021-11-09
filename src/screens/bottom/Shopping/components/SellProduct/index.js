@@ -1,9 +1,8 @@
-import {Block, ItemProduct, Pressable, Text} from '@components';
+import {Block, ItemProduct, Text} from '@components';
 import {hs, width} from '@responsive';
-import {SIZES} from '@theme';
+import {COLORS, SIZES} from '@theme';
 import React from 'react';
 import {ScrollView} from 'react-native';
-import {COLORS} from '@theme';
 
 const DATA = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
@@ -45,17 +44,6 @@ const SellProduct = () => {
           {DATA.map(_renderProduct)}
         </ScrollView>
       </Block>
-      {/* button show all */}
-      <Pressable
-        alignCenter
-        justifyCenter
-        radius={SIZES.small}
-        padding={SIZES.medium}
-        marginHorizontal={SIZES.medium}
-        backgroundColor="primary"
-        labelProps={{color: 'white', small: true, bold: true}}>
-        XEM THÊM DANH MỤC KHÁC
-      </Pressable>
     </Block>
   );
 };
