@@ -1,5 +1,6 @@
 //import base
 import Block from './base/Block';
+import GridList from './base/GridList';
 import Icon from './base/Icon';
 import Image from './base/Image';
 import LazyImage from './base/LazyImage';
@@ -19,6 +20,7 @@ import HeaderInput from './header/HeaderInput';
 export {
   //base
   Block,
+  GridList,
   Icon,
   Image,
   LazyImage,
