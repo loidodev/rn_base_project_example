@@ -1,10 +1,16 @@
 import {Block, Icon, Pressable, Text, TextInput} from '@components';
+import {root} from '@navigator/navigationRef';
 import {COLORS, SIZES} from '@theme';
 import React from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import IconGroup from '../IconGroup';
 import styles from './styles';
+
 const HeaderInput = ({activate, link, setLink}) => {
+  const goBack = () => {
+    root.goBack();
+  };
+
   const _renderSearch = (renderSearch, onMoveSearch) => {
     return (
       <Pressable
@@ -38,7 +44,7 @@ const HeaderInput = ({activate, link, setLink}) => {
   return (
     <Block rowCenter height={60} padding={SIZES.medium}>
       {/* left */}
-      <Pressable paddingHorizontal={SIZES.xSmall}>
+      <Pressable paddingHorizontal={SIZES.xSmall} onPress={goBack}>
         <Icon IconType={Ionicons} iconName="chevron-back" iconSize={24} />
       </Pressable>
       {/* right */}

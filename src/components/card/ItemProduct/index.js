@@ -12,27 +12,14 @@ import {Pressable} from 'react-native';
 import styles from './styles';
 
 const ItemProduct = ({
-  thumbnail,
-  image,
-  imageStyle,
-  salePercent,
-  price,
-  priceBuy,
-  title = '',
-  rate = 0,
-  is_new,
   style,
-  item_id = '',
-  hasCombo = false,
-  isRate = false,
-  isPriceBuy = true,
   disabled = false,
-  marginBottom = 10,
-  marginHorizontal = 5,
   contentStyle,
+  item,
   ...props
 }) => {
   const navigation = useNavigation();
+  const {rate = 0} = item;
 
   // const _onPress = () =>
   //   navigation.navigate(routes.PRODUCT_DETAIL, {
@@ -54,24 +41,25 @@ const ItemProduct = ({
               width: '100%',
               height: width / 2.5,
             }}
-            thumbnail={thumbnail}
+            thumbnail={item.thumbnail}
             source="https://images.unsplash.com/photo-1482049016688-2d3e1b311543?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=410&q=80"
           />
           <Block padding={SIZES.medium}>
             <Text size={13} numberOfLines={2}>
               {/* {title} */}Siro ho Ong vàng (gói)
             </Text>
-            {isPriceBuy && (
-              <Text
-                marginTop={2}
-                size={15}
-                numberOfLines={1}
-                color="red"
-                fontType="semibold">
-                {priceBuy === '0' ? 'Liên hệ' : `${priceBuy} đ`}
-              </Text>
-            )}
-            {salePercent !== '0' && (
+            {/* {item.isPriceBuy && ( */}
+            <Text
+              marginTop={2}
+              size={15}
+              numberOfLines={1}
+              color="red"
+              fontType="semibold">
+              {/* {item.priceBuy === '0' ? 'Liên hệ' : `${item.priceBuy} đ`} */}
+              200.000 đ
+            </Text>
+            {/* )} */}
+            {item.salePercent !== '0' && (
               <Block row alignCenter marginTop={5}>
                 <Block
                   marginRight={6}
@@ -83,7 +71,7 @@ const ItemProduct = ({
                     marginVertical={3}
                     color="white"
                     fontType="bold">
-                    {Math.ceil(salePercent)}%
+                    {Math.ceil(item.salePercent)}%
                   </Text>
                 </Block>
                 <Text
@@ -93,13 +81,13 @@ const ItemProduct = ({
                   style={{
                     textDecorationLine: 'line-through',
                   }}>
-                  {price} đ
+                  {item.price} đ
                 </Text>
               </Block>
             )}
             <Block row alignCenter marginTop={5} space="between">
-              {isRate && <Rating imageSize={12} startingValue={rate} />}
-              {is_new === '1' && (
+              {item.isRate && <Rating imageSize={12} startingValue={rate} />}
+              {item.is_new === '1' && (
                 <Image
                   source={ICONS.new}
                   resizeMode="contain"
