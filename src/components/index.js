@@ -6,9 +6,10 @@ import Image from './base/Image';
 import LazyImage from './base/LazyImage';
 import ListWrapper from './base/ListWrapper';
 import Pressable from './base/Pressable';
+import Rating from './base/Rating';
+import ScrollView from './base/ScrollView';
 import Text from './base/Text';
 import TextInput from './base/TextInput';
-import Rating from './base/Rating';
 //import card
 import ItemProduct from './card/ItemProduct';
 //import form
@@ -27,9 +28,10 @@ export {
   LazyImage,
   ListWrapper,
   Pressable,
+  Rating,
+  ScrollView,
   Text,
   TextInput,
-  Rating,
   //card
   ItemProduct,
   //form
