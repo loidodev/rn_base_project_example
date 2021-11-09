@@ -7,6 +7,8 @@ import ListWrapper from './base/ListWrapper';
 import Pressable from './base/Pressable';
 import Text from './base/Text';
 import TextInput from './base/TextInput';
+import Rating from './base/Rating';
+
 //import card
 import ItemProduct from './card/ItemProduct';
 //import form
@@ -26,6 +28,7 @@ export {
   Pressable,
   Text,
   TextInput,
+  Rating,
   //card
   ItemProduct,
   //form

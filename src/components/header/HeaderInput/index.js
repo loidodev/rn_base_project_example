@@ -1,10 +1,10 @@
-import {Block, Icon, Pressable, Text} from '@components';
-import {SIZES} from '@theme';
+import {Block, Icon, Pressable, Text, TextInput} from '@components';
+import {COLORS, SIZES} from '@theme';
 import React from 'react';
-import IconGroup from '../IconGroup';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-
-const HeaderInput = () => {
+import IconGroup from '../IconGroup';
+import styles from './styles';
+const HeaderInput = ({activate, link, setLink}) => {
   const _renderSearch = (renderSearch, onMoveSearch) => {
     return (
       <Pressable
@@ -15,10 +15,21 @@ const HeaderInput = () => {
         marginHorizontal={SIZES.xSmall}
         paddingLeft={SIZES.medium}
         backgroundColor="smoke"
-        onPress={onMoveSearch}>
-        <Text flex color="placeholder">
-          Tìm kiếm sản phẩm
-        </Text>
+        onPress={activate ? null : onMoveSearch}>
+        {activate ? (
+          <TextInput
+            value={link}
+            onChangeText={text => setLink(text)}
+            style={styles.input}
+            placeholderTextColor={COLORS.lightGray}
+            placeholder=" Tìm kiếm sản phẩm"
+          />
+        ) : (
+          <Text flex color="placeholder">
+            Tìm kiếm sản phẩm
+          </Text>
+        )}
+
         {renderSearch()}
       </Pressable>
     );

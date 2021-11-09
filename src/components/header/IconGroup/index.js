@@ -1,11 +1,15 @@
-import {Block, Icon, Pressable} from '@components';
+import {Block, Icon, Image, Pressable} from '@components';
+import {commonRoot} from '@navigator/navigationRef';
+import router from '@router';
 import {SIZES} from '@theme';
+import {ICONS} from 'constants';
 import React from 'react';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const IconGroup = ({onLayout, customSearch}) => {
-  const _onMoveSearch = params => {};
+  const _onMoveSearch = () => {
+    commonRoot.navigate(router.GET_SEARCH_SCREEN);
+  };
 
   const _onMoveCart = params => {};
 
@@ -14,10 +18,11 @@ const IconGroup = ({onLayout, customSearch}) => {
   const _renderSearch = () => {
     return (
       <Pressable paddingHorizontal={SIZES.xSmall} onPress={_onMoveSearch}>
-        <Icon
-          IconType={Ionicons}
-          iconName="search-circle-sharp"
-          iconSize={35}
+        <Image
+          width={30}
+          height={30}
+          source={ICONS.search}
+          resizeMode="contain"
         />
       </Pressable>
     );
@@ -35,14 +40,14 @@ const IconGroup = ({onLayout, customSearch}) => {
           iconSize={24}
         />
       </Pressable>
-      <Pressable paddingHorizontal={SIZES.xSmall} onPress={_onMoveOption}>
+      {/* <Pressable paddingHorizontal={SIZES.xSmall} onPress={_onMoveOption}>
         <Icon
           IconType={MaterialCommunityIcons}
           iconName="dots-vertical"
           iconColor="lightGray"
           iconSize={28}
         />
-      </Pressable>
+      </Pressable> */}
     </Block>
   );
 };
