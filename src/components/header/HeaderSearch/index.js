@@ -29,7 +29,7 @@ const HeaderSearch = ({title, canGoBack, iconBackName = 'chevron-back'}) => {
   };
 
   return (
-    <Block rowCenter height={60} padding={SIZES.medium}>
+    <Block safeAreaTop rowCenter height={60} padding={SIZES.medium}>
       {/* space close */}
       <Animated.View style={spaceStyles}>
         {canGoBack && (
