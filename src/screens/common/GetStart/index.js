@@ -2,7 +2,7 @@ import {Block, Image, Pressable, Text} from '@components';
 import {authRoot} from '@navigator/navigationRef';
 import router from '@router';
 import {SIZES} from '@theme';
-import {IMAGES} from 'constants';
+import {IMAGES} from '@constants';
 import React from 'react';
 
 const GetStart = () => {
