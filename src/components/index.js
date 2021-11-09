@@ -1,5 +1,6 @@
 //import base
 import Block from './base/Block';
+import GridList from './base/GridList';
 import Icon from './base/Icon';
 import Image from './base/Image';
 import LazyImage from './base/LazyImage';
@@ -8,7 +9,7 @@ import Pressable from './base/Pressable';
 import Text from './base/Text';
 import TextInput from './base/TextInput';
 import Rating from './base/Rating';
-
+import Virtualized from './base/Virtualized';
 //import card
 import ItemProduct from './card/ItemProduct';
 //import form
@@ -21,6 +22,7 @@ import HeaderInput from './header/HeaderInput';
 export {
   //base
   Block,
+  GridList,
   Icon,
   Image,
   LazyImage,
@@ -29,6 +31,7 @@ export {
   Text,
   TextInput,
   Rating,
+  Virtualized,
   //card
   ItemProduct,
   //form
