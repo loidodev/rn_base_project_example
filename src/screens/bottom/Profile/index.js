@@ -24,7 +24,7 @@ const Profile = () => {
   return (
     <Block flex>
       {/* banner */}
-      <BannerHeader />
+      <BannerHeader scrollY={scrollY} />
       {/* content */}
       <Block flex safeAreaTop>
         <Animated.ScrollView
