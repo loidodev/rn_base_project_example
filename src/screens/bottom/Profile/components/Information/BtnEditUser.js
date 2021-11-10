@@ -8,7 +8,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {MAX_HEIGHT_INFO, MIN_HEIGHT_INFO} from '../helper';
-import {rHorizontalScale, rVerticalScale} from '../Information';
+import {rHorizontalScale, rVerticalScale} from './index';
 
 const ICON_SIZE = 15;
 

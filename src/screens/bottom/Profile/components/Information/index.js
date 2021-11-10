@@ -10,17 +10,17 @@ import Animated, {
   interpolate,
   useAnimatedStyle,
 } from 'react-native-reanimated';
-import Avatar from '../Avatar';
-import BtnEditUser from '../BtnEditUser';
+import Avatar from './Avatar';
+import BoxWhite from './BoxWhite';
+import BtnEditUser from './BtnEditUser';
 import {
   HEIGHT_AVATAR,
   HEIGHT_BG_WAVE,
   MAX_HEIGHT_INFO,
   MIN_HEIGHT_INFO,
 } from '../helper';
-import BoxInfo from './../BoxInfo';
+import BoxInfo from './BoxInfo';
 import styles from './styles';
-import BoxWhite from './../BoxWhite';
 
 export function rHorizontalScale(size) {
   'worklet';

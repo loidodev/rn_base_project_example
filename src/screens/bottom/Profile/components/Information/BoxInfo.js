@@ -5,7 +5,7 @@ import Animated, {
   interpolate,
   useAnimatedStyle,
 } from 'react-native-reanimated';
-import {rHorizontalScale, rVerticalScale} from '../Information';
+import {rHorizontalScale, rVerticalScale} from './index';
 import {width} from '@responsive';
 import {
   HEIGHT_AVATAR,

@@ -10,7 +10,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {HEIGHT_AVATAR, MAX_HEIGHT_INFO, MIN_HEIGHT_INFO} from '../helper';
-import {rVerticalScale} from '../Information';
+import {rVerticalScale} from './index';
 
 const Avatar = ({scrollY}) => {
   const INPUT_AVATAR = [0, rVerticalScale(MAX_HEIGHT_INFO)];

@@ -6,7 +6,7 @@ import Animated, {
   useAnimatedStyle,
 } from 'react-native-reanimated';
 import {HEIGHT_AVATAR, MAX_HEIGHT_INFO, MIN_HEIGHT_INFO} from '../helper';
-import {rVerticalScale} from '../Information';
+import {rVerticalScale} from './index';
 
 const BoxWhite = ({scrollY}) => {
   const rStyles = useAnimatedStyle(() => ({
