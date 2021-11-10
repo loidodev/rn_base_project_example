@@ -13,6 +13,7 @@ export const ICONS = {
 
 export const IMAGES = {
   logo_start: require('@assets/images/logo_start.png'),
+  wave: require('@assets/images/wave.jpg'),
 };
 
 export const LOTTIES = {};
