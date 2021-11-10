@@ -7,19 +7,20 @@ import Animated, {
   useAnimatedStyle,
 } from 'react-native-reanimated';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import {MAX_HEIGHT_INFO, MIN_HEIGHT_INFO} from '../helper';
 import {rHorizontalScale, rVerticalScale} from '../Information';
 
 const ICON_SIZE = 15;
 
-const BtnEditUser = ({scrollY, minHeightInfo, maxHeightInfo}) => {
+const BtnEditUser = ({scrollY}) => {
   const rStyles = useAnimatedStyle(() => ({
     position: 'absolute',
     top: interpolate(
       scrollY.value,
-      [0, rVerticalScale(maxHeightInfo)],
+      [0, rVerticalScale(MAX_HEIGHT_INFO)],
       [
-        rVerticalScale(-(minHeightInfo - SIZES.medium) / 2),
-        rVerticalScale(minHeightInfo / 2) - rHorizontalScale(ICON_SIZE),
+        rVerticalScale(-(MIN_HEIGHT_INFO - SIZES.medium) / 2),
+        rVerticalScale(MIN_HEIGHT_INFO / 2) - rHorizontalScale(ICON_SIZE),
       ],
       Extrapolate.CLAMP,
     ),

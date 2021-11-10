@@ -9,19 +9,32 @@ import Animated, {
   useAnimatedStyle,
 } from 'react-native-reanimated';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import {HEIGHT_AVATAR, MAX_HEIGHT_INFO, MIN_HEIGHT_INFO} from '../helper';
 import {rVerticalScale} from '../Information';
 
-const Avatar = ({scrollY, heightAvatar, maxHeightInfo}) => {
-  const INPUT_AVATAR = [0, rVerticalScale(maxHeightInfo / 2)];
+const Avatar = ({scrollY}) => {
+  const INPUT_AVATAR = [0, rVerticalScale(MAX_HEIGHT_INFO)];
 
   const rStyles = useAnimatedStyle(() => ({
-    width: rVerticalScale(heightAvatar),
+    width: rVerticalScale(HEIGHT_AVATAR),
     transform: [
       {
         translateX: interpolate(
           scrollY.value,
           INPUT_AVATAR,
-          [(width - rVerticalScale(heightAvatar)) / 2, 0],
+          [(width - rVerticalScale(HEIGHT_AVATAR)) / 2, 0],
+          Extrapolate.CLAMP,
+        ),
+      },
+      {
+        translateY: interpolate(
+          scrollY.value,
+          INPUT_AVATAR,
+          [
+            0,
+            rVerticalScale(MIN_HEIGHT_INFO / 2) -
+              rVerticalScale(HEIGHT_AVATAR / 2),
+          ],
           Extrapolate.CLAMP,
         ),
       },
@@ -41,9 +54,9 @@ const Avatar = ({scrollY, heightAvatar, maxHeightInfo}) => {
       <Pressable>
         <Image
           style={{
-            width: vs(heightAvatar),
-            height: vs(heightAvatar),
-            borderRadius: heightAvatar,
+            width: vs(HEIGHT_AVATAR),
+            height: vs(HEIGHT_AVATAR),
+            borderRadius: HEIGHT_AVATAR,
             backgroundColor: 'gray',
           }}
         />

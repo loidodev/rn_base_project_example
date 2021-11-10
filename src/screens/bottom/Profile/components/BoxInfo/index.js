@@ -7,24 +7,18 @@ import Animated, {
 } from 'react-native-reanimated';
 import {rHorizontalScale, rVerticalScale} from '../Information';
 import {width} from '@responsive';
+import {
+  HEIGHT_AVATAR,
+  HEIGHT_BOX_INFO,
+  MAX_HEIGHT_INFO,
+  MIN_HEIGHT_INFO,
+  WIDTH_BOX_INFO,
+} from '../helper';
 
-const WIDTH_BOX_INFO = 200;
+const BoxInfo = ({scrollY}) => {
+  const INPUT = [0, rVerticalScale(MAX_HEIGHT_INFO)];
 
-const BoxInfo = ({scrollY, heightBoxInfo, heightAvatar, maxHeightInfo}) => {
-  const INPUT = [0, rVerticalScale(maxHeightInfo)];
-
-  const rBoxInfoStartStyles = useAnimatedStyle(() => ({
-    opacity: interpolate(
-      scrollY.value,
-      [
-        0,
-        rVerticalScale(maxHeightInfo / 3),
-        rVerticalScale(maxHeightInfo / 2),
-        rVerticalScale(maxHeightInfo),
-      ],
-      [1, 0.5, 0, 0],
-      Extrapolate.CLAMP,
-    ),
+  const rStyles = useAnimatedStyle(() => ({
     transform: [
       {
         translateX: interpolate(
@@ -32,7 +26,7 @@ const BoxInfo = ({scrollY, heightBoxInfo, heightAvatar, maxHeightInfo}) => {
           INPUT,
           [
             (width - rHorizontalScale(WIDTH_BOX_INFO)) / 2,
-            rVerticalScale(heightAvatar),
+            rVerticalScale(HEIGHT_AVATAR),
           ],
           Extrapolate.CLAMP,
         ),
@@ -41,62 +35,50 @@ const BoxInfo = ({scrollY, heightBoxInfo, heightAvatar, maxHeightInfo}) => {
         translateY: interpolate(
           scrollY.value,
           INPUT,
-          [0, rVerticalScale(-heightAvatar + 20)],
+          [
+            0,
+            rVerticalScale(-HEIGHT_AVATAR) -
+              rVerticalScale(-MIN_HEIGHT_INFO / 2) +
+              rVerticalScale(-HEIGHT_BOX_INFO / 2),
+          ],
           Extrapolate.CLAMP,
         ),
       },
     ],
   }));
 
-  const rBoxInfoEndStyles = useAnimatedStyle(() => ({
+  const rBoxInfoStartStyles = useAnimatedStyle(() => ({
     opacity: interpolate(
       scrollY.value,
-      [
-        0,
-        rVerticalScale(maxHeightInfo / 3),
-        rVerticalScale(maxHeightInfo / 2),
-        rVerticalScale(maxHeightInfo),
-      ],
-      [0, 0, 0.5, 1],
+      [0, rVerticalScale(MAX_HEIGHT_INFO / 3)],
+      [1, 0],
       Extrapolate.CLAMP,
     ),
-    transform: [
-      {
-        translateX: interpolate(
-          scrollY.value,
-          INPUT,
-          [
-            (width - rHorizontalScale(WIDTH_BOX_INFO)) / 2,
-            rVerticalScale(heightAvatar),
-          ],
-          Extrapolate.CLAMP,
-        ),
-      },
-      {
-        translateY: interpolate(
-          scrollY.value,
-          INPUT,
-          [0, rVerticalScale(-heightAvatar + 20)],
-          Extrapolate.CLAMP,
-        ),
-      },
-    ],
+  }));
+
+  const rBoxInfoEndStyles = useAnimatedStyle(() => ({
     position: 'absolute',
     top: 0,
     right: 0,
     left: 0,
     bottom: 0,
+    opacity: interpolate(
+      scrollY.value,
+      [rVerticalScale(MAX_HEIGHT_INFO / 1.5), rVerticalScale(MAX_HEIGHT_INFO)],
+      [0, 1],
+      Extrapolate.CLAMP,
+    ),
   }));
 
   return (
     <Block>
       {/* box info start */}
-      <Animated.View style={rBoxInfoStartStyles}>
+      <Animated.View style={[rBoxInfoStartStyles, rStyles]}>
         <Block
           alignCenter
           justifyCenter
           width={WIDTH_BOX_INFO}
-          height={heightBoxInfo}>
+          height={HEIGHT_BOX_INFO}>
           <Text center medium heavy numberOfLines={1}>
             Loi Do
           </Text>
@@ -106,8 +88,8 @@ const BoxInfo = ({scrollY, heightBoxInfo, heightAvatar, maxHeightInfo}) => {
         </Block>
       </Animated.View>
       {/* box info end */}
-      <Animated.View style={rBoxInfoEndStyles}>
-        <Block justifyCenter width={WIDTH_BOX_INFO} height={heightBoxInfo}>
+      <Animated.View style={[rBoxInfoEndStyles, rStyles]}>
+        <Block justifyCenter width={WIDTH_BOX_INFO} height={HEIGHT_BOX_INFO}>
           <Text medium heavy numberOfLines={1}>
             Loi Do
           </Text>

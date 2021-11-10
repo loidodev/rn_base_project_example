@@ -12,8 +12,15 @@ import Animated, {
 } from 'react-native-reanimated';
 import Avatar from '../Avatar';
 import BtnEditUser from '../BtnEditUser';
-import BoxInfo from './../BoxInfo/index';
+import {
+  HEIGHT_AVATAR,
+  HEIGHT_BG_WAVE,
+  MAX_HEIGHT_INFO,
+  MIN_HEIGHT_INFO,
+} from '../helper';
+import BoxInfo from './../BoxInfo';
 import styles from './styles';
+import BoxWhite from './../BoxWhite';
 
 export function rHorizontalScale(size) {
   'worklet';
@@ -25,26 +32,20 @@ export function rVerticalScale(size) {
   return (longDimension / DESIGN_HEIGHT) * size;
 }
 
-const Information = ({
-  scrollY,
-  heightAvatar,
-  heightBoxInfo,
-  maxHeightInfo,
-  minHeightInfo,
-}) => {
-  const INPUT = [0, rVerticalScale(maxHeightInfo)];
+const Information = ({scrollY}) => {
+  const INPUT = [0, rVerticalScale(MAX_HEIGHT_INFO)];
 
   const rContainerStyles = useAnimatedStyle(() => ({
-    marginTop: interpolate(
-      scrollY.value,
-      INPUT,
-      [rVerticalScale(-heightAvatar / 2), 0],
-      Extrapolate.CLAMP,
-    ),
     height: interpolate(
       scrollY.value,
       INPUT,
-      [rVerticalScale(maxHeightInfo), rVerticalScale(minHeightInfo)],
+      [rVerticalScale(MAX_HEIGHT_INFO), rVerticalScale(MIN_HEIGHT_INFO)],
+      Extrapolate.CLAMP,
+    ),
+    marginTop: interpolate(
+      scrollY.value,
+      INPUT,
+      [rVerticalScale(-HEIGHT_AVATAR / 2), 0],
       Extrapolate.CLAMP,
     ),
     transform: [
@@ -52,7 +53,7 @@ const Information = ({
         translateY: interpolate(
           scrollY.value,
           INPUT,
-          [rVerticalScale(100), 0],
+          [rVerticalScale(HEIGHT_BG_WAVE), 0],
           Extrapolate.CLAMP,
         ),
       },
@@ -61,25 +62,14 @@ const Information = ({
 
   return (
     <Animated.View style={[rContainerStyles, styles.container]}>
+      {/* box white */}
+      <BoxWhite scrollY={scrollY} />
       {/* edit user */}
-      <BtnEditUser
-        scrollY={scrollY}
-        minHeightInfo={minHeightInfo}
-        maxHeightInfo={maxHeightInfo}
-      />
+      <BtnEditUser scrollY={scrollY} />
       {/* avatar */}
-      <Avatar
-        scrollY={scrollY}
-        heightAvatar={heightAvatar}
-        maxHeightInfo={maxHeightInfo}
-      />
+      <Avatar scrollY={scrollY} />
       {/* box info */}
-      <BoxInfo
-        scrollY={scrollY}
-        heightBoxInfo={heightBoxInfo}
-        heightAvatar={heightAvatar}
-        maxHeightInfo={maxHeightInfo}
-      />
+      <BoxInfo scrollY={scrollY} />
     </Animated.View>
   );
 };
