@@ -4,15 +4,16 @@ import SignIn from './auth/SignIn';
 import SignUp from './auth/SignUp';
 //import bottom
 import Home from './bottom/Home';
-import Shopping from './bottom/Shopping';
-import QrCode from './bottom/QrCode';
-import Voucher from './bottom/Voucher';
 import Profile from './bottom/Profile';
+import QrCode from './bottom/QrCode';
+import Shopping from './bottom/Shopping';
+import Voucher from './bottom/Voucher';
+import BirthdayScreen from './common/BirthdayScreen';
 //import common
 import GetStart from './common/GetStart';
-import SearchScreen from './common/SearchScreen';
-import BirthdayScreen from './common/BirthdayScreen';
+import Menber from './common/Menber';
 import PartnerScreen from './common/PartnerScreen';
+import SearchScreen from './common/SearchScreen';
 
 export const auth = {
   [router.SIGN_IN_SCREEN]: SignIn,
@@ -32,4 +33,5 @@ export const common = {
   [router.GET_SEARCH_SCREEN]: SearchScreen,
   [router.GET_BIRTHDAY_SCREEN]: BirthdayScreen,
   [router.GET_PARTNER_SCREEN]: PartnerScreen,
+  [router.GET_MENBER_SCREEN]: Menber,
 };

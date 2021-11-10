@@ -11,6 +11,7 @@ import ScrollView from './base/ScrollView';
 import Text from './base/Text';
 import TextInput from './base/TextInput';
 import WebView from './base/WebView';
+import ItemMenber from './card/ItemMenber';
 //import card
 import ItemProduct from './card/ItemProduct';
 import HeaderInput from './header/HeaderInput';
@@ -19,8 +20,7 @@ import HeaderInput from './header/HeaderInput';
 import HeaderLogo from './header/HeaderLogo';
 import HeaderSearch from './header/HeaderSearch';
 
-export
-{
+export {
   Block,
   GridList,
   Icon,
@@ -35,10 +35,12 @@ export
   WebView,
   //card
   ItemProduct,
+  ItemMenber,
+  //form
+  //header
   //form
   //header
   HeaderLogo,
   HeaderSearch,
   HeaderInput,
 };
-

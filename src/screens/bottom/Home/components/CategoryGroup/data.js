@@ -24,6 +24,10 @@ export const GROUPS = [
     screenName: '',
   },
   {title: 'Cẩm nang', picture: ICONS.news, screenName: ''},
-  {title: 'Đối tác', picture: ICONS.heart, screenName: ''},
+  {
+    title: 'Đối tác',
+    picture: ICONS.heart,
+    screenName: router.GET_MENBER_SCREEN,
+  },
   {title: 'Map', picture: ICONS.map, screenName: ''},
 ];
