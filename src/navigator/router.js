@@ -15,4 +15,7 @@ export default {
   //root common
   GET_START_SCREEN: 'GET_START_SCREEN',
   GET_SEARCH_SCREEN: 'GET_SEARCH_SCREEN',
+  //root common categoryGroup
+  GET_BIRTHDAY_SCREEN: 'GET_BIRTHDAY_SCREEN',
+  GET_PARTNER_SCREEN: 'GET_PARTNER_SCREEN',
 };

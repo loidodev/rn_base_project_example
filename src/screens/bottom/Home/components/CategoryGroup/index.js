@@ -1,14 +1,20 @@
 import {Block, GridList, Image, Pressable, Text} from '@components';
+import {commonRoot} from '@navigator/navigationRef';
 import {SIZES} from '@theme';
 import React from 'react';
 import {GROUPS} from './data';
 
 const CategoryGroup = () => {
+  const _onPress = value => {
+    commonRoot.navigate(value.screenName, {
+      params: value,
+    });
+  };
   const _renderCategory = ({item}) => {
     const {title, picture} = item;
 
     return (
-      <Pressable flex>
+      <Pressable flex onPress={() => _onPress(item)}>
         <Block
           alignCenter
           justifyCenter

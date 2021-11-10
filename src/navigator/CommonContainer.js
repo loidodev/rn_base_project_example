@@ -16,6 +16,15 @@ const CommonContainer = () => {
         name={router.GET_SEARCH_SCREEN}
         component={common[router.GET_SEARCH_SCREEN]}
       />
+      {/* CategoryGroup */}
+      <CommonStack.Screen
+        name={router.GET_BIRTHDAY_SCREEN}
+        component={common[router.GET_BIRTHDAY_SCREEN]}
+      />
+      <CommonStack.Screen
+        name={router.GET_PARTNER_SCREEN}
+        component={common[router.GET_PARTNER_SCREEN]}
+      />
     </CommonStack.Navigator>
   );
 };
