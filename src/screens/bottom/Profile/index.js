@@ -7,12 +7,14 @@ import Animated, {
   useSharedValue,
 } from 'react-native-reanimated';
 import BannerHeader from './components/BannerHeader';
+import Delivery from './components/Delivery';
 import {
   HEIGHT_AVATAR,
   HEIGHT_BG_WAVE,
   HEIGHT_BOX_INFO,
 } from './components/helper';
 import Information from './components/Information';
+import ScaleAnim from './components/ScaleAmin';
 
 const Profile = () => {
   const scrollY = useSharedValue(0);
@@ -38,9 +40,21 @@ const Profile = () => {
               marginTop: vs(-HEIGHT_AVATAR / 2),
             }}
           />
-          <Block height={500} backgroundColor="red" />
-          <Block height={500} backgroundColor="purple" />
-          <Block height={500} backgroundColor="red" />
+          <ScaleAnim>
+            <Delivery />
+          </ScaleAnim>
+          <ScaleAnim delay={550}>
+            <Delivery />
+          </ScaleAnim>
+          <ScaleAnim delay={650}>
+            <Delivery />
+          </ScaleAnim>
+          <ScaleAnim delay={750}>
+            <Delivery />
+          </ScaleAnim>
+          <ScaleAnim delay={850}>
+            <Delivery />
+          </ScaleAnim>
         </Animated.ScrollView>
         <Information scrollY={scrollY} />
       </Block>
