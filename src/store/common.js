@@ -12,12 +12,12 @@ export const stateLoadMore = {
   isLoading: true,
 };
 
-export const reducerDefault = ({
+export const reducerDefault = (
   state = stateDefault,
   payload,
   action,
   callback,
-}) => {
+) => {
   switch (payload.type) {
     case action:
       return {...state, isLoading: true};

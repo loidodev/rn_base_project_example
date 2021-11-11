@@ -1,14 +1,21 @@
 import {Block, HeaderSearch, WebView} from '@components';
-import React from 'react';
+import actions from '@store/actions';
+import React, {useEffect} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 
 const PartnerScreen = value => {
-  const {title} = value.route.params.params;
+  const dispatch = useDispatch();
+  const partner = useSelector(state => state.partner.data);
+
+  useEffect(() => {
+    dispatch({type: actions.GET_PARTNER});
+  }, [dispatch]);
 
   return (
     <Block flex>
-      <HeaderSearch canGoBack title={title} />
+      <HeaderSearch canGoBack title={partner?.title} />
       <Block flex padding={12} paddingBottom={20}>
-        <WebView data={'https://topshare.vn/hinh-anh-buon-co-don-dep/'} />
+        <WebView data={partner?.content} />
       </Block>
     </Block>
   );
