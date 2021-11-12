@@ -29,6 +29,10 @@ const CommonContainer = () => {
         name={router.GET_MENBER_SCREEN}
         component={common[router.GET_MENBER_SCREEN]}
       />
+       <CommonStack.Screen
+        name={router.GET_MENBER_DERAILS}
+        component={common[router.GET_MENBER_DERAILS]}
+      />
     </CommonStack.Navigator>
   );
 };

@@ -12,6 +12,7 @@ import BirthdayScreen from './common/BirthdayScreen';
 //import common
 import GetStart from './common/GetStart';
 import Menber from './common/Menber';
+import Menber_Details from './common/Menber/components/Menber_Details';
 import PartnerScreen from './common/PartnerScreen';
 import SearchScreen from './common/SearchScreen';
 
@@ -34,4 +35,5 @@ export const common = {
   [router.GET_BIRTHDAY_SCREEN]: BirthdayScreen,
   [router.GET_PARTNER_SCREEN]: PartnerScreen,
   [router.GET_MENBER_SCREEN]: Menber,
+  [router.GET_MENBER_DERAILS]: Menber_Details,
 };
