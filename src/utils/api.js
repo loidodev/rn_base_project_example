@@ -2,8 +2,8 @@ import store from '@store';
 import axios from 'axios';
 import Config from 'react-native-config';
 
-axios.defaults.baseURL = Config.API_SERVER_URL;
-//axios.defaults.baseURL = Config.API_STAGING_SERVER_URL;
+//axios.defaults.baseURL = Config.API_SERVER_URL;
+axios.defaults.baseURL = Config.API_STAGING_SERVER_URL;
 
 const getDataBody = config => {
   let data = '';
