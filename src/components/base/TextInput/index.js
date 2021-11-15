@@ -85,12 +85,15 @@ const TextInput = ({
   placeholder,
   placeholderTextColor,
   onChangeText,
+  onBlur,
   style,
   ...rest
 }) => {
   const insets = useSafeAreaInsets();
 
   const customStyles = [
+    //default
+    {color: COLORS.black},
     // layout
     flex && handleFlex(flex),
     flexShrink && handleFlexShrink(flexShrink),
@@ -174,6 +177,7 @@ const TextInput = ({
       placeholder={placeholder}
       placeholderTextColor={COLORS[placeholderTextColor] || COLORS.placeholder}
       onChangeText={onChangeText}
+      onBlur={onBlur}
     />
   );
 };

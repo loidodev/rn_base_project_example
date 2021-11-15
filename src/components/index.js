@@ -17,6 +17,7 @@ import WebView from './base/WebView';
 //import card
 import ItemProduct from './card/ItemProduct';
 //import form
+import FormInput from './form/FormInput';
 //import header
 import HeaderLogo from './header/HeaderLogo';
 import HeaderSearch from './header/HeaderSearch';
@@ -43,6 +44,7 @@ export {
   //card
   ItemProduct,
   //form
+  FormInput,
   //header
   HeaderLogo,
   HeaderSearch,
