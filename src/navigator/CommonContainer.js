@@ -16,6 +16,10 @@ const CommonContainer = () => {
           component={common[router.GET_START_SCREEN]}
         />
         <CommonStack.Screen
+          name={router.EDIT_USER_SCREEN}
+          component={common[router.EDIT_USER_SCREEN]}
+        />
+        <CommonStack.Screen
           name={router.GET_SEARCH_SCREEN}
           component={common[router.GET_SEARCH_SCREEN]}
         />

@@ -1,4 +1,5 @@
 import {Block} from '@components';
+import {commonRoot} from '@navigator/navigationRef';
 import {vs} from '@responsive';
 import React, {useState} from 'react';
 import {RefreshControl} from 'react-native';
@@ -19,6 +20,7 @@ import {
 import Information from './components/Information';
 import ListProfile from './components/ListProfile';
 import ShareAndReferredCode from './components/ShareAndReferredCode';
+import router from '@router';
 
 const Profile = () => {
   const scrollY = useSharedValue(0);
@@ -27,6 +29,10 @@ const Profile = () => {
   const _onScroll = useAnimatedScrollHandler(event => {
     scrollY.value = event.contentOffset.y;
   });
+
+  const _onEditUser = () => {
+    commonRoot.navigate(router.EDIT_USER_SCREEN);
+  };
 
   const _onOpenPickerAvatar = () => setIsPickerAvatar(true);
 
@@ -54,7 +60,11 @@ const Profile = () => {
           <ShareAndReferredCode delay={700} />
           <BtnLogout />
         </Animated.ScrollView>
-        <Information scrollY={scrollY} onPickerAvatar={_onOpenPickerAvatar} />
+        <Information
+          scrollY={scrollY}
+          onEditUser={_onEditUser}
+          onPickerAvatar={_onOpenPickerAvatar}
+        />
       </Block>
       {/* modal */}
       <AvatarPicker
