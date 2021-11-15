@@ -1,3 +1,5 @@
+//import animated
+import ScaleAmin from './animated/ScaleAmin';
 //import base
 import Block from './base/Block';
 import GridList from './base/GridList';
@@ -20,6 +22,8 @@ import HeaderSearch from './header/HeaderSearch';
 import HeaderInput from './header/HeaderInput';
 
 export {
+  //import animated
+  ScaleAmin,
   //base
   Block,
   GridList,

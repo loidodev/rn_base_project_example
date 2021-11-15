@@ -1,4 +1,4 @@
-import {Block} from '@components';
+import {Block, ScaleAmin} from '@components';
 import {vs} from '@responsive';
 import React from 'react';
 import {RefreshControl} from 'react-native';
@@ -14,7 +14,6 @@ import {
   HEIGHT_BOX_INFO,
 } from './components/helper';
 import Information from './components/Information';
-import ScaleAnim from './components/ScaleAmin';
 
 const Profile = () => {
   const scrollY = useSharedValue(0);
@@ -40,21 +39,21 @@ const Profile = () => {
               marginTop: vs(-HEIGHT_AVATAR / 2),
             }}
           />
-          <ScaleAnim>
+          <ScaleAmin>
             <Delivery />
-          </ScaleAnim>
-          <ScaleAnim delay={550}>
+          </ScaleAmin>
+          <ScaleAmin delay={550}>
             <Delivery />
-          </ScaleAnim>
-          <ScaleAnim delay={650}>
+          </ScaleAmin>
+          <ScaleAmin delay={650}>
             <Delivery />
-          </ScaleAnim>
-          <ScaleAnim delay={750}>
+          </ScaleAmin>
+          <ScaleAmin delay={750}>
             <Delivery />
-          </ScaleAnim>
-          <ScaleAnim delay={850}>
+          </ScaleAmin>
+          <ScaleAmin delay={850}>
             <Delivery />
-          </ScaleAnim>
+          </ScaleAmin>
         </Animated.ScrollView>
         <Information scrollY={scrollY} />
       </Block>

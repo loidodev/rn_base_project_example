@@ -18,7 +18,7 @@ const springConfig = {
   restSpeedThreshold: 0.5,
 };
 
-const ScaleAnim = ({children, customContainerStyle, delay = DELAY}) => {
+const ScaleAnim = ({children, containerStyle, delay = DELAY}) => {
   const scale = useSharedValue(0);
 
   useEffect(() => {
@@ -36,7 +36,7 @@ const ScaleAnim = ({children, customContainerStyle, delay = DELAY}) => {
   });
 
   return (
-    <Animated.View style={[customContainerStyle, scaleAnim]}>
+    <Animated.View style={[containerStyle, scaleAnim]}>
       {children}
     </Animated.View>
   );
