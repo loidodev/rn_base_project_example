@@ -23,6 +23,11 @@ export const COLORS = {
   lightBlue: '#3E79F7',
 };
 
+export const GRADIENTS = {
+  easyMed: ['#DCE35B', '#45B649'],
+  lush: ['#56ab2f', '#a8e063'],
+};
+
 export const FONTS = {
   sanBold: 'SanFranciscoDisplay-Bold',
   sanRegular: 'SanFranciscoDisplay-Regular',

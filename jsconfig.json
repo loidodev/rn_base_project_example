@@ -18,6 +18,8 @@
       "@constants/*": ["constants/*"],
       "@hooks": ["hooks"],
       "@hooks/*": ["hooks/*"],
+      "@locale": ["locale"],
+      "@locale/*": ["locale/*"],
       "@navigator": ["navigator"],
       "@navigator/*": ["navigator/*"],
       "@screens": ["screens"],

@@ -131,8 +131,8 @@ const Block = ({
     borderBottomWidth && {borderBottomWidth: hs(borderBottomWidth)},
     borderLeftWidth && {borderLeftWidth: hs(borderLeftWidth)},
     translateY && {transform: [{translateY: hs(translateY)}]},
-    safeAreaTop && {paddingTop: insets.top},
-    safeAreaBottom && {paddingTop: insets.bottom},
+    safeAreaTop && {marginTop: insets.top},
+    safeAreaBottom && {marginBottom: insets.bottom},
     //width, height
     width && {width: hs(width)},
     height && {height: vs(height)},
@@ -143,10 +143,10 @@ const Block = ({
     //position
     relative && {position: 'relative'},
     absolute && {position: 'absolute'},
-    top && {top: hs(top)},
-    right && {right: hs(right)},
-    bottom && {bottom: hs(bottom)},
-    left && {left: hs(left)},
+    top !== undefined && {top: hs(top)},
+    right !== undefined && {right: hs(right)},
+    bottom !== undefined && {bottom: hs(bottom)},
+    left !== undefined && {left: hs(left)},
     //color
     backgroundColor && {
       backgroundColor: COLORS[backgroundColor] || backgroundColor,
