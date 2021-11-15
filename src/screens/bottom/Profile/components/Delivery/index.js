@@ -18,6 +18,9 @@ const DATA = [
 const Delivery = () => {
   return (
     <ScaleAmin>
+      {/* divider */}
+      <Block height={SIZES.small} backgroundColor="background" />
+      {/* content */}
       <Block padding={12} marginTop={SIZES.medium}>
         <Block row alignCenter space="between">
           <Text medium heavy>
