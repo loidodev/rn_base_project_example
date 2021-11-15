@@ -9,6 +9,19 @@ export const ICONS = {
   map: require('@assets/icons/categoryGroup/map.png'),
   news: require('@assets/icons/categoryGroup/news.png'),
   shopping: require('@assets/icons/categoryGroup/shopping.png'),
+  //profile
+  affiliate: require('@assets/icons/profile/affiliate.png'),
+  exchange: require('@assets/icons/profile/exchange.png'),
+  eye: require('@assets/icons/profile/eye.png'),
+  gift_box: require('@assets/icons/profile/gift_box.png'),
+  hand_gesture: require('@assets/icons/profile/hand_gesture.png'),
+  heart_pink: require('@assets/icons/profile/heart_pink.png'),
+  income_fee: require('@assets/icons/profile/income_fee.png'),
+  placeholder: require('@assets/icons/profile/placeholder.png'),
+  promotion: require('@assets/icons/profile/promotion.png'),
+  referred_people: require('@assets/icons/profile/referred_people.png'),
+  shopping_history: require('@assets/icons/profile/shopping_history.png'),
+  star: require('@assets/icons/profile/star.png'),
 };
 
 export const IMAGES = {

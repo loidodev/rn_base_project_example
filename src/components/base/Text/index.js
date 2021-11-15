@@ -11,6 +11,7 @@ import React from 'react';
 import {StyleSheet, Text as RNText} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import styles from './styles';
+import locale from '@locale';
 
 const Text = ({
   //layout
@@ -186,7 +187,7 @@ const Text = ({
 
   return (
     <RNText {...rest} style={customStyles} numberOfLines={numberOfLines}>
-      {children}
+      {locale.t(children, {defaultValue: children})}
     </RNText>
   );
 };

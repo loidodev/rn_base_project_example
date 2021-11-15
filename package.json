@@ -24,6 +24,8 @@
     "react-native": "0.66.1",
     "react-native-config": "^1.4.5",
     "react-native-elements": "^3.4.2",
+    "react-native-i18n": "^2.0.15",
+    "react-native-linear-gradient": "^2.5.6",
     "react-native-reanimated": "^2.2.0",
     "react-native-restart": "^0.0.22",
     "react-native-safe-area-context": "^3.3.2",
