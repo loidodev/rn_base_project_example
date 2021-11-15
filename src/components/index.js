@@ -16,11 +16,12 @@ import TextInput from './base/TextInput';
 import WebView from './base/WebView';
 //import card
 import ItemProduct from './card/ItemProduct';
-import HeaderInput from './header/HeaderInput';
 //import form
 //import header
 import HeaderLogo from './header/HeaderLogo';
 import HeaderSearch from './header/HeaderSearch';
+import HeaderInput from './header/HeaderInput';
+import HeaderTitle from './header/HeaderTitle';
 
 export {
   //import animated
@@ -46,4 +47,5 @@ export {
   HeaderLogo,
   HeaderSearch,
   HeaderInput,
+  HeaderTitle,
 };

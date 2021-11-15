@@ -1,10 +1,10 @@
-import {Block, Text} from '@components';
+import {Block, HeaderTitle} from '@components';
 import React from 'react';
 
 const EditUser = () => {
   return (
-    <Block>
-      <Text>EditUser</Text>
+    <Block flex>
+      <HeaderTitle canGoBack title="personal.personal_info" />
     </Block>
   );
 };
