@@ -12,14 +12,14 @@ import Rating from './base/Rating';
 import ScrollView from './base/ScrollView';
 import Text from './base/Text';
 import TextInput from './base/TextInput';
+import WebView from './base/WebView';
 //import card
 import ItemProduct from './card/ItemProduct';
+import HeaderInput from './header/HeaderInput';
 //import form
-
 //import header
 import HeaderLogo from './header/HeaderLogo';
 import HeaderSearch from './header/HeaderSearch';
-import HeaderInput from './header/HeaderInput';
 
 export {
   //import animated
@@ -36,6 +36,7 @@ export {
   ScrollView,
   Text,
   TextInput,
+  WebView,
   //card
   ItemProduct,
   //form
