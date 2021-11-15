@@ -5,13 +5,11 @@ import React from 'react';
 
 const ShareAndReferredCode = ({delay}) => {
   const _onShare = () => {
-    // Share.share({
-    //   url: userInfo.link_invitaion,
-    // });
+    // Share.share({url: userInfo.link_invitaion});
   };
   const _copyCode = () => {
     // Clipboard.setString(userInfo?.code_invitaion);
-    // CustomToast(I18n.t('coupon.coppy'));
+    // CustomToast('coupon.coppy');
   };
 
   return (
