@@ -1,11 +1,12 @@
 import {Block} from '@components';
 import {vs} from '@responsive';
-import React from 'react';
+import React, {useState} from 'react';
 import {RefreshControl} from 'react-native';
 import Animated, {
   useAnimatedScrollHandler,
   useSharedValue,
 } from 'react-native-reanimated';
+import AvatarPicker from './components/AvatarPicker';
 import BannerHeader from './components/BannerHeader';
 import BtnLogout from './components/BtnLogout';
 import {GENERAL_LIST, MANAGER_LIST, SUPPORT_LIST} from './components/data';
@@ -21,10 +22,13 @@ import ShareAndReferredCode from './components/ShareAndReferredCode';
 
 const Profile = () => {
   const scrollY = useSharedValue(0);
+  const [isPickerAvatar, setIsPickerAvatar] = useState(false);
 
   const _onScroll = useAnimatedScrollHandler(event => {
     scrollY.value = event.contentOffset.y;
   });
+
+  const _onOpenPickerAvatar = () => setIsPickerAvatar(true);
 
   return (
     <Block flex>
@@ -45,13 +49,18 @@ const Profile = () => {
           />
           <Delivery />
           <ListProfile delay={550} data={MANAGER_LIST} />
-          <ListProfile delay={650} data={GENERAL_LIST} />
-          <ListProfile delay={750} data={SUPPORT_LIST} />
-          <ShareAndReferredCode delay={850} />
+          <ListProfile delay={600} data={GENERAL_LIST} />
+          <ListProfile delay={650} data={SUPPORT_LIST} />
+          <ShareAndReferredCode delay={700} />
           <BtnLogout />
         </Animated.ScrollView>
-        <Information scrollY={scrollY} />
+        <Information scrollY={scrollY} onPickerAvatar={_onOpenPickerAvatar} />
       </Block>
+      {/* modal */}
+      <AvatarPicker
+        isVisible={isPickerAvatar}
+        setIsVisible={setIsPickerAvatar}
+      />
     </Block>
   );
 };

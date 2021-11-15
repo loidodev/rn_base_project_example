@@ -7,6 +7,7 @@ import Icon from './base/Icon';
 import Image from './base/Image';
 import LazyImage from './base/LazyImage';
 import ListWrapper from './base/ListWrapper';
+import Modal from './base/Modal';
 import Pressable from './base/Pressable';
 import Rating from './base/Rating';
 import ScrollView from './base/ScrollView';
@@ -31,6 +32,7 @@ export {
   Image,
   LazyImage,
   ListWrapper,
+  Modal,
   Pressable,
   Rating,
   ScrollView,

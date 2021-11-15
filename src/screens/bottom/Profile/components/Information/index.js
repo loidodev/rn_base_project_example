@@ -32,7 +32,7 @@ export function rVerticalScale(size) {
   return (longDimension / DESIGN_HEIGHT) * size;
 }
 
-const Information = ({scrollY}) => {
+const Information = ({scrollY, onPickerAvatar}) => {
   const INPUT = [0, rVerticalScale(MAX_HEIGHT_INFO)];
 
   const rContainerStyles = useAnimatedStyle(() => ({
@@ -67,7 +67,7 @@ const Information = ({scrollY}) => {
       {/* edit user */}
       <BtnEditUser scrollY={scrollY} />
       {/* avatar */}
-      <Avatar scrollY={scrollY} />
+      <Avatar scrollY={scrollY} onPress={onPickerAvatar} />
       {/* box info */}
       <BoxInfo scrollY={scrollY} />
     </Animated.View>
