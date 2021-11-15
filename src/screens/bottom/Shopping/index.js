@@ -1,6 +1,5 @@
-import {Block, HeaderLogo} from '@components';
+import {Block, HeaderLogo, ScrollView} from '@components';
 import React from 'react';
-import {ScrollView} from 'react-native';
 import Banner from './components/Banner';
 import BoxAddress from './components/BoxAddress';
 import HotProduct from './components/HotProduct';
