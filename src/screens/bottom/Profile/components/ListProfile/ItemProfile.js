@@ -8,8 +8,6 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 const ItemProfile = ({item, index}) => {
   const {image, title} = item || {};
 
-  console.log(item);
-
   const gift = [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}];
 
   return (
