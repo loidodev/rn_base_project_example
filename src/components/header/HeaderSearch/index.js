@@ -39,7 +39,7 @@ const HeaderSearch = ({title, canGoBack, iconBackName = 'chevron-back'}) => {
         )}
       </Animated.View>
       {/* title */}
-      <Text flex center medium bold color="primary" numberOfLines={2}>
+      <Text flex center large bold color="primary" numberOfLines={2}>
         {title}
       </Text>
       {/* icon */}

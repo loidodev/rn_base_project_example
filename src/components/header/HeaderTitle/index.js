@@ -1,7 +1,8 @@
 import {Block, Icon, Pressable, Text} from '@components';
 import {root} from '@navigator/navigationRef';
-import {SIZES} from '@theme';
+import {COLORS, SIZES} from '@theme';
 import React from 'react';
+import {StatusBar} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const HeaderTitle = ({title, safeAreaTop, canGoBack, onGoBack}) => {
@@ -18,7 +19,12 @@ const HeaderTitle = ({title, safeAreaTop, canGoBack, onGoBack}) => {
           opacity={opacity}
           paddingHorizontal={SIZES.xSmall}
           onPress={_onGoBack}>
-          <Icon IconType={Ionicons} iconName="chevron-back" iconSize={24} />
+          <Icon
+            IconType={Ionicons}
+            iconName="chevron-back"
+            iconSize={24}
+            iconColor="white"
+          />
         </Pressable>
       )
     );
@@ -29,9 +35,11 @@ const HeaderTitle = ({title, safeAreaTop, canGoBack, onGoBack}) => {
       rowCenter
       height={60}
       safeAreaTop={safeAreaTop}
-      padding={SIZES.medium}>
+      padding={SIZES.medium}
+      backgroundColor="primary">
       {_renderIconBack(1)}
-      <Text flex center medium bold color="primary" numberOfLines={2}>
+      <StatusBar backgroundColor={COLORS.primary} />
+      <Text flex center large bold color="white" numberOfLines={2}>
         {title}
       </Text>
       {_renderIconBack(0)}
