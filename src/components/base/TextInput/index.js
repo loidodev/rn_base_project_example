@@ -11,6 +11,7 @@ import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import styles from './styles';
 import {hs, vs} from '@responsive';
 import {COLORS, FONTS} from '@theme';
+import locale from '@locale';
 
 const TextInput = ({
   //layout
@@ -194,7 +195,9 @@ const TextInput = ({
       {...rest}
       style={customStyles}
       value={value}
-      placeholder={placeholder}
+      placeholder={
+        placeholder && locale.t(placeholder, {defaultValue: placeholder})
+      }
       placeholderTextColor={COLORS[placeholderTextColor] || COLORS.placeholder}
       onChangeText={onChangeText}
       onBlur={onBlur}

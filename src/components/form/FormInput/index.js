@@ -1,7 +1,7 @@
 import {Block, Text, TextInput} from '@components';
-import locale from '@locale';
 import React from 'react';
 import {Controller} from 'react-hook-form';
+import {SIZES} from '@theme';
 
 const FormInput = ({
   name,
@@ -20,7 +20,7 @@ const FormInput = ({
 
     return (
       messageErr && (
-        <Text {...errProps} small color="red">
+        <Text {...errProps} marginTop={SIZES.normal} small color="red">
           {messageErr}
         </Text>
       )
@@ -34,14 +34,14 @@ const FormInput = ({
         control={control}
         render={({field: {onChange, onBlur, value}}) => {
           return customInput ? (
-            customInput(onChange, onBlur, value)
+            customInput({onChange, onBlur, value, placeholder})
           ) : (
             <TextInput
               {...inputProps}
               onBlur={onBlur}
               onChangeText={onChange}
               value={value}
-              placeholder={locale.t(placeholder, {defaultValue: placeholder})}
+              placeholder={placeholder}
             />
           );
         }}

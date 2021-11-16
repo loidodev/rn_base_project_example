@@ -1,5 +1,6 @@
 //import animated
 import ScaleAmin from './animated/ScaleAmin';
+import CheckBox from './animated/CheckBox';
 //import base
 import Block from './base/Block';
 import GridList from './base/GridList';
@@ -9,6 +10,7 @@ import LazyImage from './base/LazyImage';
 import ListWrapper from './base/ListWrapper';
 import Modal from './base/Modal';
 import Pressable from './base/Pressable';
+import RadioButton from './base/RadioButton';
 import Rating from './base/Rating';
 import ScrollView from './base/ScrollView';
 import Text from './base/Text';
@@ -27,6 +29,7 @@ import HeaderTitle from './header/HeaderTitle';
 export {
   //import animated
   ScaleAmin,
+  CheckBox,
   //base
   Block,
   GridList,
@@ -36,6 +39,7 @@ export {
   ListWrapper,
   Modal,
   Pressable,
+  RadioButton,
   Rating,
   ScrollView,
   Text,
