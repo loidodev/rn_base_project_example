@@ -14,17 +14,19 @@ const FormInput = ({
   customerMessageErr,
 }) => {
   const _renderMessageErr = () => {
-    if (customerMessageErr) {
-      return customerMessageErr();
-    }
-
     return (
-      messageErr && (
-        <Text {...errProps} marginTop={SIZES.normal} small color="red">
-          {messageErr}
-        </Text>
-      )
+      <Text {...errProps} marginTop={SIZES.normal} small color="red">
+        {messageErr}
+      </Text>
     );
+  };
+
+  const _renderInputErr = () => {
+    if (messageErr) {
+      return customerMessageErr
+        ? customerMessageErr(_renderMessageErr)
+        : _renderMessageErr();
+    }
   };
 
   return (
@@ -33,20 +35,23 @@ const FormInput = ({
         name={name}
         control={control}
         render={({field: {onChange, onBlur, value}}) => {
-          return customInput ? (
-            customInput({onChange, onBlur, value, placeholder})
-          ) : (
-            <TextInput
-              {...inputProps}
-              onBlur={onBlur}
-              onChangeText={onChange}
-              value={value}
-              placeholder={placeholder}
-            />
-          );
+          const _renderInput = () => {
+            return (
+              <TextInput
+                {...inputProps}
+                flex
+                onBlur={onBlur}
+                onChangeText={onChange}
+                value={value}
+                placeholder={placeholder}
+              />
+            );
+          };
+
+          return customInput ? customInput(_renderInput) : _renderInput();
         }}
       />
-      {_renderMessageErr()}
+      {_renderInputErr()}
     </Block>
   );
 };

@@ -187,8 +187,9 @@ const Text = ({
 
   return (
     <RNText {...rest} style={customStyles} numberOfLines={numberOfLines}>
-      {typeof children === 'string' &&
-        locale.t(children, {defaultValue: children})}
+      {typeof children === 'string'
+        ? locale.t(children, {defaultValue: children})
+        : children}
     </RNText>
   );
 };

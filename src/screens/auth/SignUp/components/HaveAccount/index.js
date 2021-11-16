@@ -4,7 +4,7 @@ import React from 'react';
 
 const HaveAccount = () => {
   return (
-    <Block row alignCenter justifyCenter paddingBottom={16}>
+    <Block row alignCenter justifyCenter>
       <Text center small marginRight={SIZES.normal}>
         signUpScreen.haveAccount
       </Text>

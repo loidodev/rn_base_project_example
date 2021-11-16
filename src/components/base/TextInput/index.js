@@ -98,6 +98,8 @@ const TextInput = ({
   onChangeText,
   onBlur,
   editable,
+  secureTextEntry,
+  keyboardType,
   style,
   ...rest
 }) => {
@@ -202,6 +204,8 @@ const TextInput = ({
       onChangeText={onChangeText}
       onBlur={onBlur}
       editable={editable}
+      secureTextEntry={secureTextEntry}
+      keyboardType={keyboardType}
     />
   );
 };

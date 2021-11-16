@@ -52,6 +52,7 @@ const ModalBox = ({
   const rContentStyle = useAnimatedStyle(() => {
     return position === 'center'
       ? {
+          flex: 1,
           justifyContent: 'center',
           transform: [
             {

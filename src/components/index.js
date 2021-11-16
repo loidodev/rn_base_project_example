@@ -19,6 +19,7 @@ import WebView from './base/WebView';
 //import card
 import ItemProduct from './card/ItemProduct';
 //import common
+import ButtonSubmit from './common/ButtonSubmit';
 import LogoTitle from './common/LogoTitle';
 import LinearLogo from './common/LinearLogo';
 //import form
@@ -51,6 +52,7 @@ export {
   //card
   ItemProduct,
   //common
+  ButtonSubmit,
   LogoTitle,
   LinearLogo,
   //form
