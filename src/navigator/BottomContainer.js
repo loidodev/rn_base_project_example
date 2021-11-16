@@ -29,14 +29,14 @@ const BottomContainer = () => {
             [router.SHOPPING_SCREEN]: 'shopping',
             [router.QR_CODE_SCREEN]: 'qrcode-scan',
             [router.VOUCHER_SCREEN]: 'vote',
-            [router.PROFILE_SCREEN]: 'dots-horizontal',
+            [router.PROFILE_SCREEN]: 'account-settings',
           };
           const labels = {
             [router.HOME_SCREEN]: 'Trang chủ',
             [router.SHOPPING_SCREEN]: 'Mua sắm',
             [router.QR_CODE_SCREEN]: 'Qr Code',
             [router.VOUCHER_SCREEN]: 'Voucher',
-            [router.PROFILE_SCREEN]: 'Khác',
+            [router.PROFILE_SCREEN]: 'Tài khoản',
           };
 
           if (route.name === router.QR_CODE_SCREEN) {

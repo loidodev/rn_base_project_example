@@ -1,12 +1,12 @@
 import {Dimensions} from 'react-native';
 
+//IPhone 12
+export const DESIGN_WIDTH = 390;
+export const DESIGN_HEIGHT = 844;
+
 export const {width, height} = Dimensions.get('screen');
 
-//IPhone 12
-const DESIGN_WIDTH = 390;
-const DESIGN_HEIGHT = 844;
-
-const [shortDimension, longDimension] =
+export const [shortDimension, longDimension] =
   width < height ? [width, height] : [height, width];
 
 /**

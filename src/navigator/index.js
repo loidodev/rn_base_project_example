@@ -21,7 +21,11 @@ const RootNavigator = () => {
           text: COLORS.black,
         },
       }}>
-      <StatusBar barStyle="dark-content" backgroundColor={COLORS.white} />
+      <StatusBar
+        translucent
+        barStyle="dark-content"
+        backgroundColor="transparent"
+      />
       <RootStack.Navigator
         screenOptions={{headerShown: false}}
         initialRouteName={router.BOTTOM_CONTAINER}>
