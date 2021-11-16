@@ -1,6 +1,7 @@
 import {Block, CheckBox, FormInput, Icon, TextInput} from '@components';
 import {SIZES} from '@theme';
-import React, {useCallback, useState} from 'react';
+import React, {useCallback} from 'react';
+import {Controller} from 'react-hook-form';
 import {LayoutAnimation, Platform, UIManager} from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {FORM_NAME} from '../formConfig';
@@ -12,13 +13,11 @@ if (Platform.OS === 'android') {
   }
 }
 
-const FormChangePass = ({control, errors}) => {
-  const [isChangePass, setIsChangePass] = useState(false);
-
-  const _onChangeIsPass = useCallback(() => {
+const FormChangePass = ({control, errors, isChangePass}) => {
+  const _onChangeIsPass = useCallback((onChange, value) => {
     LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
-    setIsChangePass(!isChangePass);
-  }, [isChangePass]);
+    onChange(!value);
+  }, []);
 
   const _renderCustomInput = ({...filed}) => {
     return (
@@ -34,13 +33,21 @@ const FormChangePass = ({control, errors}) => {
       backgroundColor="white"
       marginTop={SIZES.medium}
       paddingBottom={SIZES.medium}>
-      <CheckBox
-        title="personal.password"
-        value={isChangePass}
-        onChangeValue={_onChangeIsPass}
-        containerProps={{
-          marginTop: SIZES.medium,
-          marginHorizontal: SIZES.medium,
+      <Controller
+        control={control}
+        name={FORM_NAME.isChangePass}
+        render={({field: {onChange, onBlur, value}}) => {
+          return (
+            <CheckBox
+              title="personal.password"
+              value={value}
+              onChangeValue={() => _onChangeIsPass(onChange, value)}
+              containerProps={{
+                marginTop: SIZES.medium,
+                marginHorizontal: SIZES.medium,
+              }}
+            />
+          );
         }}
       />
       {isChangePass && (

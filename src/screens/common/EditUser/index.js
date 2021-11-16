@@ -8,11 +8,13 @@ import BtnSave from './components/BtnSave';
 import FormChangePass from './components/FormChangePass';
 import formConfig from './components/formConfig';
 import FormEdit from './components/FormEdit';
+import {FORM_NAME} from './components/formConfig';
 
 const EditUser = () => {
   const {
     control,
     handleSubmit,
+    getValues,
     formState: {errors},
   } = useForm(formConfig);
 
@@ -30,7 +32,11 @@ const EditUser = () => {
           personal.personal
         </Text>
         <FormEdit control={control} errors={errors} />
-        <FormChangePass control={control} errors={errors} />
+        <FormChangePass
+          control={control}
+          errors={errors}
+          isChangePass={getValues()[FORM_NAME.isChangePass]}
+        />
       </ScrollView>
       {/* btn submit */}
       <BtnSave onPress={handleSubmit(_onSubmit)} />
