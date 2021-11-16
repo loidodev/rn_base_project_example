@@ -1,12 +1,12 @@
 import {Block, Text} from '@components';
 import React from 'react';
 
-const SignIn = () => {
+const BtnSignUp = () => {
   return (
     <Block>
-      <Text>SignIn</Text>
+      <Text>BtnSignUp</Text>
     </Block>
   );
 };
 
-export default SignIn;
+export default BtnSignUp;

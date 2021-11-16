@@ -1,11 +1,25 @@
+import {LinearLogo, Text} from '@components';
+import {SIZES} from '@theme';
 import React from 'react';
-import {View, Text} from 'react-native';
+import BtnSignUp from './components/BtnSignUp';
+import FormSignUp from './components/FormSignUp';
+import HaveAccount from './components/HaveAccount';
+import Policy from './components/Policy';
 
 const SignUp = () => {
   return (
-    <View>
-      <Text>SignUp</Text>
-    </View>
+    <LinearLogo>
+      <Text bold large center>
+        signUpScreen.register
+      </Text>
+      <Text medium center marginTop={SIZES.small}>
+        signUpScreen.welcome
+      </Text>
+      <FormSignUp />
+      <Policy />
+      <BtnSignUp />
+      <HaveAccount />
+    </LinearLogo>
   );
 };
 

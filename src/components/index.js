@@ -18,6 +18,9 @@ import TextInput from './base/TextInput';
 import WebView from './base/WebView';
 //import card
 import ItemProduct from './card/ItemProduct';
+//import common
+import LogoTitle from './common/LogoTitle';
+import LinearLogo from './common/LinearLogo';
 //import form
 import FormInput from './form/FormInput';
 //import header
@@ -47,6 +50,9 @@ export {
   WebView,
   //card
   ItemProduct,
+  //common
+  LogoTitle,
+  LinearLogo,
   //form
   FormInput,
   //header
