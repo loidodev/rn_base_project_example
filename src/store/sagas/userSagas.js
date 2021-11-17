@@ -30,9 +30,11 @@ function* signUpUser(payload) {
       type: _onSuccess(actions.SIGN_UP_USER),
       data: res.data,
     });
+    payload.onSuccess && payload.onSuccess();
   } catch (error) {
     yield put({type: _onFail(actions.SIGN_UP_USER)});
     hanldeError(error);
+    payload.onFail && payload.onFail();
   }
 }
 
