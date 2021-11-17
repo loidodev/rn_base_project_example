@@ -1,6 +1,6 @@
 import {Block, Pressable, Text} from '@components';
-import React, {useState} from 'react';
 import {SIZES} from '@theme';
+import React, {useState} from 'react';
 import ModalPolicy from './ModalPolicy';
 
 const Policy = ({agreePolicyRef}) => {

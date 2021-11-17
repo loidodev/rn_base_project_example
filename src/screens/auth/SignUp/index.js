@@ -1,4 +1,6 @@
 import {ButtonSubmit, LinearLogo, Text} from '@components';
+import {bottomRoot} from '@navigator/navigationRef';
+import router from '@navigator/router';
 import {SIZES} from '@theme';
 import React, {useRef} from 'react';
 import {useForm} from 'react-hook-form';
@@ -17,6 +19,7 @@ const SignUp = () => {
 
   const _onSubmit = data => {
     if (agreePolicyRef.current) {
+      bottomRoot.navigate(router.PROFILE_SCREEN);
     }
   };
 
