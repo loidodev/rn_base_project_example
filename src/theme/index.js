@@ -21,6 +21,7 @@ export const COLORS = {
   darkBlue: '#304FDF',
   lightRed: '#FA634D',
   lightBlue: '#3E79F7',
+  overLay: 'rgba(0.5, 0.25, 0, 0.2)',
 };
 
 export const GRADIENTS = {

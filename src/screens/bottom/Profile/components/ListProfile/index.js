@@ -11,7 +11,7 @@ const ListProfile = ({data = [], delay = 500}) => {
   return (
     <ScaleAmin delay={delay}>
       {/* divider */}
-      <Block height={SIZES.medium} backgroundColor="smoke" />
+      <Block height={SIZES.small} backgroundColor="background" />
       {/* list profile */}
       {data?.map((item, index) => (
         <ItemProfile key={`manager-${index}`} item={item} index={index} />

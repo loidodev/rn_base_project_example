@@ -1,35 +1,22 @@
-import {Block, Image, Pressable, Text} from '@components';
+import {Block, LogoTitle, Pressable, Text} from '@components';
 import {authRoot} from '@navigator/navigationRef';
 import router from '@router';
 import {SIZES} from '@theme';
-import {IMAGES} from '@constants';
 import React from 'react';
 
 const GetStart = () => {
-  const _onMoveCustomer = params => {
-    authRoot.navigate(router.SIGN_IN_SCREEN);
+  const _onMoveCustomer = () => {
+    authRoot.navigate(router.SIGN_UP_SCREEN);
   };
 
-  const _onMoveDrugStore = params => {};
+  const _onMoveDrugStore = () => {
+    authRoot.navigate(router.SIGN_UP_SCREEN);
+  };
 
   return (
     <Block flex justifyCenter padding={SIZES.medium}>
       {/* Header */}
-      <Block alignCenter>
-        <Image
-          width={80}
-          height={80}
-          marginBottom={SIZES.small}
-          source={IMAGES.logo_start}
-          resizeMode="contain"
-        />
-        <Text fontSize={24} bold color="primary">
-          Thảo Dược
-        </Text>
-        <Text fontSize={24} bold color="primary">
-          Việt Nam
-        </Text>
-      </Block>
+      <LogoTitle />
       {/* Content */}
       <Block
         alignCenter

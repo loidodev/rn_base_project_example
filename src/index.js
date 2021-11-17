@@ -12,10 +12,11 @@ const App = () => {
   useEffect(() => {
     dispatch({type: actions.GET_TOKEN});
   }, [dispatch]);
+
   return <RootNavigator />;
 };
 
-const AppWrapper = () => {
+const RooApp = () => {
   return (
     <Provider store={store}>
       <SafeAreaProvider>
@@ -24,4 +25,4 @@ const AppWrapper = () => {
     </Provider>
   );
 };
-export default AppWrapper;
+export default RooApp;
