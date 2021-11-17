@@ -1,12 +1,8 @@
 import {combineReducers} from 'redux';
-import * as birthdayReducers from './BirthdayReducers';
-import * as Demo from './demo';
-import * as PartnerReducers from './PartnerReducers';
-import * as TokenReducer from './TokenReducer';
+import * as userReducers from './userReducers';
+import * as generalReducers from './generalReducers';
 
 export default combineReducers({
-  ...Demo,
-  ...TokenReducer,
-  ...birthdayReducers,
-  ...PartnerReducers,
+  ...userReducers,
+  ...generalReducers,
 });
