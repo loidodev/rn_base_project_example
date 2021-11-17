@@ -17,10 +17,11 @@ const App = () => {
       dispatch({type: actions.GET_CONFIG});
     }
   }, [dispatch, token]);
+
   return <RootNavigator />;
 };
 
-const AppWrapper = () => {
+const RooApp = () => {
   return (
     <Provider store={store}>
       <SafeAreaProvider>
@@ -29,4 +30,4 @@ const AppWrapper = () => {
     </Provider>
   );
 };
-export default AppWrapper;
+export default RooApp;

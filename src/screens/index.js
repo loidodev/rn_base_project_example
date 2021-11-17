@@ -10,6 +10,7 @@ import Voucher from './bottom/Voucher';
 import Profile from './bottom/Profile';
 //import common
 import GetStart from './common/GetStart';
+import EditUser from './common/EditUser';
 import SearchScreen from './common/SearchScreen';
 import BirthdayScreen from './common/BirthdayScreen';
 import PartnerScreen from './common/PartnerScreen';
@@ -29,6 +30,7 @@ export const bottom = {
 
 export const common = {
   [router.GET_START_SCREEN]: GetStart,
+  [router.EDIT_USER_SCREEN]: EditUser,
   [router.GET_SEARCH_SCREEN]: SearchScreen,
   [router.GET_BIRTHDAY_SCREEN]: BirthdayScreen,
   [router.GET_PARTNER_SCREEN]: PartnerScreen,

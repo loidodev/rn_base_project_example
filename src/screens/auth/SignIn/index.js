@@ -1,13 +1,11 @@
-import {HeaderSearch} from '@components';
+import {Block, Text} from '@components';
 import React from 'react';
-import {View, Text} from 'react-native';
 
 const SignIn = () => {
   return (
-    <View>
-      <HeaderSearch canGoBack />
+    <Block>
       <Text>SignIn</Text>
-    </View>
+    </Block>
   );
 };
 

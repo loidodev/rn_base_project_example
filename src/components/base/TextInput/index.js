@@ -5,8 +5,9 @@ import {
   handleRound,
   handleSquare,
 } from '@components/shared';
+import locale from '@locale';
 import {hs, vs} from '@responsive';
-import {COLORS} from '@theme';
+import {COLORS, FONTS} from '@theme';
 import React from 'react';
 import {StyleSheet, TextInput as RNTextInput} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
@@ -65,33 +66,49 @@ const TextInput = ({
   square,
   round,
   //position
-  relative,
-  absolute,
-  top,
-  left,
-  right,
-  bottom,
   //color
   backgroundColor,
   borderColor,
   color,
   opacity,
-  //shadow
-  shadow1,
-  shadow2,
-  shadow3,
+  //font
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  title,
+  large,
+  medium,
+  small,
+  tiny,
+  light,
+  bold,
+  heavy,
+  block,
+  //text style
+  center,
+  right,
+  fontSize,
+  fontFamily,
 
   value,
   placeholder,
   placeholderTextColor,
   onChangeText,
   returnKeyType,
+  onBlur,
+  editable,
+  secureTextEntry,
+  keyboardType,
   style,
   ...rest
 }) => {
   const insets = useSafeAreaInsets();
 
   const customStyles = [
+    //default
+    {color: COLORS.black},
     // layout
     flex && handleFlex(flex),
     flexShrink && handleFlexShrink(flexShrink),
@@ -143,13 +160,6 @@ const TextInput = ({
     maxHeight && {maxHeight: vs(height)},
     round && handleRound(hs(round)),
     square && handleSquare(hs(square)),
-    //position
-    relative && {position: 'relative'},
-    absolute && {position: 'absolute'},
-    top && {top: hs(top)},
-    right && {right: hs(right)},
-    bottom && {bottom: hs(bottom)},
-    left && {left: hs(left)},
     //color
     backgroundColor && {
       backgroundColor: COLORS[backgroundColor] || backgroundColor,
@@ -157,12 +167,28 @@ const TextInput = ({
     borderColor && {
       borderColor: COLORS[borderColor] || borderColor,
     },
-    color && {color},
+    color && {color: COLORS[color] || color},
     opacity && {opacity},
-    //shadow
-    shadow1 && styles.shadow1,
-    shadow2 && styles.shadow2,
-    shadow3 && styles.shadow3,
+    //font
+    h1 && styles.h1,
+    h2 && styles.h2,
+    h3 && styles.h3,
+    h4 && styles.h4,
+    h5 && styles.h5,
+    title && {fontSize: hs(32)},
+    large && {fontSize: hs(18)},
+    medium && {fontSize: hs(15)},
+    small && {fontSize: hs(11)},
+    tiny && {fontSize: hs(10)},
+    light && {fontWeight: '200'},
+    bold && {fontWeight: '600'},
+    heavy && {fontWeight: '700'},
+    block && {fontWeight: '900'},
+    //text style
+    center && {textAlign: 'center'},
+    right && {textAlign: 'right'},
+    fontSize && {fontSize: hs(fontSize)},
+    fontFamily && {fontFamily: FONTS[fontFamily] || FONTS.sanRegular},
 
     {...StyleSheet.flatten(style)},
   ];
@@ -173,9 +199,15 @@ const TextInput = ({
       style={customStyles}
       value={value}
       returnKeyType={returnKeyType}
-      placeholder={placeholder}
+      placeholder={
+        placeholder && locale.t(placeholder, {defaultValue: placeholder})
+      }
       placeholderTextColor={COLORS[placeholderTextColor] || COLORS.placeholder}
       onChangeText={onChangeText}
+      onBlur={onBlur}
+      editable={editable}
+      secureTextEntry={secureTextEntry}
+      keyboardType={keyboardType}
     />
   );
 };

@@ -1,5 +1,6 @@
 export const ICONS = {
   search: require('@assets/icons/search.png'),
+  check_blank: require('@assets/icons/check_blank.png'),
   //category group
   day_of_members: require('@assets/icons/categoryGroup/day_of_members.png'),
   discount: require('@assets/icons/categoryGroup/discount.png'),

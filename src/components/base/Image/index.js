@@ -76,6 +76,7 @@ const Image = ({
   borderColor,
   color,
   opacity,
+  tintColor,
   //shadow
   shadow1,
   shadow2,
@@ -154,8 +155,9 @@ const Image = ({
     borderColor && {
       borderColor: COLORS[borderColor] || borderColor,
     },
-    color && {color},
+    color && {color: COLORS[color] || color},
     opacity && {opacity},
+    tintColor && {tintColor: COLORS[tintColor] || tintColor},
     //shadow
     shadow1 && styles.shadow1,
     shadow2 && styles.shadow2,

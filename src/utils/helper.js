@@ -1,3 +1,6 @@
+import Toast from 'react-native-simple-toast';
+import locale from '@locale';
+
 export const convertCurrency = (currency, suffix = '') => {
   if (currency == null) {
     return 0;
@@ -35,4 +38,10 @@ export const convertCurrency = (currency, suffix = '') => {
   }
 
   return `${result}${suffix}`;
+};
+
+export const CustomToast = (toast = '', hasDev = false) => {
+  hasDev
+    ? Toast.show(locale.t('handleError.developing'))
+    : Toast.show(locale.t(toast, {defaultValue: toast}));
 };

@@ -12,7 +12,7 @@ import {rHorizontalScale, rVerticalScale} from './index';
 
 const ICON_SIZE = 15;
 
-const BtnEditUser = ({scrollY}) => {
+const BtnEditUser = ({scrollY, onPress}) => {
   const rStyles = useAnimatedStyle(() => ({
     position: 'absolute',
     top: interpolate(
@@ -32,7 +32,7 @@ const BtnEditUser = ({scrollY}) => {
 
   return (
     <Animated.View style={rStyles}>
-      <Pressable>
+      <Pressable onPress={onPress}>
         <Icon
           IconType={MaterialCommunityIcons}
           iconName="pencil"
