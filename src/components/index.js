@@ -7,12 +7,14 @@ import Icon from './base/Icon';
 import Image from './base/Image';
 import LazyImage from './base/LazyImage';
 import ListWrapper from './base/ListWrapper';
+import LoadMore from './base/LoadMore';
 import Pressable from './base/Pressable';
 import Rating from './base/Rating';
 import ScrollView from './base/ScrollView';
 import Text from './base/Text';
 import TextInput from './base/TextInput';
 import WebView from './base/WebView';
+import ItemHistory from './card/ItemHistory';
 //import card
 import ItemProduct from './card/ItemProduct';
 import HeaderInput from './header/HeaderInput';
@@ -22,7 +24,6 @@ import HeaderLogo from './header/HeaderLogo';
 import HeaderSearch from './header/HeaderSearch';
 
 export {
-  //import animated
   ScaleAmin,
   //base
   Block,
@@ -37,8 +38,10 @@ export {
   Text,
   TextInput,
   WebView,
+  LoadMore,
   //card
   ItemProduct,
+  ItemHistory,
   //form
   //header
   HeaderLogo,

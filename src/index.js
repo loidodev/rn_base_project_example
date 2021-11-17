@@ -7,11 +7,16 @@ import {Provider, useDispatch, useSelector} from 'react-redux';
 
 const App = () => {
   const dispatch = useDispatch();
-  const token = useSelector(state => state.token);
+  const token = useSelector(state => state.token.data);
 
   useEffect(() => {
     dispatch({type: actions.GET_TOKEN});
   }, [dispatch]);
+  useEffect(() => {
+    if (token) {
+      dispatch({type: actions.GET_CONFIG});
+    }
+  }, [dispatch, token]);
   return <RootNavigator />;
 };
 

@@ -2,30 +2,47 @@
 import {Block, Icon, Pressable, TextInput} from '@components';
 import {root} from '@navigator/navigationRef';
 import {COLORS, SIZES} from '@theme';
+import Storage from '@utils/storage';
+import _ from 'lodash';
 import React, {useCallback} from 'react';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import IconGroup from '../IconGroup';
-import _ from 'lodash';
 
-const HeaderInput = ({keyword = '', setKeyword, onSearchDebounce}) => {
+const HeaderInput = ({
+  keyword,
+  setKeyword,
+  onSearchDebounce,
+  discern,
+  setDiscern,
+}) => {
   const _onGoBack = () => {
     root.goBack();
   };
 
   const _onChangeText = text => {
-    if (onSearchDebounce) {
-      _onSearchDebounce(text);
-    } else {
-      setKeyword && setKeyword(text);
-    }
+    setDiscern(false);
+    setKeyword && setKeyword(text);
+    keyword && _onDebounce(keyword);
+  };
+  const _onPressIn = text => {
+    setDiscern(false);
   };
 
-  const _onSearchDebounce = useCallback(
-    _.debounce(text => {
-      onSearchDebounce(text);
-    }, 800),
+  const _onDebounce = useCallback(
+    _.debounce(keyword => {
+      Storage.getItem('@history').then(res => {
+        const newHistory = res ? [...res, keyword] : [keyword];
+        const convertHistory = [...new Set(newHistory)];
+        Storage.setItem('@history', JSON.stringify(convertHistory));
+      });
+    }, 1000),
     [],
   );
+
+  const _onClose = text => {
+    setKeyword && setKeyword('');
+  };
 
   const _renderSearch = (renderIconSearch, onMoveSearch) => {
     return (
@@ -42,10 +59,23 @@ const HeaderInput = ({keyword = '', setKeyword, onSearchDebounce}) => {
           paddingLeft={SIZES.medium}
           placeholder=" Tìm kiếm sản phẩm"
           value={keyword}
+          returnKeyType="search"
           onChangeText={_onChangeText}
+          onPressIn={_onPressIn}
           placeholderTextColor={COLORS.lightGray}
         />
-        {renderIconSearch()}
+        {keyword ? (
+          <Pressable rowCenter onPress={() => _onClose()}>
+            <Icon
+              IconType={AntDesign}
+              iconName="close"
+              iconSize={20}
+              marginRight={SIZES.xSmall}
+            />
+          </Pressable>
+        ) : (
+          renderIconSearch()
+        )}
       </Block>
     );
   };
