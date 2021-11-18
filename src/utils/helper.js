@@ -1,6 +1,6 @@
 import {STORAGE_KEYS} from '@constants';
 import locale from '@locale';
-import {store} from '@store';
+import store from '@store';
 import actions, {_onUnmount} from '@store/actions';
 import {Alert} from 'react-native';
 import Toast from 'react-native-simple-toast';
@@ -86,7 +86,7 @@ export const handleApiError = (error, hasToastWhenErr) => {
           text: 'Đồng ý',
           onPress: () => {
             handleTokenUser();
-            store.dispatch({type: _onUnmount(actions.GET_USER_INFORMATION)});
+            store.dispatch({type: _onUnmount(actions.GET_USER)});
           },
         },
       ],

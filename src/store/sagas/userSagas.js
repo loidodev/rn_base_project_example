@@ -1,4 +1,4 @@
-import {put, takeLatest} from '@redux-saga/core/effects';
+import {put, select, takeLatest} from '@redux-saga/core/effects';
 import actions, {_onFail, _onSuccess} from '@store/actions';
 import {CustomToast, handleApiError, handleTokenUser} from '@utils';
 import api from '@utils/api';
@@ -39,7 +39,22 @@ function* signUpUser(payload) {
   }
 }
 
+function* getUser(payload) {
+  try {
+    const user = yield select(state => state.tokenUser);
+    const res = yield api.get('getUser', {user});
+    yield put({
+      type: _onSuccess(payload.type),
+      data: res.data,
+    });
+  } catch (error) {
+    yield put({type: _onFail(payload.type)});
+    handleApiError(error);
+  }
+}
+
 export function* watchUserSagas() {
   yield takeLatest(actions.GET_TOKEN, getToken);
   yield takeLatest(actions.SIGN_UP_USER, signUpUser);
+  yield takeLatest(actions.GET_USER, getUser);
 }

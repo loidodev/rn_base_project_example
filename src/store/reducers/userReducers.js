@@ -18,3 +18,7 @@ export const token = (...props) => {
 export const signUp = (...props) => {
   return reducerDefault(...props, actions.SIGN_UP_USER);
 };
+
+export const userInfo = (...props) => {
+  return reducerDefault(...props, actions.GET_USER);
+};

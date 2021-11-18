@@ -4,8 +4,11 @@ import actions from '@store/actions';
 import React, {useEffect} from 'react';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {Provider, useDispatch, useSelector} from 'react-redux';
+import storage from '@utils/storage';
+import {STORAGE_KEYS} from '@constants';
+import {handleTokenUser} from '@utils';
 
-const App = () => {
+const RootApp = () => {
   const dispatch = useDispatch();
   const token = useSelector(state => state.token);
 
@@ -13,16 +16,28 @@ const App = () => {
     dispatch({type: actions.GET_TOKEN});
   }, [dispatch]);
 
+  useEffect(() => {
+    if (token) {
+      storage.getItem(STORAGE_KEYS.tokenUser).then(tokenUser => {
+        console.log(tokenUser);
+        if (tokenUser) {
+          handleTokenUser(tokenUser);
+          dispatch({type: actions.GET_USER});
+        }
+      });
+    }
+  }, [dispatch, token]);
+
   return <RootNavigator />;
 };
 
-const RooApp = () => {
+const App = () => {
   return (
     <Provider store={store}>
       <SafeAreaProvider>
-        <App />
+        <RootApp />
       </SafeAreaProvider>
     </Provider>
   );
 };
-export default RooApp;
+export default App;
