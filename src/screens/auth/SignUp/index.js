@@ -7,7 +7,7 @@ import {SIZES} from '@theme';
 import {CustomToast, handleTokenUser} from '@utils';
 import React, {useState} from 'react';
 import {useForm} from 'react-hook-form';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import formConfig, {FORM_NAME} from './components/formConfig';
 import FormSignUp from './components/FormSignUp';
 import HaveAccount from './components/HaveAccount';
@@ -22,6 +22,7 @@ const SignUp = () => {
   const dispatch = useDispatch();
   const device_name = useDeviceInfo();
   const [agreePolicy, setAgreePolicy] = useState(false);
+  const signUp = useSelector(state => state.signUp);
 
   const _onSubmit = data => {
     if (agreePolicy) {
@@ -57,6 +58,7 @@ const SignUp = () => {
       <FormSignUp control={control} errors={errors} />
       <Policy setAgreePolicy={setAgreePolicy} />
       <ButtonSubmit
+        loading={signUp.isLoading}
         containerProps={{margin: 0, marginVertical: SIZES.large}}
         onPress={handleSubmit(_onSubmit)}>
         signUpScreen.register

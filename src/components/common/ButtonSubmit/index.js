@@ -1,12 +1,20 @@
 import {Pressable} from '@components';
-import {SIZES} from '@theme';
+import {COLORS, SIZES} from '@theme';
 import React from 'react';
+import {ActivityIndicator} from 'react-native';
 
-const ButtonSubmit = ({onPress, children, containerProps}) => {
+const ButtonSubmit = ({
+  loading,
+  loadingColor = COLORS.white,
+  onPress,
+  children,
+  containerProps,
+}) => {
   return (
     <Pressable
       justifyCenter
       alignCenter
+      disabled={loading}
       radius={SIZES.xxxLarge}
       margin={SIZES.medium}
       padding={SIZES.medium}
@@ -14,7 +22,11 @@ const ButtonSubmit = ({onPress, children, containerProps}) => {
       labelProps={{color: 'white'}}
       onPress={onPress}
       {...containerProps}>
-      {children}
+      {loading ? (
+        <ActivityIndicator size="small" color={loadingColor} />
+      ) : (
+        children
+      )}
     </Pressable>
   );
 };
