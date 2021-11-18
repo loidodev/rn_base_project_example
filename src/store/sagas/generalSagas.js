@@ -1,7 +1,7 @@
 import {put, takeLatest} from '@redux-saga/core/effects';
 import actions, {_onFail, _onSuccess} from '@store/actions';
-import {api} from '@utils/api';
-import {hanldeError} from '@utils/handleError';
+import {handleApiError} from '@utils';
+import api from '@utils/api';
 
 function* getBirthday() {
   try {
@@ -12,7 +12,7 @@ function* getBirthday() {
     });
   } catch (error) {
     yield put({type: _onFail(actions.GET_BIRTHDAY)});
-    hanldeError(error);
+    handleApiError(error);
   }
 }
 
@@ -25,11 +25,29 @@ function* getMemBerDay() {
     });
   } catch (error) {
     yield put({type: _onFail(actions.GET_PARTNER)});
-    hanldeError(error);
+    handleApiError(error);
+  }
+}
+
+function* getTermsOfUse(payload) {
+  console.log(
+    '🚀 ~ file: generalSagas.js ~ line 33 ~ function*getTermsOfUse ~ payload',
+    payload,
+  );
+  try {
+    const res = yield api.get('getTermsOfUse');
+    yield put({
+      type: _onSuccess(payload.type),
+      data: res.data,
+    });
+  } catch (error) {
+    yield put({type: _onFail(payload.type)});
+    handleApiError(error);
   }
 }
 
 export function* watchGeneralSagas() {
   yield takeLatest(actions.GET_BIRTHDAY, getBirthday);
   yield takeLatest(actions.GET_PARTNER, getMemBerDay);
+  yield takeLatest(actions.GET_TERMS_OF_USE, getTermsOfUse);
 }

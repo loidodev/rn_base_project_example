@@ -5,7 +5,7 @@ import router from '@navigator/router';
 import actions from '@store/actions';
 import {SIZES} from '@theme';
 import {CustomToast, handleTokenUser} from '@utils';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {useForm} from 'react-hook-form';
 import {useDispatch, useSelector} from 'react-redux';
 import formConfig, {FORM_NAME} from './components/formConfig';
@@ -23,6 +23,10 @@ const SignUp = () => {
   const device_name = useDeviceInfo();
   const [agreePolicy, setAgreePolicy] = useState(false);
   const signUp = useSelector(state => state.signUp);
+
+  useEffect(() => {
+    dispatch({type: actions.GET_TERMS_OF_USE});
+  }, [dispatch]);
 
   const _onSubmit = data => {
     if (agreePolicy) {

@@ -1,7 +1,7 @@
 import {put, takeLatest} from '@redux-saga/core/effects';
 import actions, {_onFail, _onSuccess} from '@store/actions';
+import {handleApiError} from '@utils';
 import api from '@utils/api';
-import {hanldeError} from '@utils/handleError';
 import queryString from 'query-string';
 import Config from 'react-native-config';
 
@@ -18,23 +18,23 @@ function* getToken() {
     yield put({type: _onSuccess(actions.GET_TOKEN), data: res.token});
   } catch (error) {
     yield put({type: _onFail(actions.GET_TOKEN)});
-    hanldeError(error);
+    handleApiError(error);
   }
 }
 
 function* signUpUser(payload) {
   try {
-    const body = queryString.stringify(payload.body);
+    const body = yield queryString.stringify(payload.body);
     const res = yield api.post('signupUser', body, payload.params);
     yield put({
       type: _onSuccess(actions.SIGN_UP_USER),
       data: res.token,
     });
-    payload.onSuccess && payload.onSuccess(res.token);
+    yield payload.onSuccess && payload.onSuccess(res.token);
   } catch (error) {
     yield put({type: _onFail(actions.SIGN_UP_USER)});
-    hanldeError(error);
-    payload.onFail && payload.onFail();
+    yield payload.onFail && payload.onFail();
+    handleApiError(error);
   }
 }
 

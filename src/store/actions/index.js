@@ -11,4 +11,5 @@ export default {
   //general
   GET_BIRTHDAY: 'GET_BIRTHDAY',
   GET_PARTNER: 'GET_PARTNER',
+  GET_TERMS_OF_USE: 'GET_TERMS_OF_USE',
 };

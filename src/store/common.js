@@ -39,12 +39,12 @@ export const reducerDefault = (
   }
 };
 
-export const reducerAdvance = ({
+export const reducerAdvance = (
   state = stateLoadMore,
   payload,
   action,
   callback,
-}) => {
+) => {
   switch (payload.type) {
     case action:
       return {...state, isLoading: true};
