@@ -8,7 +8,6 @@ import Icon from './base/Icon';
 import Image from './base/Image';
 import LazyImage from './base/LazyImage';
 import ListWrapper from './base/ListWrapper';
-import LoadMore from './base/LoadMore';
 import Modal from './base/Modal';
 import Pressable from './base/Pressable';
 import RadioButton from './base/RadioButton';
@@ -25,7 +24,7 @@ import ItemProduct from './card/ItemProduct';
 import ButtonSubmit from './common/ButtonSubmit';
 import LogoTitle from './common/LogoTitle';
 import LinearLogo from './common/LinearLogo';
-import PlaceHolder from './common/PlaceHolder';
+import PlaceHolder from './PlaceHolder';
 //import form
 import FormInput from './form/FormInput';
 //import header
@@ -52,7 +51,6 @@ export {
   Text,
   TextInput,
   WebView,
-  LoadMore,
   Shimmer,
   //card
   ItemProduct,

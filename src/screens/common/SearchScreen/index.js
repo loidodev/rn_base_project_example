@@ -3,21 +3,20 @@ import {
   HeaderInput,
   ItemHistory,
   ItemProduct,
-  LoadMore,
+  ListWrapper,
   Pressable,
   Text,
 } from '@components';
-import {ListHolder} from '@components/common/PlaceHolder';
+import {ListHolder} from '@components/PlaceHolder';
 import {LOTTIES} from '@constants';
 import {height, hs} from '@responsive';
 import actions from '@store/actions';
 import {COLORS, SIZES} from '@theme';
 import Storage from '@utils/storage';
 import React, {useEffect, useState} from 'react';
-import {FlatList, ScrollView} from 'react-native';
+import {ScrollView} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import Empty from '../Empty';
-
 const SearchScreen = () => {
   const [keyword, setKeyword] = useState('');
   const [discern, setDiscern] = useState(true);
@@ -84,7 +83,7 @@ const SearchScreen = () => {
   //  empty
 
   const _renderEmpty = () => (
-    <Block flex height={height / 2}>
+    <Block height={height / 2}>
       <Empty lottie={LOTTIES.search} content="Không tìm thấy sản phẩm" />
     </Block>
   );
@@ -118,6 +117,8 @@ const SearchScreen = () => {
     }
   };
 
+  const _renderItem = ({item}) => <ItemProduct item={item} />;
+
   return (
     <Block flex backgroundColor={COLORS.background}>
       {/* header */}
@@ -143,22 +144,21 @@ const SearchScreen = () => {
             )}
           </Block>
           {/* list product */}
-          <Block flex>
-            <FlatList
-              data={data}
-              numColumns={2}
-              onEndReached={_loadMore}
-              refreshing={refreshing}
-              onRefresh={_onRefresh}
-              onEndReachedThreshold={0.5}
-              keyExtractor={(_, index) => String(index)}
-              renderItem={({item}) => <ItemProduct item={item} />}
-              showsVerticalScrollIndicator={false}
-              contentContainerStyle={{padding: hs(SIZES.normal)}}
-              ListEmptyComponent={_renderEmpty}
-            />
-            {isLoading && page > 1 && <LoadMore />}
-          </Block>
+          {data && (
+            <Block flex>
+              <ListWrapper
+                data={data}
+                numColumns={2}
+                onLoadMore={_loadMore}
+                refreshing={refreshing}
+                onRefresh={_onRefresh}
+                renderItem={_renderItem}
+                EmptyComponent={_renderEmpty}
+                isLoading={isLoading}
+                page={page}
+              />
+            </Block>
+          )}
         </Block>
       ) : history.length > 0 ? (
         <Block flex>
