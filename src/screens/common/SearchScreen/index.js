@@ -148,6 +148,7 @@ const SearchScreen = () => {
             <Block flex padding={SIZES.normal}>
               <ListWrapper
                 data={data}
+                VSeparator={0}
                 numColumns={2}
                 onLoadMore={_loadMore}
                 refreshing={refreshing}
