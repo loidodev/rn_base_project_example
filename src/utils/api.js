@@ -48,7 +48,9 @@ axios.interceptors.response.use(
       console.log(
         `%c [RESPONSE] ${response.config.url}`,
         'color: #CD950C; font-weight: bold',
-        response,
+        {dataHeader: response.config.data},
+        {paramsHeader: response.config.params},
+        response.data,
       );
     }
 

@@ -33,3 +33,7 @@ export const IMAGES = {
 export const LOTTIES = {
   search: require('@assets/lottie/search.json'),
 };
+
+export const STORAGE_KEYS = {
+  tokenUser: 'tokenUser',
+};

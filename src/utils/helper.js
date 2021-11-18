@@ -1,5 +1,11 @@
+import {STORAGE_KEYS} from '@constants';
 import locale from '@locale';
+import store from '@store';
+import actions, {_onUnmount} from '@store/actions';
+import {Alert} from 'react-native';
+import RNRestart from 'react-native-restart';
 import Toast from 'react-native-simple-toast';
+import storage from './storage';
 
 export const convertCurrency = (currency, suffix = '') => {
   if (currency == null) {
@@ -66,3 +72,48 @@ export const DATA_TEMPLATE = [
   1,
   1,
 ];
+
+export const handleTokenUser = tokenUser => {
+  if (tokenUser) {
+    storage.setItem(STORAGE_KEYS.tokenUser, tokenUser);
+    store.dispatch({type: actions.TOKEN_USER, data: tokenUser});
+  } else {
+    storage.removeItem(STORAGE_KEYS.tokenUser);
+    store.dispatch({type: actions.TOKEN_USER, data: null});
+  }
+};
+
+export const handleApiError = (error, hasToastWhenErr) => {
+  const {code, message} = error?.data || {};
+
+  if (code === 401) {
+    Alert.alert(
+      'Phiên bản đăng nhập hết hạn',
+      'Khỏi động lại ứng dụng của bạn',
+      [
+        {
+          text: 'Đồng ý',
+          onPress: () => RNRestart.Restart(),
+        },
+      ],
+      {cancelable: false},
+    );
+  } else if (code === 403) {
+    Alert.alert(
+      'Phiên bản đăng nhập hết hạn',
+      'Vui lòng đăng nhập lại tài khoản của bạn',
+      [
+        {
+          text: 'Đồng ý',
+          onPress: () => {
+            handleTokenUser();
+            store.dispatch({type: _onUnmount(actions.GET_USER)});
+          },
+        },
+      ],
+      {cancelable: false},
+    );
+  } else {
+    hasToastWhenErr && CustomToast(message);
+  }
+};

@@ -3,7 +3,7 @@ import {watchGeneralSagas} from './generalSagas';
 import {watchProductSaga} from './ProductSaga';
 import {watchUserSagas} from './userSagas';
 
-export default function* rootSaga() {
+export default function* rootSagas() {
   yield all([
     fork(watchUserSagas),
     fork(watchGeneralSagas),

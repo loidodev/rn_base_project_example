@@ -1,41 +1,54 @@
 import {put, takeLatest} from '@redux-saga/core/effects';
 import actions, {_onFail, _onSuccess} from '@store/actions';
-import API from '@utils/api';
-import {hanldeError} from '@utils/handleError';
+import {handleApiError} from '@utils';
+import api from '@utils/api';
 
 function* getBirthday() {
   try {
-    const res = yield API.get('getBirthday');
+    const res = yield api.get('getBirthday');
     yield put({
       type: _onSuccess(actions.GET_BIRTHDAY),
       data: res.data,
     });
   } catch (error) {
     yield put({type: _onFail(actions.GET_BIRTHDAY)});
-    hanldeError(error);
+    handleApiError(error);
   }
 }
 
 function* getMemBerDay() {
   try {
-    const res = yield API.get('getMemberDay');
+    const res = yield api.get('getMemberDay');
     yield put({
       type: _onSuccess(actions.GET_PARTNER),
       data: res.data,
     });
   } catch (error) {
     yield put({type: _onFail(actions.GET_PARTNER)});
-    hanldeError(error);
+    handleApiError(error);
+  }
+}
+
+function* getTermsOfUse(payload) {
+  try {
+    const res = yield api.get('getTermsOfUse');
+    yield put({
+      type: _onSuccess(payload.type),
+      data: res.data,
+    });
+  } catch (error) {
+    yield put({type: _onFail(payload.type)});
+    handleApiError(error);
   }
 }
 
 function* getConfig() {
   try {
-    const res = yield API.get('getConfigApp');
+    const res = yield api.get('getConfigApp');
     yield put({type: _onSuccess(actions.GET_CONFIG), data: res.data});
   } catch (error) {
     yield put({type: _onFail(actions.GET_CONFIG)});
-    hanldeError(error);
+    handleApiError(error);
   }
 }
 
@@ -43,4 +56,5 @@ export function* watchGeneralSagas() {
   yield takeLatest(actions.GET_BIRTHDAY, getBirthday);
   yield takeLatest(actions.GET_PARTNER, getMemBerDay);
   yield takeLatest(actions.GET_CONFIG, getConfig);
+  yield takeLatest(actions.GET_TERMS_OF_USE, getTermsOfUse);
 }

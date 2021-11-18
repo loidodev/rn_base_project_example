@@ -115,6 +115,7 @@ export default {
     emptyPhone: 'Số điện thoại không được để trống',
     accept_terms: 'Chấp thuận điều khoản',
     referral_code: 'Nhập mã giới thiệu',
+    phoneLimit: 'Số điện thoại không dài quá 10 số',
   },
   alertBox: {
     cancel: 'Đóng',
