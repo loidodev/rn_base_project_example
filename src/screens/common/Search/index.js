@@ -17,7 +17,7 @@ import Storage from '@utils/storage';
 import React, {useEffect, useState} from 'react';
 import {ScrollView} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
-const SearchScreen = () => {
+const Search = () => {
   const [keyword, setKeyword] = useState('');
   const [discern, setDiscern] = useState(true);
   const dispatch = useDispatch();
@@ -129,61 +129,68 @@ const SearchScreen = () => {
         setDiscern={setDiscern}
       />
       <Block height={8} backgroundColor="smoke" />
-      {isLoading && !data && <ListProductHolder />}
-      {/* list keyword */}
-      {discern ? (
-        <Block flex>
-          <Block marginVertical={SIZES.normal}>
-            {suggestions && (
-              <ScrollView
-                horizontal
-                showsHorizontalScrollIndicator={false}
-                contentContainerStyle={{paddingHorizontal: hs(SIZES.medium)}}>
-                {suggestions.map(_renderKeywordSearch)}
-              </ScrollView>
-            )}
-          </Block>
-          {/* list product */}
-          {data && (
-            <Block flex padding={SIZES.normal}>
-              <ListWrapper
-                data={data}
-                VSeparator={0}
-                numColumns={2}
-                onLoadMore={_loadMore}
-                refreshing={refreshing}
-                onRefresh={_onRefresh}
-                renderItem={_renderItem}
-                EmptyComponent={_renderEmpty}
-                isLoading={isLoading}
-                page={page}
-              />
-            </Block>
-          )}
-        </Block>
-      ) : history.length > 0 ? (
-        <Block flex>
-          <Block row alignCenter margin={12} space="between">
-            <Text size={16} fontType="semibold">
-              Lịch sử tìm kiếm
-            </Text>
-            <Pressable onPress={_removeHistory}>
-              <Text color="blue">Xóa tất cả</Text>
-            </Pressable>
-          </Block>
-          {history && (
-            <ScrollView
-              showsHorizontalScrollIndicator={false}
-              contentContainerStyle={{paddingHorizontal: hs(SIZES.medium)}}>
-              {history.map(_renderHistorySearch)}
-            </ScrollView>
-          )}
-        </Block>
+      {isLoading && !data ? (
+        <ListProductHolder />
       ) : (
-        <Empty lottie={LOTTIES.search} content="Bạn chưa có lịch sử" />
+        <Block flex>
+          {/* list keyword */}
+          {discern ? (
+            <Block flex>
+              <Block marginVertical={SIZES.normal}>
+                {suggestions && (
+                  <ScrollView
+                    horizontal
+                    showsHorizontalScrollIndicator={false}
+                    contentContainerStyle={{
+                      paddingHorizontal: hs(SIZES.medium),
+                    }}>
+                    {suggestions.map(_renderKeywordSearch)}
+                  </ScrollView>
+                )}
+              </Block>
+              {/* list product */}
+              {data && (
+                <Block flex padding={SIZES.normal}>
+                  <ListWrapper
+                    data={data}
+                    VSeparator={0}
+                    numColumns={2}
+                    onLoadMore={_loadMore}
+                    refreshing={refreshing}
+                    onRefresh={_onRefresh}
+                    renderItem={_renderItem}
+                    EmptyComponent={_renderEmpty}
+                    isLoading={isLoading}
+                    page={page}
+                  />
+                </Block>
+              )}
+            </Block>
+          ) : history.length > 0 ? (
+            <Block flex>
+              <Block row alignCenter margin={12} space="between">
+                <Text size={16} fontType="semibold">
+                  Lịch sử tìm kiếm
+                </Text>
+                <Pressable onPress={_removeHistory}>
+                  <Text color="blue">Xóa tất cả</Text>
+                </Pressable>
+              </Block>
+              {history && (
+                <ScrollView
+                  showsHorizontalScrollIndicator={false}
+                  contentContainerStyle={{paddingHorizontal: hs(SIZES.medium)}}>
+                  {history.map(_renderHistorySearch)}
+                </ScrollView>
+              )}
+            </Block>
+          ) : (
+            <Empty lottie={LOTTIES.search} content="Bạn chưa có lịch sử" />
+          )}
+        </Block>
       )}
     </Block>
   );
 };
 
-export default SearchScreen;
+export default Search;

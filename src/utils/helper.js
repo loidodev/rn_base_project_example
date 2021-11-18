@@ -52,27 +52,6 @@ export const CustomToast = (toast = '', hasDev = false) => {
     : Toast.show(locale.t(toast, {defaultValue: toast}));
 };
 
-export const DATA_TEMPLATE = [
-  1,
-  1,
-  1,
-  1,
-  1,
-  1,
-  1,
-  1,
-  1,
-  1,
-  1,
-  1,
-  1,
-  1,
-  1,
-  1,
-  1,
-  1,
-];
-
 export const handleTokenUser = tokenUser => {
   if (tokenUser) {
     storage.setItem(STORAGE_KEYS.tokenUser, tokenUser);

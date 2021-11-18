@@ -3,7 +3,7 @@ import actions from '@store/actions';
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
-const BirthdayScreen = () => {
+const Birthday = () => {
   const dispatch = useDispatch();
   const birthday = useSelector(state => state.birthday.data);
   const {data, totalPage, isLoading} = useSelector(state => state.search);
@@ -30,4 +30,4 @@ const BirthdayScreen = () => {
   );
 };
 
-export default BirthdayScreen;
+export default Birthday;

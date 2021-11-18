@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import {Block, Shimmer} from '@components';
-import {DATA_TEMPLATE} from '@utils/helper';
+import {DATA_TEMPLATE} from '@constants';
 import {width} from '@utils/responsive';
 import React from 'react';
 import {FlatList} from 'react-native';
@@ -13,7 +13,7 @@ const ListHolder = () => {
   };
 
   return (
-    <Block margin={12}>
+    <Block flex margin={12}>
       <FlatList
         numColumns={2}
         data={DATA_TEMPLATE}

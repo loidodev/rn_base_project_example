@@ -1,6 +1,6 @@
 import {all, fork} from 'redux-saga/effects';
 import {watchGeneralSagas} from './generalSagas';
-import {watchProductSaga} from './ProductSaga';
+import {watchProductSaga} from './productSaga';
 import {watchUserSagas} from './userSagas';
 
 export default function* rootSagas() {

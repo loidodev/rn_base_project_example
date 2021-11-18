@@ -37,3 +37,5 @@ export const LOTTIES = {
 export const STORAGE_KEYS = {
   tokenUser: 'tokenUser',
 };
+
+export const DATA_TEMPLATE = [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}];
