@@ -86,6 +86,7 @@ const Pressable = ({
   onPress,
   onLayout,
   style,
+  disabled,
   children,
   ...rest
 }) => {
@@ -171,6 +172,7 @@ const Pressable = ({
     <RNPrsesable
       {...rest}
       style={customStyles}
+      disabled={disabled}
       onPress={onPress}
       onLayout={onLayout}>
       {typeof children === 'string' ? (
