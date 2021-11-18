@@ -1,5 +1,9 @@
-import Toast from 'react-native-simple-toast';
+import {STORAGE_KEYS} from '@constants';
 import locale from '@locale';
+import {store} from '@store';
+import actions from '@store/actions';
+import Toast from 'react-native-simple-toast';
+import storage from './storage';
 
 export const convertCurrency = (currency, suffix = '') => {
   if (currency == null) {
@@ -44,4 +48,14 @@ export const CustomToast = (toast = '', hasDev = false) => {
   hasDev
     ? Toast.show(locale.t('handleError.developing'))
     : Toast.show(locale.t(toast, {defaultValue: toast}));
+};
+
+export const handleTokenUser = tokenUser => {
+  if (tokenUser) {
+    storage.setItem(STORAGE_KEYS.tokenUser, tokenUser);
+    store.dispatch({type: actions.TOKEN_USER, data: tokenUser});
+  } else {
+    storage.removeItem(STORAGE_KEYS.tokenUser);
+    store.dispatch({type: actions.TOKEN_USER, data: null});
+  }
 };

@@ -1,6 +1,16 @@
 import actions from '@store/actions';
 import {reducerDefault} from '@store/common';
 
+export const tokenUser = (state = null, payload) => {
+  switch (payload.type) {
+    case actions.TOKEN_USER:
+      return payload.data;
+
+    default:
+      return state;
+  }
+};
+
 export const token = (...props) => {
   return reducerDefault(...props, actions.GET_TOKEN);
 };

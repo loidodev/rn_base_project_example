@@ -1,7 +1,7 @@
 import store from '@store';
 import actions, {_onUnmount} from '@store/actions';
+import {handleTokenUser} from '@utils';
 import {CustomToast} from '@utils/helper';
-import Storage from '@utils/storage';
 import {Alert} from 'react-native';
 import RNRestart from 'react-native-restart';
 
@@ -26,8 +26,7 @@ export const hanldeError = error => {
         {
           text: 'Đồng ý',
           onPress: () => {
-            Storage.removeItem('TOKEN_USER');
-            store.dispatch({type: _onUnmount(actions.TOKEN_USER)});
+            handleTokenUser();
             store.dispatch({type: _onUnmount(actions.GET_USER_INFORMATION)});
           },
         },

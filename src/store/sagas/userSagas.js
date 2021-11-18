@@ -28,9 +28,9 @@ function* signUpUser(payload) {
     const res = yield api.post('signupUser', body, payload.params);
     yield put({
       type: _onSuccess(actions.SIGN_UP_USER),
-      data: res.data,
+      data: res.token,
     });
-    payload.onSuccess && payload.onSuccess();
+    payload.onSuccess && payload.onSuccess(res.token);
   } catch (error) {
     yield put({type: _onFail(actions.SIGN_UP_USER)});
     hanldeError(error);

@@ -1,5 +1,6 @@
 import * as yup from 'yup';
 import {yupResolver} from '@hookform/resolvers/yup';
+import locale from '@locale';
 
 export const FORM_NAME = {
   fullName: 'fullName',
@@ -14,14 +15,29 @@ const phoneRegex = /((09|03|07|08|05)+([0-9]{8})\b)/g;
 
 const schema = yup
   .object({
-    [FORM_NAME.fullName]: yup.string().required(),
-    [FORM_NAME.email]: yup.string().required().email(),
-    [FORM_NAME.phone]: yup.string().required().max(10).matches(phoneRegex),
-    [FORM_NAME.password]: yup.string().required().min(6),
+    [FORM_NAME.fullName]: yup
+      .string()
+      .required(locale.t('signUpScreen.emptyUserName')),
+    [FORM_NAME.email]: yup
+      .string()
+      .required(locale.t('signUpScreen.emptyEmail'))
+      .email(locale.t('signUpScreen.emailFormat')),
+    [FORM_NAME.phone]: yup
+      .string()
+      .required(locale.t('signUpScreen.emptyPhone'))
+      .max(10, locale.t('signUpScreen.phoneLimit'))
+      .matches(phoneRegex, locale.t('signUpScreen.phoneFormat')),
+    [FORM_NAME.password]: yup
+      .string()
+      .required(locale.t('signUpScreen.emptyPass'))
+      .min(6, locale.t('signUpScreen.passSix')),
     [FORM_NAME.rePassword]: yup
       .string()
-      .required()
-      .oneOf([yup.ref(FORM_NAME.password), null]),
+      .required(locale.t('signUpScreen.emptyConfirmPass'))
+      .oneOf(
+        [yup.ref(FORM_NAME.password), null],
+        locale.t('signUpScreen.samePass'),
+      ),
     [FORM_NAME.referredCode]: yup.string(),
   })
   .required();

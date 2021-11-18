@@ -3,11 +3,11 @@ import {SIZES} from '@theme';
 import React, {useState} from 'react';
 import ModalPolicy from './ModalPolicy';
 
-const Policy = ({agreePolicyRef}) => {
+const Policy = ({setAgreePolicy}) => {
   const [showPolicy, setShowPolicy] = useState(false);
 
   const _onAgreePolicy = () => {
-    agreePolicyRef.current = true;
+    setAgreePolicy && setAgreePolicy(true);
   };
 
   return (
