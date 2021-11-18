@@ -1,14 +1,23 @@
-import {Block, HeaderSearch, WebView} from '@components';
+import {Block, HeaderSearch, Text, WebView} from '@components';
 import actions from '@store/actions';
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
-const BirthdayScreen = value => {
+const BirthdayScreen = () => {
   const dispatch = useDispatch();
   const birthday = useSelector(state => state.birthday.data);
-
+  const {data, totalPage, isLoading} = useSelector(state => state.search);
   useEffect(() => {
     dispatch({type: actions.GET_BIRTHDAY});
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch({
+      type: actions.GET_SEARCH_SCREEN,
+      params: {
+        keyword: '',
+      },
+    });
   }, [dispatch]);
 
   return (

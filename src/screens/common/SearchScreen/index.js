@@ -7,6 +7,7 @@ import {
   Pressable,
   Text,
 } from '@components';
+import {ListHolder} from '@components/common/PlaceHolder';
 import {LOTTIES} from '@constants';
 import {height, hs} from '@responsive';
 import actions from '@store/actions';
@@ -46,7 +47,7 @@ const SearchScreen = () => {
 
   useEffect(() => {
     Storage.getItem('@history').then(res => setHistory(res?.reverse() || []));
-  }, []);
+  }, [history]);
 
   const _renderKeywordSearch = (item, index) => {
     return (
@@ -127,6 +128,7 @@ const SearchScreen = () => {
         setDiscern={setDiscern}
       />
       <Block height={8} backgroundColor="smoke" />
+      {isLoading && !data && <ListHolder />}
       {/* list keyword */}
       {discern ? (
         <Block flex>

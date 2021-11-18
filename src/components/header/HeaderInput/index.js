@@ -23,16 +23,16 @@ const HeaderInput = ({
   const _onChangeText = text => {
     setDiscern(false);
     setKeyword && setKeyword(text);
-    keyword && _onDebounce(keyword);
+    keyword && _onDebounce(text);
   };
   const _onPressIn = text => {
     setDiscern(false);
   };
 
   const _onDebounce = useCallback(
-    _.debounce(keyword => {
+    _.debounce(text => {
       Storage.getItem('@history').then(res => {
-        const newHistory = res ? [...res, keyword] : [keyword];
+        const newHistory = res ? [...res, text] : [text];
         const convertHistory = [...new Set(newHistory)];
         Storage.setItem('@history', JSON.stringify(convertHistory));
       });
@@ -81,7 +81,7 @@ const HeaderInput = ({
   };
 
   return (
-    <Block rowCenter height={60} padding={SIZES.medium}>
+    <Block safeAreaTop rowCenter height={60} padding={SIZES.medium}>
       {/* left */}
       <Pressable paddingHorizontal={SIZES.xSmall} onPress={_onGoBack}>
         <Icon IconType={Ionicons} iconName="chevron-back" iconSize={24} />

@@ -18,12 +18,14 @@ import Text from './base/Text';
 import TextInput from './base/TextInput';
 import WebView from './base/WebView';
 import ItemHistory from './card/ItemHistory';
+import Shimmer from './base/Shimmer';
 //import card
 import ItemProduct from './card/ItemProduct';
 //import common
 import ButtonSubmit from './common/ButtonSubmit';
 import LogoTitle from './common/LogoTitle';
 import LinearLogo from './common/LinearLogo';
+import PlaceHolder from './common/PlaceHolder';
 //import form
 import FormInput from './form/FormInput';
 //import header
@@ -51,6 +53,7 @@ export {
   TextInput,
   WebView,
   LoadMore,
+  Shimmer,
   //card
   ItemProduct,
   ItemHistory,

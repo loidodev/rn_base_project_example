@@ -1,11 +1,11 @@
 import {put, takeLatest} from '@redux-saga/core/effects';
 import actions, {_onFail, _onSuccess} from '@store/actions';
-import {api} from '@utils/api';
 import {hanldeError} from '@utils/handleError';
+import API from '@utils/api';
 
 function* getBirthday() {
   try {
-    const res = yield api.get('getBirthday');
+    const res = yield API.get('getBirthday');
     yield put({
       type: _onSuccess(actions.GET_BIRTHDAY),
       data: res.data,
@@ -18,7 +18,7 @@ function* getBirthday() {
 
 function* getMemBerDay() {
   try {
-    const res = yield api.get('getMemberDay');
+    const res = yield API.get('getMemberDay');
     yield put({
       type: _onSuccess(actions.GET_PARTNER),
       data: res.data,

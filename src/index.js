@@ -8,7 +8,8 @@ import {Provider, useDispatch, useSelector} from 'react-redux';
 const App = () => {
   const dispatch = useDispatch();
   const token = useSelector(state => state.token.data);
-
+  const config = useSelector(state => state.config.data);
+  
   useEffect(() => {
     dispatch({type: actions.GET_TOKEN});
   }, [dispatch]);
@@ -17,11 +18,10 @@ const App = () => {
       dispatch({type: actions.GET_CONFIG});
     }
   }, [dispatch, token]);
-
   return <RootNavigator />;
 };
 
-const RooApp = () => {
+const AppWrapper = () => {
   return (
     <Provider store={store}>
       <SafeAreaProvider>
@@ -30,4 +30,4 @@ const RooApp = () => {
     </Provider>
   );
 };
-export default RooApp;
+export default AppWrapper;

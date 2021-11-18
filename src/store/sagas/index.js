@@ -6,9 +6,9 @@ import {watchUserSagas} from './userSagas';
 
 export default function* rootSaga() {
   yield all([
-    fork(watchProductSaga),
-    fork(watchConfigSagas),
     fork(watchUserSagas),
     fork(watchGeneralSagas),
+    fork(watchProductSaga),
+    fork(watchConfigSagas),
   ]);
 }
