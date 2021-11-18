@@ -1,4 +1,4 @@
-import {reducerAdvance, reducerDefault} from '@store/common';
+mport {reducerAdvance, reducerDefault} from '@store/common';
 import actions from '../actions';
 
 export const search = (...props) => {
@@ -7,5 +7,3 @@ export const search = (...props) => {
 export const suggestions = (...props) => {
   return reducerDefault(...props, actions.GET_SEARCH_SUGGESTIONS);
 };
-
-export const PartnerReducers = {search, suggestions};

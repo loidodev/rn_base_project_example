@@ -1,6 +1,6 @@
 import actions, {_onFail, _onSuccess} from '@store/actions';
-import api from '@utils/api';
 import {handleApiError} from '@utils';
+import api from '@utils/api';
 import {put, takeLatest} from 'redux-saga/effects';
 
 function* getSearch(payload) {
