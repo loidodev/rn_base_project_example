@@ -3,11 +3,11 @@ import {
   HeaderInput,
   ItemHistory,
   ItemProduct,
+  ListProductHolder,
   ListWrapper,
   Pressable,
   Text,
 } from '@components';
-import {ListHolder} from '@components/PlaceHolder';
 import {LOTTIES} from '@constants';
 import {height, hs} from '@responsive';
 import actions from '@store/actions';
@@ -129,7 +129,7 @@ const SearchScreen = () => {
         setDiscern={setDiscern}
       />
       <Block height={8} backgroundColor="smoke" />
-      {isLoading && !data && <ListHolder />}
+      {isLoading && !data && <ListProductHolder />}
       {/* list keyword */}
       {discern ? (
         <Block flex>
@@ -145,7 +145,7 @@ const SearchScreen = () => {
           </Block>
           {/* list product */}
           {data && (
-            <Block flex>
+            <Block flex marginHorizontal={6}>
               <ListWrapper
                 data={data}
                 numColumns={2}

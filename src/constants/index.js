@@ -30,4 +30,6 @@ export const IMAGES = {
   wave: require('@assets/images/wave.jpg'),
 };
 
-export const LOTTIES = {search: require('@assets/lottie/search.json')};
+export const LOTTIES = {
+  search: require('@assets/lottie/search.json'),
+};

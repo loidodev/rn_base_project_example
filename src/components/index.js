@@ -1,6 +1,6 @@
 //import animated
-import ScaleAmin from './animated/ScaleAmin';
 import CheckBox from './animated/CheckBox';
+import ScaleAmin from './animated/ScaleAmin';
 //import base
 import Block from './base/Block';
 import GridList from './base/GridList';
@@ -13,25 +13,26 @@ import Pressable from './base/Pressable';
 import RadioButton from './base/RadioButton';
 import Rating from './base/Rating';
 import ScrollView from './base/ScrollView';
+import Shimmer from './base/Shimmer';
 import Text from './base/Text';
 import TextInput from './base/TextInput';
 import WebView from './base/WebView';
 import ItemHistory from './card/ItemHistory';
-import Shimmer from './base/Shimmer';
 //import card
 import ItemProduct from './card/ItemProduct';
 //import common
 import ButtonSubmit from './common/ButtonSubmit';
-import LogoTitle from './common/LogoTitle';
 import LinearLogo from './common/LinearLogo';
-import PlaceHolder from './PlaceHolder';
+import LogoTitle from './common/LogoTitle';
 //import form
 import FormInput from './form/FormInput';
+import HeaderInput from './header/HeaderInput';
 //import header
 import HeaderLogo from './header/HeaderLogo';
 import HeaderSearch from './header/HeaderSearch';
-import HeaderInput from './header/HeaderInput';
 import HeaderTitle from './header/HeaderTitle';
+//placeholder
+import ListProductHolder from './placeholder/ListProductHolder';
 
 export {
   ScaleAmin,
@@ -66,4 +67,6 @@ export {
   HeaderSearch,
   HeaderInput,
   HeaderTitle,
+  //placeholder
+  ListProductHolder,
 };
