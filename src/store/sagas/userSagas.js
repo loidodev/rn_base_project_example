@@ -34,7 +34,7 @@ function* signUpUser(payload) {
   } catch (error) {
     yield put({type: _onFail(actions.SIGN_UP_USER)});
     yield payload.onFail && payload.onFail();
-    handleApiError(error);
+    handleApiError(error, true);
   }
 }
 
