@@ -1,6 +1,4 @@
 export const ICONS = {
-  search: require('@assets/icons/search.png'),
-  check_blank: require('@assets/icons/check_blank.png'),
   //category group
   day_of_members: require('@assets/icons/categoryGroup/day_of_members.png'),
   discount: require('@assets/icons/categoryGroup/discount.png'),
@@ -23,6 +21,12 @@ export const ICONS = {
   referred_people: require('@assets/icons/profile/referred_people.png'),
   shopping_history: require('@assets/icons/profile/shopping_history.png'),
   star: require('@assets/icons/profile/star.png'),
+  //social
+  facebook: require('@assets/icons/social/facebook.png'),
+  google: require('@assets/icons/social/google.png'),
+  //others
+  search: require('@assets/icons/search.png'),
+  check_blank: require('@assets/icons/check_blank.png'),
 };
 
 export const IMAGES = {

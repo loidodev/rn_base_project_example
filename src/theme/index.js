@@ -22,6 +22,7 @@ export const COLORS = {
   lightRed: '#FA634D',
   lightBlue: '#3E79F7',
   overLay: 'rgba(0.5, 0.25, 0, 0.2)',
+  facebook: '#4267b2',
 };
 
 export const GRADIENTS = {

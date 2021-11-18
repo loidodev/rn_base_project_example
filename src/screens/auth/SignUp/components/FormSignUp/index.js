@@ -1,12 +1,10 @@
-import {Block, FormInput} from '@components';
+import {Block, CustomInputErr, CustomInputIcon, FormInput} from '@components';
 import React, {useState} from 'react';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {FORM_NAME} from '../formConfig';
-import CustomInput from './CustomInput';
-import CustomInputErr from './CustomInputErr';
 
 const FormSignUp = ({control, errors}) => {
   const [showPassword, setShowPassword] = useState(true);
@@ -25,7 +23,7 @@ const FormSignUp = ({control, errors}) => {
         placeholder="signUpScreen.fullName"
         customerMessageErr={_renderCustomInputErr}
         customInput={renderInput => (
-          <CustomInput
+          <CustomInputIcon
             renderInput={renderInput}
             iconProps={{IconType: FontAwesome, iconName: 'user'}}
           />
@@ -39,7 +37,7 @@ const FormSignUp = ({control, errors}) => {
         inputProps={{keyboardType: 'email-address'}}
         customerMessageErr={_renderCustomInputErr}
         customInput={renderInput => (
-          <CustomInput
+          <CustomInputIcon
             renderInput={renderInput}
             iconProps={{IconType: FontAwesome, iconName: 'envelope'}}
           />
@@ -53,7 +51,7 @@ const FormSignUp = ({control, errors}) => {
         inputProps={{keyboardType: 'number-pad'}}
         customerMessageErr={_renderCustomInputErr}
         customInput={renderInput => (
-          <CustomInput
+          <CustomInputIcon
             renderInput={renderInput}
             iconProps={{IconType: Ionicons, iconName: 'call'}}
           />
@@ -67,7 +65,7 @@ const FormSignUp = ({control, errors}) => {
         customerMessageErr={_renderCustomInputErr}
         inputProps={{secureTextEntry: showPassword}}
         customInput={renderInput => (
-          <CustomInput
+          <CustomInputIcon
             renderInput={renderInput}
             iconProps={{IconType: MaterialCommunityIcons, iconName: 'lock'}}
             isShowPass
@@ -84,7 +82,7 @@ const FormSignUp = ({control, errors}) => {
         customerMessageErr={_renderCustomInputErr}
         inputProps={{secureTextEntry: showRePassword}}
         customInput={renderInput => (
-          <CustomInput
+          <CustomInputIcon
             renderInput={renderInput}
             iconProps={{IconType: MaterialCommunityIcons, iconName: 'lock'}}
             isShowPass
@@ -99,7 +97,7 @@ const FormSignUp = ({control, errors}) => {
         messageErr={errors[FORM_NAME.referredCode]?.message}
         placeholder="signUpScreen.referral_code"
         customInput={renderInput => (
-          <CustomInput
+          <CustomInputIcon
             renderInput={renderInput}
             iconProps={{IconType: FontAwesome5, iconName: 'users'}}
           />

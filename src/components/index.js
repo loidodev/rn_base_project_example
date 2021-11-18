@@ -22,6 +22,8 @@ import ItemProduct from './card/ItemProduct';
 import ButtonSubmit from './common/ButtonSubmit';
 import LogoTitle from './common/LogoTitle';
 import LinearLogo from './common/LinearLogo';
+import CustomInputErr from './common/CustomInputErr';
+import CustomInputIcon from './common/CustomInputIcon';
 //import form
 import FormInput from './form/FormInput';
 //import header
@@ -55,6 +57,8 @@ export {
   ButtonSubmit,
   LogoTitle,
   LinearLogo,
+  CustomInputErr,
+  CustomInputIcon,
   //form
   FormInput,
   //header
