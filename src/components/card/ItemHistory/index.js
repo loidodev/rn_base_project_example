@@ -1,15 +1,12 @@
 // import {icons} from '@assets';
-import {Block, Icon, Text} from '@components';
-import {SIZES} from '@theme';
+import {Block, Icon, Pressable, Text} from '@components';
+import {COLORS, SIZES} from '@theme';
 import Storage from '@utils/storage';
 import React from 'react';
-import {Pressable} from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import pill from 'react-native-vector-icons/MaterialCommunityIcons';
-import {useDispatch} from 'react-redux';
 import styles from './styles';
 const ItemHistory = ({item, index, setSearch, setHistory, setKeyword}) => {
-
   const _onRemoveHistory = () => {
     Storage.getItem('@history').then(res => {
       const newHistory = res.filter(value => value !== item);
@@ -20,8 +17,13 @@ const ItemHistory = ({item, index, setSearch, setHistory, setKeyword}) => {
 
   return (
     <Pressable
+      row
+      alignCenter
+      space="between"
+      paddingVertical={12}
+      borderBottomWidth={1}
+      borderColor={COLORS.smoke}
       key={`Search-${index}`}
-      style={styles.button}
       onPress={() => setKeyword(item)}>
       <Block row alignCenter>
         <Icon

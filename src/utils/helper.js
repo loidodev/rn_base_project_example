@@ -1,5 +1,5 @@
-import Toast from 'react-native-simple-toast';
 import locale from '@locale';
+import Toast from 'react-native-simple-toast';
 
 export const convertCurrency = (currency, suffix = '') => {
   if (currency == null) {
@@ -45,3 +45,24 @@ export const CustomToast = (toast = '', hasDev = false) => {
     ? Toast.show(locale.t('handleError.developing'))
     : Toast.show(locale.t(toast, {defaultValue: toast}));
 };
+
+export const DATA_TEMPLATE = [
+  1,
+  1,
+  1,
+  1,
+  1,
+  1,
+  1,
+  1,
+  1,
+  1,
+  1,
+  1,
+  1,
+  1,
+  1,
+  1,
+  1,
+  1,
+];

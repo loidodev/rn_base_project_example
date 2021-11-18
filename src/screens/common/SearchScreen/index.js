@@ -1,5 +1,6 @@
 import {
   Block,
+  Empty,
   HeaderInput,
   ItemHistory,
   ItemProduct,
@@ -16,7 +17,6 @@ import Storage from '@utils/storage';
 import React, {useEffect, useState} from 'react';
 import {ScrollView} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
-import Empty from '../Empty';
 const SearchScreen = () => {
   const [keyword, setKeyword] = useState('');
   const [discern, setDiscern] = useState(true);
@@ -145,7 +145,7 @@ const SearchScreen = () => {
           </Block>
           {/* list product */}
           {data && (
-            <Block flex marginHorizontal={6}>
+            <Block flex padding={SIZES.normal}>
               <ListWrapper
                 data={data}
                 numColumns={2}

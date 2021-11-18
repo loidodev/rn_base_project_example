@@ -3,14 +3,6 @@ import {hs, vs} from '@utils/responsive';
 import {StyleSheet} from 'react-native';
 
 export default StyleSheet.create({
-  button: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingVertical: hs(12),
-    borderBottomWidth: hs(1),
-    borderColor: COLORS.smoke,
-  },
   iconHistory: {
     width: vs(15),
     height: vs(15),

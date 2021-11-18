@@ -1,7 +1,7 @@
 import {put, takeLatest} from '@redux-saga/core/effects';
 import actions, {_onFail, _onSuccess} from '@store/actions';
-import {hanldeError} from '@utils/handleError';
 import API from '@utils/api';
+import {hanldeError} from '@utils/handleError';
 
 function* getBirthday() {
   try {
@@ -29,7 +29,18 @@ function* getMemBerDay() {
   }
 }
 
+function* getConfig() {
+  try {
+    const res = yield API.get('getConfigApp');
+    yield put({type: _onSuccess(actions.GET_CONFIG), data: res.data});
+  } catch (error) {
+    yield put({type: _onFail(actions.GET_CONFIG)});
+    hanldeError(error);
+  }
+}
+
 export function* watchGeneralSagas() {
   yield takeLatest(actions.GET_BIRTHDAY, getBirthday);
   yield takeLatest(actions.GET_PARTNER, getMemBerDay);
+  yield takeLatest(actions.GET_CONFIG, getConfig);
 }

@@ -5,7 +5,7 @@ import React, {useEffect} from 'react';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {Provider, useDispatch, useSelector} from 'react-redux';
 
-const App = () => {
+const RootApp = () => {
   const dispatch = useDispatch();
   const token = useSelector(state => state.token.data);
   const config = useSelector(state => state.config.data);
@@ -21,13 +21,13 @@ const App = () => {
   return <RootNavigator />;
 };
 
-const AppWrapper = () => {
+const App  = () => {
   return (
     <Provider store={store}>
       <SafeAreaProvider>
-        <App />
+        <RootApp />
       </SafeAreaProvider>
     </Provider>
   );
 };
-export default AppWrapper;
+export default App ;

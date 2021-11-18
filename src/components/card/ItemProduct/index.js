@@ -31,7 +31,7 @@ const ItemProduct = ({item, style, contentStyle}) => {
   return (
     <Pressable
       onPress={_onMoveDetails}
-      paddingHorizontal={SIZES.normal}
+      padding={SIZES.normal}
       style={{width: '50%', ...style}}>
       <Block
         radius={SIZES.small}
