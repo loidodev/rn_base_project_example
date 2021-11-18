@@ -1,6 +1,6 @@
 import {put, takeLatest} from '@redux-saga/core/effects';
 import actions, {_onFail, _onSuccess} from '@store/actions';
-import {handleApiError} from '@utils';
+import {CustomToast, handleApiError, handleTokenUser} from '@utils';
 import api from '@utils/api';
 import queryString from 'query-string';
 import Config from 'react-native-config';
@@ -29,7 +29,9 @@ function* signUpUser(payload) {
       type: _onSuccess(actions.SIGN_UP_USER),
       data: res.token,
     });
-    payload.onSuccess && payload.onSuccess(res.token);
+    payload.onSuccess && payload.onSuccess();
+    CustomToast(res.message);
+    handleTokenUser(res.token);
   } catch (error) {
     yield put({type: _onFail(actions.SIGN_UP_USER)});
     payload.onFail && payload.onFail();

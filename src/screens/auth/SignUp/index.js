@@ -4,8 +4,8 @@ import {bottomRoot} from '@navigator/navigationRef';
 import router from '@navigator/router';
 import actions from '@store/actions';
 import {SIZES} from '@theme';
-import {CustomToast, handleTokenUser} from '@utils';
-import React, {useState, useEffect} from 'react';
+import {CustomToast} from '@utils';
+import React, {useEffect, useState} from 'react';
 import {useForm} from 'react-hook-form';
 import {useDispatch, useSelector} from 'react-redux';
 import formConfig, {FORM_NAME} from './components/formConfig';
@@ -41,10 +41,7 @@ const SignUp = () => {
           device_name,
           // device_token,
         },
-        onSuccess: tokenUser => {
-          handleTokenUser(tokenUser);
-          bottomRoot.navigate(router.PROFILE_SCREEN);
-        },
+        onSuccess: () => bottomRoot.navigate(router.PROFILE_SCREEN),
       });
     } else {
       CustomToast('Bạn phải chấp nhận điều khoản sử dụng.');

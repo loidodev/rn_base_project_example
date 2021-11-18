@@ -30,10 +30,6 @@ function* getMemBerDay() {
 }
 
 function* getTermsOfUse(payload) {
-  console.log(
-    '🚀 ~ file: generalSagas.js ~ line 33 ~ function*getTermsOfUse ~ payload',
-    payload,
-  );
   try {
     const res = yield api.get('getTermsOfUse');
     yield put({
