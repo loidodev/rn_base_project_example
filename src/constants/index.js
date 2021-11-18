@@ -24,6 +24,7 @@ export const ICONS = {
   //social
   facebook: require('@assets/icons/social/facebook.png'),
   google: require('@assets/icons/social/google.png'),
+  apple: require('@assets/icons/social/apple.png'),
   //others
   search: require('@assets/icons/search.png'),
   check_blank: require('@assets/icons/check_blank.png'),

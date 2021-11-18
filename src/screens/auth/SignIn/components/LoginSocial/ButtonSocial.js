@@ -16,6 +16,8 @@ const ButtonSocial = ({
         return 'facebook';
       case 'google':
         return 'white';
+      case 'apple':
+        return 'black';
 
       default:
         return 'facebook';
@@ -28,6 +30,8 @@ const ButtonSocial = ({
         return 'white';
       case 'google':
         return 'black';
+      case 'apple':
+        return 'white';
 
       default:
         return 'white';
@@ -38,7 +42,7 @@ const ButtonSocial = ({
     <Pressable
       rowCenter
       radius={SIZES.xxxLarge}
-      margin={SIZES.medium}
+      marginHorizontal={SIZES.medium}
       padding={SIZES.medium}
       shadow1={getBackgroundColor() === 'white'}
       backgroundColor={getBackgroundColor()}

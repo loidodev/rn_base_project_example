@@ -5,7 +5,7 @@ import React from 'react';
 const NotAccount = ({onPress}) => {
   return (
     <Pressable
-      marginTop={SIZES.small}
+      marginTop={SIZES.large}
       marginHorizontal={SIZES.medium}
       onPress={onPress}>
       <Text flex center>

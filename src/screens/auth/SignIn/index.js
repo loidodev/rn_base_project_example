@@ -4,9 +4,9 @@ import router from '@navigator/router';
 import {SIZES} from '@theme';
 import React from 'react';
 import {useForm} from 'react-hook-form';
-import ButtonSocial from './components/ButtonSocial';
 import formConfig from './components/formConfig';
 import FormSignIn from './components/FormSignIn';
+import LoginSocial from './components/LoginSocial';
 import NotAccount from './components/NotAccount';
 
 const SignIn = () => {
@@ -45,19 +45,14 @@ const SignIn = () => {
         onPress={handleSubmit(_onSubmit)}>
         loginScreen.login
       </ButtonSubmit>
-      <Text small center marginHorizontal={SIZES.large}>
+      <Text
+        small
+        center
+        marginHorizontal={SIZES.large}
+        marginBottom={SIZES.large}>
         loginScreen.orLogin
       </Text>
-      <ButtonSocial title="Sign In With Facebook" type="facebook" />
-      <ButtonSocial
-        title="Sign In With Facebook"
-        type="google"
-        containerProps={{
-          margin: 0,
-          marginHorizontal: SIZES.medium,
-          marginBottom: SIZES.medium,
-        }}
-      />
+      <LoginSocial />
       <NotAccount onPress={_onMoveSignUp} />
     </LinearLogo>
   );
