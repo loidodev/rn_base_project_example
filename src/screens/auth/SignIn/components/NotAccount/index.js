@@ -1,19 +1,22 @@
-import {Block, Pressable, Text} from '@components';
+import {Pressable, Text} from '@components';
 import {SIZES} from '@theme';
 import React from 'react';
 
-const NotAccount = () => {
+const NotAccount = ({onPress}) => {
   return (
-    <Block row alignCenter justifyCenter marginTop={SIZES.small}>
-      <Text center small marginRight={SIZES.normal}>
-        signUpScreen.haveAccount
-      </Text>
-      <Pressable>
+    <Pressable
+      marginTop={SIZES.small}
+      marginHorizontal={SIZES.medium}
+      onPress={onPress}>
+      <Text flex center>
+        <Text center small>
+          loginScreen.haveAccount
+        </Text>{' '}
         <Text color="blue" small>
           signUpScreen.login
         </Text>
-      </Pressable>
-    </Block>
+      </Text>
+    </Pressable>
   );
 };
 

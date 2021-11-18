@@ -1,4 +1,6 @@
 import {ButtonSubmit, LinearLogo, Pressable, Text} from '@components';
+import {root} from '@navigator/navigationRef';
+import router from '@navigator/router';
 import {SIZES} from '@theme';
 import React from 'react';
 import {useForm} from 'react-hook-form';
@@ -15,6 +17,10 @@ const SignIn = () => {
   } = useForm(formConfig);
 
   const _onSubmit = data => {};
+
+  const _onMoveSignUp = () => {
+    root.navigate(router.SIGN_UP_SCREEN);
+  };
 
   return (
     <LinearLogo>
@@ -43,8 +49,16 @@ const SignIn = () => {
         loginScreen.orLogin
       </Text>
       <ButtonSocial title="Sign In With Facebook" type="facebook" />
-      <ButtonSocial title="Sign In With Facebook" type="google" />
-      <NotAccount />
+      <ButtonSocial
+        title="Sign In With Facebook"
+        type="google"
+        containerProps={{
+          margin: 0,
+          marginHorizontal: SIZES.medium,
+          marginBottom: SIZES.medium,
+        }}
+      />
+      <NotAccount onPress={_onMoveSignUp} />
     </LinearLogo>
   );
 };
