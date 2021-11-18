@@ -5,15 +5,14 @@ import api from '@utils/api';
 import queryString from 'query-string';
 import Config from 'react-native-config';
 
+const ACCOUNT_IMS = {
+  username: Config.ACCESS_USERNAME,
+  password: Config.ACCESS_PASSWORD,
+};
+
 function* getToken() {
-  const data = {
-    username: Config.ACCESS_USERNAME,
-    password: Config.ACCESS_PASSWORD,
-  };
-
-  const body = queryString.stringify(data);
-
   try {
+    const body = yield queryString.stringify(ACCOUNT_IMS);
     const res = yield api.post('getToken', body);
     yield put({type: _onSuccess(actions.GET_TOKEN), data: res.token});
   } catch (error) {
@@ -30,10 +29,10 @@ function* signUpUser(payload) {
       type: _onSuccess(actions.SIGN_UP_USER),
       data: res.token,
     });
-    yield payload.onSuccess && payload.onSuccess(res.token);
+    payload.onSuccess && payload.onSuccess(res.token);
   } catch (error) {
     yield put({type: _onFail(actions.SIGN_UP_USER)});
-    yield payload.onFail && payload.onFail();
+    payload.onFail && payload.onFail();
     handleApiError(error, true);
   }
 }
