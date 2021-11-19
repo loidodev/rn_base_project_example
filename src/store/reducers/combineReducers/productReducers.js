@@ -1,5 +1,5 @@
+import actions from '@store/actions';
 import {reducerAdvance, reducerDefault} from '@store/common';
-import actions from '../actions';
 
 export const search = (...props) => {
   return reducerAdvance(...props, actions.GET_SEARCH_SCREEN);
