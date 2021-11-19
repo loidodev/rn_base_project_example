@@ -33,6 +33,8 @@ export const ICONS = {
 export const IMAGES = {
   logo_start: require('@assets/images/logo_start.png'),
   wave: require('@assets/images/wave.jpg'),
+  no_image: require('@assets/images/no_image.jpg'),
+  no_image_thumbnail: require('@assets/images/no_image_thumbnail.jpg'),
 };
 
 export const LOTTIES = {

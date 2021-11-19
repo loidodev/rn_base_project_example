@@ -8,7 +8,6 @@ import React from 'react';
 import {Pressable} from 'react-native';
 import styles from './styles';
 
-
 const ItemProduct = ({item, style, contentStyle}) => {
   const {
     thumbnail = '',

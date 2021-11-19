@@ -17,6 +17,10 @@ export const termsOfUse = (...props) => {
   return reducerAdvance(...props, actions.GET_TERMS_OF_USE);
 };
 
+export const bannerById = (...props) => {
+  return reducerAdvance(...props, actions.GET_BANNER_BY_ID);
+};
+
 export const member = (...props) => {
   return reducerDefault(...props, actions.GET_MEMBER);
 };

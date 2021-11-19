@@ -10,20 +10,15 @@ import {Provider, useDispatch, useSelector} from 'react-redux';
 
 const RootApp = () => {
   const dispatch = useDispatch();
-  const token = useSelector(state => state.token.data);
-  const config = useSelector(state => state.config.data);
+  const token = useSelector(state => state.token);
 
   useEffect(() => {
     dispatch({type: actions.GET_TOKEN});
   }, [dispatch]);
-  useEffect(() => {
-    if (token) {
-      dispatch({type: actions.GET_CONFIG});
-    }
-  }, [dispatch, token]);
 
   useEffect(() => {
-    if (token?.data) {
+    if (token.data) {
+      dispatch({type: actions.GET_CONFIG});
       storage.getItem(STORAGE_KEYS.tokenUser).then(tokenUser => {
         if (tokenUser) {
           handleTokenUser(tokenUser);
