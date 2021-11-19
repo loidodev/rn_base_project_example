@@ -12,3 +12,7 @@ export const suggestions = (...props) => {
 export const productGroup = (...props) => {
   return reducerAdvance(...props, actions.GET_PRODUCT_GROUP);
 };
+
+export const productIsFocus = (...props) => {
+  return reducerAdvance(...props, actions.GET_PRODUCT_IS_FOCUS);
+};
