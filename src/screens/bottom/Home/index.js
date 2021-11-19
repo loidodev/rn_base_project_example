@@ -57,10 +57,19 @@ const Home = () => {
     });
   };
 
+  const _getPlaceHolder = () => {
+    const isLoading =
+      bannerById.isLoading ||
+      productGroup.isLoading ||
+      productIsFocus.isLoading;
+
+    return !refreshing && isLoading;
+  };
+
   return (
     <Block flex>
       <HeaderLogo />
-      {true ? (
+      {_getPlaceHolder() ? (
         <HomeHolder />
       ) : (
         <ScrollView refreshing={refreshing} onRefresh={_onRefreshing}>

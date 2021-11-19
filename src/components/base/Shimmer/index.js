@@ -1,7 +1,6 @@
 import {Block} from '@components';
 import {useLayoutSize} from '@hooks';
-import {GRADIENTS, SIZES} from '@theme';
-import {width as WIDTH} from '@utils/responsive';
+import {GRADIENTS} from '@theme';
 import React, {memo, useEffect} from 'react';
 import {StyleSheet} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
@@ -16,9 +15,11 @@ import Animated, {
 const DURATION = 2000;
 
 const Shimmer = ({
-  width = WIDTH,
-  height = 15,
-  radius = SIZES.small,
+  flex,
+  width,
+  height,
+  radius,
+  margin,
   marginVertical,
   marginHorizontal,
   marginTop,
@@ -27,6 +28,7 @@ const Shimmer = ({
   marginRight,
   gradient,
   duration,
+  containerStyle,
   containerProps,
   contentProps,
   children,
@@ -56,18 +58,21 @@ const Shimmer = ({
 
   return (
     <Block
+      flex={flex}
       radius={radius}
+      margin={margin}
       marginVertical={marginVertical}
       marginHorizontal={marginHorizontal}
       marginTop={marginTop}
       marginRight={marginRight}
       marginLeft={marginLeft}
       marginBottom={marginBottom}
+      width={width}
       height={height}
       backgroundColor={gradient || 'smoke'}
-      style={{width}}
       overflow="hidden"
       onLayout={onLayout}
+      style={containerStyle}
       {...containerProps}>
       {layout?.width && (
         <Animated.View style={[StyleSheet.absoluteFillObject, rContentStyle]}>
