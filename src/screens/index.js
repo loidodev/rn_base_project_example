@@ -11,9 +11,9 @@ import Profile from './bottom/Profile';
 //import common
 import GetStart from './common/GetStart';
 import EditUser from './common/EditUser';
-import SearchScreen from './common/SearchScreen';
-import BirthdayScreen from './common/BirthdayScreen';
-import PartnerScreen from './common/PartnerScreen';
+import SearchScreen from './common/Search';
+import BirthdayScreen from './common/Birthday';
+import PartnerScreen from './common/Partner';
 
 export const auth = {
   [router.SIGN_IN_SCREEN]: SignIn,

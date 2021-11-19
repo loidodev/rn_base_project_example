@@ -1,20 +1,26 @@
+import {STORAGE_KEYS} from '@constants';
 import RootNavigator from '@navigator';
 import store from '@store';
 import actions from '@store/actions';
+import {handleTokenUser} from '@utils';
+import storage from '@utils/storage';
 import React, {useEffect} from 'react';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {Provider, useDispatch, useSelector} from 'react-redux';
-import storage from '@utils/storage';
-import {STORAGE_KEYS} from '@constants';
-import {handleTokenUser} from '@utils';
 
 const RootApp = () => {
   const dispatch = useDispatch();
-  const token = useSelector(state => state.token);
+  const token = useSelector(state => state.token.data);
+  const config = useSelector(state => state.config.data);
 
   useEffect(() => {
     dispatch({type: actions.GET_TOKEN});
   }, [dispatch]);
+  useEffect(() => {
+    if (token) {
+      dispatch({type: actions.GET_CONFIG});
+    }
+  }, [dispatch, token]);
 
   useEffect(() => {
     if (token.data) {

@@ -35,8 +35,12 @@ export const IMAGES = {
   wave: require('@assets/images/wave.jpg'),
 };
 
-export const LOTTIES = {};
+export const LOTTIES = {
+  search: require('@assets/lottie/search.json'),
+};
 
 export const STORAGE_KEYS = {
   tokenUser: 'tokenUser',
 };
+
+export const DATA_TEMPLATE = [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}];
