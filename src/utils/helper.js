@@ -59,6 +59,7 @@ export const handleTokenUser = tokenUser => {
   } else {
     storage.removeItem(STORAGE_KEYS.tokenUser);
     store.dispatch({type: actions.TOKEN_USER, data: null});
+    store.dispatch({type: _onUnmount(actions.GET_USER)});
   }
 };
 
@@ -84,10 +85,7 @@ export const handleApiError = (error, hasToastWhenErr) => {
       [
         {
           text: 'Đồng ý',
-          onPress: () => {
-            handleTokenUser();
-            store.dispatch({type: _onUnmount(actions.GET_USER)});
-          },
+          onPress: () => handleTokenUser(),
         },
       ],
       {cancelable: false},
