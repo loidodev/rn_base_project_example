@@ -1,3 +1,4 @@
+import useDeviceInfo from './useDeviceInfo';
 import useLayoutSize from './useLayoutSize';
 
-export {useLayoutSize};
+export {useDeviceInfo, useLayoutSize};

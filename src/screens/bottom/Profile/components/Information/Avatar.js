@@ -12,7 +12,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import {HEIGHT_AVATAR, MAX_HEIGHT_INFO, MIN_HEIGHT_INFO} from '../helper';
 import {rVerticalScale} from './index';
 
-const Avatar = ({scrollY}) => {
+const Avatar = ({scrollY, onPress, picture}) => {
   const INPUT_AVATAR = [0, rVerticalScale(MAX_HEIGHT_INFO)];
 
   const rStyles = useAnimatedStyle(() => ({
@@ -51,7 +51,7 @@ const Avatar = ({scrollY}) => {
 
   return (
     <Animated.View style={rStyles}>
-      <Pressable>
+      <Pressable onPress={onPress}>
         <Image
           style={{
             width: vs(HEIGHT_AVATAR),
@@ -59,6 +59,7 @@ const Avatar = ({scrollY}) => {
             borderRadius: HEIGHT_AVATAR,
             backgroundColor: 'gray',
           }}
+          source={{uri: picture}}
         />
         <Block
           absolute
@@ -69,7 +70,12 @@ const Avatar = ({scrollY}) => {
           radius={SIZES.xxLarge}
           backgroundColor="primary"
           padding={SIZES.normal}>
-          <Icon IconType={AntDesign} iconName="camera" iconColor="white" />
+          <Icon
+            IconType={AntDesign}
+            iconName="camera"
+            iconColor="white"
+            iconSize={15}
+          />
         </Block>
       </Pressable>
     </Animated.View>

@@ -86,6 +86,7 @@ const Pressable = ({
   onPress,
   onLayout,
   style,
+  disabled,
   children,
   ...rest
 }) => {
@@ -158,7 +159,7 @@ const Pressable = ({
       borderColor: COLORS[borderColor] || borderColor,
     },
     color && {color},
-    opacity && {opacity},
+    opacity !== undefined && {opacity},
     //shadow
     shadow1 && styles.shadow1,
     shadow2 && styles.shadow2,
@@ -171,6 +172,7 @@ const Pressable = ({
     <RNPrsesable
       {...rest}
       style={customStyles}
+      disabled={disabled}
       onPress={onPress}
       onLayout={onLayout}>
       {typeof children === 'string' ? (
