@@ -16,6 +16,7 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated';
+import {IMAGES} from '@constants';
 
 const LazyImage = ({
   //layout
@@ -195,7 +196,7 @@ const LazyImage = ({
     <View style={customStyles} {...rest}>
       <Animated.View style={[StyleSheet.absoluteFill, thumbnailStyles]}>
         <Image
-          source={{uri: thumbnail}}
+          source={thumbnail ? {uri: thumbnail} : IMAGES.no_image_thumbnail}
           style={styles.image}
           resizeMode={resizeMode}
           onLoadStart={onThumbnailLoad}
@@ -204,7 +205,7 @@ const LazyImage = ({
       </Animated.View>
       <Animated.View style={[styles.image, pictureStyles]}>
         <Image
-          source={{uri: source}}
+          source={source ? {uri: source} : IMAGES.no_image}
           style={styles.image}
           resizeMode={resizeMode}
           onLoadEnd={onImageLoad}

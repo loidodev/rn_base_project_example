@@ -3,22 +3,30 @@ import {IMAGES} from '@constants';
 import {SIZES} from '@theme';
 import React from 'react';
 
-const LogoTitle = () => {
+const LogoTitle = ({
+  containerProps,
+  labelProps,
+  logoProps,
+  labelContainerProps,
+}) => {
   return (
-    <Block alignCenter>
+    <Block alignCenter {...containerProps}>
       <Image
         width={80}
         height={80}
         marginBottom={SIZES.small}
         source={IMAGES.logo_start}
         resizeMode="contain"
+        {...logoProps}
       />
-      <Text fontSize={24} bold color="primary">
-        Thảo Dược
-      </Text>
-      <Text fontSize={24} bold color="primary">
-        Việt Nam
-      </Text>
+      <Block {...labelContainerProps}>
+        <Text center fontSize={24} bold color="primary" {...labelProps}>
+          Thảo Dược
+        </Text>
+        <Text center fontSize={24} bold color="primary" {...labelProps}>
+          Việt Nam
+        </Text>
+      </Block>
     </Block>
   );
 };

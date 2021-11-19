@@ -1,39 +1,44 @@
 /* eslint-disable react-native/no-inline-styles */
 import {Block, HeaderLogo, LazyImage, ScrollView} from '@components';
+import actions from '@store/actions';
 import {SIZES} from '@theme';
 import React from 'react';
+import {useEffect} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 import BannerHome from './components/BannerHome';
 import CategoryGroup from './components/CategoryGroup';
 import CategoryProduct from './components/CategoryProduct';
 import HotProduct from './components/HotProduct';
 
-const DATA = [
-  {
-    img_link:
-      'https://images.unsplash.com/photo-1556742044-3c52d6e88c62?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8c21hbGwlMjBzaXplfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-  },
-  {
-    img_link:
-      'https://images.unsplash.com/photo-1556742044-3c52d6e88c62?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8c21hbGwlMjBzaXplfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-  },
-  {
-    img_link:
-      'https://images.unsplash.com/photo-1556742044-3c52d6e88c62?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8c21hbGwlMjBzaXplfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-  },
-];
-
 const Home = () => {
+  const dispatch = useDispatch();
+  const token = useSelector(state => state.token);
+  const bannerById = useSelector(state => state.bannerById);
+
+  const [bannerHeader = [], bannerMiddle = []] = bannerById.data || [];
+  const bannerMiddleItem = bannerMiddle[0] || {};
+
+  useEffect(() => {
+    if (token.data) {
+      dispatch({
+        type: actions.GET_BANNER_BY_ID,
+        params: {banner_id: 'banner-shopping,banner-shopping2'},
+      });
+    }
+  }, [dispatch, token]);
+
   return (
     <Block flex>
       <HeaderLogo />
       <ScrollView>
-        <BannerHome data={DATA} />
+        <BannerHome data={bannerHeader} />
         <CategoryGroup />
         <CategoryProduct />
         <Block marginTop={SIZES.medium} height={100}>
           <LazyImage
             styles={{width: '100%', height: '100%'}}
-            source="https://images.unsplash.com/photo-1498837167922-ddd27525d352?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8Zm9vZHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+            source={bannerMiddleItem?.img_link}
+            thumbnail={bannerMiddleItem?.thumbnail}
           />
         </Block>
         <HotProduct />

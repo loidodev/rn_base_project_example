@@ -50,7 +50,7 @@ axios.interceptors.response.use(
         'color: #CD950C; font-weight: bold',
         {dataHeader: response.config.data},
         {paramsHeader: response.config.params},
-        response.data,
+        JSON.stringify(response.data, null, 2),
       );
     }
 

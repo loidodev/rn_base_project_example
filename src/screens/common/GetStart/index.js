@@ -6,11 +6,11 @@ import React from 'react';
 
 const GetStart = () => {
   const _onMoveCustomer = () => {
-    authRoot.navigate(router.SIGN_UP_SCREEN);
+    authRoot.navigate(router.SIGN_IN_SCREEN);
   };
 
   const _onMoveDrugStore = () => {
-    authRoot.navigate(router.SIGN_UP_SCREEN);
+    authRoot.navigate(router.SIGN_IN_SCREEN);
   };
 
   return (

@@ -1,19 +1,17 @@
 /* eslint-disable react-native/no-inline-styles */
 import {Block, Image, LazyImage, Rating, Text} from '@components';
+import {ICONS} from '@constants';
 import {SIZES} from '@theme';
 import {convertCurrency} from '@utils';
 import {width} from '@utils/responsive';
 import React from 'react';
 import {Pressable} from 'react-native';
 import styles from './styles';
-import {ICONS} from '@constants';
-
-const URL = 'https://source.unsplash.com/daily';
 
 const ItemProduct = ({item, style, contentStyle}) => {
   const {
-    thumbnail = URL,
-    image = URL,
+    thumbnail = '',
+    picture = '',
     title = 'Siro ho Ong vàng (gói)',
     priceBuy = 20000,
     salePercent = 20,
@@ -45,7 +43,7 @@ const ItemProduct = ({item, style, contentStyle}) => {
             height: width / 2.5,
           }}
           thumbnail={thumbnail}
-          source={image}
+          source={picture}
         />
         <Block padding={SIZES.medium}>
           <Text size={13} numberOfLines={2}>
