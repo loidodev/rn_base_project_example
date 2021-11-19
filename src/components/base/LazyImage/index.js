@@ -195,15 +195,13 @@ const LazyImage = ({
   return (
     <View style={customStyles} {...rest}>
       <Animated.View style={[StyleSheet.absoluteFill, thumbnailStyles]}>
-        {!!thumbnail && (
-          <Image
-            source={{uri: thumbnail}}
-            style={styles.image}
-            resizeMode={resizeMode}
-            onLoadStart={onThumbnailLoad}
-            blurRadius={1}
-          />
-        )}
+        <Image
+          source={thumbnail ? {uri: thumbnail} : IMAGES.no_image_thumbnail}
+          style={styles.image}
+          resizeMode={resizeMode}
+          onLoadStart={onThumbnailLoad}
+          blurRadius={1}
+        />
       </Animated.View>
       <Animated.View style={[styles.image, pictureStyles]}>
         <Image
