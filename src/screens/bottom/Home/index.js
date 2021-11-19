@@ -16,6 +16,7 @@ const Home = () => {
   const token = useSelector(state => state.token);
   const bannerById = useSelector(state => state.bannerById);
   const productGroup = useSelector(state => state.productGroup);
+  const productIsFocus = useSelector(state => state.productIsFocus);
 
   const [bannerHeader = [], bannerMiddle = []] = bannerById.data || [];
   const bannerMiddleItem = bannerMiddle[0] || {};
@@ -27,6 +28,10 @@ const Home = () => {
         params: {banner_id: BANNER_ID.home},
       });
       dispatch({type: actions.GET_PRODUCT_GROUP});
+      dispatch({
+        type: actions.GET_PRODUCT_IS_FOCUS,
+        params: {type: 'is_focus'},
+      });
     }
   }, [dispatch, token]);
 
@@ -44,7 +49,7 @@ const Home = () => {
             thumbnail={bannerMiddleItem?.thumbnail}
           />
         </Block>
-        <HotProduct />
+        {productIsFocus.data && <HotProduct data={productIsFocus.data} />}
       </ScrollView>
     </Block>
   );
