@@ -12,6 +12,8 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 
+const DURATION = 2000;
+
 const Shimmer = ({
   width = WIDTH,
   height = 15,
@@ -23,6 +25,7 @@ const Shimmer = ({
   marginLeft,
   marginRight,
   gradient,
+  duration,
   containerProps,
   contentProps,
   children,
@@ -32,12 +35,12 @@ const Shimmer = ({
   useEffect(() => {
     translateX.value = withRepeat(
       withTiming(width, {
-        duration: 2000,
+        duration: duration || DURATION,
         easing: Easing.linear,
       }),
       -1,
     );
-  }, [translateX, width]);
+  }, [duration, translateX, width]);
 
   const rContentStyle = useAnimatedStyle(() => ({
     transform: [{translateX: translateX.value}],
