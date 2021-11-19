@@ -19,6 +19,10 @@ export const signUp = (...props) => {
   return reducerDefault(...props, actions.SIGN_UP_USER);
 };
 
+export const signIn = (...props) => {
+  return reducerDefault(...props, actions.SIGN_IN_USER);
+};
+
 export const userInfo = (...props) => {
   return reducerDefault(...props, actions.GET_USER);
 };
