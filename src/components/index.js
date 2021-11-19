@@ -17,6 +17,7 @@ import Shimmer from './base/Shimmer';
 import Text from './base/Text';
 import TextInput from './base/TextInput';
 import WebView from './base/WebView';
+import ItemMember from './card/ItemMember';
 //import card
 import ItemHistory from './card/ItemHistory';
 import ItemProduct from './card/ItemProduct';
@@ -59,6 +60,9 @@ export {
   Shimmer,
   //card
   ItemProduct,
+  ItemMember,
+  //form
+  //header
   ItemHistory,
   //common
   ButtonSubmit,
@@ -78,3 +82,4 @@ export {
   //empty
   Empty,
 };
+

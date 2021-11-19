@@ -5,7 +5,7 @@ import {put, takeLatest} from 'redux-saga/effects';
 
 function* getSearch(payload) {
   try {
-    const res = yield api.get('getProduct?numshow=12', payload.params);
+    const res = yield api.get('getProduct', payload.params);
     yield put({
       type: _onSuccess(actions.GET_SEARCH_SCREEN),
       data: res.data,
