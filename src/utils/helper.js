@@ -3,9 +3,9 @@ import locale from '@locale';
 import store from '@store';
 import actions, {_onUnmount} from '@store/actions';
 import {Alert} from 'react-native';
+import RNRestart from 'react-native-restart';
 import Toast from 'react-native-simple-toast';
 import storage from './storage';
-import RNRestart from 'react-native-restart';
 
 export const convertCurrency = (currency, suffix = '') => {
   if (currency == null) {

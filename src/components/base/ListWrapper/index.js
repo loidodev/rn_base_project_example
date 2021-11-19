@@ -20,6 +20,7 @@ const ListWrapper = ({
   keyExtractor,
   style,
   children,
+  numColumns = 1,
   ...rest
 }) => {
   if (isLoading && !data) {
@@ -63,6 +64,7 @@ const ListWrapper = ({
         contentContainerStyle={{flexGrow: 1}}
         horizontal={horizontal}
         data={data}
+        numColumns={numColumns}
         renderItem={_renderItem}
         keyExtractor={_keyExtractor}
         ListEmptyComponent={_renderEmpty}

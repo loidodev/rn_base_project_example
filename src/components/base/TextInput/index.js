@@ -5,13 +5,13 @@ import {
   handleRound,
   handleSquare,
 } from '@components/shared';
+import locale from '@locale';
+import {hs, vs} from '@responsive';
+import {COLORS, FONTS} from '@theme';
 import React from 'react';
 import {StyleSheet, TextInput as RNTextInput} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import styles from './styles';
-import {hs, vs} from '@responsive';
-import {COLORS, FONTS} from '@theme';
-import locale from '@locale';
 
 const TextInput = ({
   //layout
@@ -96,6 +96,7 @@ const TextInput = ({
   placeholder,
   placeholderTextColor,
   onChangeText,
+  returnKeyType,
   onBlur,
   editable,
   secureTextEntry,
@@ -197,6 +198,7 @@ const TextInput = ({
       {...rest}
       style={customStyles}
       value={value}
+      returnKeyType={returnKeyType}
       placeholder={
         placeholder && locale.t(placeholder, {defaultValue: placeholder})
       }

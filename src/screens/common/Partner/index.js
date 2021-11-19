@@ -3,7 +3,7 @@ import actions from '@store/actions';
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
-const PartnerScreen = value => {
+const Partner = value => {
   const dispatch = useDispatch();
   const partner = useSelector(state => state.partner.data);
 
@@ -21,4 +21,4 @@ const PartnerScreen = value => {
   );
 };
 
-export default PartnerScreen;
+export default Partner;
