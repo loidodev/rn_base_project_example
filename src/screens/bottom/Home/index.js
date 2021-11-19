@@ -25,7 +25,7 @@ const Home = () => {
         params: {banner_id: 'banner-shopping,banner-shopping2'},
       });
     }
-  }, [dispatch, token.data]);
+  }, [dispatch, token]);
 
   return (
     <Block flex>
