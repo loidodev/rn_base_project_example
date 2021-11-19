@@ -12,3 +12,7 @@ export const partner = (...props) => {
 export const termsOfUse = (...props) => {
   return reducerAdvance(...props, actions.GET_TERMS_OF_USE);
 };
+
+export const bannerById = (...props) => {
+  return reducerAdvance(...props, actions.GET_BANNER_BY_ID);
+};
