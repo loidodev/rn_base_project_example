@@ -1,4 +1,4 @@
-mport {reducerAdvance, reducerDefault} from '@store/common';
+import {reducerAdvance, reducerDefault} from '@store/common';
 import actions from '../actions';
 
 export const search = (...props) => {

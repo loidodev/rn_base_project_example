@@ -16,3 +16,7 @@ export const config = (...props) => {
 export const termsOfUse = (...props) => {
   return reducerAdvance(...props, actions.GET_TERMS_OF_USE);
 };
+
+export const member = (...props) => {
+  return reducerDefault(...props, actions.GET_MEMBER);
+};
