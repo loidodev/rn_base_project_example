@@ -82,6 +82,6 @@ export function* watchGeneralSagas() {
   yield takeLatest(actions.GET_BIRTHDAY, getBirthday);
   yield takeLatest(actions.GET_PARTNER, getMemBerDay);
   yield takeLatest(actions.GET_TERMS_OF_USE, getTermsOfUse);
-  yield takeLatest(actions.GET_BANNER_BY_ID, getBannerById);
+  yield takeLatest(actions.GET_BANNER_BY_ID_HOME, getBannerById);
   yield takeLatest(actions.GET_MEMBER, getMemberSaga);
 }

@@ -10,7 +10,7 @@ export const suggestions = (...props) => {
 };
 
 export const productGroup = (...props) => {
-  return reducerAdvance(...props, actions.GET_PRODUCT_GROUP);
+  return reducerAdvance(...props, actions.GET_PRODUCT_GROUP_HOME);
 };
 
 export const productIsFocus = (...props) => {

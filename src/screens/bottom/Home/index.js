@@ -20,10 +20,10 @@ import HotProduct from './components/HotProduct';
 const callAllApi = dispatch => {
   return Promise.all([
     dispatch({
-      type: actions.GET_BANNER_BY_ID,
+      type: actions.GET_BANNER_BY_ID_HOME,
       params: {banner_id: BANNER_ID.home},
     }),
-    dispatch({type: actions.GET_PRODUCT_GROUP}),
+    dispatch({type: actions.GET_PRODUCT_GROUP_HOME}),
     dispatch({
       type: actions.GET_PRODUCT_IS_FOCUS,
       params: {type: 'is_focus'},
