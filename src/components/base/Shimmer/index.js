@@ -1,69 +1,72 @@
+import {Block} from '@components';
+import {GRADIENTS, SIZES} from '@theme';
 import {width as WIDTH} from '@utils/responsive';
-import React, {useEffect, useRef} from 'react';
-import {Animated, Easing, StyleSheet, View} from 'react-native';
+import React, {useEffect} from 'react';
+import {StyleSheet} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import styles from './styles';
-
-const LinearGradientAnim = Animated.createAnimatedComponent(LinearGradient);
+import Animated, {
+  Easing,
+  useAnimatedStyle,
+  useSharedValue,
+  withRepeat,
+  withTiming,
+} from 'react-native-reanimated';
 
 const Shimmer = ({
   width = WIDTH,
   height = 15,
-  radius = 5,
-  marginVer = 0,
-  marginTop = 0,
-  marginBottom = 8,
-  marginLeft = 0,
-  marginRight = 0,
-  colors,
-  style,
+  radius = SIZES.small,
+  marginVertical,
+  marginHorizontal,
+  marginTop,
+  marginBottom,
+  marginLeft,
+  marginRight,
+  gradient,
+  containerProps,
+  contentProps,
   children,
 }) => {
-  const animatedValue = useRef(new Animated.Value(0)).current;
+  const translateX = useSharedValue(-width);
 
   useEffect(() => {
-    Animated.loop(
-      Animated.timing(animatedValue, {
-        toValue: 1,
-        duration: 1000,
-        useNativeDriver: true,
-        easing: Easing.linear.inOut,
+    translateX.value = withRepeat(
+      withTiming(width, {
+        duration: 2000,
+        easing: Easing.linear,
       }),
-    ).start();
-  }, [animatedValue]);
+      -1,
+    );
+  }, [translateX, width]);
 
-  const translateX = animatedValue.interpolate({
-    inputRange: [0, 1],
-    outputRange: [-width, width],
-  });
+  const rContentStyle = useAnimatedStyle(() => ({
+    transform: [{translateX: translateX.value}],
+  }));
 
   return (
-    <View
-      style={[
-        style,
-        styles.container(
-          width,
-          height,
-          radius,
-          marginVer,
-          marginTop,
-          marginBottom,
-          marginLeft,
-          marginRight,
-          colors,
-        ),
-      ]}>
-      <LinearGradientAnim
-        start={{x: 0, y: 0}}
-        end={{x: 1, y: 0}}
-        colors={colors || ['#E6E6E6', '#f5f5f5', '#f5f5f5', '#E6E6E6']}
-        style={{
-          ...StyleSheet.absoluteFillObject,
-          transform: [{translateX}],
-        }}
-      />
-      <View>{children}</View>
-    </View>
+    <Block
+      radius={radius}
+      marginVertical={marginVertical}
+      marginHorizontal={marginHorizontal}
+      marginTop={marginTop}
+      marginRight={marginRight}
+      marginLeft={marginLeft}
+      marginBottom={marginBottom}
+      height={height}
+      backgroundColor={gradient || 'smoke'}
+      style={{width}}
+      overflow="hidden"
+      {...containerProps}>
+      <Animated.View style={[StyleSheet.absoluteFillObject, rContentStyle]}>
+        <LinearGradient
+          start={{x: 0, y: 0}}
+          end={{x: 1, y: 0}}
+          colors={gradient || GRADIENTS.placeholder}
+          style={StyleSheet.absoluteFillObject}
+        />
+      </Animated.View>
+      <Block {...contentProps}>{children}</Block>
+    </Block>
   );
 };
 

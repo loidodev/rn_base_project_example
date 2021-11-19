@@ -5,7 +5,7 @@ import {width} from '@utils/responsive';
 import React from 'react';
 import {FlatList} from 'react-native';
 
-const ListHolder = () => {
+const ListProductHolder = () => {
   const _keyExtractor = (_, index) => String(index);
 
   const _renderItem = () => {
@@ -26,4 +26,4 @@ const ListHolder = () => {
   );
 };
 
-export default ListHolder;
+export default ListProductHolder;
