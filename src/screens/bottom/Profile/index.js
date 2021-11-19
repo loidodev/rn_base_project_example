@@ -1,17 +1,19 @@
-import {Block} from '@components';
+import {Block, ButtonSubmit} from '@components';
 import {commonRoot} from '@navigator/navigationRef';
 import {vs} from '@responsive';
 import router from '@router';
-import React, {useState} from 'react';
-import {RefreshControl} from 'react-native';
+import actions from '@store/actions';
+import {COLORS} from '@theme';
+import React, {useRef, useState} from 'react';
+import {ActivityIndicator, RefreshControl} from 'react-native';
 import Animated, {
   useAnimatedScrollHandler,
   useSharedValue,
 } from 'react-native-reanimated';
+import {useDispatch, useSelector} from 'react-redux';
 import AvatarPicker from './components/AvatarPicker';
 import BannerHeader from './components/BannerHeader';
 import BoxLogin from './components/BoxLogin';
-import BtnLogout from './components/BtnLogout';
 import {GENERAL_LIST, MANAGER_LIST, SUPPORT_LIST} from './components/data';
 import Delivery from './components/Delivery';
 import {
@@ -24,9 +26,12 @@ import ListProfile from './components/ListProfile';
 import ShareAndReferredCode from './components/ShareAndReferredCode';
 
 const Profile = () => {
+  const dispatch = useDispatch();
+  const scrollViewRef = useRef();
   const scrollY = useSharedValue(0);
   const [isPickerAvatar, setIsPickerAvatar] = useState(false);
-  const user = false;
+  const userInfo = useSelector(state => state.userInfo);
+  const logout = useSelector(state => state.logout);
 
   const _onScroll = useAnimatedScrollHandler(event => {
     scrollY.value = event.contentOffset.y;
@@ -38,7 +43,18 @@ const Profile = () => {
 
   const _onOpenPickerAvatar = () => setIsPickerAvatar(true);
 
-  if (!user) {
+  const _onLogoutUser = () => {
+    scrollViewRef.current?.scrollTo({x: 0, y: 0});
+    dispatch({type: actions.LOG_OUT_USER});
+  };
+
+  if (userInfo.isLoading) {
+    return (
+      <Block flex justifyCenter alignCenter>
+        <ActivityIndicator size="large" color={COLORS.primary} />
+      </Block>
+    );
+  } else if (!userInfo.data) {
     return <BoxLogin />;
   } else {
     return (
@@ -48,6 +64,7 @@ const Profile = () => {
         {/* content */}
         <Block flex safeAreaTop>
           <Animated.ScrollView
+            ref={scrollViewRef}
             onScroll={_onScroll}
             showsVerticalScrollIndicator={false}
             refreshControl={<RefreshControl refreshing={false} />}>
@@ -63,7 +80,9 @@ const Profile = () => {
             <ListProfile delay={600} data={GENERAL_LIST} />
             <ListProfile delay={650} data={SUPPORT_LIST} />
             <ShareAndReferredCode delay={700} />
-            <BtnLogout />
+            <ButtonSubmit loading={logout.isLoading} onPress={_onLogoutUser}>
+              profileScreen.logout
+            </ButtonSubmit>
           </Animated.ScrollView>
           <Information
             scrollY={scrollY}

@@ -26,6 +26,8 @@ import ButtonSubmit from './common/ButtonSubmit';
 import Empty from './common/Empty';
 import LinearLogo from './common/LinearLogo';
 import LogoTitle from './common/LogoTitle';
+import CustomInputErr from './common/CustomInputErr';
+import CustomInputIcon from './common/CustomInputIcon';
 //import form
 import FormInput from './form/FormInput';
 import HeaderInput from './header/HeaderInput';
@@ -62,6 +64,8 @@ export {
   ButtonSubmit,
   LogoTitle,
   LinearLogo,
+  CustomInputErr,
+  CustomInputIcon,
   //form
   FormInput,
   //header

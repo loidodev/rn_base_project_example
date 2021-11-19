@@ -23,12 +23,11 @@ const RootApp = () => {
   }, [dispatch, token]);
 
   useEffect(() => {
-    if (token) {
+    if (token.data) {
       storage.getItem(STORAGE_KEYS.tokenUser).then(tokenUser => {
-        console.log(tokenUser);
         if (tokenUser) {
           handleTokenUser(tokenUser);
-          dispatch({type: actions.GET_USER});
+          dispatch({type: actions.GET_USER, params: {tokenUser}});
         }
       });
     }

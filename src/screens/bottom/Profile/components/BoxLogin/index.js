@@ -1,4 +1,4 @@
-import {Block, Pressable} from '@components';
+import {Block, LogoTitle, Pressable} from '@components';
 import {IMAGES} from '@constants';
 import {commonRoot} from '@navigator/navigationRef';
 import router from '@navigator/router';
@@ -21,6 +21,15 @@ const BoxLogin = () => {
         paddingVertical={SIZES.large}
         paddingHorizontal={SIZES.medium}
         backgroundColor="primary">
+        <LogoTitle
+          containerProps={{
+            alignSelf: 'flex-start',
+            rowCenter: true,
+            marginBottom: SIZES.small,
+          }}
+          labelProps={{color: 'white', fontSize: 18}}
+          logoProps={{width: 60, height: 60, marginRight: SIZES.medium}}
+        />
         <Pressable
           alignSelf="flex-start"
           radius={SIZES.normal}

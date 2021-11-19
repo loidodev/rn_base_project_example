@@ -21,6 +21,7 @@ import {
 } from '../helper';
 import BoxInfo from './BoxInfo';
 import styles from './styles';
+import {useSelector} from 'react-redux';
 
 export function rHorizontalScale(size) {
   'worklet';
@@ -33,6 +34,10 @@ export function rVerticalScale(size) {
 }
 
 const Information = ({scrollY, onPickerAvatar, onEditUser}) => {
+  const userInfo = useSelector(state => state.userInfo);
+
+  const {picture, full_name, email} = userInfo.data || {};
+
   const INPUT = [0, rVerticalScale(MAX_HEIGHT_INFO)];
 
   const rContainerStyles = useAnimatedStyle(() => ({
@@ -67,9 +72,9 @@ const Information = ({scrollY, onPickerAvatar, onEditUser}) => {
       {/* edit user */}
       <BtnEditUser scrollY={scrollY} onPress={onEditUser} />
       {/* avatar */}
-      <Avatar scrollY={scrollY} onPress={onPickerAvatar} />
+      <Avatar scrollY={scrollY} onPress={onPickerAvatar} picture={picture} />
       {/* box info */}
-      <BoxInfo scrollY={scrollY} />
+      <BoxInfo scrollY={scrollY} email={email} full_name={full_name} />
     </Animated.View>
   );
 };
