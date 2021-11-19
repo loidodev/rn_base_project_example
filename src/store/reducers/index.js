@@ -1,9 +1,10 @@
 import {combineReducers} from 'redux';
-import * as generalReducers from './generalReducers';
-import * as ProductReducer from './productReducer';
 import * as userReducers from './userReducers';
+import * as generalReducers from './generalReducers';
+import * as productReducers from './productReducers';
+
 export default combineReducers({
   ...userReducers,
   ...generalReducers,
-  ...ProductReducer,
+  ...productReducers,
 });

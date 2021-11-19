@@ -30,7 +30,7 @@ function* getSuggestions() {
   }
 }
 
-export function* watchProductSaga() {
+export function* watchProductSagas() {
   yield takeLatest(actions.GET_SEARCH_SCREEN, getSearch);
   yield takeLatest(actions.GET_SEARCH_SUGGESTIONS, getSuggestions);
 }
