@@ -52,9 +52,23 @@ function* getConfig() {
   }
 }
 
+function* MenberSaga(payload) {
+  try {
+    const res = yield api.get('getStores');
+    yield put({
+      type: _onSuccess(actions.GET_MENBER),
+      data: res.data,
+    });
+  } catch (error) {
+    yield put({type: _onFail(actions.GET_MENBER)});
+    handleApiError(error);
+  }
+}
+
 export function* watchGeneralSagas() {
   yield takeLatest(actions.GET_BIRTHDAY, getBirthday);
   yield takeLatest(actions.GET_PARTNER, getMemBerDay);
   yield takeLatest(actions.GET_CONFIG, getConfig);
   yield takeLatest(actions.GET_TERMS_OF_USE, getTermsOfUse);
+  yield takeLatest(actions.GET_MENBER, MenberSaga);
 }

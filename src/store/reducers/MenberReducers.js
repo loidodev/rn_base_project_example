@@ -1,4 +1,4 @@
-import {reducerDefault} from '@store/common';
+import {reducerDefault} from "@store/common";
 import Actions from '../actions';
 
 export const menber = (...props) => {

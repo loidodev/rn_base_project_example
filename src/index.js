@@ -23,7 +23,7 @@ const RootApp = () => {
   }, [dispatch, token]);
 
   useEffect(() => {
-    if (token.data) {
+    if (token?.data) {
       storage.getItem(STORAGE_KEYS.tokenUser).then(tokenUser => {
         if (tokenUser) {
           handleTokenUser(tokenUser);
