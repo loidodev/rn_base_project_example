@@ -6,7 +6,7 @@ import {useDispatch, useSelector} from 'react-redux';
 const Birthday = () => {
   const dispatch = useDispatch();
   const birthday = useSelector(state => state.birthday.data);
-  const {data, totalPage, isLoading} = useSelector(state => state.search);
+  
   useEffect(() => {
     dispatch({type: actions.GET_BIRTHDAY});
   }, [dispatch]);

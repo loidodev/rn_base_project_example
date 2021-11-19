@@ -1,7 +1,7 @@
 import {Block, HeaderSearch, Text} from '@components';
 import React, {useState} from 'react';
 import {ScrollView} from 'react-native';
-import HeaderMenber from '../HeaderMenber';
+import HeaderMenber from './components/HeaderMenber';
 
 const MemberDetails = value => {
   const {

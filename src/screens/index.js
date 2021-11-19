@@ -8,14 +8,13 @@ import Profile from './bottom/Profile';
 import QrCode from './bottom/QrCode';
 import Shopping from './bottom/Shopping';
 import Voucher from './bottom/Voucher';
+import BirthdayScreen from './common/Birthday';
+import EditUser from './common/EditUser';
 //import common
 import GetStart from './common/GetStart';
-import Member from './common/Member';
-import Member_Details from './common/Member/components/MemberDetails';
-import EditUser from './common/EditUser';
-import SearchScreen from './common/Search';
-import BirthdayScreen from './common/Birthday';
+import {MemberDetails, MenberMain} from './common/Member';
 import PartnerScreen from './common/Partner';
+import SearchScreen from './common/Search';
 
 export const auth = {
   [router.SIGN_IN_SCREEN]: SignIn,
@@ -36,6 +35,6 @@ export const common = {
   [router.GET_SEARCH_SCREEN]: SearchScreen,
   [router.GET_BIRTHDAY_SCREEN]: BirthdayScreen,
   [router.GET_PARTNER_SCREEN]: PartnerScreen,
-  [router.GET_MEMBER_SCREEN]: Member,
-  [router.GET_MEMBER_DERAILS]: Member_Details,
+  [router.GET_MEMBER_SCREEN]: MenberMain,
+  [router.GET_MEMBER_DERAILS]: MemberDetails,
 };
