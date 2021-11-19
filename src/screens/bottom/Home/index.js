@@ -1,5 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import {Block, HeaderLogo, LazyImage, ScrollView} from '@components';
+import {BANNER_ID} from '@constants';
 import actions from '@store/actions';
 import {SIZES} from '@theme';
 import React from 'react';
@@ -22,7 +23,7 @@ const Home = () => {
     if (token.data) {
       dispatch({
         type: actions.GET_BANNER_BY_ID,
-        params: {banner_id: 'banner-shopping,banner-shopping2'},
+        params: {banner_id: BANNER_ID.home},
       });
     }
   }, [dispatch, token]);
