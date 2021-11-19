@@ -45,8 +45,6 @@ export const STORAGE_KEYS = {
   tokenUser: 'tokenUser',
 };
 
-export const DATA_TEMPLATE = [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}];
-
 export const BANNER_ID = {
   home: 'banner-main,banner-home',
   shopping: 'banner-shopping,banner-shopping2',
