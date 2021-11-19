@@ -17,6 +17,7 @@ function* getSearch(payload) {
     handleApiError(error);
   }
 }
+
 function* getSuggestions() {
   try {
     const res = yield api.get('getSuggestions');
@@ -30,7 +31,21 @@ function* getSuggestions() {
   }
 }
 
+function* getProductGroup(payload) {
+  try {
+    const res = yield api.get('getProductGroup');
+    yield put({
+      type: _onSuccess(payload.type),
+      data: res.data,
+    });
+  } catch (error) {
+    yield put({type: _onFail(payload.type)});
+    handleApiError(error);
+  }
+}
+
 export function* watchProductSagas() {
   yield takeLatest(actions.GET_SEARCH_SCREEN, getSearch);
   yield takeLatest(actions.GET_SEARCH_SUGGESTIONS, getSuggestions);
+  yield takeLatest(actions.GET_PRODUCT_GROUP, getProductGroup);
 }

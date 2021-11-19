@@ -15,6 +15,7 @@ const Home = () => {
   const dispatch = useDispatch();
   const token = useSelector(state => state.token);
   const bannerById = useSelector(state => state.bannerById);
+  const productGroup = useSelector(state => state.productGroup);
 
   const [bannerHeader = [], bannerMiddle = []] = bannerById.data || [];
   const bannerMiddleItem = bannerMiddle[0] || {};
@@ -25,6 +26,7 @@ const Home = () => {
         type: actions.GET_BANNER_BY_ID,
         params: {banner_id: BANNER_ID.home},
       });
+      dispatch({type: actions.GET_PRODUCT_GROUP});
     }
   }, [dispatch, token]);
 
@@ -34,7 +36,7 @@ const Home = () => {
       <ScrollView>
         <BannerHome data={bannerHeader} />
         <CategoryGroup />
-        <CategoryProduct />
+        <CategoryProduct data={productGroup.data} />
         <Block marginTop={SIZES.medium} height={100}>
           <LazyImage
             styles={{width: '100%', height: '100%'}}
