@@ -15,10 +15,18 @@ export const token = (...props) => {
   return reducerDefault(...props, actions.GET_TOKEN);
 };
 
+export const userInfo = (...props) => {
+  return reducerDefault(...props, actions.GET_USER);
+};
+
 export const signUp = (...props) => {
   return reducerDefault(...props, actions.SIGN_UP_USER);
 };
 
-export const userInfo = (...props) => {
-  return reducerDefault(...props, actions.GET_USER);
+export const signIn = (...props) => {
+  return reducerDefault(...props, actions.SIGN_IN_USER);
+};
+
+export const logout = (...props) => {
+  return reducerDefault(...props, actions.LOG_OUT_USER);
 };

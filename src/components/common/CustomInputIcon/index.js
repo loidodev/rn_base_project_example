@@ -3,7 +3,13 @@ import {SIZES} from '@theme';
 import React from 'react';
 import BtnEye from './BtnEye';
 
-const CustomInput = ({iconProps, renderInput, isShowPass, value, setValue}) => {
+const CustomInputIcon = ({
+  iconProps,
+  renderInput,
+  isShowPass,
+  value,
+  setValue,
+}) => {
   return (
     <Block
       rowCenter
@@ -18,4 +24,4 @@ const CustomInput = ({iconProps, renderInput, isShowPass, value, setValue}) => {
   );
 };
 
-export default CustomInput;
+export default CustomInputIcon;

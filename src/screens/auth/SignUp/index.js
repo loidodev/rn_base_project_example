@@ -1,6 +1,6 @@
 import {ButtonSubmit, LinearLogo, Text} from '@components';
 import {useDeviceInfo} from '@hooks';
-import {bottomRoot} from '@navigator/navigationRef';
+import {bottomRoot, root} from '@navigator/navigationRef';
 import router from '@navigator/router';
 import actions from '@store/actions';
 import {SIZES} from '@theme';
@@ -48,6 +48,10 @@ const SignUp = () => {
     }
   };
 
+  const _onMoveSignIn = () => {
+    root.navigate(router.SIGN_IN_SCREEN);
+  };
+
   return (
     <LinearLogo>
       <Text bold large center>
@@ -64,7 +68,7 @@ const SignUp = () => {
         onPress={handleSubmit(_onSubmit)}>
         signUpScreen.register
       </ButtonSubmit>
-      <HaveAccount />
+      <HaveAccount onPress={_onMoveSignIn} />
     </LinearLogo>
   );
 };

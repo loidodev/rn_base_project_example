@@ -1,12 +1,16 @@
 import {Pressable, Text} from '@components';
+import {SIZES} from '@theme';
 import React from 'react';
 
-const HaveAccount = ({onPress}) => {
+const NotAccount = ({onPress}) => {
   return (
-    <Pressable onPress={onPress}>
+    <Pressable
+      marginTop={SIZES.large}
+      marginHorizontal={SIZES.medium}
+      onPress={onPress}>
       <Text flex center>
         <Text center small>
-          signUpScreen.haveAccount
+          loginScreen.haveAccount
         </Text>{' '}
         <Text color="blue" small>
           signUpScreen.login
@@ -16,4 +20,4 @@ const HaveAccount = ({onPress}) => {
   );
 };
 
-export default HaveAccount;
+export default NotAccount;
