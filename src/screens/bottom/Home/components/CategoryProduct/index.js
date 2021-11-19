@@ -11,6 +11,7 @@ const CategoryProduct = ({data = []}) => {
 
   const _renderCategoryProduct = (item, index) => {
     const {picture, title} = item || {};
+
     return (
       <Pressable
         key={`CategoryProduct-${index}`}

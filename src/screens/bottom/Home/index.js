@@ -36,7 +36,7 @@ const Home = () => {
       <ScrollView>
         <BannerHome data={bannerHeader} />
         <CategoryGroup />
-        <CategoryProduct data={productGroup.data} />
+        {productGroup.data && <CategoryProduct data={productGroup.data} />}
         <Block marginTop={SIZES.medium} height={100}>
           <LazyImage
             styles={{width: '100%', height: '100%'}}
