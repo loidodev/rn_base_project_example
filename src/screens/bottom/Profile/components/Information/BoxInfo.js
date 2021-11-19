@@ -15,7 +15,7 @@ import {
   WIDTH_BOX_INFO,
 } from '../helper';
 
-const BoxInfo = ({scrollY}) => {
+const BoxInfo = ({scrollY, email, full_name}) => {
   const INPUT = [0, rVerticalScale(MAX_HEIGHT_INFO)];
 
   const rStyles = useAnimatedStyle(() => ({
@@ -80,10 +80,10 @@ const BoxInfo = ({scrollY}) => {
           width={WIDTH_BOX_INFO}
           height={HEIGHT_BOX_INFO}>
           <Text center medium heavy numberOfLines={1}>
-            Loi Do
+            {full_name}
           </Text>
           <Text center numberOfLines={1}>
-            nhoxbaycao@gmail.com
+            {email}
           </Text>
         </Block>
       </Animated.View>
@@ -91,9 +91,9 @@ const BoxInfo = ({scrollY}) => {
       <Animated.View style={[rBoxInfoEndStyles, rStyles]}>
         <Block justifyCenter width={WIDTH_BOX_INFO} height={HEIGHT_BOX_INFO}>
           <Text medium heavy numberOfLines={1}>
-            Loi Do
+            {full_name}
           </Text>
-          <Text numberOfLines={1}>nhoxbaycao@gmail.com</Text>
+          <Text numberOfLines={1}>{email}</Text>
         </Block>
       </Animated.View>
     </Block>
