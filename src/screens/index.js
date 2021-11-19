@@ -10,8 +10,8 @@ import Shopping from './bottom/Shopping';
 import Voucher from './bottom/Voucher';
 //import common
 import GetStart from './common/GetStart';
-import Menber from './common/Menber';
-import Menber_Details from './common/Menber/components/Menber_Details';
+import Member from './common/Member';
+import Member_Details from './common/Member/components/MemberDetails';
 import EditUser from './common/EditUser';
 import SearchScreen from './common/Search';
 import BirthdayScreen from './common/Birthday';
@@ -36,6 +36,6 @@ export const common = {
   [router.GET_SEARCH_SCREEN]: SearchScreen,
   [router.GET_BIRTHDAY_SCREEN]: BirthdayScreen,
   [router.GET_PARTNER_SCREEN]: PartnerScreen,
-  [router.GET_MENBER_SCREEN]: Menber,
-  [router.GET_MENBER_DERAILS]: Menber_Details,
+  [router.GET_MEMBER_SCREEN]: Member,
+  [router.GET_MEMBER_DERAILS]: Member_Details,
 };

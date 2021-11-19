@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import {ScrollView} from 'react-native';
 import HeaderMenber from '../HeaderMenber';
 
-const Menber_Details = value => {
+const MemberDetails = value => {
   const {
     address,
     arr_picture,
@@ -46,4 +46,4 @@ const Menber_Details = value => {
   );
 };
 
-export default Menber_Details;
+export default MemberDetails;

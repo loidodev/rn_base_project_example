@@ -27,7 +27,7 @@ export const GROUPS = [
   {
     title: 'Đối tác',
     picture: ICONS.heart,
-    screenName: router.GET_MENBER_SCREEN,
+    screenName: router.GET_MEMBER_SCREEN,
   },
   {title: 'Map', picture: ICONS.map, screenName: ''},
 ];

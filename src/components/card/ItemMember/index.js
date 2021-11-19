@@ -9,11 +9,11 @@ import {Pressable} from 'react-native';
 
 const URL = 'https://source.unsplash.com/daily';
 
-const ItemMenber = ({item, style, contentStyle}) => {
+const ItemMember = ({item, style, contentStyle}) => {
   const {thumbnail = URL, picture = URL, title = ''} = item;
 
   const _onMoveDetails = () => {
-    commonRoot.navigate(router.GET_MENBER_DERAILS, {param: item});
+    commonRoot.navigate(router.GET_MEMBER_DERAILS, {param: item});
   };
 
   return (
@@ -42,4 +42,4 @@ const ItemMenber = ({item, style, contentStyle}) => {
   );
 };
 
-export default ItemMenber;
+export default ItemMember;

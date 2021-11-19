@@ -1,4 +1,4 @@
-import {Block, HeaderSearch, ItemMenber} from '@components';
+import {Block, HeaderSearch, ItemMember} from '@components';
 import actions from '@store/actions';
 import {SIZES} from '@theme';
 import {hs} from '@utils/responsive';
@@ -6,13 +6,13 @@ import React, {useEffect} from 'react';
 import {FlatList} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 
-const Menber = value => {
+const Member = value => {
   const {title} = value.route.params.params;
   const dispatch = useDispatch();
-  const menber = useSelector(state => state.menber.data);
-  
+  const member = useSelector(state => state.member.data);
+
   useEffect(() => {
-    dispatch({type: actions.GET_MENBER});
+    dispatch({type: actions.GET_MEMBER});
   }, [dispatch]);
 
   return (
@@ -21,10 +21,10 @@ const Menber = value => {
       <Block height={5} backgroundColor="smoke" marginBottom={12} />
 
       <FlatList
-        data={menber}
+        data={member}
         numColumns={1}
         keyExtractor={(_, index) => String(index)}
-        renderItem={({item}) => <ItemMenber item={item} />}
+        renderItem={({item}) => <ItemMember item={item} />}
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{padding: hs(SIZES.normal)}}
       />
@@ -32,4 +32,4 @@ const Menber = value => {
   );
 };
 
-export default Menber;
+export default Member;
