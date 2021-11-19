@@ -6,7 +6,7 @@ import actions from '@store/actions';
 import {SIZES} from '@theme';
 import React from 'react';
 import {useForm} from 'react-hook-form';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import formConfig, {FORM_NAME} from './components/formConfig';
 import FormSignIn from './components/FormSignIn';
 import LoginSocial from './components/LoginSocial';
@@ -20,6 +20,7 @@ const SignIn = () => {
   } = useForm(formConfig);
   const dispatch = useDispatch();
   const device_name = useDeviceInfo();
+  const signIn = useSelector(state => state.signIn);
 
   const _onSubmit = data => {
     dispatch({
@@ -56,7 +57,7 @@ const SignIn = () => {
         loginScreen.forgot
       </Pressable>
       <ButtonSubmit
-        // loading={signUp.isLoading}
+        loading={signIn.isLoading}
         containerProps={{margin: 0, marginVertical: SIZES.large}}
         onPress={handleSubmit(_onSubmit)}>
         loginScreen.login

@@ -83,13 +83,15 @@ function* signInUser(payload) {
 
 function* logoutUser(payload) {
   try {
-    const res = yield api.get('logoutUser');
+    const tokenUser = yield select(state => state.tokenUser);
+    const res = yield api.get('logoutUser', {user: tokenUser});
     yield put({
       type: _onSuccess(payload.type),
       data: res.data,
     });
     CustomToast(res.message);
-    handleTokenUser(res.token);
+    handleTokenUser();
+    payload.onSuccess && payload.onSuccess();
   } catch (error) {
     yield put({type: _onFail(payload.type)});
     handleApiError(error);

@@ -1,5 +1,5 @@
 import {Block, Text} from '@components';
-import React from 'react';
+import React, {memo} from 'react';
 import Animated, {
   Extrapolate,
   interpolate,
@@ -100,4 +100,4 @@ const BoxInfo = ({scrollY}) => {
   );
 };
 
-export default BoxInfo;
+export default memo(BoxInfo);
