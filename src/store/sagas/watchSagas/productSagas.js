@@ -47,6 +47,6 @@ function* getProductGroup(payload) {
 export function* watchProductSagas() {
   yield takeLatest(actions.GET_SEARCH_SCREEN, getProduct);
   yield takeLatest(actions.GET_SEARCH_SUGGESTIONS, getSuggestions);
-  yield takeLatest(actions.GET_PRODUCT_GROUP, getProductGroup);
+  yield takeLatest(actions.GET_PRODUCT_GROUP_HOME, getProductGroup);
   yield takeLatest(actions.GET_PRODUCT_IS_FOCUS, getProduct);
 }

@@ -1,14 +1,13 @@
 const {useState, useCallback} = require('react');
 
 const useLayoutSize = () => {
-  const [size, setSize] = useState(null);
+  const [layout, setLayout] = useState(null);
 
   const onLayout = useCallback(event => {
-    const layout = event.nativeEvent.layout;
-    setSize(layout);
+    setLayout(event.nativeEvent.layout);
   }, []);
 
-  return [size, onLayout];
+  return [layout, onLayout];
 };
 
 export default useLayoutSize;

@@ -3,6 +3,7 @@ import {
   CustomToast,
   handleTokenUser,
   handleApiError,
+  createDataTemplate,
 } from './helper';
 
 export {
@@ -11,4 +12,5 @@ export {
   CustomToast,
   handleTokenUser,
   handleApiError,
+  createDataTemplate,
 };
