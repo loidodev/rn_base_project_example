@@ -5,13 +5,13 @@ import {
   handleRound,
   handleSquare,
 } from '@components/shared';
+import locale from '@locale';
 import {hs, vs} from '@responsive';
 import {COLORS, FONTS} from '@theme';
 import React from 'react';
 import {StyleSheet, Text as RNText} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import styles from './styles';
-import locale from '@locale';
 
 const Text = ({
   //layout
@@ -94,6 +94,7 @@ const Text = ({
   numberOfLines,
   style,
   children,
+  textDecorationLine,
   ...rest
 }) => {
   const insets = useSafeAreaInsets();
@@ -182,6 +183,7 @@ const Text = ({
     fontSize && {fontSize: hs(fontSize)},
     fontFamily && {fontFamily: FONTS[fontFamily] || FONTS.sanRegular},
 
+    textDecorationLine && {textDecorationLine},
     {...StyleSheet.flatten(style)},
   ];
 

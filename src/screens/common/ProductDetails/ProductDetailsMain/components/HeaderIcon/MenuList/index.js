@@ -1,20 +1,17 @@
-/* eslint-disable no-sequences */
-import {ICONS} from '@assets';
 import {Block, Text} from '@components';
-import {routes} from '@navigation/routes';
+import {ICONS} from '@constants';
 import {useNavigation} from '@react-navigation/native';
-// import actions from '@redux/actions';
-import {CustomToast} from '@utils/helper';
-import I18n from 'i18n';
-import React, {useEffect, useState} from 'react';
-import {Animated, Image, Share} from 'react-native';
+import router from '@router';
+import locale from 'locale';
+import React, {useState} from 'react';
+import {Animated, Image} from 'react-native';
 import {
   Menu,
   MenuOption,
   MenuOptions,
   MenuTrigger,
 } from 'react-native-popup-menu';
-import {useDispatch, useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import styles from './styles';
 
 const MenuList = ({
@@ -27,18 +24,18 @@ const MenuList = ({
 }) => {
   const dispatch = useDispatch();
   const navigation = useNavigation();
-  const user = useSelector(state => state.tokenUser.data);
-  const userInfo = useSelector(state => state.userInfo.data);
-  const favorite = useSelector(state => state.favoriteProduct.data);
-  const productDetails = useSelector(state => state.productDetails.data);
-  const data = favorite?.filter(function (item) {
-    return item.item_id === item_id;
-  });
+  // const user = useSelector(state => state.tokenUser.data);
+  // const userInfo = useSelector(state => state.userInfo.data);
+  // const favorite = useSelector(state => state.favoriteProduct.data);
+  // const productDetails = useSelector(state => state.productDetails.data);
+  // const data = favorite?.filter(function (item) {
+  //   return item.item_id === item_id;
+  // });
 
-  const [check, setCheck] = useState(
-    user ? (data?.length === 0 ? true : false) : true,
-  );
-
+  // const [check, setCheck] = useState(
+  //   user ? (data?.length === 0 ? true : false) : true,
+  // );
+  const [check, setCheck] = useState();
   // useEffect(() => {
   //   user
   //     ? dispatch({
@@ -63,23 +60,23 @@ const MenuList = ({
     //   });
     //   check
     //     ? favorite.length === 12
-    //       ? (CustomToast(I18n.t('productDetails.error')), setCheck(true))
-    //       : (CustomToast(I18n.t('productDetails.like')),
+    //       ? (CustomToast(locale.t('productDetails.error')), setCheck(true))
+    //       : (CustomToast(locale.t('productDetails.like')),
     //         setIsHeart(check),
     //         setCheck(false))
-    //     : (CustomToast(I18n.t('productDetails.noLike')), setCheck(true));
+    //     : (CustomToast(locale.t('productDetails.noLike')), setCheck(true));
     // } else {
     //   navigation.navigate(routes.ALERT_BOX, {
-    //     title: I18n.t('productDetails.like'),
-    //     content: I18n.t('productDetails.label'),
+    //     title: locale.t('productDetails.like'),
+    //     content: locale.t('productDetails.label'),
     //     handleConfirm,
     //   });
     // }
   };
 
-  const handleConfirm = () => {
-    navigation.navigate(routes.BOTTOM_TAB, {screen: routes.PROFILE_SCREEN});
-  };
+  // const handleConfirm = () => {
+  //   navigation.navigate(routes.BOTTOM_TAB, {screen: routes.PROFILE_SCREEN});
+  // };
 
   const _renderOption = (label, iconMenu, route, params) => (
     <MenuOption
@@ -96,24 +93,24 @@ const MenuList = ({
     </MenuOption>
   );
 
-  const _renderShare = () => (
-    <MenuOption
-      style={styles.row}
-      onSelect={() =>
-        Share.share({
-          url: productDetails.friendly_link,
-        })
-      }>
-      <Image
-        source={ICONS.share}
-        style={styles.iconMenu}
-        resizeMode="contain"
-      />
-      <Text size={13} color="white">
-        {I18n.t('productDetails.share')}
-      </Text>
-    </MenuOption>
-  );
+  // const _renderShare = () => (
+  //   <MenuOption
+  //     style={styles.row}
+  //     onSelect={() =>
+  //       Share.share({
+  //         url: productDetails.friendly_link,
+  //       })
+  //     }>
+  //     <Image
+  //       source={ICONS.share}
+  //       style={styles.iconMenu}
+  //       resizeMode="contain"
+  //     />
+  //     <Text size={13} color="white">
+  //       {locale.t('productDetails.share')}
+  //     </Text>
+  //   </MenuOption>
+  // );
 
   const _renderFavorite = () => (
     <MenuOption style={styles.row} onSelect={_onPress}>
@@ -131,7 +128,7 @@ const MenuList = ({
         />
       )}
       <Text color="white" size={13}>
-        {I18n.t('productDetails.like')}
+        {locale.t('productDetails.like')}
       </Text>
     </MenuOption>
   );
@@ -160,30 +157,30 @@ const MenuList = ({
           borderTopRightRadius={0}>
           <Block paddingHorizontal={6}>
             {_renderOption(
-              I18n.t('productDetails.home_page'),
+              locale.t('productDetails.home_page'),
               ICONS.home,
-              routes.HOME_SCREEN,
+              router.HOME_SCREEN,
             )}
             {_renderOption(
-              I18n.t('productDetails.portfolio'),
+              locale.t('productDetails.portfolio'),
               ICONS.category,
-              routes.CATEGORY_SCREEN,
+              router.CATEGORY_SCREEN,
             )}
             {_renderOption(
-              I18n.t('productDetails.personal'),
+              locale.t('productDetails.personal'),
               ICONS.user,
-              routes.PROFILE_SCREEN,
+              router.PROFILE_SCREEN,
             )}
             {_renderFavorite()}
-            {_renderShare()}
+            {/* {_renderShare()}
             {userInfo?.is_request_affiliates === '1' &&
               userInfo?.is_affiliates === '1' &&
               _renderOption(
-                I18n.t('productDetails.affiliate'),
+                locale.t('productDetails.affiliate'),
                 ICONS.copy,
-                routes.ACCOUNT_AFFILIATE,
+                router.ACCOUNT_AFFILIATE,
                 productDetails?.friendly_link,
-              )}
+              )} */}
           </Block>
         </Block>
       </MenuOptions>

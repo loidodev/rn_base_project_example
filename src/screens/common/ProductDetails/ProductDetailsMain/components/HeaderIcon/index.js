@@ -1,7 +1,8 @@
 // import {icons} from '@assets';
 import {Block, Text} from '@components';
 import {ICONS} from '@constants';
-import {routes} from '@navigation/routes';
+// import {routes} from '@navigation/routes';
+import {root} from '@navigator/navigationRef';
 import {useNavigation} from '@react-navigation/core';
 import {COLORS} from '@theme';
 import {hs} from '@utils/responsive';
@@ -18,7 +19,7 @@ const PressableAmin = Animated.createAnimatedComponent(Pressable);
 const HeaderIcon = ({scrollY, title, item_id, onSetAnimated, setIsHeart}) => {
   const navigation = useNavigation();
   const {top} = useSafeAreaInsets();
-  const cart = useSelector(state => state.cart.data);
+  // const cart = useSelector(state => state.cart.data);
   const config = useSelector(state => state.config?.data);
 
   const opacityBackground = scrollY.interpolate({
@@ -46,11 +47,9 @@ const HeaderIcon = ({scrollY, title, item_id, onSetAnimated, setIsHeart}) => {
   });
 
   const _onGoBack = () =>
-    navigation.canGoBack()
-      ? navigation.goBack()
-      : navigation.navigate(routes.BOTTOM_TAB);
+    navigation.canGoBack() ? root.goBack() : root.goBack();
 
-  const _onMoveCart = () => navigation.navigate(routes.CART_SCREEN);
+  const _onMoveCart = () => console.log('----------');
 
   const _renderIcon = (icon, onPress) => (
     <PressableAmin
@@ -71,7 +70,7 @@ const HeaderIcon = ({scrollY, title, item_id, onSetAnimated, setIsHeart}) => {
             ...styles.textCart,
           }}>
           <Text color="white" size={10}>
-            {cart?.length || 0}
+            {/* {cart?.length || 0} */}0
           </Text>
         </Animated.View>
       )}

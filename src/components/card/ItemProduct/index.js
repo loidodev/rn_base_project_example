@@ -1,6 +1,8 @@
 /* eslint-disable react-native/no-inline-styles */
 import {Block, Image, LazyImage, Rating, Text} from '@components';
 import {ICONS} from '@constants';
+import {commonRoot} from '@navigator/navigationRef';
+import router from '@navigator/router';
 import {SIZES} from '@theme';
 import {convertCurrency} from '@utils';
 import {width} from '@utils/responsive';
@@ -18,13 +20,11 @@ const ItemProduct = ({item, style, contentStyle}) => {
     price = 3000,
     rate = 0,
     is_new = false,
+    item_id
   } = item;
 
   const _onMoveDetails = () => {
-    // navigation.navigate(routes.PRODUCT_DETAIL, {
-    //   item_id,
-    //   hasCombo,
-    // });
+    commonRoot.navigate(router.GET_PRODUCT_DETAILS, {params: item_id});
   };
 
   return (

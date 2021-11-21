@@ -7,3 +7,6 @@ export const search = (...props) => {
 export const suggestions = (...props) => {
   return reducerDefault(...props, actions.GET_SEARCH_SUGGESTIONS);
 };
+export const productDetails = (...props) => {
+  return reducerDefault(...props, actions.GET_PRODUCT_DETAILS);
+};

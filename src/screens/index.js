@@ -14,6 +14,7 @@ import EditUser from './common/EditUser';
 import GetStart from './common/GetStart';
 import {MemberDetails, MenberMain} from './common/Member';
 import PartnerScreen from './common/Partner';
+import {InformationDetails, ProductDetailsMain} from './common/ProductDetails';
 import SearchScreen from './common/Search';
 
 export const auth = {
@@ -37,4 +38,6 @@ export const common = {
   [router.GET_PARTNER_SCREEN]: PartnerScreen,
   [router.GET_MEMBER_SCREEN]: MenberMain,
   [router.GET_MEMBER_DERAILS]: MemberDetails,
+  [router.GET_PRODUCT_DETAILS]: ProductDetailsMain,
+  [router.INFORMATION_DETAILS]: InformationDetails,
 };
