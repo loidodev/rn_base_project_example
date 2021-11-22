@@ -1,13 +1,13 @@
-import {Block, Icon, Pressable, Text} from '@components';
+import {Block, Image, Pressable, Text} from '@components';
 import {hs, vs, width} from '@responsive';
 import {SIZES} from '@theme';
 import React from 'react';
-import AntDesign from 'react-native-vector-icons/AntDesign';
-
-const DATA = [1, 2, 3, 4];
+import {GROUPS} from './data';
 
 const OptionGroup = () => {
   const _renderOption = (item, index) => {
+    const {title, picture} = item || {};
+
     return (
       <Pressable key={`OptionGroup-${index}`} flex justifyCenter alignCenter>
         <Pressable
@@ -17,7 +17,7 @@ const OptionGroup = () => {
           alignCenter
           justifyCenter
           backgroundColor="smoke">
-          <Icon IconType={AntDesign} iconName="search1" />
+          <Image square={18} resizeMode="contain" source={picture} />
         </Pressable>
         <Text
           center
@@ -25,7 +25,7 @@ const OptionGroup = () => {
           marginTop={SIZES.xSmall}
           color="placeholder"
           numberOfLines={1}>
-          Danh mục
+          {title}
         </Text>
       </Pressable>
     );
@@ -40,7 +40,7 @@ const OptionGroup = () => {
       alignSelf="center"
       backgroundColor="white"
       radius={SIZES.small}>
-      {DATA.map(_renderOption)}
+      {GROUPS.map(_renderOption)}
     </Block>
   );
 };
