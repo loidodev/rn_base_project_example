@@ -1,15 +1,21 @@
 import {Block, Image, Pressable, ScaleAmin, Text} from '@components';
 import {ICONS} from '@constants';
+import Clipboard from '@react-native-community/clipboard';
 import {SIZES} from '@theme';
+import {CustomToast} from '@utils';
 import React from 'react';
+import {Share} from 'react-native';
+import {useSelector} from 'react-redux';
 
 const ShareAndReferredCode = ({delay}) => {
+  const userInfo = useSelector(state => state.userInfo.data);
+
   const _onShare = () => {
-    // Share.share({url: userInfo.link_invitaion});
+    Share.share({url: userInfo.link_invitaion});
   };
   const _copyCode = () => {
-    // Clipboard.setString(userInfo?.code_invitaion);
-    // CustomToast('coupon.coppy');
+    Clipboard.setString(userInfo?.code_invitaion);
+    CustomToast('coupon.coppy');
   };
 
   return (
@@ -71,7 +77,7 @@ const ShareAndReferredCode = ({delay}) => {
               paddingHorizontal={10}
               backgroundColor="smoke">
               <Text size={13} color="blue">
-                code_invitaion
+                {userInfo?.code_invitaion}
               </Text>
             </Block>
           </Pressable>
