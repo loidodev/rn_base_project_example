@@ -1,12 +1,14 @@
-import {Block} from '@components';
-import actions, {_onUnmount} from '@store/actions';
+import { Block } from '@components';
+import ProductDetailsHolder from '@components/placeholder/ProductDetailsHolder';
+import actions, { _onUnmount } from '@store/actions';
 // import actions, {_onUnmount} from '@store/actions';
-import {height, hs} from '@utils/responsive';
-import React, {useEffect, useRef, useState} from 'react';
-import {Animated, StatusBar} from 'react-native';
-import {useDispatch, useSelector} from 'react-redux';
+import { height, hs } from '@utils/responsive';
+import React, { useEffect, useRef, useState } from 'react';
+import { Animated, StatusBar } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
 import InformationProduct from '../Information';
 import AnimatedCart from './components/AnimatedCart';
+import AnimatedHeart from './components/AnimatedHeart';
 import ChooseTypeProduct from './components/ChooseTypeProduct';
 // import ChooseBonus from './components//ChooseBonus';
 // import AnimatedCart from './components/AnimatedCart';
@@ -23,8 +25,13 @@ import RelatedProduct from './components/RelatedProduct';
 const MAX_HEIGHT = height - hs(180);
 
 const ProductDetails = ({route}) => {
- const {item_id, hasCombo, deeplink_code} = route.params;
-
+  // const {item_id, hasCombo, deeplink_code} = route.params;
+  const item_id = route.params.params;
+  const hasCombo = route.params.params;
+  const deeplink_code = route.params.params;
+  console.log('--------------------------------');
+  console.log(route.params);
+  console.log('--------------------------------');
   const dispatch = useDispatch();
   const [isHeart, setIsHeart] = useState();
   const [productBonus, setProductBonus] = useState(null);
@@ -33,8 +40,8 @@ const ProductDetails = ({route}) => {
   const animatedCart = useRef(new Animated.Value(0)).current;
   const animatedHeart = useRef(new Animated.Value(0)).current;
 
-  const review = useSelector(state => state.review.data);
-  const user = useSelector(state => state.tokenUser.data);
+  const review = useSelector(state => state.review?.data);
+  const user = useSelector(state => state.tokenUser?.data);
   const rProduct = useSelector(state => state.productDetails);
   const rCombo = useSelector(state => state.comboProductDetails);
 
@@ -67,21 +74,27 @@ const ProductDetails = ({route}) => {
   }, [dispatch, hasCombo, item_id, user]);
 
   useEffect(() => {
-    if (!hasCombo) {
-      dispatch({
-        type: actions.GET_PRODUCT_DETAILS,
-        params: {
-          item_id,
-        },
-      });
-      // dispatch({
-      //   type: actions.GET_REVIEWS_PRODUCT,
-      //   params: {
-      //     item_id,
-      //     p: 1,
-      //   },
-      // });
-    }
+    // if (!hasCombo) {
+    //   dispatch({
+    //     type: actions.GET_PRODUCT_DETAILS,
+    //     params: {
+    //       item_id,
+    //     },
+    //   });
+    //   dispatch({
+    //     type: actions.GET_REVIEWS_PRODUCT,
+    //     params: {
+    //       item_id,
+    //       p: 1,
+    //     },
+    //   });
+    // }
+    dispatch({
+      type: actions.GET_PRODUCT_DETAILS,
+      params: {
+        item_id,
+      },
+    });
     if (user) {
       dispatch({
         type: actions.ADD_PRODUCT_VIEWED,
@@ -133,12 +146,11 @@ const ProductDetails = ({route}) => {
     }
   };
   const _renderContent = () => {
-    // if (rProduct.isLoading || rCombo.isLoading) {
-    //   return <ProductDetailsHolder />;
-    // }
+    if (rProduct.isLoading) {
+      return <ProductDetailsHolder />;
+    }
 
     const data = rProduct.data;
-
     return (
       <Block flex>
         <HeaderIcon
@@ -174,7 +186,7 @@ const ProductDetails = ({route}) => {
           source={data?.arr_picture?.[0]}
           animatedValue={animatedCart}
         />
-        {/* <AnimatedHeart isHeart={isHeart} setIsHeart={setIsHeart} /> */}
+        <AnimatedHeart isHeart={isHeart} setIsHeart={setIsHeart} />
       </Block>
     );
   };

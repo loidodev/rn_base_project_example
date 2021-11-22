@@ -31,3 +31,11 @@ export const productIsFocus = (...props) => {
 export const shopping = (...props) => {
   return reducerAdvance(...props, actions.GET_SHOPPING);
 };
+
+export const productOptions = (...props) => {
+  return reducerDefault(...props, actions.GET_PRODUCT_OPTION);
+};
+
+export const productOptionsDetails = (...props) => {
+  return reducerDefault(...props, actions.GET_PRODUCT_OPTION_DETAILS);
+};
