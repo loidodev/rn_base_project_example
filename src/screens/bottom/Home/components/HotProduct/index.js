@@ -3,9 +3,7 @@ import {SIZES} from '@theme';
 import React from 'react';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
-const DATA = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-
-const HotProduct = () => {
+const HotProduct = ({data = []}) => {
   const _renderProduct = (item, index) => {
     return (
       <ItemProduct key={`HotProduct-${index}`} item={item} index={index} />
@@ -40,7 +38,7 @@ const HotProduct = () => {
           </Pressable>
         </Block>
         <Block row wrap padding={SIZES.normal}>
-          {DATA.map(_renderProduct)}
+          {data?.map(_renderProduct)}
         </Block>
       </Block>
     </Block>

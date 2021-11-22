@@ -1,4 +1,5 @@
 import {Block, Icon, Pressable, Text} from '@components';
+import {HEADER} from '@constants';
 import {root} from '@navigator/navigationRef';
 import {SIZES} from '@theme';
 import React from 'react';
@@ -29,7 +30,7 @@ const HeaderSearch = ({title, canGoBack, iconBackName = 'chevron-back'}) => {
   };
 
   return (
-    <Block safeAreaTop rowCenter height={60} padding={SIZES.medium}>
+    <Block safeAreaTop rowCenter height={HEADER.height} padding={SIZES.medium}>
       {/* space close */}
       <Animated.View style={spaceStyles}>
         {canGoBack && (
@@ -39,7 +40,13 @@ const HeaderSearch = ({title, canGoBack, iconBackName = 'chevron-back'}) => {
         )}
       </Animated.View>
       {/* title */}
-      <Text flex center large bold color="primary" numberOfLines={2}>
+      <Text
+        flex
+        center
+        bold
+        color="primary"
+        fontSize={HEADER.titleSize}
+        numberOfLines={1}>
         {title}
       </Text>
       {/* icon */}

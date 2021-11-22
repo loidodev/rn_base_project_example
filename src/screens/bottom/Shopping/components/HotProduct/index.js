@@ -1,19 +1,40 @@
 import {Block, ItemProduct, Pressable, Text} from '@components';
-import {COLORS, SIZES} from '@theme';
-import React from 'react';
-import {ScrollView} from 'react-native';
 import {hs} from '@responsive';
+import {COLORS, SIZES} from '@theme';
+import React, {useEffect, useState} from 'react';
+import {ScrollView} from 'react-native';
 
-const DATA = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const HotProduct = ({data = []}) => {
+  const [categorySelect, setCategorySelect] = useState(null);
 
-const HotProduct = () => {
+  useEffect(() => {
+    if (data?.length) {
+      setCategorySelect(data[0]);
+    }
+  }, [data]);
+
+  const dataProduct = categorySelect?.data || [];
+
   const _renderCategory = (item, index) => {
+    const {title, group_id} = item || {};
+
+    const isSelect = group_id === categorySelect?.group_id;
+
+    const _onSelectCategory = () => {
+      !isSelect && setCategorySelect(item);
+    };
+
     return (
-      <Pressable key={`HotProdut-category-${index}`} padding={SIZES.normal}>
-        <Text>Trà xanh</Text>
+      <Pressable
+        key={`HotProdut-category-${index}`}
+        paddingVertical={SIZES.medium}
+        paddingHorizontal={SIZES.small}
+        onPress={_onSelectCategory}>
+        <Text color={isSelect ? 'primary' : 'black'}>{title}</Text>
       </Pressable>
     );
   };
+
   const _renderProduct = (item, index) => {
     return (
       <ItemProduct
@@ -52,12 +73,12 @@ const HotProduct = () => {
           horizontal
           showsHorizontalScrollIndicator={false}
           contentContainerStyle={{paddingHorizontal: hs(SIZES.normal)}}>
-          {DATA.map(_renderCategory)}
+          {data.map(_renderCategory)}
         </ScrollView>
       </Block>
       {/* product */}
       <Block row wrap padding={SIZES.normal}>
-        {DATA.map(_renderProduct)}
+        {dataProduct?.map(_renderProduct)}
       </Block>
     </Block>
   );

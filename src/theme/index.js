@@ -21,13 +21,14 @@ export const COLORS = {
   darkBlue: '#304FDF',
   lightRed: '#FA634D',
   lightBlue: '#3E79F7',
-  overLay: 'rgba(0.5, 0.25, 0, 0.2)',
   facebook: '#4267b2',
+  overLay: 'rgba(0.5, 0.25, 0, 0.2)',
 };
 
 export const GRADIENTS = {
   easyMed: ['#DCE35B', '#45B649'],
   lush: ['#56ab2f', '#a8e063'],
+  placeholder: ['#E6E6E6', '#f5f5f5', '#f5f5f5', '#E6E6E6'],
 };
 
 export const FONTS = {

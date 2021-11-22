@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import {Block, Icon, Pressable, TextInput} from '@components';
+import {HEADER} from '@constants';
 import {root} from '@navigator/navigationRef';
 import {COLORS, SIZES} from '@theme';
 import Storage from '@utils/storage';
@@ -81,7 +82,7 @@ const HeaderInput = ({
   };
 
   return (
-    <Block safeAreaTop rowCenter height={60} padding={SIZES.medium}>
+    <Block safeAreaTop rowCenter height={HEADER.height} padding={SIZES.medium}>
       {/* left */}
       <Pressable paddingHorizontal={SIZES.xSmall} onPress={_onGoBack}>
         <Icon IconType={Ionicons} iconName="chevron-back" iconSize={24} />

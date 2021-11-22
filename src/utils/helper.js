@@ -94,3 +94,15 @@ export const handleApiError = (error, hasToastWhenErr) => {
     hasToastWhenErr && CustomToast(message);
   }
 };
+
+export const createDataTemplate = arrayLength => {
+  if (arrayLength) {
+    let arrayTemplate = [];
+    for (let index = 0; index < arrayLength; index++) {
+      arrayTemplate = [...arrayTemplate, {}];
+    }
+    return arrayTemplate;
+  } else {
+    return [];
+  }
+};

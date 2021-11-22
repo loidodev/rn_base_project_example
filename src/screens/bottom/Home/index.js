@@ -1,43 +1,89 @@
 /* eslint-disable react-native/no-inline-styles */
-import {Block, HeaderLogo, LazyImage, ScrollView} from '@components';
+import {
+  Block,
+  HeaderLogo,
+  HomeHolder,
+  LazyImage,
+  ScrollView,
+} from '@components';
+import {BANNER_ID} from '@constants';
+import actions from '@store/actions';
 import {SIZES} from '@theme';
-import React from 'react';
+import React, {useState} from 'react';
+import {useEffect} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 import BannerHome from './components/BannerHome';
 import CategoryGroup from './components/CategoryGroup';
 import CategoryProduct from './components/CategoryProduct';
 import HotProduct from './components/HotProduct';
 
-const DATA = [
-  {
-    img_link:
-      'https://images.unsplash.com/photo-1556742044-3c52d6e88c62?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8c21hbGwlMjBzaXplfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-  },
-  {
-    img_link:
-      'https://images.unsplash.com/photo-1556742044-3c52d6e88c62?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8c21hbGwlMjBzaXplfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-  },
-  {
-    img_link:
-      'https://images.unsplash.com/photo-1556742044-3c52d6e88c62?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8c21hbGwlMjBzaXplfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-  },
-];
+const callAllApi = dispatch => {
+  return Promise.all([
+    dispatch({
+      type: actions.GET_BANNER_BY_ID_HOME,
+      params: {banner_id: BANNER_ID.home},
+    }),
+    dispatch({type: actions.GET_PRODUCT_GROUP_HOME}),
+    dispatch({
+      type: actions.GET_PRODUCT_IS_FOCUS,
+      params: {type: 'is_focus'},
+    }),
+  ]);
+};
 
 const Home = () => {
+  const dispatch = useDispatch();
+  const [refreshing, setRefreshing] = useState(false);
+  const token = useSelector(state => state.token);
+  const bannerByIdHome = useSelector(state => state.bannerByIdHome);
+  const productGroup = useSelector(state => state.productGroup);
+  const productIsFocus = useSelector(state => state.productIsFocus);
+
+  const [bannerHeader = [], bannerMiddle = []] = bannerByIdHome.data || [];
+  const bannerMiddleItem = bannerMiddle[0] || {};
+
+  useEffect(() => {
+    callAllApi(dispatch);
+  }, [dispatch, token]);
+
+  const _onRefreshing = () => {
+    setRefreshing(true);
+    callAllApi(dispatch).finally(() => {
+      setTimeout(() => {
+        setRefreshing(false);
+      }, 2000);
+    });
+  };
+
+  const _getPlaceHolder = () => {
+    const isLoading =
+      bannerByIdHome.isLoading ||
+      productGroup.isLoading ||
+      productIsFocus.isLoading;
+
+    return !refreshing && isLoading;
+  };
+
   return (
     <Block flex>
       <HeaderLogo />
-      <ScrollView>
-        <BannerHome data={DATA} />
-        <CategoryGroup />
-        <CategoryProduct />
-        <Block marginTop={SIZES.medium} height={100}>
-          <LazyImage
-            styles={{width: '100%', height: '100%'}}
-            source="https://images.unsplash.com/photo-1498837167922-ddd27525d352?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8Zm9vZHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
-          />
-        </Block>
-        <HotProduct />
-      </ScrollView>
+      {_getPlaceHolder() ? (
+        <HomeHolder />
+      ) : (
+        <ScrollView refreshing={refreshing} onRefresh={_onRefreshing}>
+          <BannerHome data={bannerHeader} />
+          <CategoryGroup />
+          {productGroup.data && <CategoryProduct data={productGroup.data} />}
+          <Block marginTop={SIZES.medium} height={100}>
+            <LazyImage
+              styles={{width: '100%', height: '100%'}}
+              source={bannerMiddleItem?.img_link}
+              thumbnail={bannerMiddleItem?.thumbnail}
+            />
+          </Block>
+          {productIsFocus.data && <HotProduct data={productIsFocus.data} />}
+        </ScrollView>
+      )}
     </Block>
   );
 };

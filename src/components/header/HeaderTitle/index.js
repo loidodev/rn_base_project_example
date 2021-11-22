@@ -1,11 +1,12 @@
 import {Block, Icon, Pressable, Text} from '@components';
+import {HEADER} from '@constants';
 import {root} from '@navigator/navigationRef';
 import {COLORS, SIZES} from '@theme';
 import React from 'react';
 import {StatusBar} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-const HeaderTitle = ({title, safeAreaTop, canGoBack, onGoBack}) => {
+const HeaderTitle = ({title, canGoBack, onGoBack}) => {
   const _renderIconBack = opacity => {
     const _onGoBack = () => {
       if (opacity === 1) {
@@ -33,13 +34,19 @@ const HeaderTitle = ({title, safeAreaTop, canGoBack, onGoBack}) => {
   return (
     <Block
       rowCenter
-      height={60}
-      safeAreaTop={safeAreaTop}
+      safeAreaTop
+      height={HEADER.height}
       padding={SIZES.medium}
       backgroundColor="primary">
       {_renderIconBack(1)}
       <StatusBar backgroundColor={COLORS.primary} />
-      <Text flex center large bold color="white" numberOfLines={2}>
+      <Text
+        flex
+        center
+        bold
+        color="white"
+        fontSize={HEADER.titleSize}
+        numberOfLines={2}>
         {title}
       </Text>
       {_renderIconBack(0)}
