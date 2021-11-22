@@ -57,7 +57,7 @@ export const reducerAdvance = (
       if (isLoadMore && state.data?.length) {
         newData = [...state.data, ...data];
       } else {
-        newData = [...data];
+        newData = Array.isArray(data) ? [...data] : data;
       }
 
       const result = {

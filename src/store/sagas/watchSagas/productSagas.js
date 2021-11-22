@@ -59,9 +59,35 @@ function* getComboProductDetails(payload) {
   }
 }
 
+function* getProductGroup(payload) {
+  try {
+    const res = yield api.get('getProductGroup');
+    yield put({
+      type: _onSuccess(payload.type),
+      data: res.data,
+    });
+  } catch (error) {
+    yield put({type: _onFail(payload.type)});
+    handleApiError(error);
+  }
+}
+
 function* getProductOption(payload) {
   try {
     const res = yield api.get('getProductOption', payload.params);
+    yield put({
+      type: _onSuccess(payload.type),
+      data: res.data,
+    });
+  } catch (error) {
+    yield put({type: _onFail(payload.type)});
+    handleApiError(error);
+  }
+}
+
+function* getShopping(payload) {
+  try {
+    const res = yield api.get('getShopping');
     yield put({
       type: _onSuccess(payload.type),
       data: res.data,
@@ -85,7 +111,6 @@ function* getProductOptionDetail(payload) {
   }
 }
 
-
 export function* watchProductSagas() {
   yield takeLatest(actions.GET_SEARCH_SCREEN, getProduct);
   yield takeLatest(actions.GET_SEARCH_SUGGESTIONS, getSuggestions);
@@ -94,4 +119,7 @@ export function* watchProductSagas() {
   yield takeLatest(actions.GET_COMBO_PRODUCT_DETAILS, getComboProductDetails);
   yield takeLatest(actions.GET_PRODUCT_OPTION, getProductOption);
   yield takeLatest(actions.GET_PRODUCT_OPTION_DETAILS, getProductOptionDetail);
+  yield takeLatest(actions.GET_PRODUCT_GROUP_HOME, getProductGroup);
+  yield takeLatest(actions.GET_PRODUCT_IS_FOCUS, getProduct);
+  yield takeLatest(actions.GET_SHOPPING, getShopping);
 }

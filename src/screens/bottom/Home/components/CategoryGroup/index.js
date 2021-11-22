@@ -10,6 +10,7 @@ const CategoryGroup = () => {
       params: value,
     });
   };
+
   const _renderCategory = ({item}) => {
     const {title, picture} = item;
 

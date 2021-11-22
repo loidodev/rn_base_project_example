@@ -17,13 +17,12 @@ import Shimmer from './base/Shimmer';
 import Text from './base/Text';
 import TextInput from './base/TextInput';
 import WebView from './base/WebView';
-import ItemMember from './card/ItemMember';
 //import card
 import ItemHistory from './card/ItemHistory';
 import ItemProduct from './card/ItemProduct';
+import ItemMember from './card/ItemMember';
 //import common
 import ButtonSubmit from './common/ButtonSubmit';
-//empty
 import Empty from './common/Empty';
 import LinearLogo from './common/LinearLogo';
 import LogoTitle from './common/LogoTitle';
@@ -31,15 +30,18 @@ import CustomInputErr from './common/CustomInputErr';
 import CustomInputIcon from './common/CustomInputIcon';
 //import form
 import FormInput from './form/FormInput';
-import HeaderInput from './header/HeaderInput';
 //import header
 import HeaderLogo from './header/HeaderLogo';
 import HeaderSearch from './header/HeaderSearch';
 import HeaderTitle from './header/HeaderTitle';
+import HeaderInput from './header/HeaderInput';
 //placeholder
 import ListProductHolder from './placeholder/ListProductHolder';
+import HomeHolder from './placeholder/HomeHolder';
+import ShoppingHolder from './placeholder/ShoppingHolder';
 
 export {
+  //animated
   ScaleAmin,
   CheckBox,
   //base
@@ -61,8 +63,6 @@ export {
   //card
   ItemProduct,
   ItemMember,
-  //form
-  //header
   ItemHistory,
   //common
   ButtonSubmit,
@@ -70,6 +70,7 @@ export {
   LinearLogo,
   CustomInputErr,
   CustomInputIcon,
+  Empty,
   //form
   FormInput,
   //header
@@ -79,7 +80,6 @@ export {
   HeaderTitle,
   //placeholder
   ListProductHolder,
-  //empty
-  Empty,
+  HomeHolder,
+  ShoppingHolder,
 };
-

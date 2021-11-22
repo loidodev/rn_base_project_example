@@ -1,20 +1,22 @@
 /* eslint-disable react-native/no-inline-styles */
 import {Block, Image, LazyImage, Pressable, Text} from '@components';
-import React from 'react';
-import {SIZES} from '@theme';
-import {ScrollView} from 'react-native';
-import {width} from '@responsive';
-import {hs} from '@responsive';
 import {IMAGES} from '@constants';
+import {hs, width} from '@responsive';
+import {SIZES} from '@theme';
+import React from 'react';
+import {ScrollView} from 'react-native';
 
-const DATA = [1, 2, 3, 4, 5, 6];
+const CategoryProduct = ({data = []}) => {
+  const newData = [{}, ...data];
 
-const CategoryProduct = () => {
   const _renderCategoryProduct = (item, index) => {
+    const {picture, title} = item || {};
+
     return (
       <Pressable
         key={`CategoryProduct-${index}`}
-        marginLeft={index !== 0 ? SIZES.medium : 0}>
+        marginLeft={index !== 0 ? SIZES.medium : 0}
+        style={{width: width / 4}}>
         <Block
           radius={SIZES.small}
           borderWidth={1}
@@ -46,13 +48,12 @@ const CategoryProduct = () => {
                 width: '100%',
                 height: '100%',
               }}
-              thumbnail="https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Zm9vZHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
-              source="https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Zm9vZHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+              source={picture}
             />
           )}
         </Block>
         <Text center marginTop={SIZES.small} color="primary">
-          {index === 0 ? 'Tất cả' : 'Kẹo ho'}
+          {index === 0 ? 'Tất cả' : title}
         </Text>
       </Pressable>
     );
@@ -71,7 +72,7 @@ const CategoryProduct = () => {
           horizontal
           showsHorizontalScrollIndicator={false}
           contentContainerStyle={{paddingHorizontal: hs(SIZES.medium)}}>
-          {DATA.map(_renderCategoryProduct)}
+          {newData.map(_renderCategoryProduct)}
         </ScrollView>
       </Block>
     </Block>
