@@ -7,6 +7,10 @@ import RNRestart from 'react-native-restart';
 import Toast from 'react-native-simple-toast';
 import storage from './storage';
 
+export const ADD_CART = 'ADD_CART';
+
+export const BUY_NOW = 'BUY_NOW';
+
 export const convertCurrency = (currency, suffix = '') => {
   if (currency == null) {
     return 0;
@@ -93,4 +97,49 @@ export const handleApiError = (error, hasToastWhenErr) => {
   } else {
     hasToastWhenErr && CustomToast(message);
   }
+};
+
+export const useComboInfo = (array = [], isComboGift = true) => {
+  const newArr = array?.length ? array?.map(({item_id}) => item_id) : [];
+  const str = newArr?.length > 1 ? newArr?.join(',') : `${newArr[0]}`;
+  const bonus = newArr?.length ? str : '0';
+  const result = isComboGift ? {gift_id: bonus} : {include_id: bonus};
+  return JSON.stringify(result);
+};
+
+export const addCartToLocal = ({
+  cart,
+  productQty,
+  details,
+  optionId,
+  combo_info,
+  is_combo,
+  arr_gift,
+  arr_include,
+  gift_info,
+  include_info,
+}) => {
+  const index = cart?.findIndex(({option_id}) => option_id === optionId);
+
+  if (index !== -1) {
+    cart[index] = {
+      ...cart[index],
+      quantity: cart[index]?.quantity + productQty,
+    };
+  } else {
+    const newItem = {
+      ...details,
+      combo_info,
+      is_combo,
+      arr_gift,
+      arr_include,
+      gift_info,
+      include_info,
+      quantity: productQty,
+      option_id: optionId,
+    };
+    cart = [...cart, newItem];
+  }
+
+  return cart;
 };

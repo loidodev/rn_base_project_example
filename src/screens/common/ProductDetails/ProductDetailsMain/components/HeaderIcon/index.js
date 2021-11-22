@@ -85,7 +85,7 @@ const HeaderIcon = ({scrollY, title, item_id, onSetAnimated, setIsHeart}) => {
       <Block row alignCenter space="between" marginTop={top}>
         {_renderIcon(ICONS.back, _onGoBack)}
         <Animated.View style={{opacity: opacityTitle, ...styles.titleWrap}}>
-          <Text size={16} fontType="semibold" numberOfLines={1}>
+          <Text fontSize={16} bold numberOfLines={1}>
             {title}
           </Text>
         </Animated.View>

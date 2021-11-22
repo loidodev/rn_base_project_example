@@ -1,9 +1,9 @@
 import {Block, Text} from '@components';
 import Rating from '@components/Common/Rating';
-import {routes} from '@navigation/routes';
+// import {routes} from '@navigation/routes';
 import {useNavigation} from '@react-navigation/core';
 import {height} from '@utils/responsive';
-import I18n from 'i18n';
+import locale from 'locale';
 import React from 'react';
 import {Pressable} from 'react-native';
 import {useSelector} from 'react-redux';
@@ -22,7 +22,7 @@ const EvaluateProduct = ({data, isShowAll, item_id, hasCombo}) => {
       <Block marginTop={8}>
         <Block padding={12} backgroundColor="white">
           <Text size={16} marginVertical={7} fontType="semibold">
-            {I18n.t('evaluate.product')}
+            {locale.t('evaluate.product')}
           </Text>
           <Block row alignCenter>
             <Block alignCenter justifyCenter marginRight={10}>
@@ -40,7 +40,7 @@ const EvaluateProduct = ({data, isShowAll, item_id, hasCombo}) => {
                       (total, item) => total + item,
                     )
                   : null}{' '}
-                {I18n.t('evaluate.comment')}
+                {locale.t('evaluate.comment')}
               </Text>
             </Block>
             <Block
@@ -69,11 +69,12 @@ const EvaluateProduct = ({data, isShowAll, item_id, hasCombo}) => {
           {isShowAll && (
             <Pressable
               style={styles.btnViewDetails}
-              onPress={() =>
-                navigation.navigate(routes.COMMENT_DETAILS, {item_id, hasCombo})
-              }>
+              // onPress={() =>
+              //   navigation.navigate(routes.COMMENT_DETAILS, {item_id, hasCombo})
+              // }
+            >
               <Text alignCenter size={13} color="blue" fontType="semibold">
-                {I18n.t('evaluate.all_comments')}
+                {locale.t('evaluate.all_comments')}
                 {' >'}
               </Text>
             </Pressable>

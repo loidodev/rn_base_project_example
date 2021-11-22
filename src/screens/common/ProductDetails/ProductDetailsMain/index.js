@@ -1,10 +1,13 @@
 import {Block} from '@components';
-import actions from '@store/actions';
-// import actions, {_onUnmount} from '@redux/actions';
+import actions, {_onUnmount} from '@store/actions';
+// import actions, {_onUnmount} from '@store/actions';
 import {height, hs} from '@utils/responsive';
 import React, {useEffect, useRef, useState} from 'react';
 import {Animated, StatusBar} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
+import InformationProduct from '../Information';
+import AnimatedCart from './components/AnimatedCart';
+import ChooseTypeProduct from './components/ChooseTypeProduct';
 // import ChooseBonus from './components//ChooseBonus';
 // import AnimatedCart from './components/AnimatedCart';
 // import AnimatedHeart from './components/AnimatedHeart';
@@ -14,27 +17,26 @@ import {useDispatch, useSelector} from 'react-redux';
 import HeaderIcon from './components/HeaderIcon';
 import ImageHeader from './components/ImageHeader';
 import InfoProduct from './components/InfoProduct';
-import InformationProduct from '../Information';
 import RelatedProduct from './components/RelatedProduct';
 // import EvaluateProduct from '../EvaluateProrduct';
 
 const MAX_HEIGHT = height - hs(180);
 
 const ProductDetails = ({route}) => {
-  const item_id = route.params.params;
+ const {item_id, hasCombo, deeplink_code} = route.params;
 
   const dispatch = useDispatch();
   const [isHeart, setIsHeart] = useState();
-  // const [productBonus, setProductBonus] = useState(null);
+  const [productBonus, setProductBonus] = useState(null);
 
   const scrollY = useRef(new Animated.Value(0)).current;
   const animatedCart = useRef(new Animated.Value(0)).current;
   const animatedHeart = useRef(new Animated.Value(0)).current;
-  const rProduct = useSelector(state => state.productDetails);
 
-  // const review = useSelector(state => state.review.data);
-  // const user = useSelector(state => state.tokenUser.data);
-  // const rCombo = useSelector(state => state.comboProductDetails);
+  const review = useSelector(state => state.review.data);
+  const user = useSelector(state => state.tokenUser.data);
+  const rProduct = useSelector(state => state.productDetails);
+  const rCombo = useSelector(state => state.comboProductDetails);
 
   // useEffect(() => {
   //   if (deeplink_code) {
@@ -48,75 +50,75 @@ const ProductDetails = ({route}) => {
   //   }
   // }, [deeplink_code, dispatch, user]);
 
-  // useEffect(() => {
-  //   if (hasCombo) {
-  //     dispatch({
-  //       type: actions.GET_COMBO_PRODUCT_DETAILS,
-  //       params: {
-  //         user,
-  //         item_id,
-  //       },
-  //     });
-  //   }
+  useEffect(() => {
+    if (hasCombo) {
+      dispatch({
+        type: actions.GET_COMBO_PRODUCT_DETAILS,
+        params: {
+          user,
+          item_id,
+        },
+      });
+    }
 
-  //   return () => {
-  //     dispatch({type: _onUnmount(actions.GET_COMBO_PRODUCT_DETAILS)});
-  //   };
-  // }, [dispatch, hasCombo, item_id, user]);
+    return () => {
+      dispatch({type: _onUnmount(actions.GET_COMBO_PRODUCT_DETAILS)});
+    };
+  }, [dispatch, hasCombo, item_id, user]);
 
   useEffect(() => {
+    if (!hasCombo) {
+      dispatch({
+        type: actions.GET_PRODUCT_DETAILS,
+        params: {
+          item_id,
+        },
+      });
+      // dispatch({
+      //   type: actions.GET_REVIEWS_PRODUCT,
+      //   params: {
+      //     item_id,
+      //     p: 1,
+      //   },
+      // });
+    }
+    if (user) {
+      dispatch({
+        type: actions.ADD_PRODUCT_VIEWED,
+        body: {
+          item_id,
+        },
+        params: {
+          user,
+        },
+      });
+    }
     dispatch({
-      type: actions.GET_PRODUCT_DETAILS,
+      type: actions.GET_REVIEWS_PRODUCT,
       params: {
         item_id,
+        p: 1,
       },
     });
-    // dispatch({
-    //   type: actions.GET_REVIEWS_PRODUCT,
-    //   params: {
-    //     item_id,
-    //     p: 1,
-    //   },
-    // });
+    return () => {
+      dispatch({type: _onUnmount(actions.GET_PRODUCT_DETAILS)});
+      dispatch({type: _onUnmount(actions.GET_REVIEWS_PRODUCT)});
+      dispatch({type: _onUnmount(actions.ADD_PRODUCT_VIEWED)});
+    };
+  }, [dispatch, hasCombo, item_id, user]);
 
-    // if (user) {
-    //   dispatch({
-    //     type: actions.ADD_PRODUCT_VIEWED,
-    //     body: {
-    //       item_id,
-    //     },
-    //     params: {
-    //       user,
-    //     },
-    //   });
-    // }
-
-    // dispatch({
-    //   type: actions.GET_REVIEWS_PRODUCT,
-    //   params: {
-    //     item_id,
-    //     p: 1,
-    //   },
-    // });
-    // return () => {
-    //   dispatch({type: _onUnmount(actions.GET_PRODUCT_DETAILS)});
-    //   // dispatch({type: _onUnmount(actions.GET_REVIEWS_PRODUCT)});
-    //   // dispatch({type: _onUnmount(actions.ADD_PRODUCT_VIEWED)});
-    // };
-  }, [dispatch, item_id]);
-
-  // const _onAnimatedCart = () => {
-  //   if (animatedCart._value === 0) {
-  //     Animated.timing(animatedCart, {
-  //       toValue: MAX_HEIGHT,
-  //       duration: 1000,
-  //     }).start(({finished}) => {
-  //       if (finished) {
-  //         animatedCart.setValue(0);
-  //       }
-  //     });
-  //   }
-  // };
+  const _onAnimatedCart = () => {
+    if (animatedCart._value === 0) {
+      Animated.timing(animatedCart, {
+        toValue: MAX_HEIGHT,
+        duration: 1000,
+      }).start(({finished}) => {
+        if (finished) {
+          animatedCart.setValue(0);
+        }
+      });
+    }
+  };
 
   const _onAnimatedHeart = () => {
     if (animatedHeart._value === 0) {
@@ -130,23 +132,18 @@ const ProductDetails = ({route}) => {
       });
     }
   };
-
   const _renderContent = () => {
     // if (rProduct.isLoading || rCombo.isLoading) {
     //   return <ProductDetailsHolder />;
     // }
 
     const data = rProduct.data;
-    // console.log('------------------------------');
-    // console.log('---------------------item_id---------', item_id);
-    // console.log(data);
-    // console.log('------------------------------');
 
     return (
       <Block flex>
         <HeaderIcon
           scrollY={scrollY}
-          title={'data?.title'}
+          title={data?.title}
           item_id={item_id}
           onSetAnimated={_onAnimatedHeart}
           setIsHeart={setIsHeart}
@@ -168,9 +165,8 @@ const ProductDetails = ({route}) => {
           /> */}
           <RelatedProduct data={data?.arr_related} />
         </Animated.ScrollView>
-        {/* <ChooseTypeProduct
+        <ChooseTypeProduct
           productBonus={productBonus}
-          hasCombo={hasCombo}
           isComBoGift={data?.combo?.arr_gift?.length > 0}
           onSetAnimated={_onAnimatedCart}
         />
@@ -178,7 +174,7 @@ const ProductDetails = ({route}) => {
           source={data?.arr_picture?.[0]}
           animatedValue={animatedCart}
         />
-        <AnimatedHeart isHeart={isHeart} setIsHeart={setIsHeart} /> */}
+        {/* <AnimatedHeart isHeart={isHeart} setIsHeart={setIsHeart} /> */}
       </Block>
     );
   };

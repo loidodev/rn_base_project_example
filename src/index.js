@@ -3,13 +3,12 @@ import RootNavigator from '@navigator';
 import store from '@store';
 import actions from '@store/actions';
 import {handleTokenUser} from '@utils';
-import Storage from '@utils/storage';
 import storage from '@utils/storage';
 import React, {useEffect} from 'react';
-import { MenuProvider } from 'react-native-popup-menu';
+import {MenuProvider} from 'react-native-popup-menu';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {Provider, useDispatch, useSelector} from 'react-redux';
-// import I18n from 'i18n';
+// import locale from 'locale';
 
 const RootApp = () => {
   const dispatch = useDispatch();
@@ -43,7 +42,7 @@ const App = () => {
     <Provider store={store}>
       <SafeAreaProvider>
         <MenuProvider>
-        <RootApp />
+          <RootApp />
         </MenuProvider>
       </SafeAreaProvider>
     </Provider>

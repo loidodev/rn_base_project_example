@@ -39,6 +39,11 @@ export const ICONS = {
   back: require('@assets/icons/product/back.png'),
   cart: require('@assets/icons/product/cart.png'),
   menu: require('@assets/icons/product/menu.png'),
+
+  comment: require('@assets/icons/product/comment.png'),
+  minus: require('@assets/icons/product/minus.png'),
+  plus: require('@assets/icons/product/plus.png'),
+
 };
 
 export const IMAGES = {

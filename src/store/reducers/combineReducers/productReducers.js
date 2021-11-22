@@ -10,3 +10,11 @@ export const suggestions = (...props) => {
 export const productDetails = (...props) => {
   return reducerDefault(...props, actions.GET_PRODUCT_DETAILS);
 };
+
+export const review = (...props) => {
+  return reducerAdvance(...props, actions.GET_REVIEWS_PRODUCT);
+};
+
+export const comboProductDetails = (...props) => {
+  return reducerDefault(...props, actions.GET_COMBO_PRODUCT_DETAILS);
+};

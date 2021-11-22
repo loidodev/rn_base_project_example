@@ -2,14 +2,14 @@ import {Block, Header, Text} from '@components';
 import LoadMore from '@components/Common/LoadMore';
 import {EvaluateHolder} from '@components/Common/PlaceHolder';
 import Rating from '@components/Common/Rating';
-import actions from '@redux/actions';
 import {height} from '@utils/responsive';
-import I18n from 'i18n';
+import locale from 'locale';
 import React, {useEffect, useState} from 'react';
 import {FlatList} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import Comment from './../../../Comment';
 import RenderProgress from './../../../RenderProgress';
+import actions from '@store/actions';
 
 const CommentDetails = ({route}) => {
   const dispatch = useDispatch();
@@ -57,7 +57,7 @@ const CommentDetails = ({route}) => {
     return (
       <Block padding={12} backgroundColor="white">
         <Text size={16} marginVertical={7} fontType="semibold">
-          {I18n.t('evaluate.product')}
+          {locale.t('evaluate.product')}
         </Text>
         <Block row alignCenter>
           <Block alignCenter justifyCenter marginRight={10}>
@@ -75,7 +75,7 @@ const CommentDetails = ({route}) => {
                     (total, item) => total + item,
                   )
                 : null}{' '}
-              {I18n.t('evaluate.comment')}
+              {locale.t('evaluate.comment')}
             </Text>
           </Block>
           <Block
@@ -109,7 +109,7 @@ const CommentDetails = ({route}) => {
 
   return (
     <Block flex backgroundColor="white">
-      <Header title={I18n.t('evaluate.reviews')} canGoBack />
+      <Header title={locale.t('evaluate.reviews')} canGoBack />
       {isLoading && !data && <EvaluateHolder />}
       {!isLoading && !data?.length ? null : (
         <FlatList
