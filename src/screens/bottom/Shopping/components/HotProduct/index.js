@@ -1,6 +1,6 @@
 import {Block, ItemProduct, Pressable, Text} from '@components';
 import {COLORS, SIZES} from '@theme';
-import React from 'react';
+import React, {useMemo} from 'react';
 import {ScrollView} from 'react-native';
 import {hs} from '@responsive';
 import {useState} from 'react';
@@ -8,22 +8,31 @@ import {useState} from 'react';
 const HotProduct = ({data = []}) => {
   const [categorySelect, setCategorySelect] = useState(null);
 
-  const _convertDataProduct = () => {
+  const allItemData = useMemo(() => {
     let result = [];
-    for (let index = 0; index < data.length; index++) {
-      const element = data[index]?.group_child;
-      console.log(element);
-      // result = [...result, ...element];
-    }
+    data?.map(category => {
+      result = [...result, ...category?.data];
+    });
     return result;
-  };
+  }, [data]);
 
-  console.log(_convertDataProduct());
+  const dataProduct = categorySelect?.data || allItemData;
 
   const _renderCategory = (item, index) => {
+    const {title, group_id} = item || {};
+
+    const isSelect = group_id === categorySelect?.group_id;
+
+    const _onSelectCategory = () => {
+      setCategorySelect(isSelect ? null : item);
+    };
+
     return (
-      <Pressable key={`HotProdut-category-${index}`} padding={SIZES.normal}>
-        <Text>Trà xanh</Text>
+      <Pressable
+        key={`HotProdut-category-${index}`}
+        padding={SIZES.normal}
+        onPress={_onSelectCategory}>
+        <Text color={isSelect ? 'primary' : 'black'}>{title}</Text>
       </Pressable>
     );
   };
@@ -71,7 +80,7 @@ const HotProduct = ({data = []}) => {
       </Block>
       {/* product */}
       <Block row wrap padding={SIZES.normal}>
-        {data.map(_renderProduct)}
+        {dataProduct?.map(_renderProduct)}
       </Block>
     </Block>
   );
