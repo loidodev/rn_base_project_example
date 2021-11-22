@@ -54,3 +54,8 @@ export const BANNER_ID = {
   home: 'banner-main,banner-home',
   shopping: 'banner-shopping,banner-shopping2',
 };
+
+export const HEADER = {
+  height: 60,
+  titleSize: 16,
+};

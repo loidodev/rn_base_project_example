@@ -1,22 +1,19 @@
 import {Block, ItemProduct, Pressable, Text} from '@components';
-import {COLORS, SIZES} from '@theme';
-import React, {useMemo} from 'react';
-import {ScrollView} from 'react-native';
 import {hs} from '@responsive';
-import {useState} from 'react';
+import {COLORS, SIZES} from '@theme';
+import React, {useEffect, useState} from 'react';
+import {ScrollView} from 'react-native';
 
 const HotProduct = ({data = []}) => {
   const [categorySelect, setCategorySelect] = useState(null);
 
-  const allItemData = useMemo(() => {
-    let result = [];
-    data?.map(category => {
-      result = [...result, ...category?.data];
-    });
-    return result;
+  useEffect(() => {
+    if (data?.length) {
+      setCategorySelect(data[0]);
+    }
   }, [data]);
 
-  const dataProduct = categorySelect?.data || allItemData;
+  const dataProduct = categorySelect?.data || [];
 
   const _renderCategory = (item, index) => {
     const {title, group_id} = item || {};
@@ -24,13 +21,14 @@ const HotProduct = ({data = []}) => {
     const isSelect = group_id === categorySelect?.group_id;
 
     const _onSelectCategory = () => {
-      setCategorySelect(isSelect ? null : item);
+      !isSelect && setCategorySelect(item);
     };
 
     return (
       <Pressable
         key={`HotProdut-category-${index}`}
-        padding={SIZES.normal}
+        paddingVertical={SIZES.medium}
+        paddingHorizontal={SIZES.small}
         onPress={_onSelectCategory}>
         <Text color={isSelect ? 'primary' : 'black'}>{title}</Text>
       </Pressable>

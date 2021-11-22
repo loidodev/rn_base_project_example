@@ -1,7 +1,7 @@
-import {Block, HeaderLogo, ScrollView} from '@components';
+import {Block, HeaderLogo, ScrollView, ShoppingHolder} from '@components';
 import {BANNER_ID} from '@constants';
 import actions from '@store/actions';
-import React from 'react';
+import React, {useState} from 'react';
 import {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import Banner from './components/Banner';
@@ -22,6 +22,7 @@ const callAllApi = dispatch => {
 
 const Shopping = () => {
   const dispatch = useDispatch();
+  const [refreshing, setRefreshing] = useState(false);
   const bannerByIdShopping = useSelector(state => state.bannerByIdShopping);
   const shopping = useSelector(state => state.shopping);
 
@@ -35,23 +36,42 @@ const Shopping = () => {
     callAllApi(dispatch);
   }, [dispatch]);
 
+  const _onRefreshing = () => {
+    setRefreshing(true);
+    callAllApi(dispatch).finally(() => {
+      setTimeout(() => {
+        setRefreshing(false);
+      }, 2000);
+    });
+  };
+
+  const _getPlaceHolder = () => {
+    const isLoading = bannerByIdShopping.isLoading || shopping.isLoading;
+
+    return !refreshing && isLoading;
+  };
+
   return (
     <Block flex>
       <HeaderLogo />
       <BoxAddress />
       <OptionGroup />
-      <ScrollView showsVerticalScrollIndicator={false}>
-        <Banner
-          thumbnail={bannerHeaderItem?.thumbnail}
-          source={bannerHeaderItem?.img_link}
-        />
-        <Banner
-          thumbnail={bannerMiddleItem?.thumbnail}
-          source={bannerMiddleItem?.img_link}
-        />
-        <SellProduct data={topsell} />
-        <HotProduct data={focus} />
-      </ScrollView>
+      {false ? (
+        <ShoppingHolder />
+      ) : (
+        <ScrollView refreshing={refreshing} onRefresh={_onRefreshing}>
+          <Banner
+            thumbnail={bannerHeaderItem?.thumbnail}
+            source={bannerHeaderItem?.img_link}
+          />
+          <Banner
+            thumbnail={bannerMiddleItem?.thumbnail}
+            source={bannerMiddleItem?.img_link}
+          />
+          <SellProduct data={topsell} />
+          <HotProduct data={focus} />
+        </ScrollView>
+      )}
     </Block>
   );
 };
