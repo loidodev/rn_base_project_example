@@ -12,11 +12,7 @@ const Policy = ({setAgreePolicy}) => {
 
   return (
     <Block>
-      <Pressable
-        rowCenter
-        justifyCenter
-        marginTop={SIZES.large}
-        onPress={() => setShowPolicy(true)}>
+      <Pressable rowCenter justifyCenter onPress={() => setShowPolicy(true)}>
         <Text>
           <Text fontSize={12} marginRight={SIZES.normal}>
             signUpScreen.accept
@@ -26,6 +22,7 @@ const Policy = ({setAgreePolicy}) => {
           </Text>
         </Text>
       </Pressable>
+
       <ModalPolicy
         isVisible={showPolicy}
         setIsVisible={setShowPolicy}

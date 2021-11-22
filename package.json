@@ -5,6 +5,9 @@
   "scripts": {
     "android": "react-native run-android",
     "android:clean": "cd android && ./gradlew clean && cd ..",
+    "android:apk": "cd android && ./gradlew clean && ./gradlew assembleRelease && cd ..",
+    "android:aab": "cd android && ./gradlew clean && ./gradlew bundleRelease && cd ..",
+    "android:signingReport": "cd android && ./gradlew signingReport",
     "ios": "react-native run-ios",
     "ios:install": "npx pod-install -ios",
     "ios:install:m1": "cd ios && arch -x86_64 pod install && cd ..",
