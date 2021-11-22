@@ -7,7 +7,7 @@ import styles from './styles';
 const LinearGradientAnim = Animated.createAnimatedComponent(LinearGradient);
 
 const Shimmer = ({
-  width = WIDTH,
+  width = WIDTH - 24,
   height = 15,
   radius = 5,
   marginVer = 0,

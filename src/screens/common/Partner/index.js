@@ -1,11 +1,12 @@
 import {Block, HeaderSearch, WebView} from '@components';
+import BirthdayHolder from '@components/placeholder/BirthdayHolder';
 import actions from '@store/actions';
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
 const Partner = value => {
   const dispatch = useDispatch();
-  const partner = useSelector(state => state.partner.data);
+  const {data, isLoading} = useSelector(state => state.partner);
 
   useEffect(() => {
     dispatch({type: actions.GET_PARTNER});
@@ -13,10 +14,14 @@ const Partner = value => {
 
   return (
     <Block flex>
-      <HeaderSearch canGoBack title={partner?.title} />
-      <Block flex padding={12} paddingBottom={20}>
-        <WebView data={partner?.content} />
-      </Block>
+      <HeaderSearch canGoBack title={data?.title} />
+      {isLoading && !data ? (
+        <BirthdayHolder />
+      ) : (
+        <Block flex padding={12} paddingBottom={20}>
+          <WebView data={data?.content} />
+        </Block>
+      )}
     </Block>
   );
 };

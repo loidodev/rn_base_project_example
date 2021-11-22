@@ -1,12 +1,13 @@
-import {Block, HeaderSearch, Text, WebView} from '@components';
+import {Block, HeaderSearch, WebView} from '@components';
+import BirthdayHolder from '@components/placeholder/BirthdayHolder';
 import actions from '@store/actions';
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
 const Birthday = () => {
   const dispatch = useDispatch();
-  const birthday = useSelector(state => state.birthday.data);
-  
+  const {data, isLoading} = useSelector(state => state.birthday);
+
   useEffect(() => {
     dispatch({type: actions.GET_BIRTHDAY});
   }, [dispatch]);
@@ -22,10 +23,14 @@ const Birthday = () => {
 
   return (
     <Block flex>
-      <HeaderSearch canGoBack title={birthday?.title} />
-      <Block flex padding={12} paddingBottom={20}>
-        <WebView data={birthday?.content} />
-      </Block>
+      <HeaderSearch canGoBack title={data?.title} />
+      {isLoading && !data ? (
+        <BirthdayHolder />
+      ) : (
+        <Block flex padding={12} paddingBottom={20}>
+          <WebView data={data?.content} />
+        </Block>
+      )}
     </Block>
   );
 };
