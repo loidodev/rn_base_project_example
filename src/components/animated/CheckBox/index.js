@@ -15,6 +15,7 @@ const CheckBox = ({
   title,
   value,
   width = 20,
+  customTitle,
   onChangeValue,
   containerProps,
   labelProps,
@@ -53,6 +54,14 @@ const CheckBox = ({
     ),
   }));
 
+  const _renderTitle = () => {
+    return (
+      <Text {...labelProps} medium bold>
+        {title}
+      </Text>
+    );
+  };
+
   return (
     <Block {...containerProps} row alignCenter>
       <Animated.View style={rContainerStyle}>
@@ -76,9 +85,7 @@ const CheckBox = ({
           <Animated.View style={rBackgroundStyle} />
         </Pressable>
       </Animated.View>
-      <Text {...labelProps} medium bold>
-        {title}
-      </Text>
+      {customTitle ? <Block flex>{customTitle()}</Block> : _renderTitle()}
     </Block>
   );
 };
