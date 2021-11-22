@@ -38,6 +38,7 @@ import HeaderInput from './header/HeaderInput';
 //placeholder
 import ListProductHolder from './placeholder/ListProductHolder';
 import HomeHolder from './placeholder/HomeHolder';
+import ShoppingHolder from './placeholder/ShoppingHolder';
 
 export {
   //animated
@@ -80,4 +81,5 @@ export {
   //placeholder
   ListProductHolder,
   HomeHolder,
+  ShoppingHolder,
 };

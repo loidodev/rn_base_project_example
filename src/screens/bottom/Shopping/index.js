@@ -56,7 +56,7 @@ const Shopping = () => {
       <HeaderLogo />
       <BoxAddress />
       <OptionGroup />
-      {false ? (
+      {_getPlaceHolder() ? (
         <ShoppingHolder />
       ) : (
         <ScrollView refreshing={refreshing} onRefresh={_onRefreshing}>
