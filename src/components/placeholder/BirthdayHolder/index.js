@@ -7,7 +7,7 @@ const BirthdayHolder = () => {
   return (
     <Block flex margin={12}>
       <Block>
-        <Shimmer height={15} />
+        <Shimmer height={15} marginVertical={6}/>
         <Shimmer height={height} />
       </Block>
     </Block>

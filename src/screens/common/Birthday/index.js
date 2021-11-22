@@ -24,7 +24,7 @@ const Birthday = () => {
   return (
     <Block flex>
       <HeaderSearch canGoBack title={data?.title} />
-      {isLoading && !data ? (
+      {isLoading ? (
         <BirthdayHolder />
       ) : (
         <Block flex padding={12} paddingBottom={20}>

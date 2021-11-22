@@ -20,7 +20,7 @@ const Member = value => {
     <Block flex>
       <HeaderSearch canGoBack title={title} />
       <Block height={5} backgroundColor="smoke" marginBottom={12} />
-      {isLoading && !data ? (
+      {isLoading ? (
         <MemberHolder />
       ) : (
         <FlatList
