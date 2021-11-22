@@ -43,9 +43,7 @@ const Home = () => {
   const bannerMiddleItem = bannerMiddle[0] || {};
 
   useEffect(() => {
-    if (token.data) {
-      callAllApi(dispatch);
-    }
+    callAllApi(dispatch);
   }, [dispatch, token]);
 
   const _onRefreshing = () => {

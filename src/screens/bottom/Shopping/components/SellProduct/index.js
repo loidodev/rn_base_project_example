@@ -4,9 +4,7 @@ import {COLORS, SIZES} from '@theme';
 import React from 'react';
 import {ScrollView} from 'react-native';
 
-const DATA = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-
-const SellProduct = () => {
+const SellProduct = ({data = []}) => {
   const _renderProduct = (item, index) => {
     return (
       <ItemProduct
@@ -41,7 +39,7 @@ const SellProduct = () => {
           horizontal
           showsHorizontalScrollIndicator={false}
           contentContainerStyle={{padding: hs(SIZES.normal)}}>
-          {DATA.map(_renderProduct)}
+          {data.map(_renderProduct)}
         </ScrollView>
       </Block>
     </Block>

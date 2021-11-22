@@ -61,6 +61,7 @@ function* getBannerById(payload) {
     });
   } catch (error) {
     yield put({type: _onFail(payload.type)});
+    handleApiError(error);
   }
 }
 

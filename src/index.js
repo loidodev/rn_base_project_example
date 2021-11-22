@@ -28,7 +28,7 @@ const RootApp = () => {
     }
   }, [dispatch, token]);
 
-  return <RootNavigator />;
+  return token.data && <RootNavigator />;
 };
 
 const App = () => {

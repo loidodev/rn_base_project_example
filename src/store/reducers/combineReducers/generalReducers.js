@@ -26,5 +26,5 @@ export const member = (...props) => {
 };
 
 export const bannerByIdShopping = (...props) => {
-  return reducerDefault(...props, actions.GET_BANNER_BY_ID_SHOPPING);
+  return reducerAdvance(...props, actions.GET_BANNER_BY_ID_SHOPPING);
 };

@@ -3,10 +3,23 @@ import {COLORS, SIZES} from '@theme';
 import React from 'react';
 import {ScrollView} from 'react-native';
 import {hs} from '@responsive';
+import {useState} from 'react';
 
-const DATA = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const HotProduct = ({data = []}) => {
+  const [categorySelect, setCategorySelect] = useState(null);
 
-const HotProduct = () => {
+  const _convertDataProduct = () => {
+    let result = [];
+    for (let index = 0; index < data.length; index++) {
+      const element = data[index]?.group_child;
+      console.log(element);
+      // result = [...result, ...element];
+    }
+    return result;
+  };
+
+  console.log(_convertDataProduct());
+
   const _renderCategory = (item, index) => {
     return (
       <Pressable key={`HotProdut-category-${index}`} padding={SIZES.normal}>
@@ -14,6 +27,7 @@ const HotProduct = () => {
       </Pressable>
     );
   };
+
   const _renderProduct = (item, index) => {
     return (
       <ItemProduct
@@ -52,12 +66,12 @@ const HotProduct = () => {
           horizontal
           showsHorizontalScrollIndicator={false}
           contentContainerStyle={{paddingHorizontal: hs(SIZES.normal)}}>
-          {DATA.map(_renderCategory)}
+          {data.map(_renderCategory)}
         </ScrollView>
       </Block>
       {/* product */}
       <Block row wrap padding={SIZES.normal}>
-        {DATA.map(_renderProduct)}
+        {data.map(_renderProduct)}
       </Block>
     </Block>
   );

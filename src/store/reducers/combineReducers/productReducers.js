@@ -16,3 +16,7 @@ export const productGroup = (...props) => {
 export const productIsFocus = (...props) => {
   return reducerAdvance(...props, actions.GET_PRODUCT_IS_FOCUS);
 };
+
+export const shopping = (...props) => {
+  return reducerAdvance(...props, actions.GET_SHOPPING);
+};
