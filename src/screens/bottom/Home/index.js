@@ -35,17 +35,15 @@ const Home = () => {
   const dispatch = useDispatch();
   const [refreshing, setRefreshing] = useState(false);
   const token = useSelector(state => state.token);
-  const bannerById = useSelector(state => state.bannerById);
+  const bannerByIdHome = useSelector(state => state.bannerByIdHome);
   const productGroup = useSelector(state => state.productGroup);
   const productIsFocus = useSelector(state => state.productIsFocus);
 
-  const [bannerHeader = [], bannerMiddle = []] = bannerById.data || [];
+  const [bannerHeader = [], bannerMiddle = []] = bannerByIdHome.data || [];
   const bannerMiddleItem = bannerMiddle[0] || {};
 
   useEffect(() => {
-    if (token.data) {
-      callAllApi(dispatch);
-    }
+    callAllApi(dispatch);
   }, [dispatch, token]);
 
   const _onRefreshing = () => {
@@ -59,7 +57,7 @@ const Home = () => {
 
   const _getPlaceHolder = () => {
     const isLoading =
-      bannerById.isLoading ||
+      bannerByIdHome.isLoading ||
       productGroup.isLoading ||
       productIsFocus.isLoading;
 

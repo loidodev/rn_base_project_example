@@ -1,13 +1,18 @@
 export const ICONS = {
-  //category group
-  day_of_members: require('@assets/icons/categoryGroup/day_of_members.png'),
-  discount: require('@assets/icons/categoryGroup/discount.png'),
-  gift: require('@assets/icons/categoryGroup/gift.png'),
-  happy_birthday: require('@assets/icons/categoryGroup/happy_birthday.png'),
-  heart: require('@assets/icons/categoryGroup/heart.png'),
-  map: require('@assets/icons/categoryGroup/map.png'),
-  news: require('@assets/icons/categoryGroup/news.png'),
-  shopping: require('@assets/icons/categoryGroup/shopping.png'),
+  //category group home
+  day_of_members: require('@assets/icons/categoryGroupHome/day_of_members.png'),
+  discount: require('@assets/icons/categoryGroupHome/discount.png'),
+  gift: require('@assets/icons/categoryGroupHome/gift.png'),
+  happy_birthday: require('@assets/icons/categoryGroupHome/happy_birthday.png'),
+  heart: require('@assets/icons/categoryGroupHome/heart.png'),
+  map: require('@assets/icons/categoryGroupHome/map.png'),
+  news: require('@assets/icons/categoryGroupHome/news.png'),
+  shopping: require('@assets/icons/categoryGroupHome/shopping.png'),
+  //category group shopping
+  category_shopping: require('@assets/icons/categoryGroupShopping/category_shopping.png'),
+  heart_shopping: require('@assets/icons/categoryGroupShopping/heart_shopping.png'),
+  search_shopping: require('@assets/icons/categoryGroupShopping/search_shopping.png'),
+  store_shopping: require('@assets/icons/categoryGroupShopping/store_shopping.png'),
   //profile
   affiliate: require('@assets/icons/profile/affiliate.png'),
   exchange: require('@assets/icons/profile/exchange.png'),
@@ -48,4 +53,9 @@ export const STORAGE_KEYS = {
 export const BANNER_ID = {
   home: 'banner-main,banner-home',
   shopping: 'banner-shopping,banner-shopping2',
+};
+
+export const HEADER = {
+  height: 60,
+  titleSize: 16,
 };

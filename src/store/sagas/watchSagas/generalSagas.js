@@ -61,6 +61,7 @@ function* getBannerById(payload) {
     });
   } catch (error) {
     yield put({type: _onFail(payload.type)});
+    handleApiError(error);
   }
 }
 
@@ -84,4 +85,5 @@ export function* watchGeneralSagas() {
   yield takeLatest(actions.GET_TERMS_OF_USE, getTermsOfUse);
   yield takeLatest(actions.GET_BANNER_BY_ID_HOME, getBannerById);
   yield takeLatest(actions.GET_MEMBER, getMemberSaga);
+  yield takeLatest(actions.GET_BANNER_BY_ID_SHOPPING, getBannerById);
 }
