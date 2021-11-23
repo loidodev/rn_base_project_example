@@ -67,11 +67,6 @@ const CommonContainer = () => {
         name={router.INFORMATION_DETAILS}
         component={common[router.INFORMATION_DETAILS]}
       />
-      <CommonStack.Screen
-        name={router.ALERT_BOX}
-        component={common[router.ALERT_BOX]}
-        options={OPTIONS}
-      />
     </CommonStack.Navigator>
   );
 };

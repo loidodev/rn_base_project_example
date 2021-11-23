@@ -3,7 +3,7 @@
 import {Block, Text} from '@components';
 import ModalBox from '@components/base/Modal';
 import {ICONS} from '@constants';
-import {root} from '@navigator/navigationRef';
+import {commonRoot, root} from '@navigator/navigationRef';
 import router from '@navigator/router';
 import {useRoute} from '@react-navigation/core';
 import actions, {_onSuccess} from '@store/actions';
@@ -62,12 +62,7 @@ const ChooseTypeProduct = ({
       setIsComment(true);
       setIsVisible(true);
     } else {
-      root.navigate(router.ALERT_BOX, {
-        title: locale.t('evaluate.evaluate'),
-        content: locale.t('evaluate.label_rate'),
-        handleConfirm: () =>
-          root.navigate(router.BOTTOM_TAB, {screen: router.PROFILE_SCREEN}),
-      });
+      commonRoot.navigate(router.GET_START_SCREEN);
     }
   };
 

@@ -1,7 +1,6 @@
 import {Block, Icon, Text} from '@components';
 import {ICONS} from '@constants';
 import {commonRoot, root} from '@navigator/navigationRef';
-import {useNavigation} from '@react-navigation/native';
 import router from '@router';
 import actions from '@store/actions';
 import {CustomToast} from '@utils';
@@ -14,10 +13,10 @@ import {
   MenuOptions,
   MenuTrigger,
 } from 'react-native-popup-menu';
-import {useDispatch, useSelector} from 'react-redux';
-import styles from './styles';
 import IonCart from 'react-native-vector-icons/Entypo';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import {useDispatch, useSelector} from 'react-redux';
+import styles from './styles';
 
 const MenuList = ({
   backgroundIcon,
@@ -72,19 +71,15 @@ const MenuList = ({
             setCheck(false))
         : (CustomToast(locale.t('productDetails.noLike')), setCheck(true));
     } else {
-      commonRoot.navigate(router.ALERT_BOX, {
-        title: locale.t('productDetails.like'),
-        content: locale.t('productDetails.label'),
-        handleConfirm,
-      });
+      commonRoot.navigate(router.GET_START_SCREEN);
     }
   };
 
-  const handleConfirm = () => {
-    root.navigate(router.BOTTOM_CONTAINER, {
-      screen: router.PROFILE_SCREEN,
-    });
-  };
+  // const handleConfirm = () => {
+  //   root.navigate(router.BOTTOM_CONTAINER, {
+  //     screen: router.PROFILE_SCREEN,
+  //   });
+  // };
 
   const _renderOption = (label, iconMenu, route, params) => (
     <MenuOption
@@ -189,14 +184,14 @@ const MenuList = ({
             )}
             {_renderFavorite()}
             {_renderShare()}
-            {userInfo?.is_request_affiliates === '1' &&
+            {/* {userInfo?.is_request_affiliates === '1' &&
               userInfo?.is_affiliates === '1' &&
               _renderOption(
                 locale.t('productDetails.affiliate'),
                 ICONS.copy,
                 router.ACCOUNT_AFFILIATE,
                 productDetails?.friendly_link,
-              )}
+              )} */}
           </Block>
         </Block>
       </MenuOptions>

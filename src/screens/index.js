@@ -16,7 +16,6 @@ import {MemberDetails, MenberMain} from './common/Member';
 import PartnerScreen from './common/Partner';
 import {InformationDetails, ProductDetailsMain} from './common/ProductDetails';
 import SearchScreen from './common/Search';
-import AlertBox from './common/AlertBox';
 
 export const auth = {
   [router.SIGN_IN_SCREEN]: SignIn,
@@ -41,5 +40,4 @@ export const common = {
   [router.GET_MEMBER_DERAILS]: MemberDetails,
   [router.GET_PRODUCT_DETAILS]: ProductDetailsMain,
   [router.INFORMATION_DETAILS]: InformationDetails,
-  [router.ALERT_BOX]: AlertBox,
 };

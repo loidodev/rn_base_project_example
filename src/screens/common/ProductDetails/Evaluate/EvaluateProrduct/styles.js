@@ -1,4 +1,3 @@
-import {getSize} from '@utils/responsive';
 import {StyleSheet} from 'react-native';
 import {hs} from '@responsive';
 
