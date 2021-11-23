@@ -15,7 +15,7 @@ const BtnDatePicker = ({value, onChange, containerStyle}) => {
   const [isDatePicker, setIsDatePicker] = useState(false);
 
   const _getDate = () => {
-    return Number(value) ? new Date(getTimestamp(value)) : new Date();
+    return value ? new Date(getTimestamp(value)) : new Date();
   };
 
   const _onConfirmDate = date => {
@@ -32,7 +32,7 @@ const BtnDatePicker = ({value, onChange, containerStyle}) => {
         paddingLeft={4}
         onPress={() => setIsDatePicker(true)}>
         <Text medium color="placeholder">
-          {Number(value)
+          {value
             ? moment(getTimestamp(value)).format('DD/MM/YYYY')
             : 'personal.not_update'}
         </Text>
