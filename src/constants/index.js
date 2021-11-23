@@ -37,18 +37,12 @@ export const ICONS = {
   share: require('@assets/icons/product/share.png'),
   hearts: require('@assets/icons/product/heart.png'),
   heartCheck: require('@assets/icons/product/heartcheck.png'),
-  home: require('@assets/icons/product/home.png'),
   category: require('@assets/icons/product/category.png'),
-  user: require('@assets/icons/product/user.png'),
   copy: require('@assets/icons/product/copy.png'),
-  back: require('@assets/icons/product/back.png'),
-  cart: require('@assets/icons/product/cart.png'),
-  menu: require('@assets/icons/product/menu.png'),
-
+  
   comment: require('@assets/icons/product/comment.png'),
   minus: require('@assets/icons/product/minus.png'),
   plus: require('@assets/icons/product/plus.png'),
-
 };
 
 export const IMAGES = {
