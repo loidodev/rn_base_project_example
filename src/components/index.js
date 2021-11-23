@@ -29,7 +29,9 @@ import LogoTitle from './common/LogoTitle';
 import CustomInputErr from './common/CustomInputErr';
 import CustomInputIcon from './common/CustomInputIcon';
 //import form
+import Controller from './form/Controller';
 import FormInput from './form/FormInput';
+import FormRadioButton from './form/FormRadioButton';
 //import header
 import HeaderLogo from './header/HeaderLogo';
 import HeaderSearch from './header/HeaderSearch';
@@ -72,7 +74,9 @@ export {
   CustomInputIcon,
   Empty,
   //form
+  Controller,
   FormInput,
+  FormRadioButton,
   //header
   HeaderLogo,
   HeaderSearch,
