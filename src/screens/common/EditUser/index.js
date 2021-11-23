@@ -1,22 +1,33 @@
 /* eslint-disable react-native/no-inline-styles */
-import {HeaderTitle, Text} from '@components';
+import {ButtonSubmit, HeaderTitle, Text} from '@components';
 import {COLORS, SIZES} from '@theme';
-import React from 'react';
+import React, {useEffect} from 'react';
 import {useForm} from 'react-hook-form';
 import {KeyboardAvoidingView, ScrollView} from 'react-native';
-import BtnSave from './components/BtnSave';
+import {useSelector} from 'react-redux';
 import FormChangePass from './components/FormChangePass';
-import formConfig from './components/formConfig';
+import formConfig, {FORM_NAME} from './components/formConfig';
 import FormEdit from './components/FormEdit';
-import {FORM_NAME} from './components/formConfig';
 
 const EditUser = () => {
   const {
     control,
     handleSubmit,
-    getValues,
+    setValue,
     formState: {errors},
   } = useForm(formConfig);
+  const userInfo = useSelector(state => state.userInfo);
+  const updateUser = useSelector(state => state.updateUser);
+
+  const {full_name, phone, email, birthday, gender} = userInfo.data || {};
+
+  useEffect(() => {
+    setValue(FORM_NAME.fullName, full_name);
+    setValue(FORM_NAME.phone, phone);
+    setValue(FORM_NAME.email, email);
+    setValue(FORM_NAME.birthday, birthday);
+    setValue(FORM_NAME.gender, gender);
+  }, [birthday, email, full_name, gender, phone, setValue]);
 
   const _onSubmit = data => {
     console.log(data);
@@ -32,14 +43,14 @@ const EditUser = () => {
           personal.personal
         </Text>
         <FormEdit control={control} errors={errors} />
-        <FormChangePass
-          control={control}
-          errors={errors}
-          isChangePass={getValues()[FORM_NAME.isChangePass]}
-        />
+        <FormChangePass control={control} errors={errors} />
       </ScrollView>
       {/* btn submit */}
-      <BtnSave onPress={handleSubmit(_onSubmit)} />
+      <ButtonSubmit
+        loading={userInfo.isLoading || updateUser.isLoading}
+        onPress={handleSubmit(_onSubmit)}>
+        personal.save
+      </ButtonSubmit>
     </KeyboardAvoidingView>
   );
 };
