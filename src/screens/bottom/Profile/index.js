@@ -32,7 +32,6 @@ const Profile = () => {
   const [isPickerAvatar, setIsPickerAvatar] = useState(false);
   const userInfo = useSelector(state => state.userInfo);
   const logout = useSelector(state => state.logout);
-  const updateUser = useSelector(state => state.updateUser);
 
   const _onScroll = useAnimatedScrollHandler(event => {
     scrollY.value = event.contentOffset.y;
@@ -49,14 +48,7 @@ const Profile = () => {
     dispatch({type: actions.LOG_OUT_USER});
   };
 
-  const _onChangeAvatar = avatar => {
-    dispatch({
-      type: actions.UPDATE_USER,
-      body: {picture: avatar},
-    });
-  };
-
-  if (userInfo.isLoading || updateUser.isLoading) {
+  if (userInfo.isLoading) {
     return (
       <Block flex justifyCenter alignCenter>
         <ActivityIndicator size="large" color={COLORS.primary} />
@@ -102,7 +94,6 @@ const Profile = () => {
         <AvatarPicker
           isVisible={isPickerAvatar}
           setIsVisible={setIsPickerAvatar}
-          onChangeAvatar={_onChangeAvatar}
         />
       </Block>
     );

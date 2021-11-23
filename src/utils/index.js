@@ -4,7 +4,6 @@ import {
   handleTokenUser,
   handleApiError,
   createDataTemplate,
-  handleFormData,
 } from './helper';
 
 export {
@@ -14,5 +13,4 @@ export {
   handleTokenUser,
   handleApiError,
   createDataTemplate,
-  handleFormData,
 };

@@ -106,16 +106,3 @@ export const createDataTemplate = arrayLength => {
     return [];
   }
 };
-
-export const handleFormData = objectBody => {
-  const keys = Object.keys(objectBody);
-  const values = Object.values(objectBody);
-
-  const formData = new FormData();
-
-  keys.map((key, index) => {
-    formData.append(key, values[index]);
-  });
-
-  return formData;
-};
