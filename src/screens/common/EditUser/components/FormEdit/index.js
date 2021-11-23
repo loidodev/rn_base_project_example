@@ -1,9 +1,9 @@
-import {Block, Controller, FormInput, RadioButton} from '@components';
+import {Block, FormInput, RadioButton, TextInput} from '@components';
 import {SIZES} from '@theme';
 import React from 'react';
 import {FORM_NAME} from '../formConfig';
-import LabelContainer from '../LabelContainer';
 import BtnDatePicker from './BtnDatePicker';
+import LabelContainer from '../LabelContainer';
 
 export const INPUT_PROPS = {
   height: 45,
@@ -39,18 +39,15 @@ const FormEdit = ({control, errors}) => {
         />
       </LabelContainer>
       <LabelContainer label="Email">
-        <FormInput
-          control={control}
-          name={FORM_NAME.email}
-          messageErr={errors[FORM_NAME.email]?.message}
-          placeholder="Email"
-          inputProps={{...INPUT_PROPS, editable: false, color: 'placeholder'}}
+        <TextInput
+          {...INPUT_PROPS}
+          editable={false}
+          color="placeholder"
+          value="nhoxbaycao@gmail.com"
         />
       </LabelContainer>
       <LabelContainer label="personal.birth">
-        <Controller {...{control}} name={FORM_NAME.birthday}>
-          <BtnDatePicker containerStyle={INPUT_PROPS} />
-        </Controller>
+        <BtnDatePicker {...INPUT_PROPS} />
       </LabelContainer>
       <RadioButton
         data={DATA}
