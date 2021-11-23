@@ -1,9 +1,10 @@
 import {getSize} from '@utils/responsive';
 import {StyleSheet} from 'react-native';
+import {hs} from '@responsive';
 
 export default StyleSheet.create({
   btnViewDetails: {
-    margin: getSize.m(16),
+    margin: hs(16),
     alignItems: 'center',
     justifyContent: 'center',
   },

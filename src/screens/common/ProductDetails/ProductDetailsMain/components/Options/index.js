@@ -1,7 +1,7 @@
 import {Block, Text} from '@components';
 import {useRoute} from '@react-navigation/core';
 import actions from '@store/actions';
-import {COLORS, theme} from '@theme';
+import {COLORS} from '@theme';
 import React from 'react';
 import {Pressable} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';

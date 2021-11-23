@@ -1,4 +1,4 @@
-import {Block, HeaderSearch, Text, WebView} from '@components';
+import {Block, HeaderSearch, WebView} from '@components';
 import React from 'react';
 
 const InformationDetails = ({route}) => {

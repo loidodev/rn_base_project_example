@@ -155,3 +155,12 @@ export const createDataTemplate = arrayLength => {
     return [];
   }
 };
+
+export const convertOption = (arr_option_tmp, option1, option2, option3) => {
+  return arr_option_tmp?.find(value => {
+    const checkOption1 = value.Option1 === option1;
+    const checkOption2 = value.Option2 === option2;
+    const checkOption3 = value.Option3 === option3;
+    return checkOption1 && checkOption2 && checkOption3;
+  });
+};

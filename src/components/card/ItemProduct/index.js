@@ -24,7 +24,7 @@ const ItemProduct = ({item, style, contentStyle}) => {
   } = item;
 
   const _onMoveDetails = () => {
-    commonRoot.navigate(router.GET_PRODUCT_DETAILS, {params: item_id});
+    commonRoot.navigate(router.GET_PRODUCT_DETAILS, {item_id});
   };
 
   return (

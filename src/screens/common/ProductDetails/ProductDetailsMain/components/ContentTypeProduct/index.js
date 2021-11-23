@@ -1,12 +1,12 @@
-// import {icons} from '@assets';
-import {AnimatedImage, Block, Text} from '@components';
+import {Block, LazyImage, Text} from '@components';
 import {ICONS} from '@constants';
 import {COLORS} from '@theme';
-import {ADD_CART, convertCurrency, convertOption} from '@utils/helper';
+import {convertCurrency, convertOption} from '@utils/helper';
 import locale from 'locale';
 import React from 'react';
 import {Image, Pressable, ScrollView} from 'react-native';
 import {useSelector} from 'react-redux';
+import {ADD_CART} from '../../helper';
 import Options from '../Options';
 import styles from './styles';
 
@@ -43,7 +43,7 @@ const ContentTypeProduct = ({
 
   const _renderConfirm = () => {
     const isQuantity =
-      option?.useWarehouse === 1 && Number(quantity) > option?.Quantity;
+      option?.useWarehouse === 0 && Number(quantity) > option?.Quantity;
     const disabled = !option || !option?.Quantity || isQuantity;
 
     return (
@@ -53,7 +53,7 @@ const ContentTypeProduct = ({
             <Text center color="red">
               {option?.Quantity === 0
                 ? 'Hiện tại đã hết hàng'
-                : `Số lượng hiện tại ${option?.Quantity}`}
+                : `Số lượng sản phẩm nhà thuốc hiện tại có  ${option?.Quantity}`}
             </Text>
           </Block>
         )}
@@ -89,7 +89,7 @@ const ContentTypeProduct = ({
         contentContainerStyle={styles.container}
         showsVerticalScrollIndicator={false}>
         <Block row alignCenter>
-          <AnimatedImage
+          <LazyImage
             thumbnail={option?.Picture || thumbnail}
             source={option?.Picture || picture}
             style={styles.image}
@@ -98,7 +98,7 @@ const ContentTypeProduct = ({
             <Text size={21} color={COLORS.red} fontType="bold">
               {convertCurrency(option?.PriceBuy || price_buy)} đ {'    '}
               <Text size={14} color={COLORS.red}>
-                -{Math.ceil(option?.PercentDiscount || percent_discount)}%
+                {Math.ceil(option?.PercentDiscount || percent_discount)}%
               </Text>
             </Text>
             <Text size={12} color={COLORS.placeholder}>

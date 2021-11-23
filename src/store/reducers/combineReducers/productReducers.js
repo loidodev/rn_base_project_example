@@ -39,3 +39,7 @@ export const productOptions = (...props) => {
 export const productOptionsDetails = (...props) => {
   return reducerDefault(...props, actions.GET_PRODUCT_OPTION_DETAILS);
 };
+
+export const favoriteProduct = (...props) => {
+  return reducerDefault(...props, actions.GET_SHOW_FAVORITE_PRODUCT);
+};

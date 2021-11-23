@@ -2,6 +2,7 @@ import {put, takeLatest} from '@redux-saga/core/effects';
 import actions, {_onFail, _onSuccess} from '@store/actions';
 import {handleApiError} from '@utils';
 import api from '@utils/api';
+import queryString from 'query-string';
 
 function* add_viewedProduct(payload) {
   try {
@@ -34,7 +35,8 @@ function* getCart(payload) {
 
 function* updateCart(payload) {
   try {
-    const res = yield api.get('updateCart', payload.params);
+    const body = queryString.stringify(payload.body);
+    const res = yield api.post('updateCart', body, payload.params);
     yield put({
       type: _onSuccess(payload.type),
       data: res.data,

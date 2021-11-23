@@ -172,7 +172,7 @@ const Icon = ({
       style={customStyles}
       name={iconName}
       size={hs(iconSize) || hs(18)}
-      color={COLORS[iconColor] || COLORS.primary}
+      color={iconColor ? COLORS[iconColor] : COLORS.primary}
     />
   ) : null;
 };
