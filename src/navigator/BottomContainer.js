@@ -6,17 +6,20 @@ import {bottom} from '@screens';
 import * as React from 'react';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {COLORS} from '@theme';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 const TabStack = createBottomTabNavigator();
 
 const BottomContainer = () => {
+  const insets = useSafeAreaInsets();
+
   return (
     <TabStack.Navigator
       screenOptions={({route}) => ({
         headerShown: false,
         tabBarShowLabel: false,
         tabBarStyle: {
-          height: vs(60),
+          height: vs(60) + insets.bottom,
           paddingHorizontal: hs(12),
           backgroundColor: COLORS.white,
           borderTopWidth: 0,

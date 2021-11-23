@@ -1,5 +1,4 @@
-import {Block, Controller, FormInput, RadioButton} from '@components';
-import {SIZES} from '@theme';
+import {Block, Controller, FormInput, FormRadioButton} from '@components';
 import React from 'react';
 import {FORM_NAME} from '../formConfig';
 import LabelContainer from '../LabelContainer';
@@ -48,15 +47,11 @@ const FormEdit = ({control, errors}) => {
         />
       </LabelContainer>
       <LabelContainer label="personal.birth">
-        <Controller {...{control}} name={FORM_NAME.birthday}>
+        <Controller control={control} name={FORM_NAME.birthday}>
           <BtnDatePicker containerStyle={INPUT_PROPS} />
         </Controller>
       </LabelContainer>
-      <RadioButton
-        data={DATA}
-        selected={true}
-        containerProps={{margin: SIZES.medium}}
-      />
+      <FormRadioButton control={control} name={FORM_NAME.gender} data={DATA} />
     </Block>
   );
 };

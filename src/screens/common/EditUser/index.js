@@ -1,10 +1,11 @@
 /* eslint-disable react-native/no-inline-styles */
 import {ButtonSubmit, HeaderTitle, Text} from '@components';
+import actions from '@store/actions';
 import {COLORS, SIZES} from '@theme';
 import React, {useEffect} from 'react';
 import {useForm} from 'react-hook-form';
 import {KeyboardAvoidingView, ScrollView} from 'react-native';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import FormChangePass from './components/FormChangePass';
 import formConfig, {FORM_NAME} from './components/formConfig';
 import FormEdit from './components/FormEdit';
@@ -16,6 +17,7 @@ const EditUser = () => {
     setValue,
     formState: {errors},
   } = useForm(formConfig);
+  const dispatch = useDispatch();
   const userInfo = useSelector(state => state.userInfo);
   const updateUser = useSelector(state => state.updateUser);
 
@@ -30,7 +32,15 @@ const EditUser = () => {
   }, [birthday, email, full_name, gender, phone, setValue]);
 
   const _onSubmit = data => {
-    console.log(data);
+    dispatch({
+      type: actions.UPDATE_USER,
+      body: {
+        full_name: data[FORM_NAME.fullName],
+        phone: data[FORM_NAME.phone],
+        birthday: data[FORM_NAME.birthday],
+        gender: data[FORM_NAME.gender],
+      },
+    });
   };
 
   return (
