@@ -1,6 +1,11 @@
 import {put, select, takeLatest} from '@redux-saga/core/effects';
 import actions, {_onFail, _onSuccess} from '@store/actions';
-import {CustomToast, handleApiError, handleTokenUser} from '@utils';
+import {
+  CustomToast,
+  handleApiError,
+  handleFormData,
+  handleTokenUser,
+} from '@utils';
 import api from '@utils/api';
 import queryString from 'query-string';
 import Config from 'react-native-config';
@@ -100,8 +105,9 @@ function* logoutUser(payload) {
 
 function* updateUser(payload) {
   try {
+    const body = handleFormData(payload.body);
     const tokenUser = yield select(state => state.tokenUser);
-    const res = yield api.get('updateUser', {user: tokenUser});
+    const res = yield api.post('updateUser', body, {user: tokenUser});
     yield put({
       type: _onSuccess(payload.type),
       data: res.data,
