@@ -30,3 +30,7 @@ export const signIn = (...props) => {
 export const logout = (...props) => {
   return reducerDefault(...props, actions.LOG_OUT_USER);
 };
+
+export const updateUser = (...props) => {
+  return reducerDefault(...props, actions.UPDATE_USER);
+};

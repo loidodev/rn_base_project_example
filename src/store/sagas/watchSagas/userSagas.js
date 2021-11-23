@@ -98,10 +98,27 @@ function* logoutUser(payload) {
   }
 }
 
+function* updateUser(payload) {
+  try {
+    const tokenUser = yield select(state => state.tokenUser);
+    const res = yield api.get('updateUser', {user: tokenUser});
+    yield put({
+      type: _onSuccess(payload.type),
+      data: res.data,
+    });
+    yield put({type: actions.GET_USER});
+    CustomToast(res.message);
+  } catch (error) {
+    yield put({type: _onFail(payload.type)});
+    handleApiError(error, true);
+  }
+}
+
 export function* watchUserSagas() {
   yield takeLatest(actions.GET_TOKEN, getToken);
   yield takeLatest(actions.GET_USER, getUser);
   yield takeLatest(actions.SIGN_UP_USER, signUpUser);
   yield takeLatest(actions.SIGN_IN_USER, signInUser);
   yield takeLatest(actions.LOG_OUT_USER, logoutUser);
+  yield takeLatest(actions.UPDATE_USER, updateUser);
 }
