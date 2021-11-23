@@ -29,6 +29,7 @@ import LogoTitle from './common/LogoTitle';
 import CustomInputErr from './common/CustomInputErr';
 import CustomInputIcon from './common/CustomInputIcon';
 //import form
+import Controller from './form/Controller';
 import FormInput from './form/FormInput';
 //import header
 import HeaderLogo from './header/HeaderLogo';
@@ -72,6 +73,7 @@ export {
   CustomInputIcon,
   Empty,
   //form
+  Controller,
   FormInput,
   //header
   HeaderLogo,

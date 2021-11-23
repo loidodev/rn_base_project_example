@@ -4,6 +4,9 @@ import {yupResolver} from '@hookform/resolvers/yup';
 export const FORM_NAME = {
   fullName: 'fullName',
   phone: 'phone',
+  email: 'email',
+  birthday: 'birthday',
+  gender: 'gender',
   isChangePass: 'isChangePass',
   oldPass: 'oldPass',
   newPass: 'newPass',
@@ -19,6 +22,9 @@ const schema = yup
   .object({
     [FORM_NAME.fullName]: yup.string().required(),
     [FORM_NAME.phone]: yup.string().required(),
+    [FORM_NAME.email]: yup.string(),
+    [FORM_NAME.birthday]: yup.string(),
+    [FORM_NAME.gender]: yup.string(),
     [FORM_NAME.isChangePass]: yup.boolean(),
     [FORM_NAME.oldPass]: yup
       .string()
@@ -37,6 +43,9 @@ const formConfig = {
   defaultValues: {
     [FORM_NAME.fullName]: '',
     [FORM_NAME.phone]: '',
+    [FORM_NAME.email]: '',
+    [FORM_NAME.birthday]: '',
+    [FORM_NAME.gender]: '',
     [FORM_NAME.isChangePass]: false,
     [FORM_NAME.oldPass]: '',
     [FORM_NAME.newPass]: '',
