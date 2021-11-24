@@ -1,11 +1,12 @@
 import actions, {_onFail, _onSuccess} from '@store/actions';
 import {handleApiError} from '@utils';
 import api from '@utils/api';
-import {put, takeLatest, select} from 'redux-saga/effects';
+import {put, select, takeLatest} from 'redux-saga/effects';
+import {URL_API} from '../common';
 
 function* getProduct(payload) {
   try {
-    const res = yield api.get('getProduct', payload.params);
+    const res = yield api.get(URL_API.product.getProduct, payload.params);
     yield put({
       type: _onSuccess(payload.type),
       data: res.data,
@@ -20,7 +21,7 @@ function* getProduct(payload) {
 
 function* getSuggestions() {
   try {
-    const res = yield api.get('getSuggestions');
+    const res = yield api.get(URL_API.product.getSuggestions);
     yield put({
       type: _onSuccess(actions.GET_SEARCH_SUGGESTIONS),
       data: res.data,
@@ -32,9 +33,11 @@ function* getSuggestions() {
 }
 
 function* getProductGroup(payload) {
-  const user = yield select(state => state.tokenUser);
+  const tokenUser = yield select(state => state.tokenUser);
   try {
-    const res = yield api.get('getProductGroup', user);
+    const res = yield api.get(URL_API.product.getProductGroup, {
+      user: tokenUser,
+    });
     yield put({
       type: _onSuccess(payload.type),
       data: res.data,
@@ -47,7 +50,7 @@ function* getProductGroup(payload) {
 
 function* getShopping(payload) {
   try {
-    const res = yield api.get('getShopping');
+    const res = yield api.get(URL_API.product.getShopping);
     yield put({
       type: _onSuccess(payload.type),
       data: res.data,

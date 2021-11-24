@@ -1,19 +1,20 @@
-import {_onFail, _onSuccess, _onUnmount} from './actions';
+import {_onFail, _onSuccess, _onUnmount} from '@store/actions';
 
-export const stateDefault = {
-  data: null,
-  isLoading: false,
-};
-
-export const stateLoadMore = {
-  data: null,
-  total: null,
-  totalPage: null,
-  isLoading: true,
+export const INITIAL_STATE = {
+  default: {
+    data: null,
+    isLoading: false,
+  },
+  loadMore: {
+    data: null,
+    total: null,
+    totalPage: null,
+    isLoading: true,
+  },
 };
 
 export const reducerDefault = (
-  state = stateDefault,
+  state = INITIAL_STATE.default,
   payload,
   action,
   callback,
@@ -29,10 +30,10 @@ export const reducerDefault = (
     }
 
     case _onFail(action):
-      return stateDefault;
+      return INITIAL_STATE.default;
 
     case _onUnmount(action):
-      return stateDefault;
+      return INITIAL_STATE.default;
 
     default:
       return state;
@@ -40,7 +41,7 @@ export const reducerDefault = (
 };
 
 export const reducerAdvance = (
-  state = stateLoadMore,
+  state = INITIAL_STATE.loadMore,
   payload,
   action,
   callback,
@@ -72,10 +73,10 @@ export const reducerAdvance = (
     }
 
     case _onFail(action):
-      return {...stateLoadMore, isLoading: false};
+      return {...INITIAL_STATE.loadMore, isLoading: false};
 
     case _onUnmount(action):
-      return {...stateLoadMore, isLoading: false};
+      return {...INITIAL_STATE.loadMore, isLoading: false};
 
     default:
       return state;

@@ -1,5 +1,5 @@
 import actions from '@store/actions';
-import {reducerAdvance, reducerDefault} from '@store/common';
+import {reducerAdvance, reducerDefault} from '@store/reducers/common';
 
 export const birthday = (...props) => {
   return reducerDefault(...props, actions.GET_BIRTHDAY);
