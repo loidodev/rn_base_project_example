@@ -1,4 +1,3 @@
-/* eslint-disable react-native/no-inline-styles */
 import {Block, LazyImage, Text} from '@components';
 import {commonRoot} from '@navigator/navigationRef';
 import router from '@navigator/router';
@@ -9,11 +8,11 @@ import {Pressable} from 'react-native';
 
 const URL = 'https://source.unsplash.com/daily';
 
-const ItemMember = ({item, style, contentStyle}) => {
+const ItemMember = ({item, contentStyle}) => {
   const {thumbnail = URL, picture = URL, title = ''} = item;
 
   const _onMoveDetails = () => {
-    commonRoot.navigate(router.GET_MEMBER_DERAILS, {param: item});
+    commonRoot.navigate(router.GET_MEMBER_DERAILS, item);
   };
 
   return (

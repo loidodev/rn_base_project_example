@@ -66,12 +66,25 @@ function* getBannerById(payload) {
   }
 }
 
+function* getStores(payload) {
+  try {
+    const res = yield api.get(URL_API.general.getStores);
+    yield put({
+      type: _onSuccess(payload.type),
+      data: res.data,
+    });
+  } catch (error) {
+    yield put({type: _onFail(payload.type)});
+    handleApiError(error);
+  }
+}
+
 export function* watchGeneralSagas() {
   yield takeLatest(actions.GET_CONFIG, getConfig);
   yield takeLatest(actions.GET_BIRTHDAY, getBirthday);
   yield takeLatest(actions.GET_PARTNER, getMemBerDay);
   yield takeLatest(actions.GET_TERMS_OF_USE, getTermsOfUse);
   yield takeLatest(actions.GET_BANNER_BY_ID_HOME, getBannerById);
-  yield takeLatest(actions.GET_MEMBER, getMemBerDay);
+  yield takeLatest(actions.GET_MEMBER, getStores);
   yield takeLatest(actions.GET_BANNER_BY_ID_SHOPPING, getBannerById);
 }
