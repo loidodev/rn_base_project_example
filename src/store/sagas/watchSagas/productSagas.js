@@ -1,7 +1,7 @@
 import actions, {_onFail, _onSuccess} from '@store/actions';
 import {handleApiError} from '@utils';
 import api from '@utils/api';
-import {put, takeLatest} from 'redux-saga/effects';
+import {put, select, takeLatest} from 'redux-saga/effects';
 import {URL_API} from '../common';
 
 function* getProduct(payload) {
@@ -33,8 +33,11 @@ function* getSuggestions() {
 }
 
 function* getProductGroup(payload) {
+  const tokenUser = yield select(state => state.tokenUser);
   try {
-    const res = yield api.get(URL_API.product.getProductGroup);
+    const res = yield api.get(URL_API.product.getProductGroup, {
+      user: tokenUser,
+    });
     yield put({
       type: _onSuccess(payload.type),
       data: res.data,
