@@ -1,4 +1,4 @@
-import {ButtonSubmit, LinearLogo, Text} from '@components';
+import {ButtonSubmit, CheckBox, LinearLogo, Text} from '@components';
 import {useDeviceInfo} from '@hooks';
 import {bottomRoot, root} from '@navigator/navigationRef';
 import router from '@navigator/router';
@@ -61,7 +61,14 @@ const SignUp = () => {
         signUpScreen.welcome
       </Text>
       <FormSignUp control={control} errors={errors} />
-      <Policy setAgreePolicy={setAgreePolicy} />
+      <CheckBox
+        value={agreePolicy}
+        onChangeValue={() => setAgreePolicy(prev => !prev)}
+        customTitle={() => <Policy setAgreePolicy={setAgreePolicy} />}
+        containerProps={{
+          marginTop: SIZES.large,
+        }}
+      />
       <ButtonSubmit
         loading={signUp.isLoading}
         containerProps={{margin: 0, marginVertical: SIZES.large}}

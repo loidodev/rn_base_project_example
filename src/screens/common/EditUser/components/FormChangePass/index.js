@@ -1,10 +1,10 @@
-import {Block, CheckBox, FormInput, Icon, TextInput} from '@components';
+import {Block, CheckBox, CustomInputIconClose, FormInput} from '@components';
 import {SIZES} from '@theme';
-import React, {useCallback} from 'react';
-import {Controller} from 'react-hook-form';
+import React from 'react';
+import {Controller, useController, useWatch} from 'react-hook-form';
 import {LayoutAnimation, Platform, UIManager} from 'react-native';
-import AntDesign from 'react-native-vector-icons/AntDesign';
 import {FORM_NAME} from '../formConfig';
+import {INPUT_PROPS} from '../helper';
 import LabelContainer from '../LabelContainer';
 
 if (Platform.OS === 'android') {
@@ -13,20 +13,13 @@ if (Platform.OS === 'android') {
   }
 }
 
-const FormChangePass = ({control, errors, isChangePass}) => {
-  const _onChangeIsPass = useCallback((onChange, value) => {
-    LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
-    onChange(!value);
-  }, []);
+const FormChangePass = ({control, errors}) => {
+  const isChangePass = useWatch({
+    control,
+    name: FORM_NAME.isChangePass,
+  });
 
-  const _renderCustomInput = ({...filed}) => {
-    return (
-      <Block rowCenter borderBottomWidth={1} borderColor="smoke">
-        <TextInput {...filed} flex height={45} />
-        <Icon IconType={AntDesign} iconName="close" />
-      </Block>
-    );
-  };
+  const {} = useController({control, name: FORM_NAME.oldPass});
 
   return (
     <Block
@@ -41,7 +34,12 @@ const FormChangePass = ({control, errors, isChangePass}) => {
             <CheckBox
               title="personal.password"
               value={value}
-              onChangeValue={() => _onChangeIsPass(onChange, value)}
+              onChangeValue={() => {
+                LayoutAnimation.configureNext(
+                  LayoutAnimation.Presets.easeInEaseOut,
+                );
+                onChange(!value);
+              }}
               containerProps={{
                 marginTop: SIZES.medium,
                 marginHorizontal: SIZES.medium,
@@ -58,7 +56,16 @@ const FormChangePass = ({control, errors, isChangePass}) => {
               name={FORM_NAME.oldPass}
               messageErr={errors[FORM_NAME.oldPass]?.message}
               placeholder="personal.old_password"
-              customInput={_renderCustomInput}
+              inputProps={{
+                height: INPUT_PROPS.height,
+                medium: INPUT_PROPS.medium,
+              }}
+              customInput={renderInput => (
+                <CustomInputIconClose
+                  renderInput={renderInput}
+                  onclose={() => {}}
+                />
+              )}
             />
           </LabelContainer>
           <LabelContainer label="personal.new_password">
@@ -67,7 +74,16 @@ const FormChangePass = ({control, errors, isChangePass}) => {
               name={FORM_NAME.newPass}
               messageErr={errors[FORM_NAME.newPass]?.message}
               placeholder="personal.new_password"
-              customInput={_renderCustomInput}
+              inputProps={{
+                height: INPUT_PROPS.height,
+                medium: INPUT_PROPS.medium,
+              }}
+              customInput={renderInput => (
+                <CustomInputIconClose
+                  renderInput={renderInput}
+                  onclose={() => {}}
+                />
+              )}
             />
           </LabelContainer>
           <LabelContainer label="personal.re_password">
@@ -76,7 +92,16 @@ const FormChangePass = ({control, errors, isChangePass}) => {
               name={FORM_NAME.rePass}
               messageErr={errors[FORM_NAME.rePass]?.message}
               placeholder="personal.re_password"
-              customInput={_renderCustomInput}
+              inputProps={{
+                height: INPUT_PROPS.height,
+                medium: INPUT_PROPS.medium,
+              }}
+              customInput={renderInput => (
+                <CustomInputIconClose
+                  renderInput={renderInput}
+                  onclose={() => {}}
+                />
+              )}
             />
           </LabelContainer>
         </Block>

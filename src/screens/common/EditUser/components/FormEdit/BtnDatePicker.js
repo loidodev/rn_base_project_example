@@ -1,23 +1,32 @@
 import {Block, Pressable, Text} from '@components';
 import React, {useState} from 'react';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
+import {convertDate, formatDate} from '../helper';
 
-const BtnDatePicker = ({...rest}) => {
+const BtnDatePicker = ({value, onChange, containerStyle}) => {
   const [isDatePicker, setIsDatePicker] = useState(false);
+
+  const _getDate = () => {
+    return value ? convertDate(value) : new Date();
+  };
+
+  console.log(new Date(value));
+
+  const _onConfirmDate = date => {
+    setIsDatePicker(false);
+    onChange(formatDate(date));
+  };
 
   return (
     <Block>
       {/* button */}
       <Pressable
-        {...rest}
+        {...containerStyle}
         justifyCenter
         paddingLeft={4}
         onPress={() => setIsDatePicker(true)}>
         <Text medium color="placeholder">
-          {/* {birthday
-                  ? moment(birthday * 1000).format('DD/MM/YYYY')
-                  : I18n.t('personal.not_update')} */}
-          personal.not_update
+          {value ? value : 'personal.not_update'}
         </Text>
       </Pressable>
       {/* modal */}
@@ -25,8 +34,9 @@ const BtnDatePicker = ({...rest}) => {
         mode="date"
         locale="vi_VN"
         headerTextIOS={'Ngày sinh'}
+        date={_getDate()}
         isVisible={isDatePicker}
-        // onConfirm={_onConfirmDate}
+        onConfirm={_onConfirmDate}
         onCancel={() => setIsDatePicker(false)}
       />
     </Block>

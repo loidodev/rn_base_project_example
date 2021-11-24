@@ -164,3 +164,15 @@ export const convertOption = (arr_option_tmp, option1, option2, option3) => {
     return checkOption1 && checkOption2 && checkOption3;
   });
 };
+export const handleFormData = objectBody => {
+  const keys = Object.keys(objectBody);
+  const values = Object.values(objectBody);
+
+  const formData = new FormData();
+
+  keys.map((key, index) => {
+    formData.append(key, values[index]);
+  });
+
+  return formData;
+};

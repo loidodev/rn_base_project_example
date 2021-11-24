@@ -4,8 +4,8 @@ import React from 'react';
 
 const RadioButton = ({
   data,
-  selected,
-  setSelected,
+  value,
+  onChangeValue,
   unCheckColor = 'smoke',
   checkedColor = 'green',
   containerProps,
@@ -18,16 +18,14 @@ const RadioButton = ({
         {...itemProps}
         key={index}
         marginLeft={index !== 0 ? SIZES.medium : 0}
-        onPress={() =>
-          item.value !== selected && setSelected && setSelected(item.value)
-        }>
+        onPress={() => onChangeValue(item)}>
         <Block row alignCenter>
           <Block
             round={18}
             backgroundColor={unCheckColor}
             alignCenter
             justifyCenter>
-            {item.value === selected && (
+            {item.value === value && (
               <Block round={8} backgroundColor={checkedColor} />
             )}
           </Block>
