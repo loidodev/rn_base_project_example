@@ -26,6 +26,7 @@ const Search = () => {
   const [history, setHistory] = useState([]);
   const [refreshing, setRefreshing] = useState(false);
   const [page, setPage] = useState(1);
+  console.log('--------------', suggestions);
 
   useEffect(() => {
     dispatch({

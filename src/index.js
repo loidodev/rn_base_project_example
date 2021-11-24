@@ -3,21 +3,22 @@ import RootNavigator from '@navigator';
 import store from '@store';
 import actions from '@store/actions';
 import {handleTokenUser} from '@utils';
+import Storage from '@utils/storage';
 import storage from '@utils/storage';
 import React, {useEffect} from 'react';
 import {MenuProvider} from 'react-native-popup-menu';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {Provider, useDispatch, useSelector} from 'react-redux';
-// import locale from 'locale';
+import locale from 'locale';
 
 const RootApp = () => {
   const dispatch = useDispatch();
   const token = useSelector(state => state.token);
 
   useEffect(() => {
-    // Storage.getItem('LANGUAGE').then(language => {
-    //   language ? (I18n.locale = language) : (I18n.locale = 'vi');
-    // });
+    Storage.getItem('LANGUAGE').then(language => {
+      language ? (locale.locale = language) : (locale.locale = 'vi');
+    });
 
     dispatch({type: actions.GET_TOKEN});
   }, [dispatch]);

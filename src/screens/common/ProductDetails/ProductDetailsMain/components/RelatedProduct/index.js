@@ -18,7 +18,7 @@ const RelatedProduct = React.memo(({data}) => {
       />
     );
   };
-  
+
   if (!data?.length) {
     return null;
   }

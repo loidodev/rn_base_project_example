@@ -1,18 +1,17 @@
-import {Block, Text} from '@components';
-import Rating from '@components/Common/Rating';
+import {Block, Rating, Text} from '@components';
+import {commonRoot} from '@navigator/navigationRef';
+import router from '@navigator/router';
 // import {routes} from '@navigation/routes';
-import {useNavigation} from '@react-navigation/core';
 import {height} from '@utils/responsive';
 import locale from 'locale';
 import React from 'react';
 import {Pressable} from 'react-native';
 import {useSelector} from 'react-redux';
-import Comment from '../Comment';
-import RenderProgress from '../RenderProgress';
+import Comment from '../components/Comment';
+import RenderProgress from '../components/RenderProgress';
 import styles from './styles';
 
 const EvaluateProduct = ({data, isShowAll, item_id, hasCombo}) => {
-  const navigation = useNavigation();
   const productDetails = useSelector(state => state.productDetails.data);
   const rCombo = useSelector(state => state.comboProductDetails.data);
   const dataDetails = hasCombo ? rCombo : productDetails;
@@ -69,10 +68,9 @@ const EvaluateProduct = ({data, isShowAll, item_id, hasCombo}) => {
           {isShowAll && (
             <Pressable
               style={styles.btnViewDetails}
-              // onPress={() =>
-              //   navigation.navigate(routes.COMMENT_DETAILS, {item_id, hasCombo})
-              // }
-            >
+              onPress={() =>
+                commonRoot.navigate(router.COMMENT_DETAILS, {item_id, hasCombo})
+              }>
               <Text alignCenter size={13} color="blue" fontType="semibold">
                 {locale.t('evaluate.all_comments')}
                 {' >'}

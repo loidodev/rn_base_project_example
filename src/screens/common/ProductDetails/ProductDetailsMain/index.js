@@ -6,10 +6,13 @@ import {height, hs} from '@utils/responsive';
 import React, {useEffect, useRef, useState} from 'react';
 import {Animated, StatusBar} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
+import EvaluateProduct from '../Evaluate/EvaluateProrduct';
 import InformationProduct from '../Information/InformationMain';
 import AnimatedCart from './components/AnimatedCart';
 import AnimatedHeart from './components/AnimatedHeart';
+import ChooseBonus from './components/ChooseBonus';
 import ChooseTypeProduct from './components/ChooseTypeProduct';
+import ComboProduct from './components/ComboProduct';
 // import ChooseBonus from './components//ChooseBonus';
 // import AnimatedCart from './components/AnimatedCart';
 // import AnimatedHeart from './components/AnimatedHeart';
@@ -20,6 +23,8 @@ import HeaderIcon from './components/HeaderIcon';
 import ImageHeader from './components/ImageHeader';
 import InfoProduct from './components/InfoProduct';
 import RelatedProduct from './components/RelatedProduct';
+import VoucherProduct from './components/VoucherProduct';
+import styles from './styles';
 // import EvaluateProduct from '../EvaluateProrduct';
 
 const MAX_HEIGHT = height - hs(180);
@@ -30,7 +35,6 @@ const ProductDetails = ({route}) => {
   const dispatch = useDispatch();
   const [isHeart, setIsHeart] = useState();
   const [productBonus, setProductBonus] = useState(null);
-
   const scrollY = useRef(new Animated.Value(0)).current;
   const animatedCart = useRef(new Animated.Value(0)).current;
   const animatedHeart = useRef(new Animated.Value(0)).current;
@@ -155,8 +159,8 @@ const ProductDetails = ({route}) => {
     if (rProduct.isLoading) {
       return <ProductDetailsHolder />;
     }
-
-    const data = rProduct.data;
+    
+    const data = hasCombo ? rCombo.data : rProduct.data;
     return (
       <Block flex>
         <HeaderIcon
@@ -174,13 +178,23 @@ const ProductDetails = ({route}) => {
           )}>
           <ImageHeader data={data?.arr_picture} />
           <InfoProduct data={data} />
+          <VoucherProduct vouchers={data?.promotion_code} />
+          {hasCombo && data?.combo && (
+            <ChooseBonus
+              data={data?.combo}
+              productBonus={productBonus}
+              setProductBonus={setProductBonus}
+              containerStyles={styles.gifContainer}
+            />
+          )}
+          {hasCombo && <ComboProduct data={data} />}
           <InformationProduct content={data?.content} />
-          {/* <EvaluateProduct
+          <EvaluateProduct
             isShowAll
             hasCombo={hasCombo}
             data={review?.slice(0, 4)}
             item_id={item_id}
-          /> */}
+          />
           <RelatedProduct data={data?.arr_related} />
         </Animated.ScrollView>
         <ChooseTypeProduct

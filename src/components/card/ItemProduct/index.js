@@ -10,10 +10,16 @@ import React from 'react';
 import {Pressable} from 'react-native';
 import {useSelector} from 'react-redux';
 import styles from './styles';
-import {commonRoot} from '@navigator/navigationRef';
-import router from '@navigator/router';
 
-const ItemProduct = ({item, style, contentStyle}) => {
+const ItemProduct = ({
+  item,
+  style,
+  contentStyle,
+  hasCombo,
+  imageStyle,
+  _onCombo = true,
+  comboSalePercent = true,
+}) => {
   const {
     thumbnail = '',
     picture = '',
@@ -24,18 +30,17 @@ const ItemProduct = ({item, style, contentStyle}) => {
     rate = 0,
     item_id,
     is_new = false,
-    item_id,
   } = item;
   const user = useSelector(state => state.tokenUser);
   const _onMoveDetails = () => {
     user
-      ? commonRoot.navigate(router.GET_PRODUCT_DETAILS, {item_id})
+      ? commonRoot.navigate(router.GET_PRODUCT_DETAILS, {item_id, hasCombo})
       : commonRoot.navigate(router.GET_START_SCREEN);
   };
 
   return (
     <Pressable
-      onPress={_onMoveDetails}
+      onPress={_onCombo ? _onMoveDetails : null}
       padding={SIZES.normal}
       style={{width: '50%', ...style}}>
       <Block
@@ -43,15 +48,18 @@ const ItemProduct = ({item, style, contentStyle}) => {
         overflow="hidden"
         style={contentStyle}
         backgroundColor="smoke">
-        <LazyImage
-          style={{
-            width: '100%',
-            height: width / 2.5,
-            marginTop: 12,
-          }}
-          thumbnail={thumbnail}
-          source={picture}
-        />
+        <Block backgroundColor="white">
+          <LazyImage
+            style={{
+              width: '100%',
+              height: width / 2.5,
+              marginTop: 12,
+              ...imageStyle,
+            }}
+            thumbnail={thumbnail}
+            source={picture}
+          />
+        </Block>
         {user ? (
           <Block padding={SIZES.medium}>
             <Text size={13} numberOfLines={2}>
@@ -65,7 +73,7 @@ const ItemProduct = ({item, style, contentStyle}) => {
               fontType="semibold">
               {convertCurrency(priceBuy, 'đ')}
             </Text>
-            {!!salePercent && (
+            {!!salePercent && comboSalePercent && (
               <Block row alignCenter marginTop={5}>
                 <Block
                   marginRight={6}

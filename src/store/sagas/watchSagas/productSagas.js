@@ -1,18 +1,20 @@
 import actions, {_onFail, _onSuccess, _onUnmount} from '@store/actions';
 import {handleApiError} from '@utils';
+import {CustomToast} from '@utils/helper';
 import api from '@utils/api';
-import {put, select, takeLatest} from 'redux-saga/effects';
-import {URL_API} from '../common';
 import queryString from 'query-string';
-function* getSuggestions() {
+import {delay, put, select, takeLatest} from 'redux-saga/effects';
+import {URL_API} from '../common';
+
+function* getSuggestions(payload) {
   try {
-    const res = yield api.get('getSuggestions');
+    const res = yield api.get(URL_API.product.getSuggestions);
     yield put({
-      type: _onSuccess(actions.GET_SEARCH_SUGGESTIONS),
+      type: _onSuccess(payload.type),
       data: res.data,
     });
   } catch (error) {
-    yield put({type: _onFail(actions.GET_SEARCH_SUGGESTIONS)});
+    yield put({type: _onFail(payload.type)});
     handleApiError(error);
   }
 }
@@ -78,7 +80,7 @@ function* getProductGroup(payload) {
 
 function* getProductOption(payload) {
   try {
-    const res = yield api.get('getProductOption', payload.params);
+    const res = yield api.get(URL_API.product.getProductOption, payload.params);
     yield put({
       type: _onSuccess(payload.type),
       data: res.data,
@@ -104,7 +106,10 @@ function* getShopping(payload) {
 
 function* getProductOptionDetail(payload) {
   try {
-    const res = yield api.get('getProductOptionDetail', payload.params);
+    const res = yield api.get(
+      URL_API.product.getProductOptionDetail,
+      payload.params,
+    );
     yield put({
       type: _onSuccess(payload.type),
       data: res.data,
@@ -118,7 +123,11 @@ function* getProductOptionDetail(payload) {
 function* checkFavorite(payload) {
   try {
     const body = queryString.stringify(payload.body);
-    const res = yield api.post('checkFavorite?user=', body, payload.params);
+    const res = yield api.post(
+      URL_API.product.checkFavorite,
+      body,
+      payload.params,
+    );
     yield put({
       type: _onSuccess(payload.type),
       data: res.data,
@@ -154,7 +163,7 @@ function* checkFavorite(payload) {
 
 function* showFavorite(payload) {
   try {
-    const res = yield api.get('getFavorite?numshow=12', payload.params);
+    const res = yield api.get(URL_API.product.checkFavorite, payload.params);
     yield put({
       type: _onSuccess(payload.type),
       data: res.data,
@@ -166,6 +175,52 @@ function* showFavorite(payload) {
   }
 }
 
+function* ratingProduct(payload) {
+  try {
+    const res = yield api.postFormData(
+      `ratingProduct?user=${payload.user}`,
+      payload.formData,
+    );
+    console.log('--------------', res);
+    yield put({
+      type: _onSuccess(payload.type),
+      data: res.data,
+    });
+    yield put({
+      type: actions.GET_REVIEWS_PRODUCT,
+      params: {
+        item_id: payload.item_id,
+        p: 1,
+      },
+    });
+    yield put({
+      type: actions.GET_PRODUCT_DETAILS,
+      params: {
+        item_id: payload.item_id,
+      },
+    });
+  } catch (error) {
+    yield delay(1000);
+    CustomToast(error.data.message);
+    yield put({type: _onFail(payload.type)});
+    handleApiError(error);
+  }
+}
+
+function* getCombo(payload) {
+  try {
+    const res = yield api.get(URL_API.product.getCombo, payload.params);
+    yield put({
+      type: _onSuccess(payload.type),
+      data: res.data,
+      totalPage: res.total_page,
+      isLoadMore: payload.isLoadMore,
+    });
+  } catch (error) {
+    yield put({type: _onFail(payload.type)});
+    handleApiError(error);
+  }
+}
 export function* watchProductSagas() {
   yield takeLatest(actions.GET_SEARCH_SCREEN, getProduct);
   yield takeLatest(actions.GET_SEARCH_SUGGESTIONS, getSuggestions);
@@ -179,4 +234,6 @@ export function* watchProductSagas() {
   yield takeLatest(actions.GET_SHOPPING, getShopping);
   yield takeLatest(actions.CHECK_FAVORITE, checkFavorite);
   yield takeLatest(actions.GET_SHOW_FAVORITE_PRODUCT, showFavorite);
+  yield takeLatest(actions.RATING_PRODUCT, ratingProduct);
+  yield takeLatest(actions.GET_COMBO, getCombo);
 }

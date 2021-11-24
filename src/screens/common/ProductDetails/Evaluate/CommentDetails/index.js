@@ -1,14 +1,18 @@
-import {Block, Header, Text} from '@components';
-import LoadMore from '@components/Common/LoadMore';
-import {EvaluateHolder} from '@components/Common/PlaceHolder';
-import Rating from '@components/Common/Rating';
+import {
+  Block,
+  EvaluateHolder,
+  Header,
+  ListWrapper,
+  Rating,
+  Text,
+} from '@components';
 import {height} from '@utils/responsive';
 import locale from 'locale';
 import React, {useEffect, useState} from 'react';
 import {FlatList} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
-import Comment from './../../../Comment';
-import RenderProgress from './../../../RenderProgress';
+import Comment from '../components/Comment';
+import RenderProgress from '../components/RenderProgress';
 import actions from '@store/actions';
 
 const CommentDetails = ({route}) => {
@@ -107,26 +111,26 @@ const CommentDetails = ({route}) => {
     );
   };
 
+  const _renderItem = ({item}) => <Comment item={item} />;
+
   return (
     <Block flex backgroundColor="white">
       <Header title={locale.t('evaluate.reviews')} canGoBack />
-      {isLoading && !data && <EvaluateHolder />}
+      {true && <EvaluateHolder />}
       {!isLoading && !data?.length ? null : (
-        <FlatList
+        <ListWrapper
           data={data}
-          renderItem={({item}) => <Comment item={item} />}
-          keyExtractor={(_, index) => String(index)}
-          showsVerticalScrollIndicator={false}
-          removeClippedSubviews={true}
-          onEndReached={_loadMore}
-          onEndReachedThreshold={0.5}
+          VSeparator={0}
+          numColumns={2}
+          onLoadMore={_loadMore}
           refreshing={refreshing}
           onRefresh={_onRefresh}
+          renderItem={_renderItem}
           ListHeaderComponent={_renderHeader}
+          isLoading={isLoading}
+          page={page}
         />
       )}
-
-      {isLoading && page > 1 && <LoadMore />}
     </Block>
   );
 };

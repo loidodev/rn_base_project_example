@@ -3,15 +3,16 @@ import actions, {_onFail, _onSuccess} from '@store/actions';
 import {handleApiError} from '@utils';
 import api from '@utils/api';
 import queryString from 'query-string';
+import {URL_API} from '../common';
 
 function* add_viewedProduct(payload) {
   try {
-    const res = yield api.get('viewedProduct?user=', payload.params);
+    const res = yield api.get(URL_API.payment.viewedProduct, payload.params);
     yield put({
       type: _onSuccess(payload.type),
       data: res.data,
       totalPage: res.total_page,
-      isLoadMore: actions.isLoadMore,
+      isLoadMore: payload.isLoadMore,
     });
   } catch (error) {
     yield put({type: _onFail(payload.type)});
@@ -21,7 +22,7 @@ function* add_viewedProduct(payload) {
 
 function* getCart(payload) {
   try {
-    const res = yield api.get('getCart', payload.params);
+    const res = yield api.get(URL_API.payment.getCart, payload.params);
     yield put({
       type: _onSuccess(payload.type),
       data: res.data || [],
@@ -36,7 +37,7 @@ function* getCart(payload) {
 function* updateCart(payload) {
   try {
     const body = queryString.stringify(payload.body);
-    const res = yield api.post('updateCart', body, payload.params);
+    const res = yield api.post(URL_API.payment.getCart, body, payload.params);
     yield put({
       type: _onSuccess(payload.type),
       data: res.data,

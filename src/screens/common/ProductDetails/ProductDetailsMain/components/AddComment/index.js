@@ -25,7 +25,7 @@ const Evaluate = ({setIsVisible, setIsComment, hasCombo}) => {
   // const {pictures, openMultiPicker} = useImagePicker();
   // const {thumbnail, picture, title, item_id} =
   //   useSelector(state => state.productDetails.data) || {};
-
+ 
   // const config = useSelector(state => state.config.data);
   // const rCombo = useSelector(state => state.comboProductDetails);
   const [value, setValue] = useState('Hài lòng');
