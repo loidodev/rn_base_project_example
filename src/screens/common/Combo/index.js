@@ -41,7 +41,6 @@ const Combo = () => {
     dispatch({
       type: actions.GET_COMBO,
       params: {
-        keyword: '',
         p: 1,
       },
     });
@@ -51,10 +50,9 @@ const Combo = () => {
     if (page < totalPage) {
       setPage(page + 1);
       dispatch({
-        type: actions.GET_SEARCH_SCREEN,
+        type: actions.GET_COMBO,
         isLoadMore: true,
         params: {
-          keyword: '',
           p: page + 1,
         },
       });

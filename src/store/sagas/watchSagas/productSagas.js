@@ -51,7 +51,7 @@ function* getReviewsProduct(payload) {
 
 function* getComboProductDetails(payload) {
   try {
-    const res = yield api.get('getCombo?numshow=12', payload.params);
+    const res = yield api.get(URL_API.product.getCombo, payload.params);
     yield put({
       type: _onSuccess(payload.type),
       data: res.data,
@@ -181,7 +181,6 @@ function* ratingProduct(payload) {
       `ratingProduct?user=${payload.user}`,
       payload.formData,
     );
-    console.log('--------------', res);
     yield put({
       type: _onSuccess(payload.type),
       data: res.data,
