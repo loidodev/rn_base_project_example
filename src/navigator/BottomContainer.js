@@ -44,7 +44,10 @@ const BottomContainer = () => {
           };
 
           const _onPress = () => {
-            if (route.name === router.SHOPPING_SCREEN) {
+            if (
+              route.name === router.SHOPPING_SCREEN ||
+              route.name === router.VOUCHER_SCREEN
+            ) {
               handleAuthentication(() => {
                 onPress();
               });
