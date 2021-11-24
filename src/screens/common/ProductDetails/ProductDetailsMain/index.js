@@ -159,7 +159,6 @@ const ProductDetails = ({route}) => {
     if (rProduct.isLoading) {
       return <ProductDetailsHolder />;
     }
-    
     const data = hasCombo ? rCombo.data : rProduct.data;
     return (
       <Block flex>
