@@ -9,15 +9,14 @@ import {
 import {BANNER_ID} from '@constants';
 import actions from '@store/actions';
 import {SIZES} from '@theme';
-import React, {useState} from 'react';
-import {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import BannerHome from './components/BannerHome';
 import CategoryGroup from './components/CategoryGroup';
 import CategoryProduct from './components/CategoryProduct';
 import HotProduct from './components/HotProduct';
 
-const callAllApi = (dispatch, user) => {
+const callAllApi = dispatch => {
   return Promise.all([
     dispatch({
       type: actions.GET_BANNER_BY_ID_HOME,
@@ -41,14 +40,12 @@ const Home = () => {
   const productGroup = useSelector(state => state.productGroup);
   const productIsFocus = useSelector(state => state.productIsFocus);
 
-  const user = useSelector(state => state.tokenUser);
-
   const [bannerHeader = [], bannerMiddle = []] = bannerByIdHome.data || [];
   const bannerMiddleItem = bannerMiddle[0] || {};
 
   useEffect(() => {
-    callAllApi(dispatch, user);
-  }, [dispatch, token, user]);
+    callAllApi(dispatch);
+  }, [dispatch, token]);
 
   const _onRefreshing = () => {
     setRefreshing(true);
@@ -78,7 +75,7 @@ const Home = () => {
           <BannerHome data={bannerHeader} />
           <CategoryGroup />
           {productGroup.data && <CategoryProduct data={productGroup.data} />}
-          <Block marginTop={SIZES.medium} height={100}>
+          <Block marginTop={SIZES.medium} height={90}>
             <LazyImage
               styles={{width: '100%', height: '100%'}}
               source={bannerMiddleItem?.img_link}
