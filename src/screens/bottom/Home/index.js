@@ -17,7 +17,7 @@ import CategoryGroup from './components/CategoryGroup';
 import CategoryProduct from './components/CategoryProduct';
 import HotProduct from './components/HotProduct';
 
-const callAllApi = dispatch => {
+const callAllApi = (dispatch, user) => {
   return Promise.all([
     dispatch({
       type: actions.GET_BANNER_BY_ID_HOME,
@@ -26,7 +26,10 @@ const callAllApi = dispatch => {
     dispatch({type: actions.GET_PRODUCT_GROUP_HOME}),
     dispatch({
       type: actions.GET_PRODUCT_IS_FOCUS,
-      params: {type: 'is_focus'},
+      params: {
+        user,
+        type: 'is_focus',
+      },
     }),
   ]);
 };
@@ -39,12 +42,14 @@ const Home = () => {
   const productGroup = useSelector(state => state.productGroup);
   const productIsFocus = useSelector(state => state.productIsFocus);
 
+  const user = useSelector(state => state.tokenUser);
+
   const [bannerHeader = [], bannerMiddle = []] = bannerByIdHome.data || [];
   const bannerMiddleItem = bannerMiddle[0] || {};
 
   useEffect(() => {
-    callAllApi(dispatch);
-  }, [dispatch, token]);
+    callAllApi(dispatch, user);
+  }, [dispatch, token, user]);
 
   const _onRefreshing = () => {
     setRefreshing(true);
