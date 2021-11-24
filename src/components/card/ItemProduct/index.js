@@ -6,12 +6,11 @@ import {convertCurrency} from '@utils';
 import {width} from '@utils/responsive';
 import React from 'react';
 import {Pressable} from 'react-native';
-import {useSelector} from 'react-redux';
 import styles from './styles';
 import {commonRoot} from '@navigator/navigationRef';
 import router from '@navigator/router';
 
-const ItemProduct = ({item, style, contentStyle}) => {
+const ItemProduct = ({item, style, contentStyle, user}) => {
   const {
     thumbnail = '',
     picture = '',
@@ -30,28 +29,27 @@ const ItemProduct = ({item, style, contentStyle}) => {
       : commonRoot.navigate(router.GET_START_SCREEN);
   };
 
-  const user = useSelector(state => state.tokenUser);
 
   return (
     <Pressable
       onPress={_onMoveDetails}
       padding={SIZES.normal}
       style={{width: '50%', ...style}}>
-      {user ? (
-        <Block
-          radius={SIZES.small}
-          overflow="hidden"
-          style={contentStyle}
-          backgroundColor="smoke">
-          <LazyImage
-            style={{
-              width: '100%',
-              height: width / 2.5,
-              marginTop: 12,
-            }}
-            thumbnail={thumbnail}
-            source={picture}
-          />
+      <Block
+        radius={SIZES.small}
+        overflow="hidden"
+        style={contentStyle}
+        backgroundColor="smoke">
+        <LazyImage
+          style={{
+            width: '100%',
+            height: width / 2.5,
+            marginTop: 12,
+          }}
+          thumbnail={thumbnail}
+          source={picture}
+        />
+        {user ? (
           <Block padding={SIZES.medium}>
             <Text size={13} numberOfLines={2}>
               {title}
@@ -101,22 +99,7 @@ const ItemProduct = ({item, style, contentStyle}) => {
               )}
             </Block>
           </Block>
-        </Block>
-      ) : (
-        <Block
-          radius={SIZES.small}
-          overflow="hidden"
-          style={contentStyle}
-          backgroundColor="white">
-          <LazyImage
-            style={{
-              width: '100%',
-              height: width / 2.5,
-              marginTop: 12,
-            }}
-            thumbnail={thumbnail}
-            source={picture}
-          />
+        ) : (
           <Block padding={SIZES.medium}>
             <Text light fontSize={15} numberOfLines={2}>
               {title}
@@ -125,8 +108,8 @@ const ItemProduct = ({item, style, contentStyle}) => {
               Đăng ký để xem giá
             </Text>
           </Block>
-        </Block>
-      )}
+        )}
+      </Block>
     </Pressable>
   );
 };

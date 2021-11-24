@@ -27,7 +27,6 @@ const callAllApi = (dispatch, user) => {
     dispatch({
       type: actions.GET_PRODUCT_IS_FOCUS,
       params: {
-        user,
         type: 'is_focus',
       },
     }),
@@ -86,7 +85,9 @@ const Home = () => {
               thumbnail={bannerMiddleItem?.thumbnail}
             />
           </Block>
-          {productIsFocus.data && <HotProduct data={productIsFocus.data} />}
+          {productIsFocus.data && (
+            <HotProduct data={productIsFocus.data} user={user} />
+          )}
         </ScrollView>
       )}
     </Block>
