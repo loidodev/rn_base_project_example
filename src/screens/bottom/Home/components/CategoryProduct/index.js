@@ -14,6 +14,7 @@ const CategoryProduct = ({data = []}) => {
   const scrollViewRef = useRef();
   const translateXRef = useRef(0);
   const isAutoScrollRef = useRef(true);
+  const isScrollEndRef = useRef(false);
 
   const newData = [{}, ...data];
 
@@ -26,8 +27,9 @@ const CategoryProduct = ({data = []}) => {
           animated: true,
         });
 
-        translateXRef.current =
-          translateXRef.current + ITEM_WIDTH + ITEM_PADDING;
+        translateXRef.current = isScrollEndRef.current
+          ? 0
+          : translateXRef.current + ITEM_WIDTH + ITEM_PADDING;
       }
     }, DURATION);
 
@@ -37,7 +39,16 @@ const CategoryProduct = ({data = []}) => {
   }, []);
 
   const _onScroll = ({nativeEvent}) => {
-    translateXRef.current = nativeEvent.contentOffset.x;
+    const padding = 20;
+
+    const {contentOffset, layoutMeasurement, contentSize} = nativeEvent;
+
+    const end =
+      Math.floor(contentOffset.x + layoutMeasurement.width + padding) >=
+      contentSize.width;
+
+    translateXRef.current = contentOffset.x;
+    isScrollEndRef.current = end;
   };
 
   const _onScrollBeginDrag = () => {
@@ -45,7 +56,9 @@ const CategoryProduct = ({data = []}) => {
   };
 
   const _onScrollEndDrag = () => {
-    isAutoScrollRef.current = true;
+    setTimeout(() => {
+      isAutoScrollRef.current = true;
+    }, DURATION / 2);
   };
 
   const _renderCategoryProduct = (item, index) => {
@@ -116,7 +129,7 @@ const CategoryProduct = ({data = []}) => {
           scrollEventThrottle={16}
           showsHorizontalScrollIndicator={false}
           contentContainerStyle={{paddingHorizontal: hs(SIZES.medium)}}>
-          {newData.map(_renderCategoryProduct)}
+          {newData?.map(_renderCategoryProduct)}
         </ScrollView>
       </Block>
     </Block>
