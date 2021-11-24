@@ -8,7 +8,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 
 const IconGroup = ({onLayout, customSearch}) => {
   const _onMoveSearch = () => {
-    commonRoot.navigate(router.GET_SEARCH_SCREEN);
+    commonRoot.navigate(router.SEARCH_SCREEN);
   };
 
   const _onMoveCart = params => {};

@@ -2,7 +2,7 @@ import actions from '@store/actions';
 import {reducerAdvance, reducerDefault} from '@store/reducers/common';
 
 export const search = (...props) => {
-  return reducerAdvance(...props, actions.GET_SEARCH_SCREEN);
+  return reducerAdvance(...props, actions.SEARCH_SCREEN);
 };
 
 export const suggestions = (...props) => {

@@ -2,7 +2,7 @@
 import {Block, Image, LazyImage, Rating, Text} from '@components';
 import {ICONS} from '@constants';
 import {SIZES} from '@theme';
-import {convertCurrency} from '@utils';
+import {convertCurrency, handleAuthentication} from '@utils';
 import {width} from '@utils/responsive';
 import React from 'react';
 import {Pressable} from 'react-native';
@@ -23,11 +23,13 @@ const ItemProduct = ({item, style, contentStyle}) => {
     item_id,
     is_new = false,
   } = item;
-  const user = useSelector(state => state.tokenUser);
+
+  const tokenUser = useSelector(state => state.tokenUser);
+
   const _onMoveDetails = () => {
-    user
-      ? commonRoot.navigate(router.GET_PRODUCT_DETAILS, {item_id})
-      : commonRoot.navigate(router.GET_START_SCREEN);
+    handleAuthentication(() => {
+      commonRoot.navigate(router.GET_PRODUCT_DETAILS, {item_id});
+    });
   };
 
   return (
@@ -49,7 +51,7 @@ const ItemProduct = ({item, style, contentStyle}) => {
           thumbnail={thumbnail}
           source={picture}
         />
-        {user ? (
+        {tokenUser ? (
           <Block padding={SIZES.medium}>
             <Text size={13} numberOfLines={2}>
               {title}
