@@ -6,7 +6,7 @@ import {height, hs} from '@utils/responsive';
 import React, {useEffect, useRef, useState} from 'react';
 import {Animated, StatusBar} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
-import InformationProduct from '../Information';
+import InformationProduct from '../Information/InformationMain';
 import AnimatedCart from './components/AnimatedCart';
 import AnimatedHeart from './components/AnimatedHeart';
 import ChooseTypeProduct from './components/ChooseTypeProduct';
