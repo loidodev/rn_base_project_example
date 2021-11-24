@@ -1,21 +1,25 @@
 import {Block, GridList, Image, Pressable, Text} from '@components';
-import {commonRoot} from '@navigator/navigationRef';
 import {SIZES} from '@theme';
+import {handleAuthentication} from '@utils';
 import React from 'react';
 import {GROUPS} from './data';
 
 const CategoryGroup = () => {
-  const _onPress = value => {
-    commonRoot.navigate(value.screenName, {
-      params: value,
-    });
-  };
-
   const _renderCategory = ({item}) => {
-    const {title, picture} = item;
+    const {title, picture, authentication, onPress} = item;
+
+    const _onPress = () => {
+      if (authentication) {
+        handleAuthentication(() => {
+          onPress();
+        });
+      } else {
+        onPress({title});
+      }
+    };
 
     return (
-      <Pressable flex onPress={() => _onPress(item)}>
+      <Pressable flex onPress={_onPress}>
         <Block
           alignCenter
           justifyCenter

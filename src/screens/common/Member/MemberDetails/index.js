@@ -3,20 +3,14 @@ import React, {useState} from 'react';
 import {ScrollView} from 'react-native';
 import HeaderMenber from './components/HeaderMenber';
 
-const MemberDetails = value => {
-  const {
-    address,
-    arr_picture,
-    content,
-    district,
-    title,
-    phone,
-  } = value.route.params.param;
+const MemberDetails = ({route}) => {
+  const {address, arr_picture, content, title, phone} = route.params || {};
+
   const [index, setIndex] = useState(1);
 
   return (
     <Block flex>
-      <HeaderSearch canGoBack title={'Chi tiết cửa hàng'} />
+      <HeaderSearch canGoBack title={title} />
       <Block height={5} backgroundColor="smoke" marginBottom={12} />
       <ScrollView>
         <HeaderMenber data={arr_picture} index={index} setIndex={setIndex} />

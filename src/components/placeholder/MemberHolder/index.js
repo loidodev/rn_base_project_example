@@ -1,4 +1,3 @@
-/* eslint-disable react-native/no-inline-styles */
 import {Block, Shimmer} from '@components';
 import {createDataTemplate} from '@utils';
 import {width} from '@utils/responsive';

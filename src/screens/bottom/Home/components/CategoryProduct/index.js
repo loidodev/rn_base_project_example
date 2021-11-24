@@ -3,11 +3,50 @@ import {Block, Image, LazyImage, Pressable, Text} from '@components';
 import {IMAGES} from '@constants';
 import {hs, width} from '@responsive';
 import {SIZES} from '@theme';
-import React from 'react';
+import React, {useEffect, useRef} from 'react';
 import {ScrollView} from 'react-native';
 
+const ITEM_WIDTH = width / 4;
+const ITEM_PADDING = SIZES.medium;
+const DURATION = 1500;
+
 const CategoryProduct = ({data = []}) => {
+  const scrollViewRef = useRef();
+  const translateXRef = useRef(0);
+  const isAutoScrollRef = useRef(true);
+
   const newData = [{}, ...data];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (isAutoScrollRef.current) {
+        scrollViewRef.current?.scrollTo({
+          x: translateXRef.current,
+          y: 0,
+          animated: true,
+        });
+
+        translateXRef.current =
+          translateXRef.current + ITEM_WIDTH + ITEM_PADDING;
+      }
+    }, DURATION);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
+
+  const _onScroll = ({nativeEvent}) => {
+    translateXRef.current = nativeEvent.contentOffset.x;
+  };
+
+  const _onScrollBeginDrag = () => {
+    isAutoScrollRef.current = false;
+  };
+
+  const _onScrollEndDrag = () => {
+    isAutoScrollRef.current = true;
+  };
 
   const _renderCategoryProduct = (item, index) => {
     const {picture, title} = item || {};
@@ -15,8 +54,8 @@ const CategoryProduct = ({data = []}) => {
     return (
       <Pressable
         key={`CategoryProduct-${index}`}
-        marginLeft={index !== 0 ? SIZES.medium : 0}
-        style={{width: width / 4}}>
+        marginLeft={index !== 0 ? ITEM_PADDING : 0}
+        style={{width: ITEM_WIDTH}}>
         <Block
           radius={SIZES.small}
           borderWidth={1}
@@ -24,7 +63,7 @@ const CategoryProduct = ({data = []}) => {
           backgroundColor="primary"
           overflow="hidden"
           style={{
-            width: width / 4,
+            width: ITEM_WIDTH,
             height: width / 3.8,
           }}>
           {index === 0 ? (
@@ -69,7 +108,12 @@ const CategoryProduct = ({data = []}) => {
           DANH MỤC SẢN PHẨM
         </Text>
         <ScrollView
+          ref={scrollViewRef}
+          onScroll={_onScroll}
+          onScrollBeginDrag={_onScrollBeginDrag}
+          onScrollEndDrag={_onScrollEndDrag}
           horizontal
+          scrollEventThrottle={16}
           showsHorizontalScrollIndicator={false}
           contentContainerStyle={{paddingHorizontal: hs(SIZES.medium)}}>
           {newData.map(_renderCategoryProduct)}

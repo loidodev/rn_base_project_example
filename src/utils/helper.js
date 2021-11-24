@@ -1,5 +1,7 @@
 import {STORAGE_KEYS} from '@constants';
 import locale from '@locale';
+import {commonRoot} from '@navigator/navigationRef';
+import router from '@navigator/router';
 import store from '@store';
 import actions, {_onUnmount} from '@store/actions';
 import {Alert} from 'react-native';
@@ -175,4 +177,12 @@ export const handleFormData = objectBody => {
   });
 
   return formData;
+};
+
+export const handleAuthentication = callBackSuccess => {
+  if (store.getState().tokenUser) {
+    callBackSuccess && callBackSuccess();
+  } else {
+    commonRoot.navigate(router.GET_START_SCREEN);
+  }
 };
