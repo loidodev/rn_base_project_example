@@ -116,7 +116,7 @@ const CommentDetails = ({route}) => {
   return (
     <Block flex backgroundColor="white">
       <Header title={locale.t('evaluate.reviews')} canGoBack />
-      {true && <EvaluateHolder />}
+      {isLoading && <EvaluateHolder />}
       {!isLoading && !data?.length ? null : (
         <ListWrapper
           data={data}
