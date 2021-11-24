@@ -1,21 +1,27 @@
 import {Block, GridList, Image, Pressable, Text} from '@components';
 import {commonRoot} from '@navigator/navigationRef';
+import router from '@navigator/router';
 import {SIZES} from '@theme';
 import React from 'react';
+import {useSelector} from 'react-redux';
 import {GROUPS} from './data';
 
 const CategoryGroup = () => {
-  const _onPress = value => {
-    commonRoot.navigate(value.screenName, {
-      params: value,
-    });
-  };
+  const tokenUser = useSelector(state => state.tokenUser);
 
   const _renderCategory = ({item}) => {
-    const {title, picture} = item;
+    const {title, picture, authentication, onPress} = item;
+
+    const _onPress = () => {
+      if (authentication && !tokenUser) {
+        commonRoot.navigate(router.GET_START_SCREEN);
+      } else {
+        onPress({title});
+      }
+    };
 
     return (
-      <Pressable flex onPress={() => _onPress(item)}>
+      <Pressable flex onPress={_onPress}>
         <Block
           alignCenter
           justifyCenter

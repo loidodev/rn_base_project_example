@@ -7,8 +7,8 @@ import React, {useEffect} from 'react';
 import {FlatList} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 
-const Member = value => {
-  const {title} = value.route.params.params;
+const Member = ({route}) => {
+  const {title} = route.params || {};
   const dispatch = useDispatch();
   const {data, isLoading} = useSelector(state => state.member);
 
@@ -25,7 +25,6 @@ const Member = value => {
       ) : (
         <FlatList
           data={data}
-          numColumns={1}
           keyExtractor={(_, index) => String(index)}
           renderItem={({item}) => <ItemMember item={item} />}
           showsVerticalScrollIndicator={false}
