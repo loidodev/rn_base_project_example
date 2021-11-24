@@ -19,7 +19,9 @@ const FormChangePass = ({control, errors}) => {
     name: FORM_NAME.isChangePass,
   });
 
-  const {} = useController({control, name: FORM_NAME.oldPass});
+  const controlOldPass = useController({control, name: FORM_NAME.oldPass});
+  const controlNewPass = useController({control, name: FORM_NAME.newPass});
+  const controlRePass = useController({control, name: FORM_NAME.rePass});
 
   return (
     <Block
@@ -59,11 +61,12 @@ const FormChangePass = ({control, errors}) => {
               inputProps={{
                 height: INPUT_PROPS.height,
                 medium: INPUT_PROPS.medium,
+                secureTextEntry: true,
               }}
               customInput={renderInput => (
                 <CustomInputIconClose
                   renderInput={renderInput}
-                  onclose={() => {}}
+                  onclose={() => controlOldPass.field.onChange('')}
                 />
               )}
             />
@@ -77,11 +80,12 @@ const FormChangePass = ({control, errors}) => {
               inputProps={{
                 height: INPUT_PROPS.height,
                 medium: INPUT_PROPS.medium,
+                secureTextEntry: true,
               }}
               customInput={renderInput => (
                 <CustomInputIconClose
                   renderInput={renderInput}
-                  onclose={() => {}}
+                  onclose={() => controlNewPass.field.onChange('')}
                 />
               )}
             />
@@ -95,11 +99,12 @@ const FormChangePass = ({control, errors}) => {
               inputProps={{
                 height: INPUT_PROPS.height,
                 medium: INPUT_PROPS.medium,
+                secureTextEntry: true,
               }}
               customInput={renderInput => (
                 <CustomInputIconClose
                   renderInput={renderInput}
-                  onclose={() => {}}
+                  onclose={() => controlRePass.field.onChange('')}
                 />
               )}
             />

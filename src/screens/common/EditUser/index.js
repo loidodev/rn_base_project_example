@@ -20,6 +20,7 @@ const EditUser = () => {
   const dispatch = useDispatch();
   const userInfo = useSelector(state => state.userInfo);
   const updateUser = useSelector(state => state.updateUser);
+  const updatePassword = useSelector(state => state.updatePassword);
 
   const {full_name, phone, email, birthday, gender} = userInfo.data || {};
 
@@ -41,6 +42,16 @@ const EditUser = () => {
         gender: data[FORM_NAME.gender],
       },
     });
+    if (data[FORM_NAME.isChangePass]) {
+      dispatch({
+        type: actions.UPDATE_PASSWORD,
+        body: {
+          password_cur: data[FORM_NAME.oldPass],
+          password: data[FORM_NAME.newPass],
+          re_password: data[FORM_NAME.rePass],
+        },
+      });
+    }
   };
 
   return (
@@ -57,7 +68,9 @@ const EditUser = () => {
       </ScrollView>
       {/* btn submit */}
       <ButtonSubmit
-        loading={userInfo.isLoading || updateUser.isLoading}
+        loading={
+          userInfo.isLoading || updateUser.isLoading || updatePassword.isLoading
+        }
         onPress={handleSubmit(_onSubmit)}>
         personal.save
       </ButtonSubmit>
