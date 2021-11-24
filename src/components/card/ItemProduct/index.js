@@ -20,7 +20,7 @@ const ItemProduct = ({item, style, contentStyle}) => {
     price = 3000,
     rate = 0,
     is_new = false,
-    item_id
+    item_id,
   } = item;
 
   const _onMoveDetails = () => {

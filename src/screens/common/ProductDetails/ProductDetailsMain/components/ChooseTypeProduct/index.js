@@ -34,7 +34,7 @@ const ChooseTypeProduct = ({
 
   const cart = useSelector(state => state.cart?.data);
   const config = useSelector(state => state.config?.data);
-  const user = useSelector(state => state.tokenUser?.data);
+  const user = useSelector(state => state.tokenUser);
   const productDetails = useSelector(state => state.productDetails?.data);
   const comboDetails = useSelector(state => state.comboProductDetails?.data);
   const isProductOption = useSelector(state => state.productOptions?.isLoading);

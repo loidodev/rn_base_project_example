@@ -1,33 +1,41 @@
 /* eslint-disable react-native/no-inline-styles */
-import {AnimatedImage, Block, Button, Text} from '@components';
+import {
+  Block,
+  Button,
+  ButtonSubmit,
+  LazyImage,
+  Pressable,
+  Text,
+} from '@components';
 import actions from '@store/actions';
-import {COLORS, theme} from '@theme';
+import {COLORS, SIZES} from '@theme';
 import {CustomToast} from '@utils/helper';
 import locale from 'locale';
 import React, {useState} from 'react';
 import {Keyboard, Platform, ScrollView, TextInput} from 'react-native';
 import {Rating} from 'react-native-elements';
-import {useKeyboard} from 'react-native-keyboard-height';
+// import {useKeyboard} from 'react-native-keyboard-height';
 import {useDispatch, useSelector} from 'react-redux';
 import styles from './styles';
 
 const Evaluate = ({setIsVisible, setIsComment, hasCombo}) => {
   const dispatch = useDispatch();
   const rProduct = useSelector(state => state.productDetails);
-  const [keyboardHeight] = useKeyboard();
+  // const [keyboardHeight] = useKeyboard();
   // const {pictures, openMultiPicker} = useImagePicker();
   // const {thumbnail, picture, title, item_id} =
   //   useSelector(state => state.productDetails.data) || {};
 
   // const config = useSelector(state => state.config.data);
-  const rCombo = useSelector(state => state.comboProductDetails);
+  // const rCombo = useSelector(state => state.comboProductDetails);
   const [value, setValue] = useState('Hài lòng');
   const [rating, setRating] = useState(3);
   const [content, setContent] = useState('');
   const [color, setColor] = useState(COLORS.orange);
-  const user = useSelector(state => state.tokenUser.data);
-  const userInfo = useSelector(state => state.userInfo.data);
-  const data = hasCombo ? rCombo.data : rProduct.data;
+  const user = useSelector(state => state.tokenUser);
+  const userInfo = useSelector(state => state.userInfo);
+  // const data = hasCombo ? rCombo.data : rProduct.data;
+  const data = rProduct.data;
 
   const ratingCompleted = index => {
     setRating(index);
@@ -100,11 +108,11 @@ const Evaluate = ({setIsVisible, setIsComment, hasCombo}) => {
     <Block
       borderTopLeftRadius={10}
       borderTopRightRadius={10}
-      marginBottom={Platform.OS === 'ios' ? keyboardHeight : 0}
+      // marginBottom={Platform.OS === 'ios' ? keyboardHeight : 0}
       backgroundColor="white">
       <ScrollView>
         <Block row alignCenter margin={12}>
-          <AnimatedImage
+          <LazyImage
             thumbnail={data?.thumbnail}
             source={data?.picture}
             style={styles.image}
@@ -174,7 +182,13 @@ const Evaluate = ({setIsVisible, setIsComment, hasCombo}) => {
           </Block>
         </Block>
       </ScrollView>
-      <Button style={styles.btnSubmit} onPress={_onSubmit} title="Gửi" />
+      <ButtonSubmit
+        containerProps={{marginBottom: 20}}
+        style={styles.btnSubmit}
+        onPress={_onSubmit}
+        title="Gửi">
+        Gửi
+      </ButtonSubmit>
     </Block>
   );
 };
