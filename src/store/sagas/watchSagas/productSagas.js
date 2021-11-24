@@ -2,10 +2,11 @@ import actions, {_onFail, _onSuccess} from '@store/actions';
 import {handleApiError} from '@utils';
 import api from '@utils/api';
 import {put, takeLatest} from 'redux-saga/effects';
+import {URL_API} from '../common';
 
 function* getProduct(payload) {
   try {
-    const res = yield api.get('getProduct', payload.params);
+    const res = yield api.get(URL_API.product.getProduct, payload.params);
     yield put({
       type: _onSuccess(payload.type),
       data: res.data,
@@ -20,7 +21,7 @@ function* getProduct(payload) {
 
 function* getSuggestions() {
   try {
-    const res = yield api.get('getSuggestions');
+    const res = yield api.get(URL_API.product.getSuggestions);
     yield put({
       type: _onSuccess(actions.GET_SEARCH_SUGGESTIONS),
       data: res.data,
@@ -33,7 +34,7 @@ function* getSuggestions() {
 
 function* getProductGroup(payload) {
   try {
-    const res = yield api.get('getProductGroup');
+    const res = yield api.get(URL_API.product.getProductGroup);
     yield put({
       type: _onSuccess(payload.type),
       data: res.data,
@@ -46,7 +47,7 @@ function* getProductGroup(payload) {
 
 function* getShopping(payload) {
   try {
-    const res = yield api.get('getShopping');
+    const res = yield api.get(URL_API.product.getShopping);
     yield put({
       type: _onSuccess(payload.type),
       data: res.data,

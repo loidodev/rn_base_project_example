@@ -8,17 +8,12 @@ import {
 } from '@utils';
 import api from '@utils/api';
 import queryString from 'query-string';
-import Config from 'react-native-config';
-
-const ACCOUNT_IMS = {
-  username: Config.ACCESS_USERNAME,
-  password: Config.ACCESS_PASSWORD,
-};
+import {ACCOUNT_IMS, URL_API} from '../common';
 
 function* getToken() {
   try {
     const body = yield queryString.stringify(ACCOUNT_IMS);
-    const res = yield api.post('getToken', body);
+    const res = yield api.post(URL_API.user.getToken, body);
     yield put({type: _onSuccess(actions.GET_TOKEN), data: res.token});
   } catch (error) {
     yield put({type: _onFail(actions.GET_TOKEN)});
@@ -29,7 +24,7 @@ function* getToken() {
 function* getUser(payload) {
   try {
     const tokenUser = yield select(state => state.tokenUser);
-    const res = yield api.get('getUser', {
+    const res = yield api.get(URL_API.user.getUser, {
       user: payload.params?.tokenUser || tokenUser,
     });
     yield put({
@@ -45,7 +40,7 @@ function* getUser(payload) {
 function* signUpUser(payload) {
   try {
     const body = yield queryString.stringify(payload.body);
-    const res = yield api.post('signupUser', body, payload.params);
+    const res = yield api.post(URL_API.user.signupUser, body, payload.params);
     yield put({
       type: _onSuccess(actions.SIGN_UP_USER),
       data: res.token,
@@ -67,7 +62,7 @@ function* signUpUser(payload) {
 function* signInUser(payload) {
   try {
     const body = yield queryString.stringify(payload.body);
-    const res = yield api.post('signinUser', body, payload.params);
+    const res = yield api.post(URL_API.user.signinUser, body, payload.params);
     yield put({
       type: _onSuccess(payload.type),
       data: res.token,
@@ -89,7 +84,7 @@ function* signInUser(payload) {
 function* logoutUser(payload) {
   try {
     const tokenUser = yield select(state => state.tokenUser);
-    const res = yield api.get('logoutUser', {user: tokenUser});
+    const res = yield api.get(URL_API.user.logoutUser, {user: tokenUser});
     yield put({
       type: _onSuccess(payload.type),
       data: res.data,
@@ -107,12 +102,32 @@ function* updateUser(payload) {
   try {
     const body = handleFormData(payload.body);
     const tokenUser = yield select(state => state.tokenUser);
-    const res = yield api.post('updateUser', body, {user: tokenUser});
+    const res = yield api.post(URL_API.user.updateUser, body, {
+      user: tokenUser,
+    });
     yield put({
       type: _onSuccess(payload.type),
       data: res.data,
     });
     yield put({type: actions.GET_USER});
+    CustomToast(res.message);
+  } catch (error) {
+    yield put({type: _onFail(payload.type)});
+    handleApiError(error, true);
+  }
+}
+
+function* updatePassword(payload) {
+  try {
+    const body = handleFormData(payload.body);
+    const tokenUser = yield select(state => state.tokenUser);
+    const res = yield api.post(URL_API.user.updatePassword, body, {
+      user: tokenUser,
+    });
+    yield put({
+      type: _onSuccess(payload.type),
+      data: res.data,
+    });
     CustomToast(res.message);
   } catch (error) {
     yield put({type: _onFail(payload.type)});
@@ -127,4 +142,5 @@ export function* watchUserSagas() {
   yield takeLatest(actions.SIGN_IN_USER, signInUser);
   yield takeLatest(actions.LOG_OUT_USER, logoutUser);
   yield takeLatest(actions.UPDATE_USER, updateUser);
+  yield takeLatest(actions.UPDATE_PASSWORD, updatePassword);
 }

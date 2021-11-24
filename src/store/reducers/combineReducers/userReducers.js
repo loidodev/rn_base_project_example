@@ -1,5 +1,5 @@
 import actions from '@store/actions';
-import {reducerDefault} from '@store/common';
+import {reducerDefault} from '@store/reducers/common';
 
 export const tokenUser = (state = null, payload) => {
   switch (payload.type) {
@@ -33,4 +33,8 @@ export const logout = (...props) => {
 
 export const updateUser = (...props) => {
   return reducerDefault(...props, actions.UPDATE_USER);
+};
+
+export const updatePassword = (...props) => {
+  return reducerDefault(...props, actions.UPDATE_PASSWORD);
 };
