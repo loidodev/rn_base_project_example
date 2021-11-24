@@ -95,13 +95,13 @@ const ContentTypeProduct = ({
             style={styles.image}
           />
           <Block flex justifyCenter paddingLeft={10}>
-            <Text size={21} color={COLORS.red} fontType="bold">
+            <Text fontSize={21} color={COLORS.red} fontType="bold">
               {convertCurrency(option?.PriceBuy || price_buy)} đ {'    '}
-              <Text size={14} color={COLORS.red}>
+              <Text fontSize={14} color={COLORS.red}>
                 {Math.ceil(option?.PercentDiscount || percent_discount)}%
               </Text>
             </Text>
-            <Text size={12} color={COLORS.placeholder}>
+            <Text fontSize={12} color={COLORS.placeholder}>
               {convertCurrency(option?.Price || price)} đ
             </Text>
             <Block row alignCenter marginTop={5}>

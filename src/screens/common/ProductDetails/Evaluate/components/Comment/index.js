@@ -35,12 +35,12 @@ const Comment = ({item}) => {
           width={50}
           borderRadius={32}
           backgroundColor="smoke">
-          <Text size={12}>{item?.avatar?.toUpperCase()}</Text>
+          <Text fontSize={12}>{item?.avatar?.toUpperCase()}</Text>
         </Block>
         <Block flex marginLeft={16}>
           <Block row alignCenter marginBottom={3} space="between">
             <Text fontType="semibold">{item.full_name}</Text>
-            <Text size={11} color="placeholder">
+            <Text fontSize={11} color="placeholder">
               {moment(parseInt(item.date_create, 10) * 1000).format(
                 'DD/MM/YYYY',
               )}

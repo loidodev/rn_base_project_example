@@ -125,14 +125,14 @@ const Evaluate = ({setIsVisible, setIsComment, hasCombo}) => {
         <Block flex>
           <Block alignCenter>
             <Text
-              size={18}
+              fontSize={18}
               marginVertical={6}
               fontType="semibold"
               color={color}>
               {value}
             </Text>
             <Rating
-              size={25}
+              fontSize={25}
               imageSize={25}
               ratingCount={5}
               type="custom"

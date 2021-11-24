@@ -25,7 +25,7 @@ const ImageHeader = ({data}) => {
         radius={6}
         margin={6}
         backgroundColor="#00000060">
-        <Text size={12} color="white" fontType="bold">
+        <Text fontSize={12} color="white" fontType="bold">
           {indexCur} / {data?.length || 0}
         </Text>
       </Block>

@@ -14,7 +14,7 @@ const InformationProduct = ({content, isShowMore = true}) => {
 
   return (
     <Block padding={12} paddingTop={16} height={300} backgroundColor="white">
-      <Text size={16} marginBottom={16} fontType="semibold">
+      <Text fontSize={16} marginBottom={16} fontType="semibold">
         {locale.t('productDetails.productInformation')}{' '}
       </Text>
       <WebView scrollEnabled={!isShowMore} data={content} />
@@ -26,7 +26,7 @@ const InformationProduct = ({content, isShowMore = true}) => {
       />
       {isShowMore && (
         <Pressable style={styles.btnViewDetails} onPress={_onPress}>
-          <Text alignCenter size={13} color="blue" fontType="semibold">
+          <Text alignCenter fontSize={13} color="blue" fontType="semibold">
             {locale.t('productDetails.seeDetails')}
             {'  >'}
           </Text>

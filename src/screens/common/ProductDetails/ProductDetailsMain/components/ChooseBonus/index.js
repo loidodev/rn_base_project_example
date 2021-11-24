@@ -101,7 +101,7 @@ const ChooseBonus = ({
     arr_gift && (
       <Block style={containerStyles}>
         <Block row alignCenter marginBottom={10} space="between">
-          <Text flex size={16} fontType="semibold" numberOfLines={1}>
+          <Text flex fontSize={16} fontType="semibold" numberOfLines={1}>
             {title}
           </Text>
           <Text marginLeft={8} fontType="semibold">

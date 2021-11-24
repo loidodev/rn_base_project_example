@@ -133,7 +133,7 @@ const ChooseTypeProduct = ({
           <Image style={styles.iconComment} source={ICONS.comment} />
         </Pressable>
         <Pressable style={styles.btnCart} onPress={() => _onAddCart(ADD_CART)}>
-          <Text size={13} fontType="semibold">
+          <Text fontSize={13} fontType="semibold">
             {locale.t('typeProduct.addCart')}
           </Text>
         </Pressable>
@@ -143,7 +143,7 @@ const ChooseTypeProduct = ({
             backgroundColor: config.general_active_color,
           }}
           onPress={() => _onAddCart(BUY_NOW)}>
-          <Text size={13} color="white" fontType="semibold">
+          <Text fontSize={13} color="white" fontType="semibold">
             {locale.t('typeProduct.buy')}
           </Text>
         </Pressable>

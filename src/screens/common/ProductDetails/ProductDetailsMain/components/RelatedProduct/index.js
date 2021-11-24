@@ -26,7 +26,7 @@ const RelatedProduct = React.memo(({data}) => {
   return (
     <Block flex padding={7}>
       <Text
-        size={16}
+        fontSize={16}
         marginVertical={10}
         marginHorizontal={5}
         fontType="semibold">

@@ -72,7 +72,7 @@ const HeaderIcon = ({scrollY, title, item_id, onSetAnimated, setIsHeart}) => {
             backgroundColor: config.general_active_color,
             ...styles.textCart,
           }}>
-          <Text color="white" size={10}>
+          <Text color="white" fontSize={10}>
             {cart?.length || 0}
           </Text>
         </Animated.View>

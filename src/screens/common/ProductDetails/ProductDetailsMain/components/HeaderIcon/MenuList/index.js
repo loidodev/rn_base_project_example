@@ -97,7 +97,7 @@ const MenuList = ({
           marginRight={5}
         />
       )}
-      <Text size={13} color="white">
+      <Text fontSize={13} color="white">
         {label}
       </Text>
     </MenuOption>
@@ -117,7 +117,7 @@ const MenuList = ({
         style={styles.iconMenu}
         resizeMode="contain"
       />
-      <Text size={13} color="white">
+      <Text fontSize={13} color="white">
         {locale.t('productDetails.share')}
       </Text>
     </MenuOption>
@@ -138,7 +138,7 @@ const MenuList = ({
           style={styles.iconMenu}
         />
       )}
-      <Text color="white" size={13}>
+      <Text color="white" fontSize={13}>
         {locale.t('productDetails.like')}
       </Text>
     </MenuOption>

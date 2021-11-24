@@ -43,7 +43,7 @@ const ComboProduct = ({data}) => {
 
   return (
     <Block padding={12} marginBottom={10} backgroundColor="white">
-      <Text size={16} fontType="semibold" marginBottom={10}>
+      <Text fontSize={16} fontType="semibold" marginBottom={10}>
         {locale.t('productDetails.comboInclude')}
       </Text>
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>

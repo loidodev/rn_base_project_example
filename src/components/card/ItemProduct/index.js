@@ -62,12 +62,12 @@ const ItemProduct = ({
         </Block>
         {user ? (
           <Block padding={SIZES.medium}>
-            <Text size={13} numberOfLines={2}>
+            <Text fontSize={13} numberOfLines={2}>
               {title}
             </Text>
             <Text
               marginTop={2}
-              size={15}
+              fontSize={15}
               numberOfLines={1}
               color="red"
               fontType="semibold">
@@ -81,7 +81,7 @@ const ItemProduct = ({
                   borderRadius={2}
                   backgroundColor="red">
                   <Text
-                    size={11}
+                    fontSize={11}
                     marginVertical={3}
                     color="white"
                     fontType="bold">

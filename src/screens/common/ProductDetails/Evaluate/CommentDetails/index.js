@@ -60,12 +60,12 @@ const CommentDetails = ({route}) => {
   const _renderHeader = () => {
     return (
       <Block padding={12} backgroundColor="white">
-        <Text size={16} marginVertical={7} fontType="semibold">
+        <Text fontSize={16} marginVertical={7} fontType="semibold">
           {locale.t('evaluate.product')}
         </Text>
         <Block row alignCenter>
           <Block alignCenter justifyCenter marginRight={10}>
-            <Text marginBottom={8} size={26} fontType="bold">
+            <Text marginBottom={8} fontSize={26} fontType="bold">
               {dataDetails?.rating?.average}
             </Text>
             <Rating

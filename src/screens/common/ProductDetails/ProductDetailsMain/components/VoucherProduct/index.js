@@ -44,10 +44,10 @@ const ItemVoucherProduct = ({item}) => {
         <Text fontType="semibold" numberOfLines={1}>
           {item?.promotion_id}
         </Text>
-        <Text size={13} color="placeholder">
+        <Text fontSize={13} color="placeholder">
           Số lượng: {item?.max_use}
         </Text>
-        <Text size={13} color="placeholder">
+        <Text fontSize={13} color="placeholder">
           HSD: {moment(item.date_end * 1000).format('DD/MM/YYYY')}
         </Text>
       </Block>
@@ -62,7 +62,7 @@ const ItemVoucherProduct = ({item}) => {
           borderColor="blue"
           backgroundColor={isSaved ? 'background' : 'blue'}>
           <Text
-            size={10}
+            fontSize={10}
             fontType="semibold"
             color={!isSaved ? 'white' : 'blue'}>
             {isSaved ? 'Đã lưu' : 'Lưu'}
@@ -117,7 +117,7 @@ const VoucherProduct = ({vouchers = []}) => {
           borderTopLeftRadius={10}
           borderTopRightRadius={10}
           backgroundColor="white">
-          <Text center size={16} marginBottom={12} fontType="semibold">
+          <Text center fontSize={16} marginBottom={12} fontType="semibold">
             Voucher sản phẩm
           </Text>
           <FlatList
