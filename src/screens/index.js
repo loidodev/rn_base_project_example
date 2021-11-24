@@ -32,9 +32,9 @@ export const bottom = {
 export const common = {
   [router.GET_START_SCREEN]: GetStart,
   [router.EDIT_USER_SCREEN]: EditUser,
-  [router.GET_SEARCH_SCREEN]: SearchScreen,
-  [router.GET_BIRTHDAY_SCREEN]: BirthdayScreen,
-  [router.GET_PARTNER_SCREEN]: PartnerScreen,
-  [router.GET_MEMBER_SCREEN]: MenberMain,
-  [router.GET_MEMBER_DERAILS]: MemberDetails,
+  [router.SEARCH_SCREEN]: SearchScreen,
+  [router.BIRTHDAY_SCREEN]: BirthdayScreen,
+  [router.PARTNER_SCREEN]: PartnerScreen,
+  [router.MEMBER_SCREEN]: MenberMain,
+  [router.MEMBER_DETAILS_SCREEN]: MemberDetails,
 };

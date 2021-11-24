@@ -12,7 +12,7 @@ const ItemMember = ({item, contentStyle}) => {
   const {thumbnail = URL, picture = URL, title = ''} = item;
 
   const _onMoveDetails = () => {
-    commonRoot.navigate(router.GET_MEMBER_DERAILS, item);
+    commonRoot.navigate(router.MEMBER_DETAILS_SCREEN, item);
   };
 
   return (

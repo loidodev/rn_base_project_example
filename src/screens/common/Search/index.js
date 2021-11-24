@@ -29,7 +29,7 @@ const Search = () => {
 
   useEffect(() => {
     dispatch({
-      type: actions.GET_SEARCH_SCREEN,
+      type: actions.SEARCH_SCREEN,
       params: {
         keyword: keyword,
       },
@@ -95,7 +95,7 @@ const Search = () => {
     }, 1000);
     setPage(1);
     dispatch({
-      type: actions.GET_SEARCH_SCREEN,
+      type: actions.SEARCH_SCREEN,
       params: {
         keyword: keyword,
         p: 1,
@@ -107,7 +107,7 @@ const Search = () => {
     if (page < totalPage) {
       setPage(page + 1);
       dispatch({
-        type: actions.GET_SEARCH_SCREEN,
+        type: actions.SEARCH_SCREEN,
         isLoadMore: true,
         params: {
           keyword: keyword,
