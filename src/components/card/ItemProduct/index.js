@@ -6,11 +6,12 @@ import {convertCurrency} from '@utils';
 import {width} from '@utils/responsive';
 import React from 'react';
 import {Pressable} from 'react-native';
+import {useSelector} from 'react-redux';
 import styles from './styles';
 import {commonRoot} from '@navigator/navigationRef';
 import router from '@navigator/router';
 
-const ItemProduct = ({item, style, contentStyle, user}) => {
+const ItemProduct = ({item, style, contentStyle}) => {
   const {
     thumbnail = '',
     picture = '',
@@ -22,13 +23,12 @@ const ItemProduct = ({item, style, contentStyle, user}) => {
     item_id,
     is_new = false,
   } = item;
-
+  const user = useSelector(state => state.tokenUser);
   const _onMoveDetails = () => {
     user
       ? commonRoot.navigate(router.GET_PRODUCT_DETAILS, {item_id})
       : commonRoot.navigate(router.GET_START_SCREEN);
   };
-
 
   return (
     <Pressable

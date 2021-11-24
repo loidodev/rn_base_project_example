@@ -85,9 +85,7 @@ const Home = () => {
               thumbnail={bannerMiddleItem?.thumbnail}
             />
           </Block>
-          {productIsFocus.data && (
-            <HotProduct data={productIsFocus.data} user={user} />
-          )}
+          {productIsFocus.data && <HotProduct data={productIsFocus.data} />}
         </ScrollView>
       )}
     </Block>

@@ -3,15 +3,10 @@ import {SIZES} from '@theme';
 import React from 'react';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
-const HotProduct = ({data = [], user}) => {
+const HotProduct = ({data = []}) => {
   const _renderProduct = (item, index) => {
     return (
-      <ItemProduct
-        key={`HotProduct-${index}`}
-        item={item}
-        index={index}
-        user={user}
-      />
+      <ItemProduct key={`HotProduct-${index}`} item={item} index={index} />
     );
   };
 
