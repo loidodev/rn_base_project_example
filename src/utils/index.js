@@ -5,6 +5,7 @@ import {
   handleApiError,
   createDataTemplate,
   handleFormData,
+  handleAuthentication,
 } from './helper';
 
 export {
@@ -15,4 +16,5 @@ export {
   handleApiError,
   createDataTemplate,
   handleFormData,
+  handleAuthentication,
 };

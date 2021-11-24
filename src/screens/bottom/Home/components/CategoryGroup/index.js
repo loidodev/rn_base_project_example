@@ -1,20 +1,18 @@
 import {Block, GridList, Image, Pressable, Text} from '@components';
-import {commonRoot} from '@navigator/navigationRef';
-import router from '@navigator/router';
 import {SIZES} from '@theme';
+import {handleAuthentication} from '@utils';
 import React from 'react';
-import {useSelector} from 'react-redux';
 import {GROUPS} from './data';
 
 const CategoryGroup = () => {
-  const tokenUser = useSelector(state => state.tokenUser);
-
   const _renderCategory = ({item}) => {
     const {title, picture, authentication, onPress} = item;
 
     const _onPress = () => {
-      if (authentication && !tokenUser) {
-        commonRoot.navigate(router.GET_START_SCREEN);
+      if (authentication) {
+        handleAuthentication(() => {
+          onPress();
+        });
       } else {
         onPress({title});
       }

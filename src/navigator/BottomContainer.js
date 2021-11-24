@@ -1,12 +1,13 @@
-import {Icon, Pressable, Text, Block} from '@components';
+import {Block, Icon, Pressable, Text} from '@components';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {hs, vs} from '@responsive';
 import router from '@router';
 import {bottom} from '@screens';
-import * as React from 'react';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {COLORS} from '@theme';
+import {handleAuthentication} from '@utils';
+import * as React from 'react';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const TabStack = createBottomTabNavigator();
 
@@ -42,6 +43,16 @@ const BottomContainer = () => {
             [router.PROFILE_SCREEN]: 'Tài khoản',
           };
 
+          const _onPress = () => {
+            if (route.name === router.SHOPPING_SCREEN) {
+              handleAuthentication(() => {
+                onPress();
+              });
+            } else {
+              onPress();
+            }
+          };
+
           if (route.name === router.QR_CODE_SCREEN) {
             return (
               <Pressable flex alignCenter justifyCenter onPress={onPress}>
@@ -63,7 +74,7 @@ const BottomContainer = () => {
             );
           } else {
             return (
-              <Pressable flex alignCenter justifyCenter onPress={onPress}>
+              <Pressable flex alignCenter justifyCenter onPress={_onPress}>
                 <Icon
                   IconType={MaterialCommunityIcons}
                   iconName={icons[route.name]}
