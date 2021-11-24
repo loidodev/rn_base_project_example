@@ -28,6 +28,7 @@ import LinearLogo from './common/LinearLogo';
 import LogoTitle from './common/LogoTitle';
 import CustomInputErr from './common/CustomInputErr';
 import CustomInputIcon from './common/CustomInputIcon';
+import CustomInputIconClose from './common/CustomInputIconClose';
 //import form
 import Controller from './form/Controller';
 import FormInput from './form/FormInput';
@@ -73,6 +74,7 @@ export {
   CustomInputErr,
   CustomInputIcon,
   Empty,
+  CustomInputIconClose,
   //form
   Controller,
   FormInput,

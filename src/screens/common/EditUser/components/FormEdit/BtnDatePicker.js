@@ -1,26 +1,20 @@
 import {Block, Pressable, Text} from '@components';
 import React, {useState} from 'react';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
-import moment from 'moment';
-
-const setTimestamp = date => {
-  return new Date(date).getTime() / 1000;
-};
-
-const getTimestamp = date => {
-  return new Date(date).getTime() * 1000;
-};
+import {convertDate, formatDate} from '../helper';
 
 const BtnDatePicker = ({value, onChange, containerStyle}) => {
   const [isDatePicker, setIsDatePicker] = useState(false);
 
   const _getDate = () => {
-    return value ? new Date(getTimestamp(value)) : new Date();
+    return value ? convertDate(value) : new Date();
   };
+
+  console.log(new Date(value));
 
   const _onConfirmDate = date => {
     setIsDatePicker(false);
-    onChange(setTimestamp(date));
+    onChange(formatDate(date));
   };
 
   return (
@@ -32,9 +26,7 @@ const BtnDatePicker = ({value, onChange, containerStyle}) => {
         paddingLeft={4}
         onPress={() => setIsDatePicker(true)}>
         <Text medium color="placeholder">
-          {value
-            ? moment(getTimestamp(value)).format('DD/MM/YYYY')
-            : 'personal.not_update'}
+          {value ? value : 'personal.not_update'}
         </Text>
       </Pressable>
       {/* modal */}

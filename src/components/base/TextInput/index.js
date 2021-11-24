@@ -92,6 +92,7 @@ const TextInput = ({
   fontSize,
   fontFamily,
 
+  setRef,
   value,
   placeholder,
   placeholderTextColor,
@@ -196,6 +197,7 @@ const TextInput = ({
   return (
     <RNTextInput
       {...rest}
+      ref={setRef}
       style={customStyles}
       value={value}
       returnKeyType={returnKeyType}

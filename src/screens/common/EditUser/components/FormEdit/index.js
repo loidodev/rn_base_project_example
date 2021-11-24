@@ -1,20 +1,9 @@
 import {Block, Controller, FormInput, FormRadioButton} from '@components';
 import React from 'react';
 import {FORM_NAME} from '../formConfig';
+import {GENDERS, INPUT_PROPS} from '../helper';
 import LabelContainer from '../LabelContainer';
 import BtnDatePicker from './BtnDatePicker';
-
-export const INPUT_PROPS = {
-  height: 45,
-  medium: true,
-  borderBottomWidth: 1,
-  borderColor: 'smoke',
-};
-
-const DATA = [
-  {value: '0', label: 'personal.man'},
-  {value: '1', label: 'personal.women'},
-];
 
 const FormEdit = ({control, errors}) => {
   return (
@@ -51,7 +40,11 @@ const FormEdit = ({control, errors}) => {
           <BtnDatePicker containerStyle={INPUT_PROPS} />
         </Controller>
       </LabelContainer>
-      <FormRadioButton control={control} name={FORM_NAME.gender} data={DATA} />
+      <FormRadioButton
+        control={control}
+        name={FORM_NAME.gender}
+        data={GENDERS}
+      />
     </Block>
   );
 };
