@@ -12,19 +12,20 @@ const ListWrapper = ({
   horizontal = false,
   HSeparator = 12,
   VSeparator = 12,
-  onRefresh = () => {},
-  onLoadMore = () => {},
+  onRefresh,
+  onLoadMore,
   EmptyComponent,
   HolderComponent,
   renderItem,
   keyExtractor,
   style,
+  containerProps,
   children,
   numColumns = 1,
   ...rest
 }) => {
   if (isLoading && !data) {
-    return HolderComponent && <HolderComponent />;
+    return HolderComponent ? <HolderComponent /> : null;
   }
 
   const _keyExtractor = (item, index) => {
@@ -38,7 +39,7 @@ const ListWrapper = ({
   };
 
   const _renderEmpty = () => {
-    return EmptyComponent && <EmptyComponent />;
+    return EmptyComponent ? <EmptyComponent /> : null;
   };
 
   const _renderSeparator = () => {
@@ -58,7 +59,7 @@ const ListWrapper = ({
   };
 
   return (
-    <Block style={style} flex>
+    <Block flex style={style} {...containerProps}>
       <FlatList
         {...rest}
         contentContainerStyle={{flexGrow: 1}}

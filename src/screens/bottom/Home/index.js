@@ -6,7 +6,7 @@ import {
   LazyImage,
   ScrollView,
 } from '@components';
-import {BANNER_ID} from '@constants';
+import {BANNER_ID, DURATION_REFRESHING} from '@constants';
 import actions from '@store/actions';
 import {SIZES} from '@theme';
 import React, {useEffect, useState} from 'react';
@@ -52,7 +52,7 @@ const Home = () => {
     callAllApi(dispatch).finally(() => {
       setTimeout(() => {
         setRefreshing(false);
-      }, 2000);
+      }, DURATION_REFRESHING);
     });
   };
 

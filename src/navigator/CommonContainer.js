@@ -37,6 +37,10 @@ const CommonContainer = () => {
         component={common[router.MEMBER_DETAILS_SCREEN]}
       />
       <CommonStack.Screen
+        name={router.PRODUCT_BY_TYPE_SCREEN}
+        component={common[router.PRODUCT_BY_TYPE_SCREEN]}
+      />
+      <CommonStack.Screen
         name={router.PRODUCT_DETAILS_SCREEN}
         component={common[router.PRODUCT_DETAILS_SCREEN]}
       />
