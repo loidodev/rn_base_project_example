@@ -12,8 +12,8 @@ const ListWrapper = ({
   horizontal = false,
   HSeparator = 12,
   VSeparator = 12,
-  onRefresh = () => {},
-  onLoadMore = () => {},
+  onRefresh,
+  onLoadMore,
   EmptyComponent,
   HolderComponent,
   renderItem,
@@ -25,7 +25,7 @@ const ListWrapper = ({
   ...rest
 }) => {
   if (isLoading && !data) {
-    return HolderComponent && <HolderComponent />;
+    return HolderComponent ? <HolderComponent /> : null;
   }
 
   const _keyExtractor = (item, index) => {
@@ -39,7 +39,7 @@ const ListWrapper = ({
   };
 
   const _renderEmpty = () => {
-    return EmptyComponent && <EmptyComponent />;
+    return EmptyComponent ? <EmptyComponent /> : null;
   };
 
   const _renderSeparator = () => {

@@ -2,11 +2,6 @@ import {hs, vs} from '@utils/responsive';
 import {StyleSheet} from 'react-native';
 
 export default StyleSheet.create({
-  icon: {
-    height: vs(110),
-    width: vs(110),
-    marginBottom: hs(20),
-  },
   button: {
     marginTop: hs(15),
     paddingVertical: hs(10),

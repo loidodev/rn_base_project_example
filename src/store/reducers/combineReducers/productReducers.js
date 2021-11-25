@@ -24,3 +24,7 @@ export const shopping = (...props) => {
 export const productViewed = (...props) => {
   return reducerAdvance(...props, actions.GET_PRODUCT_VIEWED);
 };
+
+export const productByLate = (...props) => {
+  return reducerAdvance(...props, actions.GET_PRODUCT_BY_LATE);
+};

@@ -43,7 +43,8 @@ export const IMAGES = {
 };
 
 export const LOTTIES = {
-  search: require('@assets/lottie/search.json'),
+  search: require('@assets/lotties/search.json'),
+  empty: require('@assets/lotties/empty.json'),
 };
 
 export const STORAGE_KEYS = {

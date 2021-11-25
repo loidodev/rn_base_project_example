@@ -1,10 +1,8 @@
-import {Block, Text} from '@components';
-import {ICONS} from '@constants';
+import {Block, Text, Image} from '@components';
+import {IMAGES} from '@constants';
+import {SIZES} from '@theme';
 import LottieView from 'lottie-react-native';
 import React from 'react';
-import {Image, Pressable} from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
-import {useSelector} from 'react-redux';
 import styles from './styles';
 
 const Empty = ({
@@ -16,7 +14,6 @@ const Empty = ({
   style,
   imageStyles,
 }) => {
-
   return (
     <Block flex alignCenter justifyCenter padding={12} style={style}>
       {lottie ? (
@@ -28,7 +25,9 @@ const Empty = ({
         />
       ) : (
         <Image
-          source={icon || ICONS.placeholder}
+          square={110}
+          marginBottom={SIZES.large}
+          source={icon || IMAGES.no_image}
           style={styles.icon}
           resizeMode="contain"
         />

@@ -12,7 +12,9 @@ const ItemProfile = ({item, index}) => {
 
   return (
     <Pressable
-      onPress={() => onPress({title})}
+      onPress={() => {
+        onPress && onPress({title});
+      }}
       rowCenter
       space="between"
       paddingHorizontal={12}

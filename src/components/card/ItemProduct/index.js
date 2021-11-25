@@ -46,7 +46,6 @@ const ItemProduct = ({item, style, contentStyle}) => {
           style={{
             width: '100%',
             height: width / 2.5,
-            marginTop: 12,
           }}
           thumbnail={thumbnail}
           source={picture}
