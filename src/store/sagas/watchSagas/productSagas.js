@@ -67,4 +67,5 @@ export function* watchProductSagas() {
   yield takeLatest(actions.GET_PRODUCT_GROUP_HOME, getProductGroup);
   yield takeLatest(actions.GET_PRODUCT_IS_FOCUS, getProduct);
   yield takeLatest(actions.GET_SHOPPING, getShopping);
+  yield takeLatest(actions.GET_PRODUCT_VIEWED, getProduct);
 }

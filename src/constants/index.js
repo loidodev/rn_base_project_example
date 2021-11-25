@@ -55,6 +55,11 @@ export const BANNER_ID = {
   shopping: 'banner-shopping,banner-shopping2',
 };
 
+export const GET_PRODUCT_TYPE = {
+  list_viewed: 'list_viewed',
+  save_for_late: 'save_for_late',
+};
+
 export const HEADER = {
   height: 60,
   titleSize: 16,
