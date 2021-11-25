@@ -17,7 +17,7 @@ const ComboProduct = ({data}) => {
         key={`ComboProduct-${index}`}
         item={item}
         index={index}
-        _onCombo={false}
+        onCombo={false}
         comboSalePercent={false}
       />
     );
@@ -47,7 +47,7 @@ const ComboProduct = ({data}) => {
         {locale.t('productDetails.comboInclude')}
       </Text>
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-        {_renderItem(data, (check = true))}
+        {_renderItem(data)}
         <Block justifyCenter marginHorizontal={8}>
           <Icon
             IconType={AntDesign}

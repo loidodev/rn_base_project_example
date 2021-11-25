@@ -13,6 +13,14 @@ import {height} from '@utils/responsive';
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
+const callAllApi = dispatch => {
+  return Promise.all([
+    dispatch({
+      type: actions.GET_COMBO,
+    }),
+  ]);
+};
+
 const Combo = () => {
   const dispatch = useDispatch();
 
@@ -21,28 +29,22 @@ const Combo = () => {
   const [refreshing, setRefreshing] = useState(false);
 
   const [page, setPage] = useState(1);
+
   const _renderEmpty = () => (
     <Block height={height / 2}>
       <Empty lottie={LOTTIES.search} content="Không có combo mới" />
     </Block>
   );
   useEffect(() => {
-    dispatch({
-      type: actions.GET_COMBO,
-    });
+    callAllApi(dispatch);
   }, [dispatch]);
 
   const _onRefresh = () => {
     setRefreshing(true);
-    setTimeout(() => {
-      setRefreshing(false);
-    }, 1000);
-    setPage(1);
-    dispatch({
-      type: actions.GET_COMBO,
-      params: {
-        p: 1,
-      },
+    callAllApi(dispatch).finally(() => {
+      setTimeout(() => {
+        setRefreshing(false);
+      }, 1000);
     });
   };
 

@@ -35,13 +35,10 @@ const ItemProduct = ({
   const tokenUser = useSelector(state => state.tokenUser);
 
   const _onMoveDetails = () => {
-    tokenUser
-      ? commonRoot.navigate(router.PRODUCT_DETAILS_SCREEN, {item_id, hasCombo})
-      : commonRoot.navigate(router.GET_START_SCREEN);
+    handleAuthentication(() => {
+      commonRoot.navigate(router.PRODUCT_DETAILS_SCREEN, {item_id, hasCombo});
+    });
   };
-  // handleAuthentication(() => {
-  //   commonRoot.navigate(router.PRODUCT_DETAILS_SCREEN, {item_id});
-  // });
 
   return (
     <Pressable
@@ -53,15 +50,18 @@ const ItemProduct = ({
         overflow="hidden"
         style={contentStyle}
         backgroundColor="smoke">
-        <LazyImage
-          style={{
-            width: '100%',
-            height: width / 2.5,
-            marginTop: 12,
-          }}
-          thumbnail={thumbnail}
-          source={picture}
-        />
+        <Block backgroundColor="white">
+          <LazyImage
+            style={{
+              width: '100%',
+              height: width / 2.5,
+              marginTop: 12,
+              ...imageStyle,
+            }}
+            thumbnail={thumbnail}
+            source={picture}
+          />
+        </Block>
         {tokenUser ? (
           <Block padding={SIZES.medium}>
             <Text fontSize={13} numberOfLines={2}>

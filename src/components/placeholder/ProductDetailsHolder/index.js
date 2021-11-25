@@ -3,6 +3,7 @@ import {width} from '@utils/responsive';
 import React from 'react';
 import {Platform, ScrollView} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
+
 const ProductDetailsHolder = () => {
   const {bottom} = useSafeAreaInsets();
 

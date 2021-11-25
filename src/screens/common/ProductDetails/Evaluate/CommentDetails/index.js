@@ -1,19 +1,22 @@
-import {
-  Block,
-  EvaluateHolder,
-  Header,
-  ListWrapper,
-  Rating,
-  Text,
-} from '@components';
-import {height} from '@utils/responsive';
+import {Block, EvaluateHolder, Header, ListWrapper} from '@components';
 import locale from 'locale';
 import React, {useEffect, useState} from 'react';
-import {FlatList} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import Comment from '../components/Comment';
-import RenderProgress from '../components/RenderProgress';
+import HeaderCommen from '../components/HeaderCommen';
 import actions from '@store/actions';
+
+const callAllApi = (dispatch, route) => {
+  return Promise.all([
+    dispatch({
+      type: actions.GET_REVIEWS_PRODUCT,
+      params: {
+        item_id: route.params.item_id,
+        p: 1,
+      },
+    }),
+  ]);
+};
 
 const CommentDetails = ({route}) => {
   const dispatch = useDispatch();
@@ -30,16 +33,10 @@ const CommentDetails = ({route}) => {
 
   const _onRefresh = () => {
     setRefreshing(true);
-    setTimeout(() => {
-      setRefreshing(false);
-    }, 1000);
-    setPage(1);
-    dispatch({
-      type: actions.GET_REVIEWS_PRODUCT,
-      params: {
-        item_id: route.params.item_id,
-        p: 1,
-      },
+    callAllApi(dispatch, route).finally(() => {
+      setTimeout(() => {
+        setRefreshing(false);
+      }, 1000);
     });
   };
 
@@ -57,61 +54,8 @@ const CommentDetails = ({route}) => {
     }
   };
 
-  const _renderHeader = () => {
-    return (
-      <Block padding={12} backgroundColor="white">
-        <Text fontSize={16} marginVertical={7} fontType="semibold">
-          {locale.t('evaluate.product')}
-        </Text>
-        <Block row alignCenter>
-          <Block alignCenter justifyCenter marginRight={10}>
-            <Text marginBottom={8} fontSize={26} fontType="bold">
-              {dataDetails?.rating?.average}
-            </Text>
-            <Rating
-              imageSize={13}
-              startingValue={dataDetails?.rating?.average}
-            />
-            <Text marginTop={8}>
-              {dataDetails?.rating?.count &&
-              Object.values(dataDetails?.rating?.count).length > 0
-                ? Object.values(dataDetails?.rating?.count)?.reduce(
-                    (total, item) => total + item,
-                  )
-                : null}{' '}
-              {locale.t('evaluate.comment')}
-            </Text>
-          </Block>
-          <Block
-            alignSelf="center"
-            width={1}
-            marginRight={12}
-            height={height * 0.1}
-            backgroundColor="smoke"
-          />
-          <Block flex>
-            <FlatList
-              data={
-                dataDetails?.rating?.count
-                  ? Object.values(dataDetails?.rating?.count)
-                  : []
-              }
-              renderItem={({item, index}) => (
-                <RenderProgress
-                  item={item}
-                  index={index}
-                  hasCombo={route.params.hasCombo}
-                />
-              )}
-              keyExtractor={(_, index) => String(index)}
-            />
-          </Block>
-        </Block>
-      </Block>
-    );
-  };
-
   const _renderItem = ({item}) => <Comment item={item} />;
+  const _renderHeader = ({item}) => <HeaderCommen data={dataDetails} route />;
 
   return (
     <Block flex backgroundColor="white">

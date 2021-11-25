@@ -39,7 +39,6 @@ export const ICONS = {
   heartCheck: require('@assets/icons/product/heartcheck.png'),
   category: require('@assets/icons/product/category.png'),
   copy: require('@assets/icons/product/copy.png'),
-
   comment: require('@assets/icons/product/comment.png'),
   minus: require('@assets/icons/product/minus.png'),
   plus: require('@assets/icons/product/plus.png'),

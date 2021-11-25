@@ -1,9 +1,10 @@
 import {Block, Shimmer} from '@components';
+import {createDataTemplate} from '@utils';
 import {height, width} from '@utils/responsive';
 import React from 'react';
 import {ScrollView} from 'react-native';
 
-const DATA = [1, 2, 3, 4, 5, 6, 7];
+const DATA = createDataTemplate(10);
 
 const EvaluateHolder = () => {
   return (
