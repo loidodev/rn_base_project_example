@@ -14,7 +14,7 @@ const Birthday = () => {
 
   useEffect(() => {
     dispatch({
-      type: actions.GET_SEARCH_SCREEN,
+      type: actions.SEARCH_SCREEN,
       params: {
         keyword: '',
       },

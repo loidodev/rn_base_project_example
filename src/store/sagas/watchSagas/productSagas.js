@@ -221,7 +221,7 @@ function* getCombo(payload) {
   }
 }
 export function* watchProductSagas() {
-  yield takeLatest(actions.GET_SEARCH_SCREEN, getProduct);
+  yield takeLatest(actions.SEARCH_SCREEN, getProduct);
   yield takeLatest(actions.GET_SEARCH_SUGGESTIONS, getSuggestions);
   yield takeLatest(actions.GET_PRODUCT_DETAILS, getProduct);
   yield takeLatest(actions.GET_REVIEWS_PRODUCT, getReviewsProduct);

@@ -4,7 +4,7 @@ import {ICONS} from '@constants';
 import {commonRoot} from '@navigator/navigationRef';
 import router from '@navigator/router';
 import {SIZES} from '@theme';
-import {convertCurrency} from '@utils';
+import {convertCurrency, handleAuthentication} from '@utils';
 import {width} from '@utils/responsive';
 import React from 'react';
 import {Pressable} from 'react-native';
@@ -31,12 +31,17 @@ const ItemProduct = ({
     item_id,
     is_new = false,
   } = item;
-  const user = useSelector(state => state.tokenUser);
+
+  const tokenUser = useSelector(state => state.tokenUser);
+
   const _onMoveDetails = () => {
-    user
-      ? commonRoot.navigate(router.GET_PRODUCT_DETAILS, {item_id, hasCombo})
+    tokenUser
+      ? commonRoot.navigate(router.PRODUCT_DETAILS_SCREEN, {item_id, hasCombo})
       : commonRoot.navigate(router.GET_START_SCREEN);
   };
+  // handleAuthentication(() => {
+  //   commonRoot.navigate(router.PRODUCT_DETAILS_SCREEN, {item_id});
+  // });
 
   return (
     <Pressable
@@ -48,19 +53,16 @@ const ItemProduct = ({
         overflow="hidden"
         style={contentStyle}
         backgroundColor="smoke">
-        <Block backgroundColor="white">
-          <LazyImage
-            style={{
-              width: '100%',
-              height: width / 2.5,
-              marginTop: 12,
-              ...imageStyle,
-            }}
-            thumbnail={thumbnail}
-            source={picture}
-          />
-        </Block>
-        {user ? (
+        <LazyImage
+          style={{
+            width: '100%',
+            height: width / 2.5,
+            marginTop: 12,
+          }}
+          thumbnail={thumbnail}
+          source={picture}
+        />
+        {tokenUser ? (
           <Block padding={SIZES.medium}>
             <Text fontSize={13} numberOfLines={2}>
               {title}

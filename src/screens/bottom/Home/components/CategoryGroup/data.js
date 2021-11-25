@@ -22,7 +22,7 @@ export const GROUPS = [
     picture: ICONS.day_of_members,
     authentication: false,
     onPress: params => {
-      commonRoot.navigate(router.GET_PARTNER_SCREEN, params);
+      commonRoot.navigate(router.PARTNER_SCREEN, params);
     },
   },
   {
@@ -30,7 +30,7 @@ export const GROUPS = [
     picture: ICONS.happy_birthday,
     authentication: false,
     onPress: params => {
-      commonRoot.navigate(router.GET_BIRTHDAY_SCREEN, params);
+      commonRoot.navigate(router.BIRTHDAY_SCREEN, params);
     },
   },
   {
@@ -52,7 +52,7 @@ export const GROUPS = [
     picture: ICONS.heart,
     authentication: false,
     onPress: params => {
-      commonRoot.navigate(router.GET_MEMBER_SCREEN, params);
+      commonRoot.navigate(router.MEMBER_SCREEN, params);
     },
   },
   {

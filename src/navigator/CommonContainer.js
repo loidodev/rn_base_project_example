@@ -40,24 +40,24 @@ const CommonContainer = () => {
         component={common[router.EDIT_USER_SCREEN]}
       />
       <CommonStack.Screen
-        name={router.GET_SEARCH_SCREEN}
-        component={common[router.GET_SEARCH_SCREEN]}
+        name={router.SEARCH_SCREEN}
+        component={common[router.SEARCH_SCREEN]}
       />
       <CommonStack.Screen
-        name={router.GET_BIRTHDAY_SCREEN}
-        component={common[router.GET_BIRTHDAY_SCREEN]}
+        name={router.BIRTHDAY_SCREEN}
+        component={common[router.BIRTHDAY_SCREEN]}
       />
       <CommonStack.Screen
-        name={router.GET_PARTNER_SCREEN}
-        component={common[router.GET_PARTNER_SCREEN]}
+        name={router.PARTNER_SCREEN}
+        component={common[router.PARTNER_SCREEN]}
       />
       <CommonStack.Screen
-        name={router.GET_MEMBER_SCREEN}
-        component={common[router.GET_MEMBER_SCREEN]}
+        name={router.MEMBER_SCREEN}
+        component={common[router.MEMBER_SCREEN]}
       />
       <CommonStack.Screen
-        name={router.GET_MEMBER_DERAILS}
-        component={common[router.GET_MEMBER_DERAILS]}
+        name={router.MEMBER_DETAILS_SCREEN}
+        component={common[router.MEMBER_DETAILS_SCREEN]}
       />
       <CommonStack.Screen
         name={router.GET_PRODUCT_DETAILS}
