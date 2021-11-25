@@ -56,7 +56,7 @@ const Delivery = () => {
                       containerStyle={styles.badge}
                     />
                   )}
-                  <Text center size={12}>
+                  <Text center fontSize={12}>
                     {item.title}
                   </Text>
                 </Block>

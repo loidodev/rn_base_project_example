@@ -169,7 +169,7 @@ const Search = () => {
           ) : history.length > 0 ? (
             <Block flex>
               <Block row alignCenter margin={12} space="between">
-                <Text size={16} fontType="semibold">
+                <Text fontSize={16} fontType="semibold">
                   Lịch sử tìm kiếm
                 </Text>
                 <Pressable onPress={_removeHistory}>

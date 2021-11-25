@@ -8,12 +8,18 @@ import Profile from './bottom/Profile';
 import QrCode from './bottom/QrCode';
 import Shopping from './bottom/Shopping';
 import Voucher from './bottom/Voucher';
-import BirthdayScreen from './common/Birthday';
 import EditUser from './common/EditUser';
 //import common
+import BirthdayScreen from './common/Birthday';
+import Combo from './common/Combo';
 import GetStart from './common/GetStart';
 import {MemberDetails, MenberMain} from './common/Member';
 import PartnerScreen from './common/Partner';
+import {
+  InformationDetails,
+  ProductDetailsMain,
+  EvaluateDetails,
+} from './common/ProductDetails';
 import SearchScreen from './common/Search';
 
 export const auth = {
@@ -37,4 +43,8 @@ export const common = {
   [router.PARTNER_SCREEN]: PartnerScreen,
   [router.MEMBER_SCREEN]: MenberMain,
   [router.MEMBER_DETAILS_SCREEN]: MemberDetails,
+  [router.PRODUCT_DETAILS_SCREEN]: ProductDetailsMain,
+  [router.INFORMATION_DETAILS_SCREEN]: InformationDetails,
+  [router.COMMENT_DETAILS_SCREEN]: EvaluateDetails,
+  [router.COMBO_SCREEN]: Combo,
 };

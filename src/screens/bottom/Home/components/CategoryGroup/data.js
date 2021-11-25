@@ -40,10 +40,12 @@ export const GROUPS = [
     onPress: params => {},
   },
   {
-    title: 'Cẩm nang',
+    title: 'Combo',
     picture: ICONS.news,
     authentication: false,
-    onPress: params => {},
+    onPress: params => {
+      commonRoot.navigate(router.COMBO_SCREEN, params);
+    },
   },
   {
     title: 'Đối tác',

@@ -30,7 +30,7 @@ const MemberDetails = ({route}) => {
               </Text>
               {phone}
             </Text>
-            <Text size={13} marginTop={5}>
+            <Text fontSize={13} marginTop={5}>
               {content}
             </Text>
           </Block>
