@@ -98,21 +98,19 @@ const ChooseBonus = ({
   };
 
   return (
-    arr_gift && (
-      <Block style={containerStyles}>
-        <Block row alignCenter marginBottom={10} space="between">
-          <Text flex fontSize={16} fontType="semibold" numberOfLines={1}>
-            {title}
-          </Text>
-          <Text marginLeft={8} fontType="semibold">
-            {productBonus?.length || 0}/{num_chose}
-          </Text>
-        </Block>
-        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-          {newData.map(_renderItem)}
-        </ScrollView>
+    <Block style={containerStyles}>
+      <Block row alignCenter marginBottom={10} space="between">
+        <Text flex fontSize={16} fontType="semibold" numberOfLines={1}>
+          {title}
+        </Text>
+        <Text marginLeft={8} fontType="semibold">
+          {productBonus?.length || 0}/{num_chose}
+        </Text>
       </Block>
-    )
+      <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+        {newData.map(_renderItem)}
+      </ScrollView>
+    </Block>
   );
 };
 
