@@ -44,7 +44,7 @@ export const GROUPS = [
     picture: ICONS.news,
     authentication: false,
     onPress: params => {
-      commonRoot.navigate(router.GET_COMBO_SCREEN, params);
+      commonRoot.navigate(router.COMBO_SCREEN, params);
     },
   },
   {

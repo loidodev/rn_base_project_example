@@ -64,7 +64,7 @@ const MenuList = ({
         params: {user},
       });
       check
-        ? favorite.length === 12
+        ? favorite?.length === 12
           ? (CustomToast(locale.t('productDetails.error')), setCheck(true))
           : (CustomToast(locale.t('productDetails.like')),
             setIsHeart(check),

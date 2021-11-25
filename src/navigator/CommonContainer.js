@@ -60,20 +60,20 @@ const CommonContainer = () => {
         component={common[router.MEMBER_DETAILS_SCREEN]}
       />
       <CommonStack.Screen
-        name={router.GET_PRODUCT_DETAILS}
-        component={common[router.GET_PRODUCT_DETAILS]}
+        name={router.PRODUCT_DETAILS_SCREEN}
+        component={common[router.PRODUCT_DETAILS_SCREEN]}
       />
       <CommonStack.Screen
-        name={router.INFORMATION_DETAILS}
-        component={common[router.INFORMATION_DETAILS]}
+        name={router.INFORMATION_DETAILS_SCREEN}
+        component={common[router.INFORMATION_DETAILS_SCREEN]}
       />
       <CommonStack.Screen
-        name={router.COMMENT_DETAILS}
-        component={common[router.COMMENT_DETAILS]}
+        name={router.COMMENT_DETAILS_SCREEN}
+        component={common[router.COMMENT_DETAILS_SCREEN]}
       />
       <CommonStack.Screen
-        name={router.GET_COMBO_SCREEN}
-        component={common[router.GET_COMBO_SCREEN]}
+        name={router.COMBO_SCREEN}
+        component={common[router.COMBO_SCREEN]}
       />
     </CommonStack.Navigator>
   );
