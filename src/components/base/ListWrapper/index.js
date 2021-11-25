@@ -19,6 +19,7 @@ const ListWrapper = ({
   renderItem,
   keyExtractor,
   style,
+  containerProps,
   children,
   numColumns = 1,
   ...rest
@@ -58,7 +59,7 @@ const ListWrapper = ({
   };
 
   return (
-    <Block style={style} flex>
+    <Block flex style={style} {...containerProps}>
       <FlatList
         {...rest}
         contentContainerStyle={{flexGrow: 1}}

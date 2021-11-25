@@ -1,5 +1,5 @@
 import {Block, HeaderLogo, ScrollView, ShoppingHolder} from '@components';
-import {BANNER_ID} from '@constants';
+import {BANNER_ID, DURATION_REFRESHING} from '@constants';
 import actions from '@store/actions';
 import React, {useState} from 'react';
 import {useEffect} from 'react';
@@ -41,7 +41,7 @@ const Shopping = () => {
     callAllApi(dispatch).finally(() => {
       setTimeout(() => {
         setRefreshing(false);
-      }, 2000);
+      }, DURATION_REFRESHING);
     });
   };
 

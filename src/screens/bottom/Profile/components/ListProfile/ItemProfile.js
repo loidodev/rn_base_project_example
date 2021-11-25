@@ -6,12 +6,13 @@ import {Badge} from 'react-native-elements';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
 const ItemProfile = ({item, index}) => {
-  const {image, title} = item || {};
+  const {image, title, onPress} = item || {};
 
   const gift = [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}];
 
   return (
     <Pressable
+      onPress={() => onPress({title})}
       rowCenter
       space="between"
       paddingHorizontal={12}

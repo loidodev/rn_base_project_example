@@ -64,3 +64,5 @@ export const HEADER = {
   height: 60,
   titleSize: 16,
 };
+
+export const DURATION_REFRESHING = 2000;

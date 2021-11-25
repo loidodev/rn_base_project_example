@@ -1,5 +1,6 @@
-import {ICONS} from '@constants';
+import {GET_PRODUCT_TYPE, ICONS} from '@constants';
 import locale from '@locale';
+import {commonRoot} from '@navigator/navigationRef';
 import router from '@router';
 
 export const MANAGER_LIST = [
@@ -34,10 +35,11 @@ export const GENERAL_LIST = [
   {
     image: ICONS.eye,
     title: locale.t('profileScreen.viewProduct'),
-    navigation: router.LIST_PRODUCT,
-    params: {
-      title: locale.t('profileScreen.viewProduct'),
-      type: 'WATCHED',
+    onPress: params => {
+      commonRoot.navigate(router.PRODUCT_BY_TYPE_SCREEN, {
+        ...params,
+        type: GET_PRODUCT_TYPE.list_viewed,
+      });
     },
   },
   {
