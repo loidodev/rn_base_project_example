@@ -42,6 +42,7 @@ import HeaderInput from './header/HeaderInput';
 import ListProductHolder from './placeholder/ListProductHolder';
 import HomeHolder from './placeholder/HomeHolder';
 import ShoppingHolder from './placeholder/ShoppingHolder';
+import EvaluateHolder from './placeholder/EvaluateHolder';
 
 export {
   //animated
@@ -88,4 +89,5 @@ export {
   ListProductHolder,
   HomeHolder,
   ShoppingHolder,
+  EvaluateHolder,
 };

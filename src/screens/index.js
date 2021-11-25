@@ -9,9 +9,15 @@ import QrCode from './bottom/QrCode';
 import Shopping from './bottom/Shopping';
 import Voucher from './bottom/Voucher';
 //import common
+import Combo from './common/Combo';
 import GetStart from './common/GetStart';
 import {MemberDetails, MenberMain} from './common/Member';
 import PartnerScreen from './common/Partner';
+import {
+  InformationDetails,
+  ProductDetailsMain,
+  EvaluateDetails,
+} from './common/ProductDetails';
 import SearchScreen from './common/Search';
 import BirthdayScreen from './common/Birthday';
 import EditUser from './common/EditUser';
@@ -39,4 +45,8 @@ export const common = {
   [router.MEMBER_SCREEN]: MenberMain,
   [router.MEMBER_DETAILS_SCREEN]: MemberDetails,
   [router.PRODUCT_BY_TYPE_SCREEN]: ProductByType,
+  [router.PRODUCT_DETAILS_SCREEN]: ProductDetailsMain,
+  [router.INFORMATION_DETAILS_SCREEN]: InformationDetails,
+  [router.COMMENT_DETAILS_SCREEN]: EvaluateDetails,
+  [router.COMBO_SCREEN]: Combo,
 };

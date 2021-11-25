@@ -8,6 +8,17 @@ export const search = (...props) => {
 export const suggestions = (...props) => {
   return reducerDefault(...props, actions.GET_SEARCH_SUGGESTIONS);
 };
+export const productDetails = (...props) => {
+  return reducerDefault(...props, actions.GET_PRODUCT_DETAILS);
+};
+
+export const review = (...props) => {
+  return reducerAdvance(...props, actions.GET_REVIEWS_PRODUCT);
+};
+
+export const comboProductDetails = (...props) => {
+  return reducerDefault(...props, actions.GET_COMBO_PRODUCT_DETAILS);
+};
 
 export const productGroup = (...props) => {
   return reducerAdvance(...props, actions.GET_PRODUCT_GROUP_HOME);
@@ -27,4 +38,18 @@ export const productViewed = (...props) => {
 
 export const productByLate = (...props) => {
   return reducerAdvance(...props, actions.GET_PRODUCT_BY_LATE);
+};
+export const productOptions = (...props) => {
+  return reducerDefault(...props, actions.GET_PRODUCT_OPTION);
+};
+
+export const productOptionsDetails = (...props) => {
+  return reducerDefault(...props, actions.GET_PRODUCT_OPTION_DETAILS);
+};
+
+export const favoriteProduct = (...props) => {
+  return reducerDefault(...props, actions.GET_SHOW_FAVORITE_PRODUCT);
+};
+export const combo = (...props) => {
+  return reducerAdvance(...props, actions.GET_COMBO);
 };

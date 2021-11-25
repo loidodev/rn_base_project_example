@@ -32,7 +32,7 @@ const Empty = ({
           resizeMode="contain"
         />
       )}
-      <Text size={16}>{content || 'Không có sản phẩm'}</Text>
+      <Text fontSize={16}>{content || 'Không có sản phẩm'}</Text>
       {/* {contentMore && (
         <Pressable onPress={onPress}>
           <LinearGradient

@@ -28,7 +28,7 @@ const ItemProfile = ({item, index}) => {
           source={image}
           resizeMode="contain"
         />
-        <Text size={14}>{title}</Text>
+        <Text fontSize={14}>{title}</Text>
       </Block>
       {title === locale.t('profileScreen.gift') && gift?.length ? (
         <Badge

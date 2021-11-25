@@ -1,6 +1,8 @@
 /* eslint-disable react-native/no-inline-styles */
 import {Block, Image, LazyImage, Rating, Text} from '@components';
 import {ICONS} from '@constants';
+import {commonRoot} from '@navigator/navigationRef';
+import router from '@navigator/router';
 import {SIZES} from '@theme';
 import {convertCurrency, handleAuthentication} from '@utils';
 import {width} from '@utils/responsive';
@@ -8,10 +10,16 @@ import React from 'react';
 import {Pressable} from 'react-native';
 import {useSelector} from 'react-redux';
 import styles from './styles';
-import {commonRoot} from '@navigator/navigationRef';
-import router from '@navigator/router';
 
-const ItemProduct = ({item, style, contentStyle}) => {
+const ItemProduct = ({
+  item,
+  style,
+  contentStyle,
+  hasCombo,
+  imageStyle,
+  _onCombo = true,
+  comboSalePercent = true,
+}) => {
   const {
     thumbnail = '',
     picture = '',
@@ -28,13 +36,13 @@ const ItemProduct = ({item, style, contentStyle}) => {
 
   const _onMoveDetails = () => {
     handleAuthentication(() => {
-      commonRoot.navigate(router.GET_PRODUCT_DETAILS, {item_id});
+      commonRoot.navigate(router.PRODUCT_DETAILS_SCREEN, {item_id, hasCombo});
     });
   };
 
   return (
     <Pressable
-      onPress={_onMoveDetails}
+      onPress={_onCombo ? _onMoveDetails : null}
       padding={SIZES.normal}
       style={{width: '50%', ...style}}>
       <Block
@@ -42,28 +50,32 @@ const ItemProduct = ({item, style, contentStyle}) => {
         overflow="hidden"
         style={contentStyle}
         backgroundColor="smoke">
-        <LazyImage
-          style={{
-            width: '100%',
-            height: width / 2.5,
-          }}
-          thumbnail={thumbnail}
-          source={picture}
-        />
+        <Block backgroundColor="white">
+          <LazyImage
+            style={{
+              width: '100%',
+              height: width / 2.5,
+              marginTop: 12,
+              ...imageStyle,
+            }}
+            thumbnail={thumbnail}
+            source={picture}
+          />
+        </Block>
         {tokenUser ? (
           <Block padding={SIZES.medium}>
-            <Text size={13} numberOfLines={2}>
+            <Text fontSize={13} numberOfLines={2}>
               {title}
             </Text>
             <Text
               marginTop={2}
-              size={15}
+              fontSize={15}
               numberOfLines={1}
               color="red"
               fontType="semibold">
               {convertCurrency(priceBuy, 'đ')}
             </Text>
-            {!!salePercent && (
+            {!!salePercent && comboSalePercent && (
               <Block row alignCenter marginTop={5}>
                 <Block
                   marginRight={6}
@@ -71,7 +83,7 @@ const ItemProduct = ({item, style, contentStyle}) => {
                   borderRadius={2}
                   backgroundColor="red">
                   <Text
-                    size={11}
+                    fontSize={11}
                     marginVertical={3}
                     color="white"
                     fontType="bold">

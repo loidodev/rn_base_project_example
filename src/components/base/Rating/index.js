@@ -9,7 +9,7 @@ const Rate = React.memo(({imageSize, startingValue}) => {
       readonly
       imageSize={imageSize}
       fractions={1}
-      tintColor={COLORS.smoke}
+      tintColor={COLORS.white}
       startingValue={Number(startingValue)}
       style={styles.rating}
     />

@@ -11,7 +11,7 @@ const ListProductHolder = () => {
   const _keyExtractor = (_, index) => String(index);
 
   const _renderItem = () => {
-    return <Shimmer width={(width - 34) / 2} height={250} />;
+    return <Shimmer width={(width - 34) / 2} height={250} marginVertical={6} />;
   };
 
   return (

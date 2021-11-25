@@ -25,8 +25,17 @@ export const URL_API = {
   },
   product: {
     getProduct: 'getProduct',
+    getCombo: 'getCombo',
     getSuggestions: 'getSuggestions',
     getProductGroup: 'getProductGroup',
     getShopping: 'getShopping',
+    getProductOption: 'getProductOption',
+    getProductOptionDetail: 'getProductOptionDetail',
+    checkFavorite: 'checkFavorite?user=',
+  },
+  payment: {
+    viewedProduct: 'viewedProduct?user=',
+    getCart: 'getCart',
+    updateCart: 'updateCart',
   },
 };

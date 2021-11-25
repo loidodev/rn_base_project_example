@@ -47,7 +47,7 @@ const ShareAndReferredCode = ({delay}) => {
               paddingVertical={8}
               paddingHorizontal={10}
               backgroundColor="smoke">
-              <Text size={13} color="blue">
+              <Text fontSize={13} color="blue">
                 Share link
               </Text>
             </Block>
@@ -76,7 +76,7 @@ const ShareAndReferredCode = ({delay}) => {
               paddingVertical={8}
               paddingHorizontal={10}
               backgroundColor="smoke">
-              <Text size={13} color="blue">
+              <Text fontSize={13} color="blue">
                 {userInfo?.code_invitaion}
               </Text>
             </Block>
