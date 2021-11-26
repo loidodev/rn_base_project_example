@@ -14,7 +14,7 @@ export const MANAGER_LIST = [
     image: ICONS.hand_gesture,
     title: locale.t('profileScreen.pointManagement'),
     onPress: params => {
-      commonRoot.navigate(router.MANAGEMENT_SCREEN, {
+      commonRoot.navigate(router.MANAGEMENT_BY_TYPE_SCREEN, {
         ...params,
         type: MANAGEMENT_TYPE.point,
       });
@@ -24,7 +24,7 @@ export const MANAGER_LIST = [
     image: ICONS.exchange,
     title: locale.t('profileScreen.pointHistory'),
     onPress: params => {
-      commonRoot.navigate(router.MANAGEMENT_SCREEN, {
+      commonRoot.navigate(router.MANAGEMENT_BY_TYPE_SCREEN, {
         ...params,
         type: MANAGEMENT_TYPE.history_point,
       });
