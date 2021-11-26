@@ -4,7 +4,7 @@ import {useDispatch} from 'react-redux';
 import ItemManagement from './components/ItemManagement';
 import ManagementWrap from './components/ManagementWrap';
 
-const Management = ({route}) => {
+const ManagementByType = ({route}) => {
   const {title} = route.params || {};
 
   const dispatch = useDispatch();
@@ -40,4 +40,4 @@ const Management = ({route}) => {
   );
 };
 
-export default Management;
+export default ManagementByType;

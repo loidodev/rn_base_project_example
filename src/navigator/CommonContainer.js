@@ -57,8 +57,8 @@ const CommonContainer = () => {
         component={common[router.COMBO_SCREEN]}
       />
       <CommonStack.Screen
-        name={router.MANAGEMENT_SCREEN}
-        component={common[router.MANAGEMENT_SCREEN]}
+        name={router.MANAGEMENT_BY_TYPE_SCREEN}
+        component={common[router.MANAGEMENT_BY_TYPE_SCREEN]}
       />
     </CommonStack.Navigator>
   );
