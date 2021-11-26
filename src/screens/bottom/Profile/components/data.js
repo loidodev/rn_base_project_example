@@ -1,4 +1,4 @@
-import {GET_PRODUCT_TYPE, ICONS} from '@constants';
+import {GET_PRODUCT_TYPE, ICONS, MANAGEMENT_TYPE} from '@constants';
 import locale from '@locale';
 import {commonRoot} from '@navigator/navigationRef';
 import router from '@router';
@@ -13,12 +13,22 @@ export const MANAGER_LIST = [
   {
     image: ICONS.hand_gesture,
     title: locale.t('profileScreen.pointManagement'),
-    navigation: router.POINT_REWARD_MANAGEMENT,
+    onPress: params => {
+      commonRoot.navigate(router.MANAGEMENT_SCREEN, {
+        ...params,
+        type: MANAGEMENT_TYPE.point,
+      });
+    },
   },
   {
     image: ICONS.exchange,
     title: locale.t('profileScreen.pointHistory'),
-    navigation: router.POINT_SWAP_HISTORY,
+    onPress: params => {
+      commonRoot.navigate(router.MANAGEMENT_SCREEN, {
+        ...params,
+        type: MANAGEMENT_TYPE.history_point,
+      });
+    },
   },
 ];
 
@@ -56,10 +66,6 @@ export const GENERAL_LIST = [
   {
     image: ICONS.income_fee,
     title: locale.t('profileScreen.commission'),
-    navigation: router.COMMISSION_MANAGEMENT,
-    params: {
-      isShow: true,
-    },
   },
   {
     image: ICONS.gift_box,

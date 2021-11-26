@@ -79,3 +79,9 @@ export const HEADER = {
 };
 
 export const DURATION_REFRESHING = 2000;
+
+export const MANAGEMENT_TYPE = {
+  point: 'point',
+  history_point: 'history_point',
+  rose: 'rose',
+};

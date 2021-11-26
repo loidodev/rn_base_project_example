@@ -22,6 +22,7 @@ import SearchScreen from './common/Search';
 import BirthdayScreen from './common/Birthday';
 import EditUser from './common/EditUser';
 import ProductByType from './common/ProductByType';
+import Management from './common/Management';
 
 export const auth = {
   [router.SIGN_IN_SCREEN]: SignIn,
@@ -49,4 +50,5 @@ export const common = {
   [router.INFORMATION_DETAILS_SCREEN]: InformationDetails,
   [router.COMMENT_DETAILS_SCREEN]: EvaluateDetails,
   [router.COMBO_SCREEN]: Combo,
+  [router.MANAGEMENT_SCREEN]: Management,
 };
