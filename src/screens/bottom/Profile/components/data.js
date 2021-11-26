@@ -45,10 +45,11 @@ export const GENERAL_LIST = [
   {
     image: ICONS.shopping_history,
     title: locale.t('profileScreen.productLate'),
-    navigation: router.LIST_PRODUCT,
-    params: {
-      title: locale.t('profileScreen.productLate'),
-      type: 'LATER',
+    onPress: params => {
+      commonRoot.navigate(router.PRODUCT_BY_TYPE_SCREEN, {
+        ...params,
+        type: GET_PRODUCT_TYPE.save_for_late,
+      });
     },
   },
   {
