@@ -220,6 +220,22 @@ function* getCombo(payload) {
     handleApiError(error);
   }
 }
+
+function* getFavorite(payload) {
+  try {
+    const res = yield api.get(URL_API.product.getFavorite, payload.params);
+    yield put({
+      type: _onSuccess(payload.type),
+      data: res.data,
+      totalPage: res.total_page,
+      isLoadMore: payload.isLoadMore,
+    });
+  } catch (error) {
+    yield put({type: _onFail(payload.type)});
+    handleApiError(error);
+  }
+}
+
 export function* watchProductSagas() {
   yield takeLatest(actions.SEARCH_SCREEN, getProduct);
   yield takeLatest(actions.GET_SEARCH_SUGGESTIONS, getSuggestions);
@@ -237,4 +253,5 @@ export function* watchProductSagas() {
   yield takeLatest(actions.GET_SHOW_FAVORITE_PRODUCT, showFavorite);
   yield takeLatest(actions.RATING_PRODUCT, ratingProduct);
   yield takeLatest(actions.GET_COMBO, getCombo);
+  yield takeLatest(actions.GET_FAVORITE, getFavorite);
 }

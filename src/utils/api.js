@@ -28,9 +28,11 @@ axios.interceptors.request.use(
     const data = getDataBody(config);
     if (__DEV__) {
       console.log(
-        `%c [REQUEST] ${config?.url}`,
+        `%c [REQUEST] ${config.url}`,
         'color: #458B00; font-weight: bold',
-        config,
+        {dataHeader: config.data},
+        {paramsHeader: config.params},
+        JSON.stringify(config.data, null, 2),
       );
     }
 
@@ -61,7 +63,9 @@ axios.interceptors.response.use(
       console.log(
         `%c [RESPONSE ERROR] ${error.config.url}`,
         'color: #EE3B3B; font-weight: bold',
-        error?.response,
+        {dataHeader: error.config.data},
+        {paramsHeader: error.config.params},
+        JSON.stringify(error.data, null, 2),
       );
     }
 

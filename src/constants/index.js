@@ -70,6 +70,7 @@ export const BANNER_ID = {
 export const GET_PRODUCT_TYPE = {
   list_viewed: 'list_viewed',
   save_for_late: 'save_for_late',
+  favorite: 'favorite',
 };
 
 export const HEADER = {
@@ -78,3 +79,9 @@ export const HEADER = {
 };
 
 export const DURATION_REFRESHING = 2000;
+
+export const MANAGEMENT_TYPE = {
+  point: 'point',
+  history_point: 'history_point',
+  rose: 'rose',
+};

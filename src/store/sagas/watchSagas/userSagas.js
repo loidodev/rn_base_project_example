@@ -135,6 +135,25 @@ function* updatePassword(payload) {
   }
 }
 
+function* getUserWCoinLog(payload) {
+  try {
+    const tokenUser = yield select(state => state.tokenUser);
+    const res = yield api.get(URL_API.user.getUserWcoinLog, {
+      user: tokenUser,
+      ...payload.params,
+    });
+    yield put({
+      type: _onSuccess(payload.type),
+      data: res.data,
+      isLoadMore: payload.isLoadMore,
+      totalPage: payload.total_page,
+    });
+  } catch (error) {
+    yield put({type: _onFail(payload.type)});
+    handleApiError(error);
+  }
+}
+
 export function* watchUserSagas() {
   yield takeLatest(actions.GET_TOKEN, getToken);
   yield takeLatest(actions.GET_USER, getUser);
@@ -143,4 +162,5 @@ export function* watchUserSagas() {
   yield takeLatest(actions.LOG_OUT_USER, logoutUser);
   yield takeLatest(actions.UPDATE_USER, updateUser);
   yield takeLatest(actions.UPDATE_PASSWORD, updatePassword);
+  yield takeLatest(actions.GET_USER_W_COIN_LOG, getUserWCoinLog);
 }

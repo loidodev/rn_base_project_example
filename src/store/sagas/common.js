@@ -14,6 +14,7 @@ export const URL_API = {
     logoutUser: 'logoutUser',
     updateUser: 'updateUser',
     updatePassword: 'updatePassword',
+    getUserWcoinLog: 'getUserWcoinLog',
   },
   general: {
     getConfigApp: 'getConfigApp',
@@ -32,6 +33,7 @@ export const URL_API = {
     getProductOption: 'getProductOption',
     getProductOptionDetail: 'getProductOptionDetail',
     checkFavorite: 'checkFavorite?user=',
+    getFavorite: 'getFavorite',
   },
   payment: {
     viewedProduct: 'viewedProduct?user=',

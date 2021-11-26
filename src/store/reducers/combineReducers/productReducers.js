@@ -50,6 +50,11 @@ export const productOptionsDetails = (...props) => {
 export const favoriteProduct = (...props) => {
   return reducerDefault(...props, actions.GET_SHOW_FAVORITE_PRODUCT);
 };
+
 export const combo = (...props) => {
   return reducerAdvance(...props, actions.GET_COMBO);
+};
+
+export const favorite = (...props) => {
+  return reducerAdvance(...props, actions.GET_FAVORITE);
 };

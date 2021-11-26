@@ -69,12 +69,12 @@ const Information = ({scrollY, onPickerAvatar, onEditUser}) => {
     <Animated.View style={[rContainerStyles, styles.container]}>
       {/* box white */}
       <BoxWhite scrollY={scrollY} />
-      {/* edit user */}
-      <BtnEditUser scrollY={scrollY} onPress={onEditUser} />
       {/* avatar */}
       <Avatar scrollY={scrollY} onPress={onPickerAvatar} picture={picture} />
       {/* box info */}
       <BoxInfo scrollY={scrollY} email={email} full_name={full_name} />
+      {/* edit user */}
+      <BtnEditUser scrollY={scrollY} onPress={onEditUser} />
     </Animated.View>
   );
 };

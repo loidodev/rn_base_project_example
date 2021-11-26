@@ -1,5 +1,5 @@
 import actions from '@store/actions';
-import {reducerDefault} from '@store/reducers/common';
+import {reducerAdvance, reducerDefault} from '@store/reducers/common';
 
 export const tokenUser = (state = null, payload) => {
   switch (payload.type) {
@@ -37,4 +37,8 @@ export const updateUser = (...props) => {
 
 export const updatePassword = (...props) => {
   return reducerDefault(...props, actions.UPDATE_PASSWORD);
+};
+
+export const userWCoinLog = (...props) => {
+  return reducerAdvance(...props, actions.GET_USER_W_COIN_LOG);
 };

@@ -6,7 +6,15 @@ import React from 'react';
 import {StatusBar} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-const HeaderTitle = ({title, canGoBack, onGoBack}) => {
+const HeaderTitle = ({
+  title,
+  canGoBack,
+  onGoBack,
+  backgroundColor = 'primary',
+  color = 'white',
+  containerProps,
+  titleProps,
+}) => {
   const _renderIconBack = opacity => {
     const _onGoBack = () => {
       if (opacity === 1) {
@@ -24,7 +32,7 @@ const HeaderTitle = ({title, canGoBack, onGoBack}) => {
             IconType={Ionicons}
             iconName="chevron-back"
             iconSize={24}
-            iconColor="white"
+            iconColor={color}
           />
         </Pressable>
       )
@@ -37,16 +45,18 @@ const HeaderTitle = ({title, canGoBack, onGoBack}) => {
       safeAreaTop
       height={HEADER.height}
       padding={SIZES.medium}
-      backgroundColor="primary">
+      backgroundColor={backgroundColor}
+      {...containerProps}>
       {_renderIconBack(1)}
-      <StatusBar backgroundColor={COLORS.primary} />
+      <StatusBar backgroundColor={COLORS[backgroundColor] || backgroundColor} />
       <Text
         flex
         center
         bold
-        color="white"
+        color={color}
         fontSize={HEADER.titleSize}
-        numberOfLines={2}>
+        numberOfLines={2}
+        {...titleProps}>
         {title}
       </Text>
       {_renderIconBack(0)}
