@@ -1,11 +1,42 @@
-import {Block, Text} from '@components';
-import React from 'react';
+import {ListWrapper} from '@components';
+import React, {useEffect, useState} from 'react';
+import {useDispatch} from 'react-redux';
+import ItemManagement from './components/ItemManagement';
+import ManagementWrap from './components/ManagementWrap';
 
-const Management = () => {
+const Management = ({route}) => {
+  const {title} = route.params || {};
+
+  const dispatch = useDispatch();
+  const [page, setPage] = useState(1);
+  const [refreshing, setRefreshing] = useState(false);
+  const [dateStart, setDateStart] = useState(new Date());
+  const [dateEnd, setDateEnd] = useState(new Date());
+
+  useEffect(() => {}, []);
+
   return (
-    <Block>
-      <Text>Management</Text>
-    </Block>
+    <ManagementWrap
+      title={title}
+      dateStart={dateStart}
+      dateEnd={dateEnd}
+      setDateStart={setDateStart}
+      setDateEnd={setDateEnd}
+      // renderFooter={_renderInfo}
+    >
+      <ListWrapper
+        // data={data}
+        page={page}
+        // isLoading={isLoading}
+        refreshing={refreshing}
+        // onRefresh={_onRefresh}
+        // onLoadMore={_loadMore}
+        // EmptyComponent={EmptyPoint}
+        // HolderComponent={PointHolder}
+      >
+        <ItemManagement />
+      </ListWrapper>
+    </ManagementWrap>
   );
 };
 
