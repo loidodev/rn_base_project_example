@@ -17,10 +17,12 @@ const ProductByType = ({route}) => {
   const tokenUser = useSelector(state => state.tokenUser);
   const productViewed = useSelector(state => state.productViewed);
   const productByLate = useSelector(state => state.productByLate);
+  const productFavorite = useSelector(state => state.favorite);
 
   const {data, isLoading, totalPage} = handleFilter({
     viewed: productViewed,
     byLate: productByLate,
+    favorite: productFavorite,
     type,
   });
 
@@ -32,6 +34,7 @@ const ProductByType = ({route}) => {
     return () => {
       dispatch({type: _onUnmount(actions.GET_PRODUCT_VIEWED)});
       dispatch({type: _onUnmount(actions.GET_PRODUCT_BY_LATE)});
+      dispatch({type: _onUnmount(actions.GET_FAVORITE)});
     };
   }, [dispatch, tokenUser, type]);
 

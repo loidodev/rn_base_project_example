@@ -70,6 +70,7 @@ export const BANNER_ID = {
 export const GET_PRODUCT_TYPE = {
   list_viewed: 'list_viewed',
   save_for_late: 'save_for_late',
+  favorite: 'favorite',
 };
 
 export const HEADER = {

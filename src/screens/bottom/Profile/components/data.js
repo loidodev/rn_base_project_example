@@ -26,10 +26,11 @@ export const GENERAL_LIST = [
   {
     image: ICONS.heart_pink,
     title: locale.t('profileScreen.likeProduct'),
-    navigation: router.LIST_PRODUCT,
-    params: {
-      title: locale.t('profileScreen.likeProduct'),
-      type: 'LIKED',
+    onPress: params => {
+      commonRoot.navigate(router.PRODUCT_BY_TYPE_SCREEN, {
+        ...params,
+        type: GET_PRODUCT_TYPE.favorite,
+      });
     },
   },
   {
