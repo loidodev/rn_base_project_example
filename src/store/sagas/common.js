@@ -32,6 +32,7 @@ export const URL_API = {
     getProductOption: 'getProductOption',
     getProductOptionDetail: 'getProductOptionDetail',
     checkFavorite: 'checkFavorite?user=',
+    getFavorite: 'getFavorite',
   },
   payment: {
     viewedProduct: 'viewedProduct?user=',
