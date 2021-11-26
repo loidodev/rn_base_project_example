@@ -14,6 +14,7 @@ export const URL_API = {
     logoutUser: 'logoutUser',
     updateUser: 'updateUser',
     updatePassword: 'updatePassword',
+    getUserWcoinLog: 'getUserWcoinLog',
   },
   general: {
     getConfigApp: 'getConfigApp',
