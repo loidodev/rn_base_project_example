@@ -7,3 +7,11 @@ export const getUserWCoinLog = payload => {
     params: payload.params,
   };
 };
+
+export const swapCommissionLog = payload => {
+  return {
+    type: actions.SWAP_COMMISSION_LOG,
+    isLoadMore: payload.isLoadMore,
+    params: payload.params,
+  };
+};

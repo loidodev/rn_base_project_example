@@ -51,3 +51,16 @@ export const userWCoinLog = (...props) => {
     },
   );
 };
+
+export const swapCommissionLog = (...props) => {
+  return reducerAdvance(
+    ...props,
+    actions.SWAP_COMMISSION_LOG,
+    (state, payload) => {
+      return {
+        ...state,
+        info: payload.info,
+      };
+    },
+  );
+};
