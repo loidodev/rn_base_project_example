@@ -65,7 +65,7 @@ axios.interceptors.response.use(
         'color: #EE3B3B; font-weight: bold',
         {dataHeader: error.config.data},
         {paramsHeader: error.config.params},
-        JSON.stringify(error.data, null, 2),
+        JSON.stringify(error.response.data, null, 2),
       );
     }
 
