@@ -44,7 +44,6 @@ export const ICONS = {
   plus: require('@assets/icons/product/plus.png'),
   voucher: require('@assets/icons/product/voucher.png'),
   discountCombo: require('@assets/icons/product/discount.png'),
-  down: require('@assets/icons/down-chevron.png'),
 };
 
 export const IMAGES = {
@@ -85,4 +84,8 @@ export const MANAGEMENT_TYPE = {
   point: 'point',
   history_point: 'history_point',
   rose: 'rose',
+};
+
+export const AUTH = {
+  user_type: 'user_type',
 };

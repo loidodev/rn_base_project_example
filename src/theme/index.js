@@ -22,7 +22,7 @@ export const COLORS = {
   lightRed: '#FA634D',
   lightBlue: '#3E79F7',
   facebook: '#4267b2',
-  bg_input: '#e4e4e4',
+  bgInput: '#e4e4e4',
   overLay: 'rgba(0.5, 0.25, 0, 0.2)',
 };
 

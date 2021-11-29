@@ -1,4 +1,5 @@
 import {ButtonSubmit, CheckBox, LinearLogo, Text} from '@components';
+import {AUTH} from '@constants';
 import {useDeviceInfo} from '@hooks';
 import {bottomRoot, root} from '@navigator/navigationRef';
 import router from '@navigator/router';
@@ -78,7 +79,7 @@ const SignUp = ({route}) => {
   };
 
   const _onMoveSignIn = () => {
-    root.navigate(router.SIGN_IN_SCREEN, {user_type: user_type});
+    root.navigate(router.SIGN_IN_SCREEN, {[AUTH.user_type]: user_type});
   };
 
   return (

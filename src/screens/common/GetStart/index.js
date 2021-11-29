@@ -1,4 +1,5 @@
 import {Block, LogoTitle, Pressable, Text} from '@components';
+import {AUTH} from '@constants';
 import {authRoot} from '@navigator/navigationRef';
 import router from '@router';
 import {SIZES} from '@theme';
@@ -6,11 +7,11 @@ import React from 'react';
 
 const GetStart = () => {
   const _onMoveCustomer = () => {
-    authRoot.navigate(router.SIGN_IN_SCREEN, {user_type: 0});
+    authRoot.navigate(router.SIGN_IN_SCREEN, {[AUTH.user_type]: 0});
   };
 
   const _onMoveDrugStore = () => {
-    authRoot.navigate(router.SIGN_IN_SCREEN, {user_type: 1});
+    authRoot.navigate(router.SIGN_IN_SCREEN, {[AUTH.user_type]: 1});
   };
 
   return (

@@ -1,4 +1,5 @@
 import {ButtonSubmit, LinearLogo, Pressable, Text} from '@components';
+import {AUTH} from '@constants';
 import {useDeviceInfo} from '@hooks';
 import {bottomRoot, root} from '@navigator/navigationRef';
 import router from '@navigator/router';
@@ -13,6 +14,7 @@ import LoginSocial from './components/LoginSocial';
 import NotAccount from './components/NotAccount';
 
 const SignIn = ({route}) => {
+  const {user_type} = route.params;
   const {
     control,
     handleSubmit,
@@ -20,7 +22,7 @@ const SignIn = ({route}) => {
   } = useForm(formConfig);
   const dispatch = useDispatch();
   const device_name = useDeviceInfo();
-  const {user_type} = route.params;
+
   const signIn = useSelector(state => state.signIn);
 
   const _onSubmit = data => {
@@ -37,7 +39,7 @@ const SignIn = ({route}) => {
   };
 
   const _onMoveSignUp = () => {
-    root.navigate(router.SIGN_UP_SCREEN, {user_type: user_type});
+    root.navigate(router.SIGN_UP_SCREEN, {[AUTH.user_type]: user_type});
   };
 
   return (
