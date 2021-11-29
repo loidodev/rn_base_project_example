@@ -89,7 +89,7 @@ const ManagementByType = ({route}) => {
         refreshing={refreshing}
         onRefresh={_onRefreshing}
         onLoadMore={_onLoadMore}
-        EmptyComponent={EmptyManagement}
+        EmptyComponent={() => <EmptyManagement type={type} />}
         HolderComponent={HolderManagement}>
         <ItemManagement />
       </ListWrapper>
