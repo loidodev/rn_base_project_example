@@ -44,16 +44,13 @@ const schema = yup
     [FORM_SIGN_UP_DRUGSTORE.taxCode]: yup
       .string()
       .required(locale.t('signUpScreen.emptyTaxCode')),
-    // [FORM_SIGN_UP_DRUGSTORE.businessLicense]: yup
-    //   .string()
-    //   .required('Giấy phép kinh doanh không được để trống'),
-    // [FORM_SIGN_UP_DRUGSTORE.fileGPP]: yup
-    //   .array()
-    //   .required('Hồ sơ GPP không được để trống'),
-    // [FORM_SIGN_UP_DRUGSTORE.referredCode]: yup
-    //   .array()
-    //   .required('Giấy phép kinh doanh không được để trống'),
-    // [FORM_SIGN_UP_DRUGSTORE.referredCode2]: yup.array().required('aaaaaaa'),
+    [FORM_SIGN_UP_DRUGSTORE.businessLicense]: yup
+      .array()
+      .min(1, 'signUpScreen.emptyBusinessLicense'),
+    [FORM_SIGN_UP_DRUGSTORE.fileGPP]: yup
+      .array()
+      .min(1, 'signUpScreen.emptyFileGPP'),
+    [FORM_SIGN_UP_DRUGSTORE.referredCode]: yup.string(),
   })
   .required();
 

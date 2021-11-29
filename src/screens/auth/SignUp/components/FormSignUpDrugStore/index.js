@@ -1,5 +1,5 @@
 import {Block, CustomInputErr, CustomInputIcon, FormInput} from '@components';
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -16,8 +16,10 @@ const FormSignUpDrugStore = ({control, errors, setValue}) => {
   const [fileGPP, setFileGPP] = useState([]);
   const [isPickerImage, setIsPickerImage] = useState(false);
   const [isOnPressFile, setIsOnPressFile] = useState(false);
+  const firstUpdate = useRef(false);
 
   const _onChangeImage = file => {
+    firstUpdate.current = true;
     if (isOnPressFile) {
       setBusinessLicense([...businessLicense, file]);
     } else {
@@ -26,16 +28,23 @@ const FormSignUpDrugStore = ({control, errors, setValue}) => {
   };
 
   useEffect(() => {
-    setValue('businessLicense', businessLicense);
-  }, [businessLicense]);
-
-  useEffect(() => {
-    setValue('fileGPP', fileGPP);
-  }, [fileGPP]);
+    if (firstUpdate.current) {
+      if (isOnPressFile) {
+        setValue(FORM_SIGN_UP_DRUGSTORE.businessLicense, businessLicense, {
+          shouldValidate: true,
+        });
+      } else {
+        setValue(FORM_SIGN_UP_DRUGSTORE.fileGPP, businessLicense, {
+          shouldValidate: true,
+        });
+      }
+    }
+  }, [businessLicense, fileGPP]);
 
   const _renderCustomInputErr = renderInputErr => (
     <CustomInputErr renderInputErr={renderInputErr} />
   );
+
   return (
     <Block flex>
       <FormInput
@@ -144,7 +153,7 @@ const FormSignUpDrugStore = ({control, errors, setValue}) => {
           setIsPickerImage(true);
           setIsOnPressFile(true);
         }}
-        name={FORM_SIGN_UP_DRUGSTORE.referredCode2}
+        customerMessageErr={_renderCustomInputErr}
         control={control}
         data={businessLicense}
         label={'signUpScreen.businessLicense'}
@@ -156,7 +165,7 @@ const FormSignUpDrugStore = ({control, errors, setValue}) => {
           setIsPickerImage(true);
           setIsOnPressFile(false);
         }}
-        name={FORM_SIGN_UP_DRUGSTORE.fileGPP}
+        customerMessageErr={_renderCustomInputErr}
         control={control}
         data={fileGPP}
         label={'signUpScreen.fileGPP'}

@@ -125,6 +125,8 @@ export default {
     phoneLimit: 'Số điện thoại không dài quá 10 số',
     emptyTaxCode: 'Mã số thuế không được để trống',
     taxCodeFormat: 'Mã số thuế không đúng định dạng',
+    emptyBusinessLicense: 'Giấy phép kinh doanh không được để trống',
+    emptyFileGPP: 'Hồ sơ GPP không được để trống',
   },
   alertBox: {
     cancel: 'Đóng',

@@ -78,7 +78,7 @@ const SignUp = ({route}) => {
   };
 
   const _onMoveSignIn = () => {
-    root.navigate(router.SIGN_IN_SCREEN);
+    root.navigate(router.SIGN_IN_SCREEN, {user_type: user_type});
   };
 
   return (
