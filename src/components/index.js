@@ -17,6 +17,7 @@ import Shimmer from './base/Shimmer';
 import Text from './base/Text';
 import TextInput from './base/TextInput';
 import WebView from './base/WebView';
+import FormContainer from './base/FormContainer';
 //import card
 import ItemHistory from './card/ItemHistory';
 import ItemProduct from './card/ItemProduct';
@@ -64,6 +65,7 @@ export {
   TextInput,
   WebView,
   Shimmer,
+  FormContainer,
   //card
   ItemProduct,
   ItemMember,

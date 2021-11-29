@@ -1,4 +1,6 @@
 import {Block, HeaderTitle} from '@components';
+import {MANAGEMENT_TYPE} from '@constants';
+import {useRoute} from '@react-navigation/core';
 import {CustomToast} from '@utils';
 import React, {useState} from 'react';
 import {StatusBar} from 'react-native';
@@ -15,6 +17,8 @@ const ManagementWrap = ({
   renderFooter,
   children,
 }) => {
+  const {type} = useRoute().params || {};
+
   const [isDatePicker, setIsDatePicker] = useState(false);
   const [typeDate, setTypeDate] = useState(DATE_TYPE.begin);
 
@@ -46,12 +50,14 @@ const ManagementWrap = ({
   return (
     <Block flex backgroundColor="background">
       <StatusBar translucent barStyle="dark-content" />
-      <HeaderTitle
-        title={title}
-        canGoBack
-        backgroundColor="white"
-        color="primary"
-      />
+      {type !== MANAGEMENT_TYPE.rose && (
+        <HeaderTitle
+          title={title}
+          canGoBack
+          backgroundColor="white"
+          color="primary"
+        />
+      )}
       <ChooseDateStartEnd
         dateStart={dateStart}
         dateEnd={dateEnd}

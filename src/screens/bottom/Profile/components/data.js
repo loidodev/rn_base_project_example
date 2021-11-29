@@ -67,7 +67,10 @@ export const GENERAL_LIST = [
     image: ICONS.income_fee,
     title: locale.t('profileScreen.commission'),
     onPress: params => {
-      commonRoot.navigate(router.COMMISSION_MANAGEMENT_SCREEN, params);
+      commonRoot.navigate(router.COMMISSION_MANAGEMENT_SCREEN, {
+        ...params,
+        type: MANAGEMENT_TYPE.rose,
+      });
     },
   },
   {
