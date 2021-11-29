@@ -1,9 +1,14 @@
 import {MANAGEMENT_TYPE} from '@constants';
 import {getUserWCoinLog} from '@store/actions/funcActions/userActions';
+import moment from 'moment';
 
 export const DATE_TYPE = {
   begin: 'begin',
   end: 'end',
+};
+
+export const formatDate = date => {
+  return date ? moment(date).format('DD/MM/YYYY') : '';
 };
 
 export const getTimeForDate = date => {

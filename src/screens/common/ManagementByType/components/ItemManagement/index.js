@@ -11,9 +11,9 @@ const ItemManagement = ({item, index}) => {
       paddingHorizontal={12}
       paddingVertical={9}
       backgroundColor="white">
-      <Block row alignCenter space="between">
+      <Block rowCenter space="between">
         <RowItem isStt label="STT" value={index + 1} />
-        <Text size={12} fontType="light">
+        <Text fontSize={12}>
           {moment(item?.date_create * 1000).format('DD/MM/YYYY')}
         </Text>
       </Block>

@@ -136,20 +136,22 @@ function* updatePassword(payload) {
 }
 
 function* getUserWCoinLog(payload) {
+  const {type, params, isLoadMore} = payload || {};
   try {
     const tokenUser = yield select(state => state.tokenUser);
     const res = yield api.get(URL_API.user.getUserWcoinLog, {
       user: tokenUser,
-      ...payload.params,
+      ...params,
     });
     yield put({
-      type: _onSuccess(payload.type),
+      type: _onSuccess(type),
       data: res.data,
-      isLoadMore: payload.isLoadMore,
-      totalPage: payload.total_page,
+      totalPage: res.total_page,
+      info: res.info,
+      isLoadMore,
     });
   } catch (error) {
-    yield put({type: _onFail(payload.type)});
+    yield put({type: _onFail(type)});
     handleApiError(error);
   }
 }

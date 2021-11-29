@@ -40,5 +40,14 @@ export const updatePassword = (...props) => {
 };
 
 export const userWCoinLog = (...props) => {
-  return reducerAdvance(...props, actions.GET_USER_W_COIN_LOG);
+  return reducerAdvance(
+    ...props,
+    actions.GET_USER_W_COIN_LOG,
+    (state, payload) => {
+      return {
+        ...state,
+        info: payload.info,
+      };
+    },
+  );
 };

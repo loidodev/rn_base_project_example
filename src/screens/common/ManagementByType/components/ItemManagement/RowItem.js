@@ -10,17 +10,17 @@ const RowItem = ({
   ...rest
 }) => {
   return (
-    <Block flex row alignCenter {...rest}>
-      <Text size={13}>
+    <Block flex rowCenter {...rest}>
+      <Text fontSize={13}>
         {label}
         {isStt ? ' ' : ': '}
       </Text>
       <Text
         flex
         numberOfLines={1}
-        size={15}
+        fontSize={15}
         color={valueColor}
-        fontType={isStt ? 'regular' : 'semibold'}>
+        heavy={!isStt}>
         {suffix}
         {value}
       </Text>
