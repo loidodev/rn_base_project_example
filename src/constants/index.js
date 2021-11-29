@@ -85,3 +85,8 @@ export const MANAGEMENT_TYPE = {
   history_point: 'history_point',
   rose: 'rose',
 };
+
+export const USER_TYPE = {
+  user: 0,
+  drugstore: 1,
+};

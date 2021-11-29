@@ -1,6 +1,6 @@
-import * as yup from 'yup';
 import {yupResolver} from '@hookform/resolvers/yup';
 import locale from '@locale';
+import * as yup from 'yup';
 
 export const FORM_NAME = {
   fullName: 'fullName',

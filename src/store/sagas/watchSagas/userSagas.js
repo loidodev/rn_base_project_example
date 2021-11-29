@@ -39,7 +39,7 @@ function* getUser(payload) {
 
 function* signUpUser(payload) {
   try {
-    const body = yield queryString.stringify(payload.body);
+    const body = yield payload.body;
     const res = yield api.post(URL_API.user.signupUser, body, payload.params);
     yield put({
       type: _onSuccess(actions.SIGN_UP_USER),
