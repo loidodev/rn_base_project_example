@@ -12,7 +12,7 @@ import FormSignIn from './components/FormSignIn';
 import LoginSocial from './components/LoginSocial';
 import NotAccount from './components/NotAccount';
 
-const SignIn = () => {
+const SignIn = ({route}) => {
   const {
     control,
     handleSubmit,
@@ -20,6 +20,7 @@ const SignIn = () => {
   } = useForm(formConfig);
   const dispatch = useDispatch();
   const device_name = useDeviceInfo();
+  const {user_type} = route.params;
   const signIn = useSelector(state => state.signIn);
 
   const _onSubmit = data => {
@@ -36,7 +37,7 @@ const SignIn = () => {
   };
 
   const _onMoveSignUp = () => {
-    root.navigate(router.SIGN_UP_SCREEN);
+    root.navigate(router.SIGN_UP_SCREEN, {user_type: user_type});
   };
 
   return (

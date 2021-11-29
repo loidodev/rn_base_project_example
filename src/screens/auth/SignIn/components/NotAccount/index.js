@@ -13,7 +13,7 @@ const NotAccount = ({onPress}) => {
           loginScreen.haveAccount
         </Text>{' '}
         <Text color="blue" small>
-          signUpScreen.login
+          signUpScreen.signUp
         </Text>
       </Text>
     </Pressable>

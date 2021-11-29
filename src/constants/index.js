@@ -44,6 +44,7 @@ export const ICONS = {
   plus: require('@assets/icons/product/plus.png'),
   voucher: require('@assets/icons/product/voucher.png'),
   discountCombo: require('@assets/icons/product/discount.png'),
+  down: require('@assets/icons/down-chevron.png'),
 };
 
 export const IMAGES = {
