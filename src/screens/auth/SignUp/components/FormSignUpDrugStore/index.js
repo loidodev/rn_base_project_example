@@ -34,7 +34,7 @@ const FormSignUpDrugStore = ({control, errors, setValue}) => {
           shouldValidate: true,
         });
       } else {
-        setValue(FORM_SIGN_UP_DRUGSTORE.fileGPP, businessLicense, {
+        setValue(FORM_SIGN_UP_DRUGSTORE.fileGPP, fileGPP, {
           shouldValidate: true,
         });
       }
