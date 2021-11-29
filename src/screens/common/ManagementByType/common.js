@@ -1,9 +1,17 @@
 import {MANAGEMENT_TYPE} from '@constants';
-import {getUserWCoinLog} from '@store/actions/funcActions/userActions';
+import {
+  getUserWCoinLog,
+  swapCommissionLog,
+} from '@store/actions/funcActions/userActions';
+import moment from 'moment';
 
 export const DATE_TYPE = {
   begin: 'begin',
   end: 'end',
+};
+
+export const formatDate = date => {
+  return date ? moment(date).format('DD/MM/YYYY') : '';
 };
 
 export const getTimeForDate = date => {
@@ -16,7 +24,7 @@ export const handleApi = (dispatch, type, payload) => {
       return Promise.all([dispatch(getUserWCoinLog(payload))]);
 
     case MANAGEMENT_TYPE.history_point:
-      return Promise.all([dispatch(getUserWCoinLog(payload))]);
+      return Promise.all([dispatch(swapCommissionLog(payload))]);
 
     case MANAGEMENT_TYPE.rose:
       return Promise.all([dispatch(getUserWCoinLog(payload))]);

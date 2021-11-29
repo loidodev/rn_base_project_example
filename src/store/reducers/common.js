@@ -69,7 +69,7 @@ export const reducerAdvance = (
         isLoading: false,
       };
 
-      return callback ? callback(result) : result;
+      return callback ? callback(result, payload) : result;
     }
 
     case _onFail(action):

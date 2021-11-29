@@ -15,6 +15,7 @@ export const URL_API = {
     updateUser: 'updateUser',
     updatePassword: 'updatePassword',
     getUserWcoinLog: 'getUserWcoinLog',
+    swapCommissionLog: 'swapCommissionLog',
   },
   general: {
     getConfigApp: 'getConfigApp',
