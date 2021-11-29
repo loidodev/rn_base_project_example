@@ -1,5 +1,5 @@
 import {ButtonSubmit, CheckBox, LinearLogo, Text} from '@components';
-import {AUTH} from '@constants';
+import {USER_TYPE} from '@constants';
 import {useDeviceInfo} from '@hooks';
 import {bottomRoot, root} from '@navigator/navigationRef';
 import router from '@navigator/router';
@@ -25,7 +25,7 @@ const SignUp = ({route}) => {
     handleSubmit,
     setValue,
     formState: {errors},
-  } = useForm(user_type == 0 ? formConfig : formConfigDrugstore);
+  } = useForm(user_type == USER_TYPE.user ? formConfig : formConfigDrugstore);
   const dispatch = useDispatch();
   const device_name = useDeviceInfo();
   const [agreePolicy, setAgreePolicy] = useState(false);
@@ -37,7 +37,7 @@ const SignUp = ({route}) => {
 
   const _onSubmit = data => {
     var formData = new FormData();
-    if (user_type === 0) {
+    if (user_type === USER_TYPE.user) {
       formData.append('full_name', data[FORM_NAME.fullName]);
       formData.append('email', data[FORM_NAME.email]);
       formData.append('phone', data[FORM_NAME.phone]);
@@ -79,7 +79,7 @@ const SignUp = ({route}) => {
   };
 
   const _onMoveSignIn = () => {
-    root.navigate(router.SIGN_IN_SCREEN, {[AUTH.user_type]: user_type});
+    root.navigate(router.SIGN_IN_SCREEN, {user_type: user_type});
   };
 
   return (
@@ -90,7 +90,7 @@ const SignUp = ({route}) => {
       <Text medium center marginVertical={SIZES.small}>
         signUpScreen.welcome
       </Text>
-      {user_type == 0 ? (
+      {user_type == USER_TYPE.user ? (
         <FormSignUp control={control} errors={errors} />
       ) : (
         <FormSignUpDrugStore

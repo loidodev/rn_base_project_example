@@ -86,6 +86,7 @@ export const MANAGEMENT_TYPE = {
   rose: 'rose',
 };
 
-export const AUTH = {
-  user_type: 'user_type',
+export const USER_TYPE = {
+  user: 0,
+  drugstore: 1,
 };
