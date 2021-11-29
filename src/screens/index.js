@@ -23,6 +23,7 @@ import BirthdayScreen from './common/Birthday';
 import EditUser from './common/EditUser';
 import ProductByType from './common/ProductByType';
 import ManagementByType from './common/ManagementByType';
+import CommissionManagement from './common/CommissionManagement';
 
 export const auth = {
   [router.SIGN_IN_SCREEN]: SignIn,
@@ -51,4 +52,5 @@ export const common = {
   [router.COMMENT_DETAILS_SCREEN]: EvaluateDetails,
   [router.COMBO_SCREEN]: Combo,
   [router.MANAGEMENT_BY_TYPE_SCREEN]: ManagementByType,
+  [router.COMMISSION_MANAGEMENT_SCREEN]: CommissionManagement,
 };
