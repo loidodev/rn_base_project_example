@@ -76,7 +76,9 @@ export const GENERAL_LIST = [
   {
     image: ICONS.gift_box,
     title: locale.t('profileScreen.gift'),
-    navigation: router.MY_GIFT,
+    onPress: params => {
+      commonRoot.navigate(router.MY_GIFT_SCREEN, params);
+    },
   },
   {
     image: ICONS.placeholder,

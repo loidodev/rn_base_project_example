@@ -1,14 +1,9 @@
 import {Block, Icon, Image, Pressable, Text} from '@components';
-import locale from '@locale';
-import {hs} from '@responsive';
 import React from 'react';
-import {Badge} from 'react-native-elements';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
 const ItemProfile = ({item, index}) => {
   const {image, title, onPress} = item || {};
-
-  const gift = [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}];
 
   return (
     <Pressable
@@ -30,15 +25,7 @@ const ItemProfile = ({item, index}) => {
         />
         <Text fontSize={14}>{title}</Text>
       </Block>
-      {title === locale.t('profileScreen.gift') && gift?.length ? (
-        <Badge
-          value={gift?.length || 0}
-          status="error"
-          containerStyle={{left: hs(5)}}
-        />
-      ) : (
-        <Icon IconType={AntDesign} iconName="right" iconSize={12} />
-      )}
+      <Icon IconType={AntDesign} iconName="right" iconSize={12} />
     </Pressable>
   );
 };
