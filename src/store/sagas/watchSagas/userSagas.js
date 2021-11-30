@@ -219,6 +219,26 @@ function* getCommission(payload) {
   }
 }
 
+function* getUserGift(payload) {
+  const {type, params, isLoadMore} = payload || {};
+  try {
+    const tokenUser = yield select(state => state.tokenUser);
+    const res = yield api.get(URL_API.user.getUserGift, {
+      user: tokenUser,
+      ...params,
+    });
+    yield put({
+      type: _onSuccess(type),
+      data: res.data,
+      totalPage: res.total_page,
+      isLoadMore,
+    });
+  } catch (error) {
+    yield put({type: _onFail(type)});
+    handleApiError(error);
+  }
+}
+
 export function* watchUserSagas() {
   yield takeLatest(actions.GET_TOKEN, getToken);
   yield takeLatest(actions.GET_USER, getUser);
@@ -231,4 +251,6 @@ export function* watchUserSagas() {
   yield takeLatest(actions.SWAP_COMMISSION_LOG, swapCommissionLog);
   yield takeLatest(actions.SWAP_COMMISSION, swapCommission);
   yield takeLatest(actions.GET_COMMISSION, getCommission);
+  yield takeLatest(actions.GET_USER_GIFT, getUserGift);
+  yield takeLatest(actions.GET_USER_GIFT_DETAILS, getUserGift);
 }

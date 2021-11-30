@@ -64,3 +64,11 @@ export const commission = (...props) => {
     };
   });
 };
+
+export const userGift = (...props) => {
+  return reducerAdvance(...props, actions.GET_USER_GIFT);
+};
+
+export const userGiftDetails = (...props) => {
+  return reducerAdvance(...props, actions.GET_USER_GIFT_DETAILS);
+};

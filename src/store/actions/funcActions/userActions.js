@@ -31,3 +31,18 @@ export const getCommission = payload => {
     params: payload.params,
   };
 };
+
+export const getUserGift = (params, isLoadMore) => {
+  return {
+    type: actions.GET_USER_GIFT,
+    params,
+    isLoadMore,
+  };
+};
+
+export const getUserGiftDetails = params => {
+  return {
+    type: actions.GET_USER_GIFT_DETAILS,
+    params,
+  };
+};
