@@ -32,11 +32,11 @@ export const getCommission = payload => {
   };
 };
 
-export const getUserGift = (params, isLoadMore) => {
+export const getUserGift = payload => {
   return {
     type: actions.GET_USER_GIFT,
-    params,
-    isLoadMore,
+    isLoadMore: payload.isLoadMore,
+    params: payload.params,
   };
 };
 

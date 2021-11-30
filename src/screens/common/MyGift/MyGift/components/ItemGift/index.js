@@ -32,7 +32,8 @@ const ItemGift = ({item}) => {
       onPress={_onSelectItem}
       backgroundColor="white"
       padding={SIZES.medium}
-      marginHorizontal={SIZES.medium}>
+      radius={SIZES.small}
+      margin={SIZES.normal}>
       <LazyImage
         style={{width: '100%'}}
         height={200}

@@ -18,7 +18,7 @@ export const URL_API = {
     swapCommissionLog: 'swapCommissionLog',
     swapCommission: 'swapCommission',
     getCommission: 'getCommission',
-    getUserGift: 'getUserGift',
+    getUserGift: 'getUserGft',
   },
   general: {
     getConfigApp: 'getConfigApp',
