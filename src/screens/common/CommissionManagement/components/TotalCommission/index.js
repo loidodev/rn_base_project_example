@@ -8,16 +8,28 @@ import {
   Text,
   TextInput,
 } from '@components';
+import {swapCommission} from '@store/actions/funcActions/userActions';
 import {SIZES} from '@theme';
 import {convertCurrency} from '@utils';
 import React, {useState} from 'react';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import {useDispatch, useSelector} from 'react-redux';
 
-const TotalCommission = ({info}) => {
+const TotalCommission = () => {
+  const dispatch = useDispatch();
   const [valueCommission, setValueCommission] = useState('');
+  const rSwapCommission = useSelector(state => state.swapCommission);
+  const rCommission = useSelector(state => state.commission);
+
+  const info = rCommission?.info;
 
   const _onSubmit = () => {
     if (valueCommission) {
+      dispatch(
+        swapCommission({
+          num_commission: Number(valueCommission),
+        }),
+      );
     }
   };
 
@@ -97,7 +109,11 @@ const TotalCommission = ({info}) => {
           </Block>
         )}
       </Block>
-      <ButtonSubmit onPress={_onSubmit}>commission.submit</ButtonSubmit>
+      <ButtonSubmit
+        loading={rSwapCommission.isLoading || rCommission.isLoading}
+        onPress={_onSubmit}>
+        commission.submit
+      </ButtonSubmit>
     </FormContainer>
   );
 };

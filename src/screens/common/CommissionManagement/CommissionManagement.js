@@ -10,11 +10,17 @@ import {hs} from '@utils/responsive';
 import React from 'react';
 import ManagementByType from '../ManagementByType';
 import TotalCommission from './components/TotalCommission';
+import {useSelector} from 'react-redux';
 
 const Tab = createMaterialTopTabNavigator();
 
 const CommissionManagement = () => {
   const {type} = useRoute().params || {};
+
+  const commission = useSelector(state => state.commission);
+  const swapCommission = useSelector(state => state.swapCommission);
+
+  const isLoading = commission.isLoading || swapCommission.isLoading;
 
   const _renderTabBar = props => {
     return (
@@ -22,13 +28,7 @@ const CommissionManagement = () => {
     );
   };
 
-  const _renderTabBarItem = ({
-    route,
-    navigationState,
-    position,
-    onPress,
-    ...rest
-  }) => {
+  const _renderTabBarItem = ({route, navigationState, position, onPress}) => {
     const tabIndex = navigationState.routes.indexOf(route);
     const isFocused = navigationState.index === tabIndex;
 
@@ -52,6 +52,7 @@ const CommissionManagement = () => {
       <Tab.Navigator
         lazy
         tabBar={_renderTabBar}
+        screenOptions={{swipeEnabled: !isLoading}}
         tabBarOptions={{
           activeTintColor: COLORS.blue,
           inactiveTintColor: COLORS.placeholder,

@@ -21,10 +21,12 @@ const ManagementByType = ({route}) => {
   const tokenUser = useSelector(state => state.tokenUser);
   const userWCoinLog = useSelector(state => state.userWCoinLog);
   const swapCommissionLog = useSelector(state => state.swapCommissionLog);
+  const commission = useSelector(state => state.commission);
 
   const {data, isLoading, totalPage} = handleFilter({
     point: userWCoinLog,
     historyPoint: swapCommissionLog,
+    rose: commission,
     type,
   });
 
@@ -40,6 +42,7 @@ const ManagementByType = ({route}) => {
     return () => {
       dispatch({type: _onUnmount(actions.GET_USER_W_COIN_LOG)});
       dispatch({type: _onUnmount(actions.SWAP_COMMISSION_LOG)});
+      dispatch({type: _onUnmount(actions.GET_COMMISSION)});
     };
   }, [dateEnd, dateStart, dispatch, tokenUser, type]);
 

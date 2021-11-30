@@ -1,5 +1,6 @@
 import {MANAGEMENT_TYPE} from '@constants';
 import {
+  getCommission,
   getUserWCoinLog,
   swapCommissionLog,
 } from '@store/actions/funcActions/userActions';
@@ -27,7 +28,7 @@ export const handleApi = (dispatch, type, payload) => {
       return Promise.all([dispatch(swapCommissionLog(payload))]);
 
     case MANAGEMENT_TYPE.rose:
-      return Promise.all([dispatch(getUserWCoinLog(payload))]);
+      return Promise.all([dispatch(getCommission(payload))]);
 
     default:
       return Promise.all([dispatch(getUserWCoinLog(payload))]);

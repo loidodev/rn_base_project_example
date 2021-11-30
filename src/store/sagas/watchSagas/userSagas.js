@@ -177,6 +177,48 @@ function* swapCommissionLog(payload) {
   }
 }
 
+function* swapCommission(payload) {
+  const {type, params, body} = payload || {};
+  try {
+    const bodyString = queryString.stringify(body);
+    const tokenUser = yield select(state => state.tokenUser);
+    const res = yield api.post(URL_API.user.swapCommission, bodyString, {
+      user: tokenUser,
+      ...params,
+    });
+    yield put({
+      type: _onSuccess(type),
+      data: res.data,
+    });
+    yield put({type: actions.GET_COMMISSION});
+    CustomToast('Yêu cầu của bạn đã thành công');
+  } catch (error) {
+    yield put({type: _onFail(type)});
+    handleApiError(error, true);
+  }
+}
+
+function* getCommission(payload) {
+  const {type, params, isLoadMore} = payload || {};
+  try {
+    const tokenUser = yield select(state => state.tokenUser);
+    const res = yield api.get(URL_API.user.getCommission, {
+      user: tokenUser,
+      ...params,
+    });
+    yield put({
+      type: _onSuccess(type),
+      data: res.data,
+      totalPage: res.total_page,
+      info: res.info,
+      isLoadMore,
+    });
+  } catch (error) {
+    yield put({type: _onFail(type)});
+    handleApiError(error);
+  }
+}
+
 export function* watchUserSagas() {
   yield takeLatest(actions.GET_TOKEN, getToken);
   yield takeLatest(actions.GET_USER, getUser);
@@ -187,4 +229,6 @@ export function* watchUserSagas() {
   yield takeLatest(actions.UPDATE_PASSWORD, updatePassword);
   yield takeLatest(actions.GET_USER_W_COIN_LOG, getUserWCoinLog);
   yield takeLatest(actions.SWAP_COMMISSION_LOG, swapCommissionLog);
+  yield takeLatest(actions.SWAP_COMMISSION, swapCommission);
+  yield takeLatest(actions.GET_COMMISSION, getCommission);
 }

@@ -15,3 +15,19 @@ export const swapCommissionLog = payload => {
     params: payload.params,
   };
 };
+
+export const swapCommission = (body, params) => {
+  return {
+    type: actions.SWAP_COMMISSION,
+    body,
+    params,
+  };
+};
+
+export const getCommission = payload => {
+  return {
+    type: actions.GET_COMMISSION,
+    isLoadMore: payload.isLoadMore,
+    params: payload.params,
+  };
+};

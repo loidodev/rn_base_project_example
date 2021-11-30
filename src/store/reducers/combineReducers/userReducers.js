@@ -52,15 +52,15 @@ export const userWCoinLog = (...props) => {
   );
 };
 
-export const swapCommissionLog = (...props) => {
-  return reducerAdvance(
-    ...props,
-    actions.SWAP_COMMISSION_LOG,
-    (state, payload) => {
-      return {
-        ...state,
-        info: payload.info,
-      };
-    },
-  );
+export const swapCommission = (...props) => {
+  return reducerDefault(...props, actions.SWAP_COMMISSION);
+};
+
+export const commission = (...props) => {
+  return reducerAdvance(...props, actions.GET_COMMISSION, (state, payload) => {
+    return {
+      ...state,
+      info: payload.info,
+    };
+  });
 };
